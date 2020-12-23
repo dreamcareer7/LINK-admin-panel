@@ -1,8 +1,8 @@
 import React from 'react';
-import linkfluencer from '../../images/linkfluencer.png';
-import user from '../../images/user.png';
-import padlock from '../../images/padlock.png';
-import hideInterface from '../../images/hide-interface-symbol.png'
+import linkfluencer from '../../assets/images/linkfluencer.png';
+import user from '../../assets/images/user.png';
+import padlock from '../../assets/images/padlock.png';
+import hideInterface from '../../assets/images/hide-interface-symbol.png'
 
 function LoginPage() {
     return (
