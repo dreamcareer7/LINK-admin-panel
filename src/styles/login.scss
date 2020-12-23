@@ -1,0 +1,71 @@
+@import "index";
+
+.logo {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.login-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: auto;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  max-width: 270px;
+  min-width: 170px;
+}
+
+.login-form--detail-container {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  width: 100%;
+  margin-top: 7px;
+  background-color: $secondary-color;
+  border-radius: 5px;
+  overflow: hidden;
+
+  input {
+    width: calc(100% - 70px);
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+}
+
+.detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 40px;
+  background-color: $primary-color;
+
+  img {
+    height: 15px;
+  }
+}
+
+.show-hide-pswrd {
+  width: 15px;
+  cursor: pointer;
+}
+
+.login-button {
+  margin: 25px auto 10px auto;
+}
+
+.forgot-password {
+  font-size: 12px;
+  color: $primary-color;
+}
