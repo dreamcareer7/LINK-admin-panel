@@ -1,5 +1,5 @@
 import React from 'react';
-import linkfluencer from '../../assets/images/linkfluencer.png';
+import linkFluencer from '../../assets/images/linkfluencer.png';
 import user from '../../assets/images/user.png';
 import padlock from '../../assets/images/padlock.png';
 import hideInterface from '../../assets/images/hide-interface-symbol.png'
@@ -7,7 +7,7 @@ import hideInterface from '../../assets/images/hide-interface-symbol.png'
 function LoginPage() {
     return (
         <div className="login-content-container">
-            <img alt="linkfluencer" src={linkfluencer} class="logo"/>
+            <img alt="linkfluencer" src={linkFluencer} className="logo"/>
             <div className="login-form">
 
                 <div className="login-form--detail-container">
