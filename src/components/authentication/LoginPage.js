@@ -3,15 +3,18 @@ import linkFluencer from '../../assets/images/linkfluencer.png';
 import user from '../../assets/images/user.png';
 import padlock from '../../assets/images/padlock.png';
 import hideInterface from '../../assets/images/hide-interface-symbol.png'
-import {errorNotification, successNotification} from "../../constants/Toast";
+import {checkForEmail, errorNotification, replaceHiddenCharacters, successNotification} from "../../constants/Toast";
 
 function LoginPage() {
+
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
     const onClickLoginButton = (userName, password) => {
         if (userName.toString().trim().length === 0)
-            errorNotification("Please enter user name");
+            errorNotification("Please enter userName");
+        else if (!checkForEmail(replaceHiddenCharacters(userName)))
+            errorNotification("Please enter a valid userName")
         else if (password.toString().trim().length === 0)
             errorNotification("Please enter password");
         else {

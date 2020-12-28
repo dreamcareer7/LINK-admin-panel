@@ -17,3 +17,11 @@ export const errorNotification = (message) => {
 export const warningNotification = (message) => {
     notify.show(message, TOAST_TYPE.warning,TOAST_TIMEOUT, WARNING_TOAST_COLOR);
 };
+
+export const replaceHiddenCharacters = (string) => {
+    return string.toString().replace(/[\u200c\u200b]/g, "");
+};
+
+export const checkForEmail = (emailAddress) => {
+    return /.+@.+\.[A-Za-z]+$/.test(emailAddress)
+};
