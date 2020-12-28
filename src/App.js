@@ -7,7 +7,7 @@ import Trinity from "./components/dashboard/trinity/trinity";
 function App() {
   return (
     <div className="App">
-     <Trinity/>
+     <Dashboard/>
     </div>
   );
 }

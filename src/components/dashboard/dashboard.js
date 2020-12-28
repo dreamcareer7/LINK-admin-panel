@@ -2,6 +2,7 @@ import React from 'react';
 import './dashboard.scss';
 import Sidebar from "../commonComponents/sidebar/sidebar";
 import UpperHeader from "../commonComponents/upperHeader/upperHeader";
+import Subscribers from "./subscribers/subscribers";
 
 function Dashboard() {
     return (
@@ -15,7 +16,7 @@ function Dashboard() {
                 </div>
 
                 <div className="common-area">
-
+                    <Subscribers/>
                 </div>
             </div>
         </div>

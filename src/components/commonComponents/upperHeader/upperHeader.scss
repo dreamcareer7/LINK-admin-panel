@@ -4,15 +4,65 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 10px 5%;
+  padding: 7px 35px;
   width: 100%;
   background-color: $secondary-variant-color;
 }
 
-.search-block {
+.upper-header--rounded-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 100%;
   width: 20%;
-  min-width: 170px;
-  background-color: white;
+  min-width: 140px;
+  max-width: 200px;
+  padding: 5px;
+  background-color: $background-primary-color;
   border-radius: 20px;
+}
+
+.search-block {
+  margin-right: 20px;
+
+  input {
+    width: calc(100% - 40px);
+    margin-left: 10px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+  }
+
+  input::placeholder {
+    font-size: 12px;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    background-color: $success-color;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+
+    img {
+      height: 16px;
+    }
+  }
+}
+
+.user-dp {
+  height: 32px;
+  width: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-settings {
+  width: calc(100% - 36px);
+  border: none;
+  outline: none;
 }

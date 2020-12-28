@@ -17,12 +17,13 @@
 
 .dashboard--upperHeader {
   display: flex;
-  height: 50px;
+  height: 60px;
   width: 100%;
 }
 
 .common-area {
-  height: calc(100vh - 50px);
+  height: calc(100vh - 60px);
   width: 100%;
+  padding: 10px 30px;
   overflow-y: auto;
 }

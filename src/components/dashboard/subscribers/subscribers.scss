@@ -1,0 +1,62 @@
+@import "src/styles/index";
+
+.subscribers-table-action-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.subscribers-filters {
+  display: flex;
+}
+
+.filter {
+
+}
+
+.filter-action {
+  display: flex;
+  margin-right: 30px;
+
+  input {
+    min-width: 150px;
+    height: 25px;
+    padding: 5px 15px;
+    background-color: $secondary-variant-color;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+  }
+
+  input:nth-child(1) {
+    margin-right: 10px;
+  }
+
+  select {
+    min-width: 150px;
+    height: 25px;
+    background-color: $secondary-variant-color;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+  }
+}
+
+.action-buttons  {
+  display: flex;
+  button {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+  }
+  .success-button {
+    margin-left: 20px;
+  }
+}
