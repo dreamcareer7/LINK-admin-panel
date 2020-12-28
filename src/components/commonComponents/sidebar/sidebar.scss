@@ -1,0 +1,36 @@
+@import "src/styles/index";
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid #212163;
+
+  img {
+    width: 80%;
+  }
+}
+
+.menu {
+  width: 100%;
+  padding: 30px 20px 30px 10px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  height: 40px;
+
+  img {
+    height: 20px;
+  }
+
+  span {
+   margin-left: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #212163;
+  }
+}

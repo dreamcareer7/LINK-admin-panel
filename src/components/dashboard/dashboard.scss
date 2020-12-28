@@ -1,0 +1,27 @@
+@import "src/styles/index";
+
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+.dashboard--left-part {
+  width: 15%;
+  background-color: $primary-color;
+}
+
+.dashboard--right-part {
+  width: 85%;
+}
+
+.dashboard--upperHeader {
+  display: flex;
+  height: 50px;
+  width: 100%;
+}
+
+.common-area {
+  height: calc(100vh - 50px);
+  width: 100%;
+  overflow-y: auto;
+}
