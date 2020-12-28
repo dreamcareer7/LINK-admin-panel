@@ -1,8 +1,8 @@
 @import "index";
 
 .logo {
-  width: 150px;
-  margin-bottom: 10px;
+  width: 160px;
+  margin-bottom: 15px;
 }
 
 .login-content-container {
@@ -19,17 +19,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30%;
-  max-width: 270px;
-  min-width: 170px;
+  width: 20%;
+  min-width: 280px;
 }
 
 .login-form--detail-container {
   display: flex;
   align-items: center;
-  height: 35px;
+  height: 37px;
   width: 100%;
-  margin-top: 7px;
+  margin-top: 10px;
   background-color: $secondary-color;
   border-radius: 5px;
   overflow: hidden;
@@ -52,7 +51,7 @@
   background-color: $primary-color;
 
   img {
-    height: 15px;
+    width: 13px;
   }
 }
 
