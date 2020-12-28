@@ -9,7 +9,7 @@ import gear from "../../../assets/images/gear.png"
 function Sidebar() {
     return (
         <div>
-            <div className="logo">
+            <div className="dashboard-logo">
                 <img alt="Linkfluencer" src={linkfluencer}/>
             </div>
             <div className="menu">

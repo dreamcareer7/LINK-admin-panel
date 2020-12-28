@@ -3,7 +3,9 @@ import "./upperHeader.scss";
 
 function UpperHeader() {
     return (
-        <div ></div>
+        <div className="upper-header-block" >
+            <div className="search-block"></div>
+        </div>
     )
 }
 
