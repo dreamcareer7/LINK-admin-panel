@@ -21,3 +21,12 @@
   color: white;
   background-color: $primary-variant-color;
 }
+
+.common-select {
+  min-width: 150px;
+  height: 25px;
+  background-color: $secondary-variant-color;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}

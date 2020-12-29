@@ -5,6 +5,10 @@
   height: 100vh;
 }
 
+.dashboard * {
+  box-sizing: border-box;
+}
+
 .dashboard--left-part {
   width: 15%;
   min-width: 180px;
