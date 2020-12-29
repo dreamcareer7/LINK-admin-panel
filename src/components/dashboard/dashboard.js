@@ -3,6 +3,7 @@ import './dashboard.scss';
 import Sidebar from "../commonComponents/sidebar/sidebar";
 import UpperHeader from "../commonComponents/upperHeader/upperHeader";
 import Subscribers from "./subscribers/subscribers";
+import QuoteBank from "./quoteBank/quoteBank";
 
 function Dashboard() {
     return (
@@ -16,7 +17,7 @@ function Dashboard() {
                 </div>
 
                 <div className="common-area">
-                    <Subscribers/>
+                    <QuoteBank/>
                 </div>
             </div>
         </div>

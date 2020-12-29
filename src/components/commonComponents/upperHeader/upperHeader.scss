@@ -12,7 +12,6 @@
 .upper-header--rounded-block {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 100%;
   width: 20%;
   min-width: 180px;
@@ -20,6 +19,13 @@
   padding: 3px;
   background-color: $background-primary-color;
   border-radius: 20px;
+
+  label {
+    width: calc(100% - 80px);
+    margin: 0px 5px;
+    font-size: 12px;
+    font-weight: 500;
+  }
 }
 
 .search-block {
@@ -27,7 +33,7 @@
 
   input {
     width: calc(100% - 55px);
-    margin-left: 10px;
+    margin: 0 10px;
     font-size: 14px;
     border: none;
     outline: none;
@@ -62,7 +68,6 @@
 }
 
 .user-settings {
-  width: calc(100% - 40px);
   border: none;
   outline: none;
 }

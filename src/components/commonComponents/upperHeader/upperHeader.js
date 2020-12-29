@@ -12,7 +12,8 @@ function UpperHeader() {
             </div>
             <div className="upper-header--rounded-block">
                 <img className="user-dp" src={user}/>
-                <select className="user-settings" placeholder="Michelle Obama"></select>
+                <label>Michelle Obama</label>
+                <select className="user-settings"></select>
             </div>
         </div>
     )

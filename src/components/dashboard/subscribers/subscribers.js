@@ -5,8 +5,8 @@ import './subscribers.scss'
 function Subscribers() {
     return (
         <div>
-            <div className="subscribers-table-action-container">
-                <div className="subscribers-filters">
+            <div className="action-container">
+                <div className="filters">
                     <div className="filter">
                     <label className="filter-label">Date Range</label>
                     <div className="filter-action">
