@@ -15,9 +15,9 @@
   justify-content: space-between;
   height: 100%;
   width: 20%;
-  min-width: 140px;
+  min-width: 180px;
   max-width: 200px;
-  padding: 5px;
+  padding: 3px;
   background-color: $background-primary-color;
   border-radius: 20px;
 }
@@ -26,7 +26,7 @@
   margin-right: 20px;
 
   input {
-    width: calc(100% - 40px);
+    width: calc(100% - 55px);
     margin-left: 10px;
     font-size: 14px;
     border: none;
@@ -41,8 +41,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 32px;
-    width: 32px;
+    height: 40px;
+    width: 40px;
     background-color: $success-color;
     outline: none;
     border: none;
@@ -55,14 +55,14 @@
 }
 
 .user-dp {
-  height: 32px;
-  width: 32px;
+  height: 40px;
+  width: 40px;
   object-fit: cover;
   border-radius: 50%;
 }
 
 .user-settings {
-  width: calc(100% - 36px);
+  width: calc(100% - 40px);
   border: none;
   outline: none;
 }
