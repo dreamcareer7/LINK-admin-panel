@@ -8,10 +8,12 @@ $secondary-variant-color: #ECEFF4; // not defined
 $background-primary-color: #ffffff;
 
 /*Event colors*/
-$danger-color: #FF3334;
+$danger-color: green  ;
 $info-color: #00A8FF;
 $warning-color: #fabb3e; //not defined - need to change according to need
 $success-color: #469A20;
 
 $primary-font-color: #07084B;
 $secondary-font-color: #444444; //need to change according to the PSD
+
+:export{dangerColor:$danger-color;}
