@@ -67,7 +67,6 @@
   overflow: hidden;
 
   img {
-    height: 100%;
     width: 100%;
   }
 }
@@ -191,7 +190,7 @@
 }
 
 @media (max-width: 768px) {
-  .issue-detail-block {
+  .issue-block-1 {
     flex-direction: column-reverse;
     margin: 10px;
   }

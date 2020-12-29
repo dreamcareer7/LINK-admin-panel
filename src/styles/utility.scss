@@ -1,5 +1,29 @@
 @import "color-palette";
 
+/* scrollbar starts here */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $secondary-color;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $primary-color;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $primary-variant-color;
+}
+/* scrollbar ends here */
+
 .button {
   width: 35%;
   min-width: 140px;
@@ -29,4 +53,38 @@
   border: none;
   outline: none;
   border-radius: 5px;
+}
+
+.common-input {
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $secondary-font-color;
+  background-color: $secondary-variant-color;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.breadcrumb {
+  color: $primary-font-color;
+  text-transform: uppercase;
+}
+
+.breadcrumb span:last-child {
+  color: $placeholder-color;
+}
+
+.common-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: $primary-font-color;
+}
+
+.placeholder-font {
+  color: $placeholder-color;
+}
+
+.mb-5 {
+  margin-bottom: 5px;
 }

@@ -17,14 +17,14 @@
   min-width: 180px;
   max-width: 200px;
   padding: 3px;
+  font-size: 12px;
+  font-weight: 500;
   background-color: $background-primary-color;
   border-radius: 20px;
 
   label {
     width: calc(100% - 80px);
     margin: 0px 5px;
-    font-size: 12px;
-    font-weight: 500;
   }
 }
 
@@ -70,4 +70,13 @@
 .user-settings {
   border: none;
   outline: none;
+}
+
+.user-settings-option {
+  display: flex;
+
+  img {
+    height: 14px;
+    margin-right: 10px;
+  }
 }

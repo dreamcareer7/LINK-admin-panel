@@ -1,7 +1,8 @@
 import React from "react";
 import "./upperHeader.scss";
-import search from "../../../assets/images/search.png"
-import user from "../../../assets/images/dummy-user.jpg"
+import search from "../../../assets/images/search.png";
+import user from "../../../assets/images/dummy-user.jpg";
+import logout from "../../../assets/images/logout.svg";
 
 function UpperHeader() {
     return (
@@ -13,7 +14,8 @@ function UpperHeader() {
             <div className="upper-header--rounded-block">
                 <img className="user-dp" src={user}/>
                 <label>Michelle Obama</label>
-                <select className="user-settings"></select>
+                <select className="user-settings">
+                </select>
             </div>
         </div>
     )

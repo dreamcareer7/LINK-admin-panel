@@ -45,43 +45,127 @@ function QuoteBank() {
             <div className="no-of-results-in-display">
                 Showing 1-20 of 357 results
             </div>
-            <table cellPadding="0" cellSpacing="0" className="quote-table">
-                <tr className="tr heading">
+            <div className="quote-table">
+                <div className="tr heading">
                     <div className="td">Quote</div>
                     <div className="td">Author</div>
                     <div className="td">Tags</div>
                     <div className="td">Status</div>
                     <div className="td"></div>
-                </tr>
+                </div>
 
-                <div className="tr">
-                    <div className="td">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                    </div>
-                    <div className="td">
-                        Neil DeGrasse Tyson Junior
-                    </div>
-                    <div className="td">
-                        <div className="tag-container">
-                            <span className="tag">Business</span>
-                            <span className="tag">Motivational</span>
-                            <span className="tag">Entertainment</span>
+                <div className="tr-container">
+                    <div className="tr">
+                        <div className="td">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
+                        </div>
+                        <div className="td">
+                            Neil DeGrasse Tyson Junior
+                        </div>
+                        <div className="td">
+                            <div className="tag-container">
+                                <span className="tag">Business</span>
+                                <span className="tag">Motivational</span>
+                                <span className="tag">Entertainment</span>
+                            </div>
+                        </div>
+                        <div className="td">
+                            <select>
+                                <option value="All">All</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div className="td">
+                            <img className="edit" src={edit}/>
+                            <img src={bin}/>
                         </div>
                     </div>
-                    <div className="td">
-                        <select>
-                            <option value="All">All</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
+                    <div className="tr">
+                        <div className="td">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
+                        </div>
+                        <div className="td">
+                            Neil DeGrasse Tyson Junior
+                        </div>
+                        <div className="td">
+                            <div className="tag-container">
+                                <span className="tag">Business</span>
+                                <span className="tag">Motivational</span>
+                                <span className="tag">Entertainment</span>
+                            </div>
+                        </div>
+                        <div className="td">
+                            <select>
+                                <option value="All">All</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div className="td">
+                            <img className="edit" src={edit}/>
+                            <img src={bin}/>
+                        </div>
                     </div>
-                    <div className="td">
-                        <img className="edit" src={edit}/>
-                        <img src={bin}/>
+                    <div className="tr">
+                        <div className="td">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
+                        </div>
+                        <div className="td">
+                            Neil DeGrasse Tyson Junior
+                        </div>
+                        <div className="td">
+                            <div className="tag-container">
+                                <span className="tag">Business</span>
+                                <span className="tag">Motivational</span>
+                                <span className="tag">Entertainment</span>
+                            </div>
+                        </div>
+                        <div className="td">
+                            <select>
+                                <option value="All">All</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div className="td">
+                            <img className="edit" src={edit}/>
+                            <img src={bin}/>
+                        </div>
+                    </div>
+                    <div className="tr">
+                        <div className="td">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
+                        </div>
+                        <div className="td">
+                            Neil DeGrasse Tyson Junior
+                        </div>
+                        <div className="td">
+                            <div className="tag-container">
+                                <span className="tag">Business</span>
+                                <span className="tag">Motivational</span>
+                                <span className="tag">Entertainment</span>
+                            </div>
+                        </div>
+                        <div className="td">
+                            <select>
+                                <option value="All">All</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div className="td">
+                            <img className="edit" src={edit}/>
+                            <img src={bin}/>
+                        </div>
                     </div>
                 </div>
-            </table>
+
+            </div>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 @import "src/styles/index";
 
 .no-of-results-in-display {
-  margin: 20px 0 20px 20px;
+  margin: 20px 0 10px 20px;
   font-size: 14px;
   font-weight: 500;
   color: $placeholder-color;
@@ -28,10 +28,16 @@
   }
 }
 
+.tr-container {
+  max-height: calc(100vh - 240px);
+  overflow-y: auto;
+}
+
 .tr {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 15px 20px;
+  margin-bottom: 10px;
   background-color: $secondary-variant-color;
   border-radius: 5px;
 }
@@ -61,11 +67,8 @@
 }
 
 .heading {
+  padding: 0px 20px;
   background-color: white;
-}
-
-.heading .td:first-child {
-  padding: 0 20px 0 20px;
 }
 
 .tag-container {
