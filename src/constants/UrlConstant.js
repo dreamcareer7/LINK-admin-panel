@@ -1,1 +1,12 @@
-export const BASE_URL = 'https://60f1043d1c22.ngrok.io/';
+export const BASE_URL = 'https://link.dev.gradlesol.com/app/';
+
+export const API_METHODS = {
+  GET: 'GET',
+  POST: 'POST',
+  DELETE: 'DELETE',
+  PUT: 'PUT',
+};
+
+export const AUTH_URLS = {
+  LOGIN_URL: `${BASE_URL}authAdmin/login`,
+};

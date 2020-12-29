@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginPage from './components/authentication/login-page/LoginPage';
 import VerificationPage from './components/authentication/verification-page/VerificationPage';
 import ForgotPasswordPage from './components/authentication/forgotpassword-page/ForgotPasswordPage';
+import OtpPage from './components/authentication/otp-page/OtpPage';
 
 function App() {
   /*  const PrivateRoute = ({ component, ...options }) => {
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/" component={VerificationPage} />
             <Route exact path="/forgot" component={ForgotPasswordPage} />
+            <Route exact path="/otpPage" component={OtpPage} />
             {/* <PrivateRoute exact path={"/"} render={props => <VerificationPage {...props} />}/> */}
           </Switch>
         </Route>

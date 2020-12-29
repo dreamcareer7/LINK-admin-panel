@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import linkFluencer from '../../../assets/images/linkfluencer.png';
 import './login.scss';
 import user from '../../../assets/images/user.png';
@@ -8,14 +10,23 @@ import {
   checkForEmail,
   errorNotification,
   replaceHiddenCharacters,
-  successNotification,
 } from '../../../constants/Toast';
 import AuthTextInput from '../common/text-input/AuthTextInput';
+import { loginUser } from '../../../redux/actions/auth-actions/AuthActions';
 
 function LoginPage() {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const loggedUser = useSelector((state) => state.loggedUser);
+
+  useEffect(() => {
+    if (loggedUser !== null) {
+      history.push('/');
+    }
+  }, [loggedUser]);
 
   const onClickLoginButton = (inputUserName, inputPassword) => {
     if (inputUserName.toString().trim().length === 0) errorNotification('Please enter userName');
@@ -24,7 +35,7 @@ function LoginPage() {
     else if (inputPassword.toString().trim().length === 0)
       errorNotification('Please enter password');
     else {
-      successNotification('You are logged in successfully');
+      dispatch(loginUser(userName, password));
     }
   };
 
