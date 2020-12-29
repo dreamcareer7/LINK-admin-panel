@@ -31,8 +31,8 @@ function LoginPage() {
   const onClickLoginButton = (inputUserName, inputPassword) => {
     if (inputUserName.toString().trim().length === 0) errorNotification('Please enter userName');
     else if (!checkForEmail(replaceHiddenCharacters(inputUserName)))
-      errorNotification('Please enter a valid userName');
-    else if (inputPassword.toString().trim().length === 0)
+      errorNotification('Please enter a valid username');
+    else if (replaceHiddenCharacters(inputPassword.toString()).trim().length === 0)
       errorNotification('Please enter password');
     else {
       dispatch(loginUser(userName, password));
