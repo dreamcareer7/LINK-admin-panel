@@ -11,9 +11,6 @@
   width: 100%;
   font-size: 14px;
   font-weight: 500;
-  border-collapse: separate;
-  border-spacing: 0 1em;
-  border: none;
 
   select {
     min-width: 100%;
@@ -50,11 +47,7 @@
   width: 20%;
 }
 
-.td:nth-child(3) {
-  width: 15%;
-}
-
-.td:nth-child(4) {
+.td:nth-child(3), .td:nth-child(4) {
   width: 15%;
 }
 
@@ -67,6 +60,7 @@
 }
 
 .heading {
+  margin-bottom: 5px;
   padding: 0px 20px;
   background-color: white;
 }
@@ -85,8 +79,4 @@
   color: #ffffff;
   background-color: $info-color;
   border-radius: 15px;
-}
-
-.edit {
-  margin-right: 5px;
 }

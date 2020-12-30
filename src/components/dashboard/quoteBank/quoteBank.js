@@ -105,7 +105,7 @@ function QuoteBank() {
                             </select>
                         </div>
                         <div className="td">
-                            <img className="edit" src={edit}/>
+                            <img className="mr-5" src={edit}/>
                             <img src={bin}/>
                         </div>
                     </div>
