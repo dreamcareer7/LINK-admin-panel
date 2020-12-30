@@ -12,28 +12,28 @@ function AddQuote() {
                 <div className="common-title mb-5">
                     Quote
                 </div>
-                <div className="common-input">
+                <textarea rows="3" className="common-input">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat.
-                </div>
+                </textarea>
             </div>
             <div className="add-quote-block">
                 <div className="common-title mb-5">
                     Tags
-                    <span className="placeholder-font">(Separated by commas) </span>
+                    <span className="placeholder-font font-600"> (Separated by commas) </span>
                 </div>
-                <div className="common-input">
+                <textarea rows="1" className="common-input">
                     Business, Motivation
-                </div>
+                </textarea>
             </div>
             <div className="add-quote-block author-detail">
                 <div>
-                    <div className="common-title">Author</div>
-                    <input className="common-input" placeholder="Michelle Obama"/>
+                    <div className="common-title mb-5">Author</div>
+                    <input className="common-input" placeholder="Enter name"/>
                 </div>
                 <div>
-                    <div className="common-title">Author</div>
+                    <div className="common-title mb-5">Author</div>
                     <select className="common-select">
                         <option value="All">All</option>
                         <option value="1">1</option>
@@ -41,6 +41,11 @@ function AddQuote() {
                         <option value="3">3</option>
                     </select>
                 </div>
+            </div>
+            <div className="buttons-row">
+                <button className="button success-button add-quote-button">SAVE CHANGES</button>
+                <button className="button primary-button add-quote-button">DISCARD CHANGES</button>
+                <button className="button danger-button add-quote-button">DELETE CHANGES</button>
             </div>
         </div>
     );

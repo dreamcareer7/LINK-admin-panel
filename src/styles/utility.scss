@@ -25,10 +25,9 @@
 /* scrollbar ends here */
 
 .button {
-  width: 35%;
   min-width: 140px;
   padding: 10px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   text-align: center;
   border: none;
@@ -46,16 +45,31 @@
   background-color: $primary-variant-color;
 }
 
+.danger-button {
+  color: white;
+  background-color: $danger-color;
+}
+
 .common-select {
   min-width: 150px;
   height: 25px;
   background-color: $secondary-variant-color;
+  font-size: 12px;
+  font-weight: 600;
+  color: $secondary-font-color;
   border: none;
   outline: none;
   border-radius: 5px;
 }
 
+.common-select option {
+  font-size: 14px;
+  font-weight: 600;
+  color: $secondary-font-color;
+}
+
 .common-input {
+  width: 100%;
   padding: 5px 10px;
   font-size: 14px;
   font-weight: 500;
@@ -64,6 +78,19 @@
   border-radius: 5px;
   border: none;
   outline: none;
+  resize: none;
+}
+
+.common-input::placeholder {
+  font-size: 12px;
+  font-weight: 500;
+  color: $secondary-font-color;
+}
+
+.common-content {
+  font-size: 12px;
+  font-weight: 500;
+  color: $secondary-font-color;
 }
 
 .breadcrumb {
@@ -81,10 +108,62 @@
   color: $primary-font-color;
 }
 
+.common-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: $primary-font-color;
+}
+
+.buttons-row {
+  display: flex;
+  margin: 20px 0 30px 0;
+}
+
+input::placeholder {
+  font-size: 12px;
+  font-weight: 500;
+}
+
 .placeholder-font {
   color: $placeholder-color;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.font-500 {
+  font-weight: 500;
+}
+
+.font-600 {
+  font-weight: 600;
+}
+
 .mb-5 {
   margin-bottom: 5px;
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mr-5 {
+  margin-right: 5px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.mr-15 {
+  margin-right: 15px;
+}
+
+.mr-20 {
+  margin-right: 20px;
 }

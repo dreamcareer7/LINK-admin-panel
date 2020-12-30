@@ -1,0 +1,31 @@
+@import "src/styles/index";
+
+.integrations-block {
+  margin-top: 20px;
+  width: 60%;
+  min-width: 500px;
+}
+
+.integrations-inner-block {
+  margin-bottom: 15px;
+}
+
+.light-gray-block {
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $secondary-font-color;
+  background-color: $secondary-variant-color;
+  border-radius: 10px;
+}
+
+.integrations-input {
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: $secondary-font-color;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}

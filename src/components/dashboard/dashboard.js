@@ -5,6 +5,7 @@ import UpperHeader from "../commonComponents/upperHeader/upperHeader";
 import Subscribers from "./subscribers/subscribers";
 import QuoteBank from "./quoteBank/quoteBank";
 import AddQuote from "./quoteBank/add-quote/add-quote";
+import Settings from "./settings/settings";
 
 function Dashboard() {
     return (
@@ -18,7 +19,7 @@ function Dashboard() {
                 </div>
 
                 <div className="common-area">
-                    <AddQuote/>
+                    <Settings/>
                 </div>
             </div>
         </div>

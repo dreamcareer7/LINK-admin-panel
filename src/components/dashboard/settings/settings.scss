@@ -1,0 +1,19 @@
+@import "src/styles/index";
+
+.settings-button {
+  max-width: 185px;
+  margin-right: 10px;
+  padding: 12px 40px;
+  color: #000000;
+  background-color: $secondary-variant-color;
+  border-radius: 25px;
+}
+
+.active-menu {
+  color: #ffffff;
+  background-color: #4590e4;
+}
+
+.settings-common-area {
+  margin-top: 20px;
+}
