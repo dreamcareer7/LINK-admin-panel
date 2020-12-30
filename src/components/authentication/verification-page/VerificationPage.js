@@ -15,7 +15,6 @@ function VerificationPage() {
     console.log('token=>', token);
     AuthService.verify2faLogin(token, verificationCode)
       .then((response) => {
-        console.log('response verification page->', response);
         if (response.data.status === 'SUCCESS') {
           successNotification('OTP is verified');
           localStorage.setItem('userToken', response.data.data.token);
@@ -44,6 +43,7 @@ function VerificationPage() {
       <div className="form">
         <div className="form--detail-container">
           <input
+            className="verification-input-container"
             type="text"
             placeholder="Enter verification code"
             value={verificationCode}

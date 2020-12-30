@@ -20,25 +20,6 @@
   min-width: 170px;
 }
 
-.login-form--detail-container {
-  display: flex;
-  align-items: center;
-  height: 35px;
-  width: 100%;
-  margin-top: 7px;
-  background-color: $secondary-color;
-  border-radius: 5px;
-  overflow: hidden;
-
-  input {
-    width: calc(100% - 70px);
-    text-align: center;
-    background-color: transparent;
-    border: none;
-    outline: none;
-  }
-}
-
 .show-hide-pswrd {
   width: 15px;
   cursor: pointer;

@@ -55,7 +55,7 @@ function LoginPage() {
           value={userName}
           onChange={(e) => setUserName(e.target.value.toString().trim())}
         />
-        <div className="login-form--detail-container">
+        <div className="form--detail-container">
           <div className="detail-icon">
             <img alt="password" src={padlock} />
           </div>
