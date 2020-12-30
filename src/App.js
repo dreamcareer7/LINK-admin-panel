@@ -5,6 +5,7 @@ import LoginPage from './components/authentication/login-page/LoginPage';
 import VerificationPage from './components/authentication/verification-page/VerificationPage';
 import ForgotPasswordPage from './components/authentication/forgotpassword-page/ForgotPasswordPage';
 import SetNewPassword from './components/authentication/set-new-password/SetNewPassword';
+import Dashboard from './components/dashboard/Dashboard';
 
 function App() {
   /*  const PrivateRoute = ({ component, ...options }) => {
@@ -27,6 +28,7 @@ function App() {
             <Route exact path="/forgot" component={ForgotPasswordPage} />
             <Route exact path="/authAdmin/reset-password/:token" component={SetNewPassword} />
             <Route exact path="/setNewPassword" component={SetNewPassword} />
+            <Route exact path="/dashboard" component={Dashboard} />
             {/* <PrivateRoute exact path={"/"} render={props => <VerificationPage {...props} />}/> */}
           </Switch>
         </Route>

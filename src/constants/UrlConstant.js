@@ -1,5 +1,5 @@
-export const BASE_URL = 'https://link.dev.gradlesol.com/app/';
-
+export const BASE_URL = 'http://localhost:3200/';
+// BASE_URL = 'https://link.dev.gradlesol.com/app/';
 export const API_METHODS = {
   GET: 'GET',
   POST: 'POST',

@@ -24,7 +24,12 @@ function LoginPage() {
 
   useEffect(() => {
     if (loggedUser !== null) {
-      history.push('/');
+      console.log(loggedUser);
+      if (loggedUser.isTwoFAEnabled) {
+        history.replace('/');
+      } else {
+        history.replace('/dashboard');
+      }
     }
   }, [loggedUser]);
 
