@@ -138,8 +138,8 @@ function ManageAdmins() {
                             <div className="td">(+61)545-589-9977</div>
                         </div>
                         <div className="action-cell">
-                            <img className="mr-5" src={edit}/>
-                            <img src={bin}/>
+                            <img className="mr-5" src={edit} onClick=""/>
+                            <img src={bin} onClick=""/>
                         </div>
                     </div>
                 </div>

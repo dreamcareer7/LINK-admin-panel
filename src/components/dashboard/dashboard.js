@@ -19,7 +19,7 @@ function Dashboard() {
                 </div>
 
                 <div className="common-area">
-                    <Settings/>
+                    <AddQuote/>
                 </div>
             </div>
         </div>

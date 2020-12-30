@@ -54,6 +54,10 @@
 
   .action-cell {
     width: 70px;
+
+    img {
+      cursor: pointer;
+    }
   }
 
   .td:not(:nth-child(2)) {

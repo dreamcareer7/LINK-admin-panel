@@ -42,10 +42,10 @@ function AddQuote() {
                     </select>
                 </div>
             </div>
-            <div className="buttons-row">
-                <button className="button success-button add-quote-button">SAVE CHANGES</button>
-                <button className="button primary-button add-quote-button">DISCARD CHANGES</button>
-                <button className="button danger-button add-quote-button">DELETE CHANGES</button>
+            <div className="quote-buttons-row">
+                <button className="button success-button add-quote-button" onClick="">SAVE CHANGES</button>
+                <button className="button primary-button add-quote-button" onClick="">DISCARD CHANGES</button>
+                <button className="button danger-button add-quote-button" onClick="">DELETE CHANGES</button>
             </div>
         </div>
     );

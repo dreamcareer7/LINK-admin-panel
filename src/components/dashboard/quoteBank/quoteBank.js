@@ -39,7 +39,7 @@ function QuoteBank() {
                     </div>
                 </div>
                 <div className="action-buttons">
-                    <div className="button success-button">ADD QUOTE</div>
+                    <div className="button success-button" onClick="">ADD QUOTE</div>
                 </div>
             </div>
             <div className="no-of-results-in-display">
@@ -159,8 +159,8 @@ function QuoteBank() {
                             </select>
                         </div>
                         <div className="td action">
-                            <img className="mr-5" src={edit}/>
-                            <img src={bin}/>
+                            <img className="mr-5" src={edit} onClick=""/>
+                            <img src={bin} onClick=""/>
                         </div>
                     </div>
                 </div>

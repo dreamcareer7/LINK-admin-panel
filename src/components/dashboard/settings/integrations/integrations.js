@@ -31,7 +31,7 @@ function Integrations() {
                 </div>
                 <input className="integrations-input" placeholder="Enter API Key"/>
             </div>
-                <button className="button success-button">
+                <button className="button success-button" onClick="">
                     SAVE
                 </button>
         </div>

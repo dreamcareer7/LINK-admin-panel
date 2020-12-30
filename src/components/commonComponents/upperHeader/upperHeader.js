@@ -10,13 +10,13 @@ function UpperHeader() {
         <div className="upper-header-block" >
             <div className="upper-header--rounded-block search-block">
                 <input placeholder="Search Subscriber"/>
-                <button><img src={search}/> </button>
+                <button onClick=""><img src={search}/> </button>
             </div>
             <div className="upper-header--rounded-block">
                 <img className="user-dp" src={user}/>
                 <label>Michelle Obama</label>
                 <div className="down-arrow">
-                    <img src={downArrow}/>
+                    <img src={downArrow} onClick=""/>
                     <div className="user-dropdown">
                         <div className="dropdown-option">
                             <img src={logout}/>

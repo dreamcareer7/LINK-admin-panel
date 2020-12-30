@@ -7,13 +7,13 @@ import Integrations from "./integrations/integrations";
 function Settings() {
     return (
         <div>
-            <div className="buttons-row">
+            <div className="settings-buttons-row">
                 <div className="d-flex">
-                    <div className="button settings-button">Error Messages</div>
-                    <div className="button settings-button">Integrations</div>
-                    <div className="button settings-button">Manage Admins</div>
+                    <div className="settings-button" onClick="">Error Messages</div>
+                    <div className="settings-button" onClick="">Integrations</div>
+                    <div className="settings-button" onClick="">Manage Admins</div>
                 </div>
-                <div className="button settings-button success-button">ADD ADMIN</div>
+                <div className="button settings-button success-button" onClick="">ADD ADMIN</div>
             </div>
             <div className="settings-common-area">
                 <ManageAdmins/>

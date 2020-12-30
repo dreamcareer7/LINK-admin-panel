@@ -29,6 +29,9 @@ function Sidebar() {
                     <img alt="settings" src={gear}/> <span>Settings</span>
                 </div>
             </div>
+            <div className="copyright">
+                Copyright 2021. Linkfluencer Pvt. Ltd.
+            </div>
         </div>
     )
 }
