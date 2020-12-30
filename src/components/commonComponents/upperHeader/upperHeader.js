@@ -2,6 +2,7 @@ import React from "react";
 import "./upperHeader.scss";
 import search from "../../../assets/images/search.png";
 import user from "../../../assets/images/dummy-user.jpg";
+import downArrow from "../../../assets/images/arrow_down.png"
 import logout from "../../../assets/images/logout.svg";
 
 function UpperHeader() {
@@ -14,8 +15,15 @@ function UpperHeader() {
             <div className="upper-header--rounded-block">
                 <img className="user-dp" src={user}/>
                 <label>Michelle Obama</label>
-                <select className="user-settings">
-                </select>
+                <div className="down-arrow">
+                    <img src={downArrow}/>
+                    <div className="user-dropdown">
+                        <div className="dropdown-option">
+                            <img src={logout}/>
+                            <span>Logout</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -3,7 +3,7 @@
 .admin-title {
   margin-bottom: 5px;
   padding: 0 20px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   color: $placeholder-color;
 }
@@ -24,61 +24,63 @@
     height: 30px;
     max-height: 30px;
   }
-}
 
-.row-container {
-  max-height: calc(100vh - 380px);
-  overflow-y: auto;
-}
-
-.tr {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  margin-bottom: 10px;
-  background-color: $secondary-variant-color;
-  border-radius: 5px;
-}
-
-.admin-table-details {
-  display: flex;
-  align-items: center;
-  width: calc(100% - 70px);
-}
-
-.admin-table-details {
-  .td:nth-child(1), .td:nth-child(2), .td:nth-child(3) {
-    width: 30%;
+  .row-container {
+    max-height: calc(100vh - 380px);
+    overflow-y: auto;
   }
-}
 
-.action-cell {
-  width: 70px;
-}
+  .tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    background-color: $secondary-variant-color;
+    border-radius: 5px;
+  }
 
-.td:not(:nth-child(4)) {
-  padding-right: 20px;
-}
+  .admin-table-details {
+    display: flex;
+    align-items: center;
+    width: calc(100% - 70px);
+  }
 
-.heading {
-  margin-bottom: 5px;
-  padding: 0px 20px;
-  background-color: white;
-}
+  .admin-table-details {
+    .td:nth-child(1), .td:nth-child(2), .td:nth-child(3) {
+      width: 30%;
+    }
+  }
 
-.name {
-  display: flex;
-  align-items: center;
+  .action-cell {
+    width: 70px;
+  }
 
-  img {
-    height: 40px;
-    width: 40px;
-    min-height: 40px;
-    min-width: 40px;
-    margin-right: 10px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
+  .td:not(:nth-child(2)) {
+    padding-right: 20px;
+  }
+
+  .heading {
+    margin-bottom: 5px;
+    padding: 0px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: white;
+  }
+
+  .name {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 40px;
+      width: 40px;
+      min-height: 40px;
+      min-width: 40px;
+      margin-right: 10px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 }

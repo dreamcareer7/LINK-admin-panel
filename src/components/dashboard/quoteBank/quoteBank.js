@@ -47,29 +47,29 @@ function QuoteBank() {
             </div>
             <div className="quote-table">
                 <div className="tr heading">
-                    <div className="td">Quote</div>
-                    <div className="td">Author</div>
-                    <div className="td">Tags</div>
-                    <div className="td">Status</div>
-                    <div className="td"></div>
+                    <div className="td quote">Quote</div>
+                    <div className="td author">Author</div>
+                    <div className="td tags">Tags</div>
+                    <div className="td status">Status</div>
+                    <div className="td action"></div>
                 </div>
 
                 <div className="tr-container">
                     <div className="tr">
-                        <div className="td">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        <div className="td quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua.
                         </div>
-                        <div className="td">
+                        <div className="td author">
                             Neil DeGrasse Tyson Junior
                         </div>
-                        <div className="td">
+                        <div className="td tags">
                             <div className="tag-container">
                                 <span className="tag">Business</span>
                                 <span className="tag">Motivational</span>
                                 <span className="tag">Entertainment</span>
                             </div>
                         </div>
-                        <div className="td">
+                        <div className="td status">
                             <select>
                                 <option value="All">All</option>
                                 <option value="1">1</option>
@@ -77,53 +77,26 @@ function QuoteBank() {
                                 <option value="3">3</option>
                             </select>
                         </div>
-                        <div className="td">
-                            <img className="edit" src={edit}/>
-                            <img src={bin}/>
-                        </div>
-                    </div>
-                    <div className="tr">
-                        <div className="td">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
-                        </div>
-                        <div className="td">
-                            Neil DeGrasse Tyson Junior
-                        </div>
-                        <div className="td">
-                            <div className="tag-container">
-                                <span className="tag">Business</span>
-                                <span className="tag">Motivational</span>
-                                <span className="tag">Entertainment</span>
-                            </div>
-                        </div>
-                        <div className="td">
-                            <select>
-                                <option value="All">All</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                        <div className="td">
+                        <div className="td action">
                             <img className="mr-5" src={edit}/>
                             <img src={bin}/>
                         </div>
                     </div>
                     <div className="tr">
-                        <div className="td">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        <div className="td quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua.
                         </div>
-                        <div className="td">
+                        <div className="td author">
                             Neil DeGrasse Tyson Junior
                         </div>
-                        <div className="td">
+                        <div className="td tags">
                             <div className="tag-container">
                                 <span className="tag">Business</span>
                                 <span className="tag">Motivational</span>
                                 <span className="tag">Entertainment</span>
                             </div>
                         </div>
-                        <div className="td">
+                        <div className="td status">
                             <select>
                                 <option value="All">All</option>
                                 <option value="1">1</option>
@@ -131,26 +104,26 @@ function QuoteBank() {
                                 <option value="3">3</option>
                             </select>
                         </div>
-                        <div className="td">
-                            <img className="edit" src={edit}/>
+                        <div className="td action">
+                            <img className="mr-5" src={edit}/>
                             <img src={bin}/>
                         </div>
                     </div>
                     <div className="tr">
-                        <div className="td">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        <div className="td quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua.
                         </div>
-                        <div className="td">
+                        <div className="td author">
                             Neil DeGrasse Tyson Junior
                         </div>
-                        <div className="td">
+                        <div className="td tags">
                             <div className="tag-container">
                                 <span className="tag">Business</span>
                                 <span className="tag">Motivational</span>
                                 <span className="tag">Entertainment</span>
                             </div>
                         </div>
-                        <div className="td">
+                        <div className="td status">
                             <select>
                                 <option value="All">All</option>
                                 <option value="1">1</option>
@@ -158,8 +131,35 @@ function QuoteBank() {
                                 <option value="3">3</option>
                             </select>
                         </div>
-                        <div className="td">
-                            <img className="edit" src={edit}/>
+                        <div className="td action">
+                            <img className="mr-5" src={edit}/>
+                            <img src={bin}/>
+                        </div>
+                    </div>
+                    <div className="tr">
+                        <div className="td quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
+                        </div>
+                        <div className="td author">
+                            Neil DeGrasse Tyson Junior
+                        </div>
+                        <div className="td tags">
+                            <div className="tag-container">
+                                <span className="tag">Business</span>
+                                <span className="tag">Motivational</span>
+                                <span className="tag">Entertainment</span>
+                            </div>
+                        </div>
+                        <div className="td status">
+                            <select>
+                                <option value="All">All</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div className="td action">
+                            <img className="mr-5" src={edit}/>
                             <img src={bin}/>
                         </div>
                     </div>
