@@ -30,5 +30,15 @@ const AuthService = {
       },
     });
   },
+  verify2faLogin: (token, code) => {
+    return axios({
+      method: API_METHODS.POST,
+      url: AUTH_URLS.VERIFY_2FA_LOGIN_URL,
+      data: {
+        token,
+        code,
+      },
+    });
+  },
 };
 export default AuthService;

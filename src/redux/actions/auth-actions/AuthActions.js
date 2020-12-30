@@ -7,13 +7,14 @@ export const loginUser = (emailAddress, password) => {
   return (dispatch) => {
     AuthService.loginUser(emailAddress, password)
       .then((response) => {
+        console.log('login response->', response);
         if (response.data.status === 'SUCCESS' || response.data.status === 'PROMPT_FOR_OTP') {
           dispatch({
             type: AUTH_REDUX_CONSTANTS.LOGIN_USER,
             data: response.data.data,
           });
 
-          localStorage.setItem('userToken', response.data.token);
+          localStorage.setItem('userToken', response.data.data.token);
           successNotification('Login successfully');
         }
       })
