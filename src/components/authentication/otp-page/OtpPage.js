@@ -4,6 +4,7 @@ import linkFluencer from '../../../assets/images/linkfluencer.png';
 function OtpPage() {
   const [verifyOtp, setVeifyOtp] = useState('');
   // VEIFY FROM BACKEND
+
   const onClickVerifyOtp = () => {};
 
   return (

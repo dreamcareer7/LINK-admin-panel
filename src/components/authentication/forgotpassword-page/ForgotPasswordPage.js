@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import linkFluencer from '../../../assets/images/linkfluencer.png';
 import user from '../../../assets/images/user.png';
 import AuthTextInput from '../common/text-input/AuthTextInput';
@@ -9,20 +8,36 @@ import {
   checkForEmail,
   errorNotification,
   replaceHiddenCharacters,
+  successNotification,
 } from '../../../constants/Toast';
+import AuthService from '../../../services/auth-services/AuthSevices';
 
-function ForgotPasswordPage() {
-  const history = useHistory();
+export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
-  const verifyAndSendOtp = async () => {
-    if (email.toString().trim().length === 0) errorNotification('Please enter userName');
+
+  const sendResetLink = () => {
+    if (email.toString().trim().length === 0) errorNotification('Please enter username');
     else if (!checkForEmail(replaceHiddenCharacters(email)))
-      errorNotification('Please enter a valid userName');
+      errorNotification('Please enter a valid username');
     else {
-      history.replace('/otpPage');
+      AuthService.forgotPassword(email)
+        .then((response) => {
+          console.log('response->', response);
+          if (response.data.status === 'SUCCESS') {
+            successNotification('Reset link has been sent to your registered email id');
+          }
+        })
+        .catch((e) => {
+          if (e.response.data.status === undefined) {
+            errorNotification('It seems like server is down, Please try after sometime.');
+          } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+            errorNotification('Internal server error');
+          } else if (e.response.data.status === 'NOT_FOUND') {
+            errorNotification('User not found');
+          }
+        });
     }
   };
-
   return (
     <div>
       <div className="content-container">
@@ -39,12 +54,11 @@ function ForgotPasswordPage() {
         <button
           type="button"
           className="button success-button authButtonStyle"
-          onClick={verifyAndSendOtp}
+          onClick={sendResetLink}
         >
-          SEND OTP
+          SEND RESET LINK
         </button>
       </div>
     </div>
   );
 }
-export default ForgotPasswordPage;

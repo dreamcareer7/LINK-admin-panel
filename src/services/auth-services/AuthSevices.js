@@ -12,5 +12,23 @@ const AuthService = {
       },
     });
   },
+  forgotPassword: (emailAddress) => {
+    return axios({
+      method: API_METHODS.POST,
+      url: AUTH_URLS.FORGOT_PASSWORD_URL,
+      data: {
+        email: emailAddress,
+      },
+    });
+  },
+  setNewPassword: (token, newPassword) => {
+    return axios({
+      method: API_METHODS.PUT,
+      url: `${AUTH_URLS.RESET_PASSWORD_URL}${token}`,
+      data: {
+        password: newPassword,
+      },
+    });
+  },
 };
 export default AuthService;

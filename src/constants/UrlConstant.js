@@ -8,5 +8,7 @@ export const API_METHODS = {
 };
 
 export const AUTH_URLS = {
-  LOGIN_URL: `${BASE_URL}authAdmin/login`,
+  LOGIN_URL: `${BASE_URL}authAdmin/login/`,
+  FORGOT_PASSWORD_URL: `${BASE_URL}authAdmin/forgot-password/`,
+  RESET_PASSWORD_URL: `${BASE_URL}authAdmin/reset-password/`,
 };

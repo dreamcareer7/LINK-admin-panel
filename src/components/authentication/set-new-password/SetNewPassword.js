@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import padlock from '../../../assets/images/padlock.png';
 import user from '../../../assets/images/user.png';
 import hideInterface from '../../../assets/images/hide-interface-symbol.png';
 import linkFluencer from '../../../assets/images/linkfluencer.png';
-import { errorNotification, replaceHiddenCharacters } from '../../../constants/Toast';
+import {
+  errorNotification,
+  replaceHiddenCharacters,
+  successNotification,
+} from '../../../constants/Toast';
+import AuthService from '../../../services/auth-services/AuthSevices';
 
 function SetNewPassword() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const history = useHistory();
+
+  const { token } = useParams();
+  console.log(token);
 
   const checkPasswordMatch = () => {
     if (replaceHiddenCharacters(password.toString()).trim().length === 0) {
@@ -19,7 +29,16 @@ function SetNewPassword() {
     } else if (password !== confirmPassword) {
       errorNotification("Password doesn't match");
     } else {
-      console.log('hii');
+      AuthService.setNewPassword(token, password)
+        .then((response) => {
+          if (response.data.status === 'SUCCESS') {
+            successNotification('Password has been set successfully');
+            history.replace('/login');
+          }
+        })
+        .catch(() => {
+          errorNotification('Error in reset password');
+        });
     }
   };
 
