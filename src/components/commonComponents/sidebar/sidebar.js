@@ -12,6 +12,7 @@ function Sidebar() {
             <div className="dashboard-logo">
                 <img alt="Linkfluencer" src={linkfluencer}/>
             </div>
+            <div className="menu-bar">
             <div className="menu">
                 <div className="menu-item">
                     <img alt="home" src={home}/> <span>Dashboard</span>
@@ -31,6 +32,7 @@ function Sidebar() {
             </div>
             <div className="copyright">
                 Copyright 2021. Linkfluencer Pvt. Ltd.
+            </div>
             </div>
         </div>
     )
