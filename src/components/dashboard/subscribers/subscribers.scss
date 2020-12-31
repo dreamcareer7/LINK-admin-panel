@@ -1,0 +1,15 @@
+@import "src/styles/index";
+
+.action-buttons  {
+  display: flex;
+  align-items: center;
+  button {
+    height: 40px;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+  }
+  .success-button {
+    margin-right: 20px;
+  }
+}
