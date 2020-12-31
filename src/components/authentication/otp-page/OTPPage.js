@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import linkFluencer from '../../../assets/images/linkfluencer.png';
 
-function OtpPage() {
+function OTPPage() {
   const [verifyOtp, setVeifyOtp] = useState('');
   // VEIFY FROM BACKEND
 
@@ -31,4 +31,4 @@ function OtpPage() {
   );
 }
 
-export default OtpPage;
+export default OTPPage;

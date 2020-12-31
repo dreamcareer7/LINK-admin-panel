@@ -1,6 +1,6 @@
 import React from 'react';
 import './settings.scss';
-import ManageAdmins from './manage-admins/manage-admins';
+import ManageAdmins from './manage-admins/ManageAdmins';
 
 function Settings() {
   return (

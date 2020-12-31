@@ -12,7 +12,7 @@ import {
   replaceHiddenCharacters,
 } from '../../../constants/Toast';
 import AuthTextInput from '../common/text-input/AuthTextInput';
-import { loginUser } from '../../../redux/actions/auth-actions/AuthActions';
+import { loginUser } from '../../../redux/actions/authActions/AuthActions';
 
 function LoginPage() {
   const [userName, setUserName] = useState('');

@@ -6,7 +6,7 @@ import group from '../../../assets/images/group.png';
 import rightQuote from '../../../assets/images/right-quote-sign.png';
 import gear from '../../../assets/images/gear.png';
 
-function Sidebar() {
+function SideBar() {
   return (
     <div>
       <div className="dashboard-logo">
@@ -36,4 +36,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default SideBar;
