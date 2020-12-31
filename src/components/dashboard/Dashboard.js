@@ -1,9 +1,24 @@
 import React from 'react';
+import './dashboard.scss';
+import Sidebar from '../commonComponents/sidebar/sidebar';
+import UpperHeader from '../commonComponents/upperHeader/upperHeader';
+import AddQuote from './quoteBank/add-quote/add-quote';
 
 function Dashboard() {
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div className="dashboard">
+      <div className="dashboard--left-part">
+        <Sidebar />
+      </div>
+      <div className="dashboard--right-part">
+        <div className="dashboard--upperHeader">
+          <UpperHeader />
+        </div>
+
+        <div className="common-area">
+          <AddQuote />
+        </div>
+      </div>
     </div>
   );
 }
