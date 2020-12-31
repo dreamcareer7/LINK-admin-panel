@@ -8,7 +8,6 @@ import ForgotPasswordPage from './components/authentication/forgotpassword-page/
 import SetNewPassword from './components/authentication/set-new-password/SetNewPassword';
 import Dashboard from './components/dashboard/Dashboard';
 
-//Test
 const PrivateRoute = ({ component, ...options }) => {
   const finalComponent =
     localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0
