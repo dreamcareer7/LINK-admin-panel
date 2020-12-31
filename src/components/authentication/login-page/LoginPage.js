@@ -26,9 +26,9 @@ function LoginPage() {
     if (loggedUser !== null) {
       console.log(loggedUser);
       if (loggedUser.isTwoFAEnabled) {
-        history.replace('/');
+        history.replace('/verificationPage');
       } else {
-        history.replace('/dashboard');
+        history.replace('/');
       }
     }
   }, [loggedUser]);
