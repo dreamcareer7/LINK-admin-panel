@@ -9,28 +9,28 @@ import gear from '../../../assets/images/gear.png';
 function SideBar() {
   return (
     <div>
-      <div className="dashboard-logo">
-        <img alt="Linkfluencer" src={linkfluencer} />
+      <div className='dashboard-logo'>
+        <img alt='Linkfluencer' src={linkfluencer} />
       </div>
-      <div className="menu-bar">
+      <div className='menu-bar'>
         <div className="menu">
-          <div className="menu-item">
-            <img alt="home" src={home} /> <span>Dashboard</span>
+          <div className='menu-item'>
+            <img alt='home' src={home} /> <span>Dashboard</span>
           </div>
 
-          <div className="menu-item">
-            <img alt="subscribers" src={group} /> <span>Subscribers</span>
+          <div className='menu-item'>
+            <img alt='subscribers' src={group} /> <span>Subscribers</span>
           </div>
 
-          <div className="menu-item">
-            <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
+          <div className='menu-item'>
+            <img alt='quoteBank' src={rightQuote} /> <span>Quote Bank</span>
           </div>
 
-          <div className="menu-item">
-            <img alt="settings" src={gear} /> <span>Settings</span>
+          <div className='menu-item'>
+            <img alt='settings' src={gear} /> <span>Settings</span>
           </div>
         </div>
-        <div className="copyright">Copyright 2021. Linkfluencer Pvt. Ltd.</div>
+        <div className='copyright'>Copyright 2021. Linkfluencer Pvt. Ltd.</div>
       </div>
     </div>
   );
