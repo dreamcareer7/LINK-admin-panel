@@ -17,17 +17,16 @@ export default function ForgotPasswordPage() {
 
   const sendResetLink = () => {
     if (email.toString().trim().length === 0) errorNotification('Please enter username');
-    else if (!checkForEmail(replaceHiddenCharacters(email)))
-      errorNotification('Please enter a valid username');
+    else if (!checkForEmail(replaceHiddenCharacters(email))) errorNotification('Please enter a valid username');
     else {
       AuthService.forgotPassword(email)
-        .then((response) => {
+        .then(response => {
           console.log('response->', response);
           if (response.data.status === 'SUCCESS') {
             successNotification('Reset link has been sent to your registered email id');
           }
         })
-        .catch((e) => {
+        .catch(e => {
           if (e.response.data.status === undefined) {
             errorNotification('It seems like server is down, Please try after sometime.');
           } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
@@ -48,14 +47,10 @@ export default function ForgotPasswordPage() {
             type="text"
             placeholder="Enter Username"
             value={email}
-            onChange={(e) => setEmail(e.target.value.toString().trim())}
+            onChange={e => setEmail(e.target.value.toString().trim())}
           />
         </div>
-        <button
-          type="button"
-          className="button success-button authButtonStyle"
-          onClick={sendResetLink}
-        >
+        <button type="button" className="button success-button authButtonStyle" onClick={sendResetLink}>
           SEND RESET LINK
         </button>
       </div>

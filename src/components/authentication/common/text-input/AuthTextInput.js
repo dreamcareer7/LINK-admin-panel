@@ -12,6 +12,7 @@ function AuthTextInput(props) {
     </div>
   );
 }
+
 AuthTextInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   type: PropTypes.string,

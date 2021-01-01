@@ -14,7 +14,7 @@ function VerificationPage() {
     const token = localStorage.getItem('userToken');
     console.log('token=>', token);
     AuthService.verify2faLogin(token, verificationCode)
-      .then((response) => {
+      .then(response => {
         if (response.data.status === 'SUCCESS') {
           successNotification('OTP is verified');
           localStorage.setItem('userToken', response.data.data.token);
@@ -24,7 +24,7 @@ function VerificationPage() {
           history.push('/dashboard');
         }
       })
-      .catch((e) => {
+      .catch(e => {
         if (e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
         } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
@@ -47,18 +47,15 @@ function VerificationPage() {
             type="text"
             placeholder="Enter verification code"
             value={verificationCode}
-            onChange={(e) => setVerificationCode(e.target.value.toString().trim())}
+            onChange={e => setVerificationCode(e.target.value.toString().trim())}
           />
         </div>
-        <button
-          type="button"
-          className="button success-button authButtonStyle"
-          onClick={onClickVerify}
-        >
+        <button type="button" className="button success-button authButtonStyle" onClick={onClickVerify}>
           VERIFY
         </button>
       </div>
     </div>
   );
 }
+
 export default VerificationPage;
