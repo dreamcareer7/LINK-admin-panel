@@ -10,12 +10,12 @@
 }
 
 .dashboard--left-part {
-  width: 20%;
+  width: 225px;
   background-color: $primary-color;
 }
 
 .dashboard--right-part {
-  width: 80%;
+  width: calc(100% - 225px);
 }
 
 .dashboard--upperHeader {

@@ -2,7 +2,7 @@ import React from 'react';
 import './dashboard.scss';
 import SideBar from '../commonComponents/sidebar/SideBar';
 import UpperHeader from '../commonComponents/upperHeader/UpperHeader';
-import AddQuote from './quoteBank/add-quote/AddQuote';
+import Settings from './settings/Settings';
 
 function Dashboard() {
   return (
@@ -16,7 +16,7 @@ function Dashboard() {
         </div>
 
         <div className="common-area">
-          <AddQuote />
+          <Settings />
         </div>
       </div>
     </div>

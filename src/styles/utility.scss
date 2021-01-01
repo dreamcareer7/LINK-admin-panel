@@ -37,8 +37,10 @@ input {
   font-size: 12px;
   font-weight: 500;
   text-align: center;
+  white-space: nowrap;
   border: none;
   border-radius: 20px;
+  outline: none;
   cursor: pointer;
 }
 
@@ -59,7 +61,7 @@ input {
 
 .common-select {
   min-width: 150px;
-  height: 25px;
+  height: 26px;
   background-color: $secondary-variant-color;
   font-size: 12px;
   font-weight: 600;
@@ -122,54 +124,62 @@ input {
 }
 
 input::placeholder {
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 12px !important;
+  font-weight: 500 !important;
 }
 
 .placeholder-font {
-  color: $placeholder-color;
+  color: $placeholder-color !important;
 }
 
 .cursor-pointer {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .font-500 {
-  font-weight: 500;
+  font-weight: 500 !important;
 }
 
 .font-600 {
-  font-weight: 600;
+  font-weight: 600 !important;
+}
+
+.f-12 {
+  font-size: 12px !important;
+}
+
+.f-14 {
+  font-size: 14px !important;
 }
 
 .d-flex {
-  display: flex;
+  display: flex !important;
 }
 
 .mb-5 {
-  margin-bottom: 5px;
+  margin-bottom: 5px !important;
 }
 
 .mt-5 {
-  margin-top: 5px;
+  margin-top: 5px !important;
 }
 
 .mt-10 {
-  margin-top: 10px;
+  margin-top: 10px !important;
 }
 
 .mr-5 {
-  margin-right: 5px;
+  margin-right: 5px !important;
 }
 
 .mr-10 {
-  margin-right: 10px;
+  margin-right: 10px !important;
 }
 
 .mr-15 {
-  margin-right: 15px;
+  margin-right: 15px !important;
 }
 
 .mr-20 {
-  margin-right: 20px;
+  margin-right: 20px !important;
 }
