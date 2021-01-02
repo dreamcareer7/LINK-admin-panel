@@ -50,7 +50,11 @@ function VerificationPage() {
             onChange={e => setVerificationCode(e.target.value.toString().trim())}
           />
         </div>
-        <button type="button" className="button success-button authButtonStyle" onClick={onClickVerify}>
+        <button
+          type="button"
+          className="button success-button authButtonStyle"
+          onClick={onClickVerify}
+        >
           VERIFY
         </button>
       </div>

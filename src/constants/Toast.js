@@ -11,21 +11,21 @@ export const ERROR_TOAST_COLOR = '#DD4B39';
 export const WARNING_TOAST_COLOR = '#F39C12';
 export const TOAST_TIMEOUT = 3000;
 
-export const successNotification = (message) => {
+export const successNotification = message => {
   notify.show(message, TOAST_TYPE.success, TOAST_TIMEOUT, SUCCESS_TOAST_COLOR);
 };
-export const errorNotification = (message) => {
+export const errorNotification = message => {
   notify.show(message, TOAST_TYPE.error, TOAST_TIMEOUT, ERROR_TOAST_COLOR);
 };
 
-export const warningNotification = (message) => {
+export const warningNotification = message => {
   notify.show(message, TOAST_TYPE.warning, TOAST_TIMEOUT, WARNING_TOAST_COLOR);
 };
 
-export const replaceHiddenCharacters = (string) => {
+export const replaceHiddenCharacters = string => {
   return string.toString().replace(/[\u200c\u200b]/g, '');
 };
 
-export const checkForEmail = (emailAddress) => {
+export const checkForEmail = emailAddress => {
   return /.+@.+\.[A-Za-z]+$/.test(emailAddress);
 };

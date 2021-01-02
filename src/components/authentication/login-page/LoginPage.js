@@ -6,7 +6,11 @@ import './login.scss';
 import user from '../../../assets/images/user.png';
 import padlock from '../../../assets/images/padlock.png';
 import hideInterface from '../../../assets/images/hide-interface-symbol.png';
-import { checkForEmail, errorNotification, replaceHiddenCharacters } from '../../../constants/Toast';
+import {
+  checkForEmail,
+  errorNotification,
+  replaceHiddenCharacters,
+} from '../../../constants/Toast';
 import AuthTextInput from '../common/text-input/AuthTextInput';
 import { loginUser } from '../../../redux/actions/authActions/AuthActions';
 
@@ -31,7 +35,8 @@ function LoginPage() {
 
   const onClickLoginButton = (inputUserName, inputPassword) => {
     if (inputUserName.toString().trim().length === 0) errorNotification('Please enter userName');
-    else if (!checkForEmail(replaceHiddenCharacters(inputUserName))) errorNotification('Please enter a valid username');
+    else if (!checkForEmail(replaceHiddenCharacters(inputUserName)))
+      errorNotification('Please enter a valid username');
     else if (replaceHiddenCharacters(inputPassword.toString()).trim().length === 0)
       errorNotification('Please enter password');
     else {
@@ -60,8 +65,16 @@ function LoginPage() {
             value={password}
             onChange={e => setPassword(e.target.value.toString().trim())}
           />
-          <button className="show-hide-eye-btn" type="button" onClick={() => setShowPassword(e => !e)}>
-            <img alt="hide-pswrd" className="show-hide-pswrd" src={showPassword ? user : hideInterface} />
+          <button
+            className="show-hide-eye-btn"
+            type="button"
+            onClick={() => setShowPassword(e => !e)}
+          >
+            <img
+              alt="hide-pswrd"
+              className="show-hide-pswrd"
+              src={showPassword ? user : hideInterface}
+            />
           </button>
         </div>
 

@@ -52,8 +52,8 @@ function QuoteBank() {
         <div className="tr-container">
           <div className="tr">
             <div className="td quote">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
             </div>
             <div className="td author">Neil DeGrasse Tyson Junior</div>
             <div className="td tags">
@@ -78,8 +78,8 @@ function QuoteBank() {
           </div>
           <div className="tr">
             <div className="td quote">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
             </div>
             <div className="td author">Neil DeGrasse Tyson Junior</div>
             <div className="td tags">
@@ -104,8 +104,8 @@ function QuoteBank() {
           </div>
           <div className="tr">
             <div className="td quote">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
             </div>
             <div className="td author">Neil DeGrasse Tyson Junior</div>
             <div className="td tags">
@@ -130,8 +130,8 @@ function QuoteBank() {
           </div>
           <div className="tr">
             <div className="td quote">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
             </div>
             <div className="td author">Neil DeGrasse Tyson Junior</div>
             <div className="td tags">

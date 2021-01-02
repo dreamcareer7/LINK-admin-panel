@@ -35,7 +35,7 @@ function App() {
             <PrivateRoute
               exact
               path="/verificationPage"
-              render={(props) => <VerificationPage {...props} />}
+              render={props => <VerificationPage {...props} />}
             />
           </Switch>
         </Route>

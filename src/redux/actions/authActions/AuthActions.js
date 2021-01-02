@@ -4,9 +4,9 @@ import { errorNotification, successNotification } from '../../../constants/Toast
 
 // eslint-disable-next-line import/prefer-default-export
 export const loginUser = (emailAddress, password) => {
-  return (dispatch) => {
+  return dispatch => {
     AuthService.loginUser(emailAddress, password)
-      .then((response) => {
+      .then(response => {
         console.log('login response->', response);
         if (response.data.status === 'SUCCESS' || response.data.status === 'PROMPT_FOR_OTP') {
           dispatch({
@@ -18,7 +18,7 @@ export const loginUser = (emailAddress, password) => {
           successNotification('Login successfully');
         }
       })
-      .catch((e) => {
+      .catch(e => {
         if (e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
         } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {

@@ -4,7 +4,11 @@ import padlock from '../../../assets/images/padlock.png';
 import user from '../../../assets/images/user.png';
 import hideInterface from '../../../assets/images/hide-interface-symbol.png';
 import linkFluencer from '../../../assets/images/linkfluencer.png';
-import { errorNotification, replaceHiddenCharacters, successNotification } from '../../../constants/Toast';
+import {
+  errorNotification,
+  replaceHiddenCharacters,
+  successNotification,
+} from '../../../constants/Toast';
 import AuthService from '../../../services/auth-services/AuthSevices';
 
 function SetNewPassword() {
@@ -52,8 +56,16 @@ function SetNewPassword() {
             value={password}
             onChange={e => setPassword(e.target.value.toString().trim())}
           />
-          <button className="show-hide-eye-btn" type="button" onClick={() => setShowPassword(e => !e)}>
-            <img alt="hide-pswrd" className="show-hide-pswrd" src={showPassword ? user : hideInterface} />
+          <button
+            className="show-hide-eye-btn"
+            type="button"
+            onClick={() => setShowPassword(e => !e)}
+          >
+            <img
+              alt="hide-pswrd"
+              className="show-hide-pswrd"
+              src={showPassword ? user : hideInterface}
+            />
           </button>
         </div>
         <div className="form--detail-container">
@@ -66,12 +78,24 @@ function SetNewPassword() {
             value={confirmPassword}
             onChange={e => setConfirmPassword(e.target.value.toString().trim())}
           />
-          <button className="show-hide-eye-btn" type="button" onClick={() => setShowConfirmPassword(e => !e)}>
-            <img alt="hide-pswrd" className="show-hide-pswrd" src={showConfirmPassword ? user : hideInterface} />
+          <button
+            className="show-hide-eye-btn"
+            type="button"
+            onClick={() => setShowConfirmPassword(e => !e)}
+          >
+            <img
+              alt="hide-pswrd"
+              className="show-hide-pswrd"
+              src={showConfirmPassword ? user : hideInterface}
+            />
           </button>
         </div>
 
-        <button type="button" className="button success-button login-button" onClick={checkPasswordMatch}>
+        <button
+          type="button"
+          className="button success-button login-button"
+          onClick={checkPasswordMatch}
+        >
           SET NEW PASSWORD
         </button>
       </div>

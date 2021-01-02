@@ -19,7 +19,11 @@ function OTPPage() {
             onChange={e => setVeifyOtp(e.target.value.toString().trim())}
           />
         </div>
-        <button type="button" className="button success-button authButtonStyle" onClick={onClickVerifyOtp}>
+        <button
+          type="button"
+          className="button success-button authButtonStyle"
+          onClick={onClickVerifyOtp}
+        >
           VERIFY OTP
         </button>
       </div>

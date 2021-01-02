@@ -17,7 +17,8 @@ export default function ForgotPasswordPage() {
 
   const sendResetLink = () => {
     if (email.toString().trim().length === 0) errorNotification('Please enter username');
-    else if (!checkForEmail(replaceHiddenCharacters(email))) errorNotification('Please enter a valid username');
+    else if (!checkForEmail(replaceHiddenCharacters(email)))
+      errorNotification('Please enter a valid username');
     else {
       AuthService.forgotPassword(email)
         .then(response => {
@@ -50,7 +51,11 @@ export default function ForgotPasswordPage() {
             onChange={e => setEmail(e.target.value.toString().trim())}
           />
         </div>
-        <button type="button" className="button success-button authButtonStyle" onClick={sendResetLink}>
+        <button
+          type="button"
+          className="button success-button authButtonStyle"
+          onClick={sendResetLink}
+        >
           SEND RESET LINK
         </button>
       </div>

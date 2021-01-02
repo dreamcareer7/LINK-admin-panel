@@ -12,7 +12,7 @@ const AuthService = {
       },
     });
   },
-  forgotPassword: (emailAddress) => {
+  forgotPassword: emailAddress => {
     return axios({
       method: API_METHODS.POST,
       url: AUTH_URLS.FORGOT_PASSWORD_URL,
