@@ -1,41 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { errorMessage } from '../../../../redux/actions/settingAction/SettingAction';
 import './error-messages.scss';
 
 function ErrorMessages() {
+  const dispatch = useDispatch();
+  const errorData = useSelector(state => state.errorMessage);
+  console.log('errorData', errorData);
+  const token = localStorage.getItem('userToken');
+  useEffect(() => {
+    dispatch(errorMessage(token));
+  }, []);
+
   return (
     <div className="error-message-list">
-      <div className="common-input error-message">
-        <div className="common-title">Lorem ipsum dolor sit amet</div>
-        <div className="common-content" onClick="">
-          Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-          ex ea commodo consequat.
-        </div>
-      </div>
-      <div className="common-input error-message">
-        <div className="common-title">Lorem ipsum dolor sit amet</div>
-        <div className="common-content" onClick="">
-          Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-          ex ea commodo consequat.
-        </div>
-      </div>
-      <div className="common-input error-message">
-        <div className="common-title">Lorem ipsum dolor sit amet</div>
-        <div className="common-content" onClick="">
-          Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-          ex ea commodo consequat.
-        </div>
-      </div>
-      <div className="common-input error-message">
-        <div className="common-title">Lorem ipsum dolor sit amet</div>
-        <div className="common-content" onClick="">
-          Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-          ex ea commodo consequat.
-        </div>
-      </div>
+      {errorData &&
+        errorData.map(value => (
+          <div className="common-input error-message" key={value.id}>
+            <div className="common-title">{value && value.title && value.title}</div>
+            <div className="common-content">{value && value.text && value.text} </div>
+          </div>
+        ))}
     </div>
   );
 }

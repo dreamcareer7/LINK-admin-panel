@@ -7,6 +7,10 @@ import VerificationPage from './components/authentication/verification-page/Veri
 import ForgotPasswordPage from './components/authentication/forgotpassword-page/ForgotPasswordPage';
 import SetNewPassword from './components/authentication/set-new-password/SetNewPassword';
 import Dashboard from './components/dashboard/Dashboard';
+// import Settings from './components/dashboard/settings/Settings';
+import ErrorMessages from './components/dashboard/settings/error-messages/ErrorMessages';
+import Integrations from './components/dashboard/settings/integrations/Integrations';
+import ManageAdmins from './components/dashboard/settings/manage-admins/ManageAdmins';
 
 const PrivateRoute = ({ component, ...options }) => {
   const finalComponent =
@@ -32,11 +36,10 @@ function App() {
             <Route exact path="/forgot" component={ForgotPasswordPage} />
             <Route exact path="/authAdmin/reset-password/:token" component={SetNewPassword} />
             <PrivateRoute exact path="/" component={Dashboard} />
-            <PrivateRoute
-              exact
-              path="/verificationPage"
-              render={props => <VerificationPage {...props} />}
-            />
+            <PrivateRoute exact path="/error-message" component={ErrorMessages} />
+            <PrivateRoute exact path="/integrations" component={Integrations} />
+            <PrivateRoute exact path="/manage-admin" component={ManageAdmins} />
+            <PrivateRoute exact path="/verificationPage" render={props => <VerificationPage {...props} />} />
           </Switch>
         </Route>
       </Router>
