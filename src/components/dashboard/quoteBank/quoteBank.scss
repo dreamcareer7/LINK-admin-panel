@@ -15,7 +15,9 @@
   select {
     width: 100%;
     padding: 2px 10px;
+    background-color: $background-primary-color;
     border: none;
+    border-radius: 3px;
     outline: none;
   }
 
@@ -68,7 +70,7 @@
 
   .heading {
     margin-bottom: 5px;
-    padding: 0px 20px;
+    padding: 0 20px;
     background-color: white;
   }
 
