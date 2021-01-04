@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import './settings.scss';
 // import ManageAdmins from './manage-admins/ManageAdmins';
 import ErrorMessages from './error-messages/ErrorMessages';
-import ManageAdmins from './manage-admins/ManageAdmins';
 // import ErrorMessages from './error-messages/ErrorMessages';
 
 function Settings(props) {
@@ -26,7 +25,7 @@ function Settings(props) {
         </div>
       </div>
       <div className="settings-common-area">
-        {window.location.pathname === 'setting' ? <ErrorMessages /> : <ManageAdmins />}
+        <ErrorMessages />
       </div>
     </div>
   );
