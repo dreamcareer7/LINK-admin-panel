@@ -7,7 +7,6 @@ export const errorMessage = token => {
   return dispatch => {
     SettingServices.errorMessage(token)
       .then(response => {
-        console.log('response->', response);
         if (response.data.status === 'SUCCESS') {
           dispatch({
             type: SETTING_REDUX_CONSTANTS.GET_ERROR_DATA,

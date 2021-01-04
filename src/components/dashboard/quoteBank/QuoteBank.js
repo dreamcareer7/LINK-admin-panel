@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './quoteBank.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllQuotes } from '../../../redux/actions/authActions/QuoteActions';
@@ -6,13 +7,18 @@ import Quote from './Quote';
 
 function QuoteBank() {
   const quotes = useSelector(({ allQuotes }) => allQuotes);
-  console.log({ quotes });
   // const [data, setData] = useState(quotes);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getAllQuotes);
   }, []);
+
+  const onClickAddQuote = () => {
+    history.replace('/quote');
+  };
+
   return (
     <div>
       <div className="action-container">
@@ -43,7 +49,7 @@ function QuoteBank() {
           </div>
         </div>
         <div className="action-buttons">
-          <div className="button success-button" onClick="">
+          <div className="button success-button" onClick={onClickAddQuote}>
             ADD QUOTE
           </div>
         </div>
@@ -58,7 +64,7 @@ function QuoteBank() {
           <div className="td action" />
         </div>
         {quotes.map(quote => (
-          <Quote quote={quote} />
+          <Quote key={quote._id} quote={quote} />
         ))}
       </div>
     </div>

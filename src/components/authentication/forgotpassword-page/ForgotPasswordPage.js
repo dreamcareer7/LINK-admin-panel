@@ -22,7 +22,6 @@ export default function ForgotPasswordPage() {
     else {
       AuthService.forgotPassword(email)
         .then(response => {
-          console.log('response->', response);
           if (response.data.status === 'SUCCESS') {
             successNotification('Reset link has been sent to your registered email id');
           }

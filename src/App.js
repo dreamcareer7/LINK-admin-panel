@@ -8,10 +8,13 @@ import ForgotPasswordPage from './components/authentication/forgotpassword-page/
 import SetNewPassword from './components/authentication/set-new-password/SetNewPassword';
 import Dashboard from './components/dashboard/Dashboard';
 import QuoteBank from './components/dashboard/quoteBank/QuoteBank';
+import AddQuote from './components/dashboard/quoteBank/add-edit-quote/AddQuote';
+// import Settings from './components/dashboard/settings/Settings';
 import AddQuote from './components/dashboard/quoteBank/add-quote/AddQuote';
 import ErrorMessages from './components/dashboard/settings/error-messages/ErrorMessages';
 import Integrations from './components/dashboard/settings/integrations/Integrations';
 import ManageAdmins from './components/dashboard/settings/manage-admins/ManageAdmins';
+import EditQuote from './components/dashboard/quoteBank/add-edit-quote/EditQuote';
 import Layout from './components/commonComponents/layout/Layout';
 import Settings from './components/dashboard/settings/Settings';
 import Subscribers from './components/dashboard/subscribers/Subscribers';
@@ -58,8 +61,8 @@ function App() {
                 path="/verificationPage"
                 render={props => <VerificationPage {...props} />}
               />
-              <PrivateRoute exact path="/quoteBank" render={props => <QuoteBank {...props} />} />
-              <PrivateRoute exact path="/addQuote" render={props => <AddQuote {...props} />} />
+              <PrivateRoute exact path="/quote" render={props => <AddQuote {...props} />} />
+              <PrivateRoute exact path="/quote/:id" render={props => <AddQuote {...props} />} />
             </Layout>
           </Switch>
         </Route>

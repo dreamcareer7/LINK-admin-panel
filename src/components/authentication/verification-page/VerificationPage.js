@@ -10,9 +10,7 @@ function VerificationPage() {
   const history = useHistory();
 
   const onClickVerify = () => {
-    console.log(verificationCode);
     const token = localStorage.getItem('userToken');
-    console.log('token=>', token);
     AuthService.verify2faLogin(token, verificationCode)
       .then(response => {
         if (response.data.status === 'SUCCESS') {

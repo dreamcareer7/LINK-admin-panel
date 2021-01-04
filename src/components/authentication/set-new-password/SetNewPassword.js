@@ -19,7 +19,6 @@ function SetNewPassword() {
   const history = useHistory();
 
   const { token } = useParams();
-  console.log(token);
 
   const checkPasswordMatch = () => {
     if (replaceHiddenCharacters(password.toString()).trim().length === 0) {

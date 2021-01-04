@@ -1,18 +1,16 @@
 import { errorNotification, successNotification } from '../../../constants/Toast';
-import QuoteServices from '../../../services/auth-services/QuoteServices';
+import QuoteServices from '../../../services/quotebank-services/QuoteServices';
 import QUOTE_REDUX_CONSTANTS from '../../constants/QuoteReduxConstant';
 
 // eslint-disable-next-line import/prefer-default-export
 export const getAllQuotes = dispatch => {
   QuoteServices.getAllQuotes()
     .then(response => {
-      console.log('quote response->', response);
       if (response.data.status === 'SUCCESS') {
         dispatch({
           type: QUOTE_REDUX_CONSTANTS.ALL_QUOTE,
           data: response.data.data,
         });
-        successNotification('Login successfully');
       }
     })
     .catch(e => {
@@ -35,5 +33,41 @@ export const deleteQuote = id => {
         successNotification('Quote deleted successfully');
       })
       .catch(() => errorNotification('Error during deleting quote'));
+  };
+};
+
+export const addQuote = data => {
+  return dispatch => {
+    QuoteServices.addQuote(data)
+      .then(res => {
+        dispatch({
+          type: QUOTE_REDUX_CONSTANTS.ADD_QUOTE,
+          data: res.data.data,
+        });
+        successNotification('Quote added successfully');
+      })
+      .catch(() => errorNotification('Error during adding quote'));
+  };
+};
+export const updateQuote = (id, data) => {
+  return dispatch => {
+    QuoteServices.updateQuote(id, data)
+      .then(res => {
+        dispatch({
+          type: QUOTE_REDUX_CONSTANTS.UPDATE_QUOTE,
+          data: res.data,
+        });
+        successNotification('Quote updated successfully');
+      })
+      .catch(() => errorNotification('Error during updating quote'));
+  };
+};
+
+export const setSelectedQuoteData = data => {
+  return dispatch => {
+    dispatch({
+      type: QUOTE_REDUX_CONSTANTS.SET_SELECTED_QUOTE_DATA,
+      data,
+    });
   };
 };
