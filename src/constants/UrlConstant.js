@@ -23,3 +23,8 @@ export const MANAGE_ADMIN_URLS = {
   GET_ALL_ADMIN: `${BASE_URL}admin/all-admin`,
   DELETE_ADMIN: `${BASE_URL}admin/delete/`,
 };
+export const QUOTE_URLS = {
+  ALL_QUOTE_URL: `${BASE_URL}quote/all-quote`,
+  SET_PUBLISHED_STATUS_URL: `${BASE_URL}quote/published-unpublished/`,
+  DELETE_QUOTE_URL: `${BASE_URL}quote/delete-quote/`,
+};

@@ -7,6 +7,8 @@ import VerificationPage from './components/authentication/verification-page/Veri
 import ForgotPasswordPage from './components/authentication/forgotpassword-page/ForgotPasswordPage';
 import SetNewPassword from './components/authentication/set-new-password/SetNewPassword';
 import Dashboard from './components/dashboard/Dashboard';
+import QuoteBank from './components/dashboard/quoteBank/QuoteBank';
+import AddQuote from './components/dashboard/quoteBank/add-quote/AddQuote';
 // import Settings from './components/dashboard/settings/Settings';
 import ErrorMessages from './components/dashboard/settings/error-messages/ErrorMessages';
 import Integrations from './components/dashboard/settings/integrations/Integrations';
@@ -40,6 +42,8 @@ function App() {
             <PrivateRoute exact path="/integrations" component={Integrations} />
             <PrivateRoute exact path="/manage-admin" component={ManageAdmins} />
             <PrivateRoute exact path="/verificationPage" render={props => <VerificationPage {...props} />} />
+            <PrivateRoute exact path="/quoteBank" render={(props) => <QuoteBank {...props} />} />
+            <PrivateRoute exact path="/addQuote" render={(props) => <AddQuote {...props} />} />
           </Switch>
         </Route>
       </Router>

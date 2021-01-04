@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './quoteBank.scss';
-import edit from '../../../assets/images/pencil.png';
-import bin from '../../../assets/images/delete.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllQuotes } from '../../../redux/actions/authActions/QuoteActions';
+import Quote from './Quote';
 
 function QuoteBank() {
+  const quotes = useSelector(({ allQuotes }) => allQuotes);
+  console.log({ quotes });
+  // const [data, setData] = useState(quotes);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllQuotes);
+  }, []);
   return (
     <div>
       <div className="action-container">
@@ -48,113 +57,9 @@ function QuoteBank() {
           <div className="td status">Status</div>
           <div className="td action" />
         </div>
-
-        <div className="tr-container">
-          <div className="tr">
-            <div className="td quote">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
-            </div>
-            <div className="td author">Neil DeGrasse Tyson Junior</div>
-            <div className="td tags">
-              <div className="tag-container">
-                <span className="tag">Business</span>
-                <span className="tag">Motivational</span>
-                <span className="tag">Entertainment</span>
-              </div>
-            </div>
-            <div className="td status">
-              <select>
-                <option value="All">All</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </div>
-            <div className="td action">
-              <img className="mr-5" src={edit} />
-              <img src={bin} />
-            </div>
-          </div>
-          <div className="tr">
-            <div className="td quote">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
-            </div>
-            <div className="td author">Neil DeGrasse Tyson Junior</div>
-            <div className="td tags">
-              <div className="tag-container">
-                <span className="tag">Business</span>
-                <span className="tag">Motivational</span>
-                <span className="tag">Entertainment</span>
-              </div>
-            </div>
-            <div className="td status">
-              <select>
-                <option value="All">All</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </div>
-            <div className="td action">
-              <img className="mr-5" src={edit} />
-              <img src={bin} />
-            </div>
-          </div>
-          <div className="tr">
-            <div className="td quote">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
-            </div>
-            <div className="td author">Neil DeGrasse Tyson Junior</div>
-            <div className="td tags">
-              <div className="tag-container">
-                <span className="tag">Business</span>
-                <span className="tag">Motivational</span>
-                <span className="tag">Entertainment</span>
-              </div>
-            </div>
-            <div className="td status">
-              <select>
-                <option value="All">All</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </div>
-            <div className="td action">
-              <img className="mr-5" src={edit} />
-              <img src={bin} />
-            </div>
-          </div>
-          <div className="tr">
-            <div className="td quote">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
-            </div>
-            <div className="td author">Neil DeGrasse Tyson Junior</div>
-            <div className="td tags">
-              <div className="tag-container">
-                <span className="tag">Business</span>
-                <span className="tag">Motivational</span>
-                <span className="tag">Entertainment</span>
-              </div>
-            </div>
-            <div className="td status">
-              <select>
-                <option value="All">All</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </div>
-            <div className="td action">
-              <img className="mr-5" src={edit} />
-              <img src={bin} />
-            </div>
-          </div>
-        </div>
+        {quotes.map(quote => (
+          <Quote quote={quote} />
+        ))}
       </div>
     </div>
   );

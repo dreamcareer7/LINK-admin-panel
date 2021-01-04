@@ -13,7 +13,6 @@ export const loginUser = (emailAddress, password) => {
             type: AUTH_REDUX_CONSTANTS.LOGIN_USER,
             data: response.data.data,
           });
-
           localStorage.setItem('userToken', response.data.data.token);
           successNotification('Login successfully');
         }
