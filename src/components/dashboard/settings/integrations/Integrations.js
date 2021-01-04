@@ -19,7 +19,7 @@ function Integrations() {
         <div className="common-subtitle mb-5 mt-10">API Key</div>
         <input className="integrations-input" placeholder="Enter API Key" />
       </div>
-      <button type="button" className="button success-button" onClick="">
+      <button type="button" className="button success-button">
         SAVE
       </button>
     </div>

@@ -6,7 +6,7 @@ export const manageAdmin = (state = null, action) => {
     case ADMIN_REDUX_CONSTANTS.GET_ADMIN_DATA:
       return action.data;
     case ADMIN_REDUX_CONSTANTS.DELETE_ADMIN:
-      return action.data.filter(item => item !== action.data);
+      return state.filter(user => user._id !== action.id);
 
     default:
       return state;

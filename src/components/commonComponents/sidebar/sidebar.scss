@@ -1,4 +1,4 @@
-@import "src/styles/index";
+@import 'src/styles/index';
 
 .dashboard-logo {
   display: flex;
@@ -38,10 +38,17 @@
   }
 
   span {
-   margin-left: 10px;
+    margin-left: 10px;
     font-size: 14px;
     font-weight: 500;
-    color: #696B9D;
+    color: #696b9d;
+  }
+  .menu-link {
+    text-decoration: none;
+  }
+  a span:hover,
+  a span.active {
+    color: #ffff;
   }
 }
 
@@ -49,6 +56,6 @@
   margin: 10px auto;
   font-size: 11px;
   font-weight: 500;
-  color: #8083B7;
+  color: #8083b7;
   text-align: center;
 }

@@ -13,6 +13,8 @@ export const AUTH_URLS = {
   RESET_PASSWORD_URL: `${BASE_URL}authAdmin/reset-password/`,
   VERIFY_2FA_LOGIN_URL: `${BASE_URL}authAdmin/verify-2fa`,
   GET_ERROR_MESSAGE: `${BASE_URL}error-message/get-messages`,
+  LOGOUT_USER: `${BASE_URL}authAdmin/logout`,
+  GET_USER_DETAILS: `${BASE_URL}admin/get-admin`,
 };
 
 export const SETTING_URLS = {

@@ -1,12 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './settings.scss';
+// import ManageAdmins from './manage-admins/ManageAdmins';
+import ErrorMessages from './error-messages/ErrorMessages';
 import ManageAdmins from './manage-admins/ManageAdmins';
 // import ErrorMessages from './error-messages/ErrorMessages';
 
-function Settings() {
+function Settings(props) {
+  console.log('Setting', props);
   const history = useHistory();
-
+  console.log('history', history);
   return (
     <div>
       <div className="settings-buttons-row">
@@ -14,17 +17,16 @@ function Settings() {
           <div className="settings-button" onClick={() => history.push('/error-message')}>
             Error Messages
           </div>
-          <div className="settings-button" onClick={() => history.push('/integrations')}>
+          {/* <div className="settings-button" onClick={() => history.push('/integrations')}>
             Integrations
-          </div>
+          </div> */}
           <div className="settings-button" onClick={() => history.push('/manage-admin')}>
             Manage Admins
           </div>
         </div>
-        <div className="button settings-button success-button">ADD ADMIN</div>
       </div>
       <div className="settings-common-area">
-        <ManageAdmins />
+        {window.location.pathname === 'setting' ? <ErrorMessages /> : <ManageAdmins />}
       </div>
     </div>
   );

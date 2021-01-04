@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API_METHODS, AUTH_URLS } from '../../constants/UrlConstant';
+import ApiService from '../api-service/ApiService';
 
 const AuthService = {
   loginUser: (emailAddress, password) => {
@@ -40,5 +41,7 @@ const AuthService = {
       },
     });
   },
+  logOutUser: () => ApiService.postData(AUTH_URLS.LOGOUT_USER),
+  getLogedInUser: () => ApiService.getData(AUTH_URLS.GET_USER_DETAILS),
 };
 export default AuthService;
