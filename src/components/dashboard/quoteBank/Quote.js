@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -8,12 +8,17 @@ import bin from '../../../assets/images/delete.png';
 import QuoteServices from '../../../services/quotebank-services/QuoteServices';
 import { errorNotification } from '../../../constants/Toast';
 import { deleteQuote, setSelectedQuoteData } from '../../../redux/actions/authActions/QuoteActions';
+import QUOTE_REDUX_CONSTANTS from '../../../redux/constants/QuoteReduxConstant';
 
 function Quote({ quote }) {
   const [isSelected, setIsSelected] = useState(
     quote && quote.isPublished ? quote.isPublished.toString() : 'false'
   );
   const history = useHistory();
+
+  useEffect(() => {
+    setIsSelected(quote.isPublished);
+  }, [quote.isPublished]);
 
   const dispatch = useDispatch();
   const onClickEditQuote = () => {
@@ -25,6 +30,10 @@ function Quote({ quote }) {
     setIsSelected(e.target.value);
     try {
       await QuoteServices.setPublishedStatus(e.target.value, quote._id);
+      dispatch({
+        type: QUOTE_REDUX_CONSTANTS.UPDATE_QUOTE,
+        data: { ...quote, isPublished: e.target.value },
+      });
     } catch {
       errorNotification('Could not update status');
     }

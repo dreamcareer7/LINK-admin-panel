@@ -43,9 +43,9 @@ function AddQuote() {
   };
 
   const onClickSaveQuote = async () => {
-    const data = { quote, quoteBy, tags: tags.split(',') };
+    const data = { quote, quoteBy, tags: tags.split(','), isPublished };
     if (id) {
-      data.isPublished = isPublished;
+      // data.isPublished = isPublished;
       dispatch(updateQuote(id, data));
     } else {
       dispatch(addQuote(data));
