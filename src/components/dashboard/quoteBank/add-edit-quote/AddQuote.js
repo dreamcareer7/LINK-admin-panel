@@ -60,7 +60,7 @@ function AddQuote() {
     <div>
       <div className="breadcrumb common-title">
         <span>quotes </span>
-        <span> {!id ? '/add quote' : 'edit quote'}</span>
+        <span> {!id ? '/add quote' : '/edit quote'}</span>
       </div>
       <div className="add-quote-block">
         <div className="common-title mb-5">Quote</div>
