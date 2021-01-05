@@ -31,6 +31,7 @@ function AddQuote() {
     setQuote('');
     setQuoteBy('');
     setTags([]);
+    history.push('/quoteBank');
   };
   const onClickDeleteQuote = () => {
     dispatch(deleteQuote(id));
