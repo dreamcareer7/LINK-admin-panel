@@ -14,6 +14,9 @@ function QuoteBank() {
   useEffect(() => {
     dispatch(getAllQuotes);
   }, []);
+  useEffect(() => {
+    setData(quotes);
+  }, [quotes]);
 
   const onClickAddQuote = () => {
     history.replace('/quote');
