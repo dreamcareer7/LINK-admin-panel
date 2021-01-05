@@ -109,14 +109,14 @@ function AddQuote() {
       <div className="quote-buttons-row">
         <button
           type="button"
-          className="button success-button add-quote-button"
+          className="button success-button add-edit-quote-button"
           onClick={onClickSaveQuote}
         >
           SAVE CHANGES
         </button>
         <button
           type="button"
-          className="button primary-button add-quote-button"
+          className="button primary-button add-edit-quote-button"
           onClick={discardQuoteChanges}
         >
           CANCEL
@@ -124,7 +124,7 @@ function AddQuote() {
         {id && (
           <button
             type="button"
-            className="button danger-button add-quote-button"
+            className="button danger-button add-edit-quote-button"
             onClick={onClickDeleteQuote}
           >
             DELETE QUOTE
