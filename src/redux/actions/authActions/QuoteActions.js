@@ -4,7 +4,7 @@ import QUOTE_REDUX_CONSTANTS from '../../constants/QuoteReduxConstant';
 
 // eslint-disable-next-line import/prefer-default-export
 export const getAllQuotes = dispatch => {
-  QuoteServices.getAllQuotes()
+  QuoteServices.getAllQuotes(1, 500)
     .then(response => {
       if (response.data.status === 'SUCCESS') {
         dispatch({
@@ -32,7 +32,10 @@ export const deleteQuote = id => {
         });
         successNotification('Quote deleted successfully');
       })
-      .catch(() => errorNotification('Error during deleting quote'));
+      .catch(e => {
+        console.log(e);
+        errorNotification('Error during deleting quote');
+      });
   };
 };
 

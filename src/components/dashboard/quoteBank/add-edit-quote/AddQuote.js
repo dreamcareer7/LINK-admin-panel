@@ -7,6 +7,7 @@ import {
   deleteQuote,
   updateQuote,
 } from '../../../../redux/actions/authActions/QuoteActions';
+import { errorNotification } from '../../../../constants/Toast';
 
 function AddQuote() {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ function AddQuote() {
   const [isPublished, setIsPublished] = useState('false');
   const { id } = useParams();
 
+  console.log('tags=>', tags);
   useEffect(() => {
     // for edit
     if (id) {
@@ -43,15 +45,39 @@ function AddQuote() {
   };
 
   const onClickSaveQuote = async () => {
-    const data = { quote, quoteBy, tags: tags.split(','), isPublished };
-    if (id) {
-      // data.isPublished = isPublished;
-      dispatch(updateQuote(id, data));
+    console.log(
+      tags.split(','),
+      tags
+        .split(',')
+        .filter(e => typeof e === 'string' || (e && e.tag && e.tag.toString().trim().length === 0))
+        .length > 0
+    );
+    if (quote.toString().trim().length === 0) errorNotification('Please enter quote');
+    else if (tags.length === 0) {
+      errorNotification('Please enter tags');
+    } else if (
+      tags
+        .split(',')
+        .filter(
+          e =>
+            (typeof e === 'string' && e.toString().trim().length === 0) ||
+            (e && e.tag && e.tag.toString().trim().length === 0)
+        ).length > 0
+    ) {
+      errorNotification('Could not accept comma before and after tag');
+    } else if (quoteBy.toString().trim().length === 0) {
+      errorNotification('Please enter author');
     } else {
-      dispatch(addQuote(data));
+      const data = { quote, quoteBy, tags: tags.split(','), isPublished };
+      if (id) {
+        // data.isPublished = isPublished;
+        dispatch(updateQuote(id, data));
+      } else {
+        dispatch(addQuote(data));
+      }
+      discardQuoteChanges();
+      history.push('/quoteBank');
     }
-    discardQuoteChanges();
-    history.push('/quoteBank');
   };
   const onChangeStatus = e => {
     setIsPublished(e.target.value);

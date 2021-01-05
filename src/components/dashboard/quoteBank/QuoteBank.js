@@ -6,7 +6,7 @@ import { getAllQuotes } from '../../../redux/actions/authActions/QuoteActions';
 import Quote from './Quote';
 
 function QuoteBank() {
-  const quotes = useSelector(({ allQuotes }) => allQuotes);
+  const { docs: quotes } = useSelector(({ allQuotes }) => allQuotes);
   const [data, setData] = useState(quotes);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -80,9 +80,7 @@ function QuoteBank() {
           <div className="td status">Status</div>
           <div className="td action" />
         </div>
-        {data.map(quote => (
-          <Quote key={quote._id} quote={quote} />
-        ))}
+        {data && data.map(quote => <Quote key={quote._id} quote={quote} />)}
       </div>
     </div>
   );

@@ -7,18 +7,21 @@ export const allQuotes = (state = [], action) => {
       return action.data;
 
     case QUOTE_REDUX_CONSTANTS.DELETE_QUOTE:
-      return state.filter(quote => quote._id !== action.id);
+      return { ...state, docs: state.docs.filter(quote => quote._id !== action.id) };
 
     case QUOTE_REDUX_CONSTANTS.ADD_QUOTE:
-      return [...state, action.data];
+      return { ...state, docs: [...state.docs, action.data] };
 
     case QUOTE_REDUX_CONSTANTS.UPDATE_QUOTE:
       // eslint-disable-next-line no-case-declarations
-      const findIndex = state.findIndex(e => e._id === action.data._id);
+      const findIndex = state.docs.findIndex(e => e._id === action.data._id);
       // eslint-disable-next-line no-case-declarations
-      const temp = [...state];
+      const tempObj = { ...state };
+      // eslint-disable-next-line no-case-declarations
+      const temp = [...state.docs];
       temp[findIndex] = action.data;
-      return temp;
+      tempObj.docs = temp;
+      return tempObj;
 
     default:
       return state;
