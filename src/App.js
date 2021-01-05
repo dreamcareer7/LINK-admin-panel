@@ -86,7 +86,7 @@ function App() {
             <Layout>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/subscribers" component={Subscribers} />
-              <PrivateRoute exact path="/setting" component={Settings} />
+              <PrivateRoute exact path="/settings" component={Settings} />
               <PrivateRoute exact path="/error-message" component={ErrorMessages} />
               <PrivateRoute exact path="/integrations" component={Integrations} />
               <PrivateRoute exact path="/manage-admin" component={ManageAdmins} />
