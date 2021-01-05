@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './quoteBank.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +7,7 @@ import Quote from './Quote';
 
 function QuoteBank() {
   const quotes = useSelector(({ allQuotes }) => allQuotes);
-  // const [data, setData] = useState(quotes);
+  const [data, setData] = useState(quotes);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -19,6 +19,23 @@ function QuoteBank() {
     history.replace('/quote');
   };
 
+  const applyStatusFilter = event => {
+    switch (event.target.value) {
+      case 'true':
+        // eslint-disable-next-line no-case-declarations
+        const activeQuotes = quotes.filter(e => e.isPublished === true);
+        setData(activeQuotes);
+        break;
+      case 'false':
+        // eslint-disable-next-line no-case-declarations
+        const inActiveQuotes = quotes.filter(e => e.isPublished === false);
+        setData(inActiveQuotes);
+        break;
+      default:
+        setData(quotes);
+    }
+  };
+
   return (
     <div>
       <div className="action-container">
@@ -27,11 +44,10 @@ function QuoteBank() {
             <div className="filter">
               <div className="filter-label">Status</div>
               <div className="filter-action">
-                <select>
-                  <option value="All">All</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
+                <select onChange={applyStatusFilter}>
+                  <option value="all">All</option>
+                  <option value="true">Active</option>
+                  <option value="false">InActive</option>
                 </select>
               </div>
             </div>
@@ -39,10 +55,8 @@ function QuoteBank() {
               <div className="filter-label">Sorting</div>
               <div className="filter-action">
                 <select>
-                  <option value="Recent">Recent</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
+                  <option value="asc">Ascending</option>
+                  <option value="dsc">Descending</option>
                 </select>
               </div>
             </div>
@@ -63,7 +77,7 @@ function QuoteBank() {
           <div className="td status">Status</div>
           <div className="td action" />
         </div>
-        {quotes.map(quote => (
+        {data.map(quote => (
           <Quote key={quote._id} quote={quote} />
         ))}
       </div>
