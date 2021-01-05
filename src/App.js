@@ -18,6 +18,7 @@ import ManageAdmins from './components/dashboard/settings/manage-admins/ManageAd
 import Layout from './components/commonComponents/layout/Layout';
 import Settings from './components/dashboard/settings/Settings';
 import Subscribers from './components/dashboard/subscribers/Subscribers';
+import QuoteBank from './components/dashboard/quoteBank/QuoteBank';
 // import { getAuthTokenLocalStorage } from './helpers/LocalStorageHelper';
 // import { getLogedInUser } from './redux/actions/authActions/AuthActions';
 
@@ -83,6 +84,7 @@ function App() {
                 path="/verificationPage"
                 render={props => <VerificationPage {...props} />}
               />
+              <PrivateRoute exact path="/quoteBank" render={props => <QuoteBank {...props} />} />
               <PrivateRoute exact path="/quote" render={props => <AddQuote {...props} />} />
               <PrivateRoute exact path="/quote/:id" render={props => <AddQuote {...props} />} />
             </Layout>

@@ -38,7 +38,7 @@ function SideBar() {
           </div>
 
           <div className="menu-item">
-            <Link className="menu-link" to="/quote">
+            <Link className="menu-link" to="/quoteBank">
               <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
             </Link>
           </div>
