@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  manageAdmin,
-  deleteUser,
-} from '../../../../redux/actions/manageAdminAction/ManageAdminAction';
+import { manageAdmin, deleteUser } from '../../../../redux/actions/manageAdminAction/ManageAdminAction';
 import User from '../../../../assets/images/dummy-user.jpg';
 import edit from '../../../../assets/images/pencil.png';
 import bin from '../../../../assets/images/delete.png';
@@ -23,10 +20,6 @@ const ManageAdmins = () => {
 
   return (
     <>
-      <div style={{ float: 'right' }} className="button success-button">
-        ADD ADMIN
-      </div>
-
       <div className="admin-title mt-10">Logged in Admins</div>
       <div className="admin-table">
         <div className="tr heading">
@@ -41,19 +34,21 @@ const ManageAdmins = () => {
           manageAdminData.map(value => (
             <React.Fragment key={value._id}>
               {value && value.isLoggedIn === true ? (
-                <div className="tr">
-                  <div className="admin-table-details">
-                    <div className="td name">
-                      <img src={User} />
-                      {value && value.firstName}
-                    </div>
+                <div key={value._id} className="row-container">
+                  <div className="tr">
+                    <div className="admin-table-details">
+                      <div className="td name">
+                        <img src={User} />
+                        {value && value.firstName}
+                      </div>
 
-                    <div className="td">{value && value.email}</div>
-                    <div className="td">{value && value.phone}</div>
-                  </div>
-                  <div className="action-cell">
-                    <img className="mr-5" src={edit} alt="" />
-                    <img src={bin} alt="" onClick={() => onDelete(value._id)} />
+                      <div className="td">{value && value.email}</div>
+                      <div className="td">{value && value.phone}</div>
+                    </div>
+                    <div className="action-cell">
+                      <img className="mr-5" src={edit} alt="" />
+                      <img src={bin} alt="" onClick={() => onDelete(value._id)} />
+                    </div>
                   </div>
                 </div>
               ) : (

@@ -1,4 +1,4 @@
-@import "src/styles/index";
+@import 'src/styles/index';
 
 .settings-buttons-row {
   display: flex;
@@ -18,6 +18,11 @@
   background-color: $secondary-variant-color;
   border-radius: 25px;
   cursor: pointer;
+}
+
+.settings-button:active,
+.settings-button:hover {
+  background: #4590e4;
 }
 
 .active-menu {

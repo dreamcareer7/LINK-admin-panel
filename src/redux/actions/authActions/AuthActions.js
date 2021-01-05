@@ -35,7 +35,7 @@ export const logOutUser = () => {
       .then(response => {
         if (response.data.status === 'SUCCESS') {
           dispatch({
-            type: AUTH_REDUX_CONSTANTS.LOGIN_USER,
+            type: AUTH_REDUX_CONSTANTS.LOGOUT_USER,
             data: null,
           });
         }
@@ -75,7 +75,7 @@ export const clearUserData = () => {
   return dispatch => {
     clearAuthToken();
     dispatch({
-      type: AUTH_REDUX_CONSTANTS.LOGIN_USER,
+      type: AUTH_REDUX_CONSTANTS.LOGOUT_USER,
       data: null,
     });
   };

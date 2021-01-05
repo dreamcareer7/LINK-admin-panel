@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAuthTokenLocalStorage } from '../../../helpers/LocalStorageHelper';
 import SideBar from '../sidebar/SideBar';
 import UpperHeader from '../upperHeader/UpperHeader';
 import './layout.scss';
@@ -7,7 +8,10 @@ const Layout = props => {
   console.log('Layout', props);
   // eslint-disable-next-line react/prop-types
   const { children } = props;
-
+  const isLoggedIn = getAuthTokenLocalStorage();
+  if (!isLoggedIn) {
+    return children;
+  }
   return (
     <div>
       <div className="dashboard">

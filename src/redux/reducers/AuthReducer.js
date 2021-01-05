@@ -6,6 +6,9 @@ export const loggedUser = (state = null, action) => {
     case AUTH_REDUX_CONSTANTS.LOGIN_USER:
       return action.data;
 
+    case AUTH_REDUX_CONSTANTS.LOGOUT_USER:
+      return null;
+
     default:
       return state;
   }
