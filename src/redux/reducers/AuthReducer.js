@@ -7,7 +7,7 @@ export const loggedUser = (state = null, action) => {
       return action.data;
 
     case AUTH_REDUX_CONSTANTS.LOGOUT_USER:
-      return state;
+      return null;
 
     default:
       return state;

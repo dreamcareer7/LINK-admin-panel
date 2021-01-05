@@ -19,32 +19,32 @@ function SideBar() {
   return (
     <div>
       <div className="">
-        <Link className="dashboard-logo" to="/">
+        <Link className="dashboard-logo" to="/dashboard" replace>
           <img alt="Linkfluencer" src={linkfluencer} />
         </Link>
       </div>
       <div className="menu-bar">
         <div className="menu">
           <div className="menu-item">
-            <Link className="menu-link" to="/">
+            <Link className="menu-link" to="/dashboard" replace>
               <img alt="home" src={home} /> <span>Dashboard</span>
             </Link>
           </div>
 
           <div className="menu-item">
-            <Link className="menu-link" to="/subscribers">
+            <Link className="menu-link" to="/subscribers" replace>
               <img alt="subscribers" src={group} /> <span>Subscribers</span>
             </Link>
           </div>
 
           <div className="menu-item">
-            <Link className="menu-link" to="/quoteBank">
+            <Link className="menu-link" to="/quoteBank" replace>
               <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
             </Link>
           </div>
 
           <div className="menu-item">
-            <Link className="menu-link" to="/setting">
+            <Link className="menu-link" to="/setting" replace>
               <img alt="settings" src={gear} /> <span>Settings</span>
             </Link>
           </div>
