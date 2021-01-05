@@ -10,7 +10,7 @@ function UpperHeader() {
     <div className="upper-header-block">
       <div className="upper-header--rounded-block search-block">
         <input placeholder="Search Subscriber" />
-        <button type="button" onClick="">
+        <button type="button">
           <img src={search} />{' '}
         </button>
       </div>
