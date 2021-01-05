@@ -1,10 +1,9 @@
 import LoginPage from '../components/authentication/login-page/LoginPage';
 import Settings from '../components/dashboard/settings/Settings';
 import QuoteBank from '../components/dashboard/quoteBank/QuoteBank';
-import Home from '../components/dashboard';
 import Dashboard from '../components/dashboard/Dashboard';
 
-const CoreRoutes = [
+const coreRoutes = [
   {
     path: '/login',
     exact: true,
@@ -18,7 +17,7 @@ const CoreRoutes = [
     auth: true,
     exact: true,
     title: 'Dashboard',
-    component: Home,
+    component: Dashboard,
     routes: [
       {
         path: '/dashboard',
@@ -26,7 +25,7 @@ const CoreRoutes = [
         component: Dashboard,
       },
       {
-        path: '/setting',
+        path: '/settings',
         auth: true,
         title: 'Invoice',
         component: Settings,
@@ -39,29 +38,7 @@ const CoreRoutes = [
       },
     ],
   },
-  // {
-  //   path: '/setting',
-  //   exact: true,
-  //   auth: true,
-  //   title: 'setting',
-  //   component: Settings,
-  // },
-  // {
-  //   path: '/quoteBank',
-  //   exact: true,
-  //   auth: true,
-  //   title: 'Quote Bank',
-  //   component: QuoteBank,
-  // },
 ];
 
-// const NoMatchRoute = {
-//   path: '',
-//   exact: true,
-//   auth: false,
-//   title: 'Lost in space',
-//   component: PageNotFound,
-// };
-
-const routes = [...CoreRoutes];
+const routes = [...coreRoutes];
 export default routes;

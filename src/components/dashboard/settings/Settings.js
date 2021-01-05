@@ -8,7 +8,7 @@ function Settings(props) {
   console.log('Setting', props);
   const history = useHistory();
   console.log('history', history);
-  const [activeComponent, setActiveComponent] = React.useState(<ErrorMessages />);
+  const [activeComponent, setActiveComponent] = React.useState(<ErrorMessages key="error" />);
   const [keys, setKeys] = useState();
 
   const onChangeComponent = component => {
@@ -21,13 +21,21 @@ function Settings(props) {
     <div>
       <div className="settings-buttons-row">
         <div className="d-flex">
-          <div className="settings-button" onClick={() => onChangeComponent(<ErrorMessages key="error" />)}>
+          <div
+            className="settings-button" 
+            style={keys === 'error' ? { background: '#4590e4' } : { background: '#f9f9f9' }}
+            onClick={() => onChangeComponent(<ErrorMessages key="error" />)}
+          >
             Error Messages
           </div>
           {/* <div className="settings-button" onClick={() => history.push('/integrations')}>
             Integrations
           </div> */}
-          <div className="settings-button" onClick={() => onChangeComponent(<ManageAdmins key="manage" />)}>
+          <div
+            className="settings-button"
+            style={keys === 'manage' ? { background: '#4590e4' } : { background: '#f9f9f9' }}
+            onClick={() => onChangeComponent(<ManageAdmins key="manage" />)}
+          >
             Manage Admins
           </div>
         </div>

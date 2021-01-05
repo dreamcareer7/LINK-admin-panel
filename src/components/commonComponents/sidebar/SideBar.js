@@ -44,7 +44,7 @@ function SideBar() {
           </div>
 
           <div className="menu-item">
-            <Link className="menu-link" to="/setting" replace>
+            <Link className="menu-link" to="/settings" replace>
               <img alt="settings" src={gear} /> <span>Settings</span>
             </Link>
           </div>
