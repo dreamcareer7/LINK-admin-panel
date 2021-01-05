@@ -1,23 +1,24 @@
 import React from 'react';
 import Notifications from 'react-notify-toast';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LoginPage from './components/authentication/login-page/LoginPage';
 import VerificationPage from './components/authentication/verification-page/VerificationPage';
 import ForgotPasswordPage from './components/authentication/forgotpassword-page/ForgotPasswordPage';
 import SetNewPassword from './components/authentication/set-new-password/SetNewPassword';
 import Dashboard from './components/dashboard/Dashboard';
-import QuoteBank from './components/dashboard/quoteBank/QuoteBank';
+// import QuoteBank from './components/dashboard/quoteBank/QuoteBank';
 import AddQuote from './components/dashboard/quoteBank/add-edit-quote/AddQuote';
 // import Settings from './components/dashboard/settings/Settings';
-import AddQuote from './components/dashboard/quoteBank/add-quote/AddQuote';
+// import AddQuote from './components/dashboard/quoteBank/add-quote/AddQuote';
 import ErrorMessages from './components/dashboard/settings/error-messages/ErrorMessages';
 import Integrations from './components/dashboard/settings/integrations/Integrations';
 import ManageAdmins from './components/dashboard/settings/manage-admins/ManageAdmins';
-import EditQuote from './components/dashboard/quoteBank/add-edit-quote/EditQuote';
+// import EditQuote from './components/dashboard/quoteBank/add-edit-quote/EditQuote';
 import Layout from './components/commonComponents/layout/Layout';
 import Settings from './components/dashboard/settings/Settings';
 import Subscribers from './components/dashboard/subscribers/Subscribers';
+// import { getAuthTokenLocalStorage } from './helpers/LocalStorageHelper';
 // import { getLogedInUser } from './redux/actions/authActions/AuthActions';
 
 const PrivateRoute = ({ component, ...options }) => {
@@ -26,14 +27,35 @@ const PrivateRoute = ({ component, ...options }) => {
   //   dispatch(getLogedInUser());
   // }, []);
   const finalComponent =
-    localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0 ? (
-      component
-    ) : (
-      <Redirect to="/login" />
-    );
+    localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0
+      ? component
+      : LoginPage;
 
   return <Route {...options} component={finalComponent} />;
 };
+
+// const PrivateRoute = ({ component: Component, ...rest }) => {
+//   const isLoggedIn = getAuthTokenLocalStorage();
+//   console.log(isLoggedIn);
+//   return (
+//     <Route
+//       {...rest}
+//       render={props =>
+//         isLoggedIn ? (
+//           <Component {...props} />
+//         ) : (
+//           <Redirect
+//             to={{
+//               pathname: '/login',
+//               // eslint-disable-next-line react/prop-types
+//               state: { from: props.location },
+//             }}
+//           />
+//         )
+//       }
+//     />
+//   );
+// };
 
 PrivateRoute.propTypes = {
   component: PropTypes.element.isRequired,
