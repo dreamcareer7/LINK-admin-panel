@@ -32,7 +32,10 @@ export const deleteQuote = id => {
         });
         successNotification('Quote deleted successfully');
       })
-      .catch(errorNotification('Error during deleting quote'));
+      .catch(e => {
+        console.log(e);
+        errorNotification('Error during deleting quote');
+      });
   };
 };
 
