@@ -13,7 +13,9 @@ export const allQuotes = (state = [], action) => {
       return [...state, action.data];
 
     case QUOTE_REDUX_CONSTANTS.UPDATE_QUOTE:
+      // eslint-disable-next-line no-case-declarations
       const findIndex = state.findIndex(e => e._id === action.data._id);
+      // eslint-disable-next-line no-case-declarations
       const temp = [...state];
       temp[findIndex] = action.data;
       return temp;
