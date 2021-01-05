@@ -1,11 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {useHistory, useParams} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import './add-quote.scss';
-import {useDispatch, useSelector} from 'react-redux';
-import {addQuote, deleteQuote, updateQuote} from '../../../../redux/actions/authActions/QuoteActions';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addQuote,
+  deleteQuote,
+  updateQuote,
+} from '../../../../redux/actions/authActions/QuoteActions';
 
 function AddQuote() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const history = useHistory();
   const selectedQuoteData = useSelector(({ selectedQuote }) => selectedQuote);
   const [quote, setQuote] = useState('');
