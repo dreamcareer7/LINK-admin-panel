@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { manageAdmin, deleteUser } from '../../../../redux/actions/manageAdminAction/ManageAdminAction';
+import {
+  manageAdmin,
+  deleteUser,
+} from '../../../../redux/actions/manageAdminAction/ManageAdminAction';
 import User from '../../../../assets/images/dummy-user.jpg';
 import edit from '../../../../assets/images/pencil.png';
 import bin from '../../../../assets/images/delete.png';
@@ -70,22 +73,28 @@ const ManageAdmins = () => {
         </div>
         {manageAdminData &&
           manageAdminData.map(val => (
-            <div key={val._id} className="row-container">
-              <div className="tr">
-                <div className="admin-table-details">
-                  <div className="td name">
-                    <img src={User} />
-                    {val && val.firstName}
+            <React.Fragment key={val._id}>
+              {val && !val.isLoggedIn ? (
+                <div key={val._id} className="row-container">
+                  <div className="tr">
+                    <div className="admin-table-details">
+                      <div className="td name">
+                        <img src={User} />
+                        {val && val.firstName}
+                      </div>
+                      <div className="td">{val && val.email}</div>
+                      <div className="td">{val && val.phone}</div>
+                    </div>
+                    <div className="action-cell">
+                      <img className="mr-5" src={edit} />
+                      <img src={bin} onClick={() => onDelete(val._id)} />
+                    </div>
                   </div>
-                  <div className="td">{val && val.email}</div>
-                  <div className="td">{val && val.phone}</div>
                 </div>
-                <div className="action-cell">
-                  <img className="mr-5" src={edit} />
-                  <img src={bin} onClick={() => onDelete(val._id)} />
-                </div>
-              </div>
-            </div>
+              ) : (
+                ''
+              )}
+            </React.Fragment>
           ))}
       </div>
     </>

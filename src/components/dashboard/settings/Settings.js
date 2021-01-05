@@ -9,7 +9,7 @@ function Settings(props) {
   const history = useHistory();
   console.log('history', history);
   const [activeComponent, setActiveComponent] = React.useState(<ErrorMessages key="error" />);
-  const [keys, setKeys] = useState();
+  const [keys, setKeys] = useState('error');
 
   const onChangeComponent = component => {
     console.log('component', component);
@@ -17,12 +17,13 @@ function Settings(props) {
     setActiveComponent(component);
   };
 
+
   return (
     <div>
       <div className="settings-buttons-row">
         <div className="d-flex">
           <div
-            className="settings-button" 
+            className={keys === 'error' ? 'settings-button active-menu' : 'settings-button'}
             style={keys === 'error' ? { background: '#4590e4' } : { background: '#f9f9f9' }}
             onClick={() => onChangeComponent(<ErrorMessages key="error" />)}
           >
