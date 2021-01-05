@@ -19,7 +19,6 @@ function AddQuote() {
   const [isPublished, setIsPublished] = useState('false');
   const { id } = useParams();
 
-  console.log('tags=>', tags);
   useEffect(() => {
     // for edit
     if (id) {
@@ -45,13 +44,6 @@ function AddQuote() {
   };
 
   const onClickSaveQuote = async () => {
-    console.log(
-      tags.split(','),
-      tags
-        .split(',')
-        .filter(e => typeof e === 'string' || (e && e.tag && e.tag.toString().trim().length === 0))
-        .length > 0
-    );
     if (quote.toString().trim().length === 0) errorNotification('Please enter quote');
     else if (tags.length === 0) {
       errorNotification('Please enter tags');
