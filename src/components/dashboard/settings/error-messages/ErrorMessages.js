@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { errorMessage } from '../../../../redux/actions/settingAction/SettingAction';
 import './error-messages.scss';
 
 function ErrorMessages() {
-  const history = useHistory();
-  console.log('history', history);
   const dispatch = useDispatch();
   const errorData = useSelector(state => state.errorMessage);
   const token = localStorage.getItem('userToken');

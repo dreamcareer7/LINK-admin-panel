@@ -40,7 +40,13 @@ function Quote({ quote }) {
         <div className="td author">{quote.quoteBy}</div>
         <div className="td tags">
           <div className="tag-container">
-            {quote && quote.tags && quote.tags.map(tag => <span className="tag">{tag.tag}</span>)}
+            {quote &&
+              quote.tags &&
+              quote.tags.map(tag => (
+                <span key={tag._id} className="tag">
+                  {tag.tag}
+                </span>
+              ))}
           </div>
         </div>
         <div className="td status">

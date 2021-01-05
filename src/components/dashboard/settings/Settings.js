@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import './settings.scss';
 import ErrorMessages from './error-messages/ErrorMessages';
 import ManageAdmins from './manage-admins/ManageAdmins';
 
-function Settings(props) {
-  console.log('Setting', props);
-  const history = useHistory();
-  console.log('history', history);
+function Settings() {
   const [activeComponent, setActiveComponent] = React.useState(<ErrorMessages key="error" />);
-  const [keys, setKeys] = useState();
+  const [keys, setKeys] = useState('error');
 
   const onChangeComponent = component => {
-    console.log('component', component);
     setKeys(component.key);
     setActiveComponent(component);
   };
@@ -22,8 +17,7 @@ function Settings(props) {
       <div className="settings-buttons-row">
         <div className="d-flex">
           <div
-            className="settings-button" 
-            style={keys === 'error' ? { background: '#4590e4' } : { background: '#f9f9f9' }}
+            className={keys === 'error' ? 'settings-button active-menu' : 'settings-button'}
             onClick={() => onChangeComponent(<ErrorMessages key="error" />)}
           >
             Error Messages
@@ -32,8 +26,7 @@ function Settings(props) {
             Integrations
           </div> */}
           <div
-            className="settings-button"
-            style={keys === 'manage' ? { background: '#4590e4' } : { background: '#f9f9f9' }}
+            className={keys === 'manage' ? 'settings-button active-menu' : 'settings-button'}
             onClick={() => onChangeComponent(<ManageAdmins key="manage" />)}
           >
             Manage Admins
