@@ -19,14 +19,14 @@ function SideBar() {
   return (
     <div>
       <div className="">
-        <Link className="dashboard-logo" to="/dashboard" replace>
+        <Link className="dashboard-logo" to="/" replace>
           <img alt="Linkfluencer" src={linkfluencer} />
         </Link>
       </div>
       <div className="menu-bar">
         <div className="menu">
           <div className="menu-item">
-            <Link className="menu-link" to="/dashboard" replace>
+            <Link className="menu-link" to="/" replace>
               <img alt="home" src={home} /> <span>Dashboard</span>
             </Link>
           </div>
