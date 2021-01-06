@@ -1,0 +1,90 @@
+@import "src/styles/index";
+
+.edit-admin-container {
+  width: 70%;
+  min-width: 700px;
+  max-width: 900px;
+}
+
+.DP-image {
+  height: 40px;
+  width: 40px;
+  min-height: 40px;
+  min-width: 40px;
+  margin: 20px 0 15px 0;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.admin-detail {
+  display: flex;
+
+  div {
+    flex: 0 0 25%;
+    min-width: 140px;
+  }
+}
+
+.step-container {
+  position: relative;
+  width: 70%;
+  min-width: 600px;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px dashed #d9d9d9;
+  border-radius: 5px;
+}
+
+.step-title {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  padding: 0 10px;
+  color: $info-color;
+  background-color: #ffffff;
+}
+
+.barcode {
+  height: 140px;
+  min-height: 140px;
+  padding: 15px 0;
+  object-fit: contain;
+  object-position: left;
+}
+
+.code-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+
+  input {
+    margin-right: 10px;
+    padding: 7px 10px;
+  }
+
+  button {
+    margin-left: 10px;
+    padding: 7px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    background-color: $success-color;
+    border-right: 20px;
+  }
+}
+
+.key-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 350px;
+  min-width: 300px;
+  margin-top: 5px;
+  img {
+    height: 16px;
+    width: 16px;
+    margin-left: 30px;
+    cursor: pointer;
+  }
+}

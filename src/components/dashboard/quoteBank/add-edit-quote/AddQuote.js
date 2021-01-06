@@ -124,7 +124,7 @@ function AddQuote() {
           </select>
         </div>
       </div>
-      <div className="quote-buttons-row">
+      <div className="buttons-row">
         <button
           type="button"
           className="button success-button add-edit-quote-button"
