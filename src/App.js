@@ -44,6 +44,7 @@ function App() {
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/forgot" component={ForgotPasswordPage} />
             <Route exact path="/authAdmin/reset-password/:token" component={SetNewPassword} />
+            <PrivateRoute exact path="/verificationPage" component={VerificationPage} />
             <Layout>
               <PrivateRoute exact path="/"/>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
@@ -52,7 +53,6 @@ function App() {
               <PrivateRoute exact path="/error-message" component={ErrorMessages} />
               <PrivateRoute exact path="/integrations" component={Integrations} />
               <PrivateRoute exact path="/manage-admin" component={EditAdmin} />
-              <PrivateRoute exact path="/verificationPage" component={VerificationPage} />
               <PrivateRoute exact path="/quoteBank" component={QuoteBank} />
               <PrivateRoute exact path="/quote" component={AddQuote} />
               <PrivateRoute exact path="/quote/:id" component={AddQuote} />
