@@ -1,14 +1,10 @@
-import axios from 'axios';
-import { API_METHODS, SETTING_URLS } from '../../constants/UrlConstant';
+import { SETTING_URLS } from '../../constants/UrlConstant';
+import ApiService from '../api-service/ApiService';
 
 const SettingService = {
-  errorMessage: token => {
-    return axios({
-      method: API_METHODS.GET,
-      url: SETTING_URLS.GET_ERROR_MESSAGE,
-      headers: { authorization: token },
-    });
-  },
+  getAllErrorMessage: () => ApiService.getData(SETTING_URLS.GET_ERROR_MESSAGE),
+  updateErrorMessage: (id, data) =>
+    ApiService.putData(SETTING_URLS.UPDATE_ERROR_MESSAGE + id, data),
 };
 
 export default SettingService;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './sidebar.scss';
-import { Link, useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import linkfluencer from '../../../assets/images/linkfluencer.png';
 import home from '../../../assets/images/home.png';
@@ -19,34 +19,34 @@ function SideBar() {
   return (
     <div>
       <div className="">
-        <Link className="dashboard-logo" to="/" replace>
+        <NavLink className="dashboard-logo" to="/" replace>
           <img alt="Linkfluencer" src={linkfluencer} />
-        </Link>
+        </NavLink>
       </div>
       <div className="menu-bar">
         <div className="menu">
-          <div className="menu-item">
-            <Link className="menu-link" to="/" replace>
+          <div className="menu-item  active-menu">
+            <NavLink className="menu-link" to="/" replace>
               <img alt="home" src={home} /> <span>Dashboard</span>
-            </Link>
+            </NavLink>
           </div>
 
           <div className="menu-item">
-            <Link className="menu-link" to="/subscribers" replace>
+            <NavLink className="menu-link" to="/subscribers" replace>
               <img alt="subscribers" src={group} /> <span>Subscribers</span>
-            </Link>
+            </NavLink>
           </div>
 
           <div className="menu-item">
-            <Link className="menu-link" to="/quoteBank" replace>
+            <NavLink activeClassName="active" className="menu-link active" to="/quoteBank" replace>
               <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
-            </Link>
+            </NavLink>
           </div>
 
           <div className="menu-item">
-            <Link className="menu-link" to="/settings" replace>
+            <NavLink className="menu-link" to="/settings" replace>
               <img alt="settings" src={gear} /> <span>Settings</span>
-            </Link>
+            </NavLink>
           </div>
           <div className="menu-item">
             <button type="button" onClick={() => onLogOut()}>

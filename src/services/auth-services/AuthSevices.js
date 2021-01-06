@@ -41,7 +41,7 @@ const AuthService = {
       },
     });
   },
-  logOutUser: () => ApiService.postData(AUTH_URLS.LOGOUT_USER),
+  logOutUser: () => ApiService.postData(AUTH_URLS.USER_LOGOUT),
   getLogedInUser: () => ApiService.getData(AUTH_URLS.GET_USER_DETAILS),
 };
 export default AuthService;

@@ -3,9 +3,9 @@ import ADMIN_REDUX_CONSTANTS from '../../constants/ManageAdminConstant';
 import { errorNotification, successNotification } from '../../../constants/Toast';
 
 // eslint-disable-next-line import/prefer-default-export
-export const manageAdmin = token => {
+export const getAllAdmins = () => {
   return dispatch => {
-    ManageAdminService.manageAdmin(token)
+    ManageAdminService.getAllAdmins()
       .then(response => {
         if (response.data.status === 'SUCCESS') {
           dispatch({

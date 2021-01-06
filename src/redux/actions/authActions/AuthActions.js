@@ -34,8 +34,9 @@ export const logOutUser = () => {
     AuthService.logOutUser()
       .then(response => {
         if (response.data.status === 'SUCCESS') {
+          clearAuthToken();
           dispatch({
-            type: AUTH_REDUX_CONSTANTS.LOGOUT_USER,
+            type: AUTH_REDUX_CONSTANTS.USER_LOGOUT,
             data: null,
           });
         }
@@ -75,7 +76,7 @@ export const clearUserData = () => {
   return dispatch => {
     clearAuthToken();
     dispatch({
-      type: AUTH_REDUX_CONSTANTS.LOGOUT_USER,
+      type: AUTH_REDUX_CONSTANTS.USER_LOGOUT,
       data: null,
     });
   };

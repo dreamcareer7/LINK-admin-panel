@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  manageAdmin,
   deleteUser,
+  getAllAdmins,
 } from '../../../../redux/actions/manageAdminAction/ManageAdminAction';
 import User from '../../../../assets/images/dummy-user.jpg';
 import edit from '../../../../assets/images/pencil.png';
@@ -14,7 +14,7 @@ const ManageAdmins = () => {
   const manageAdminData = useSelector(state => state.manageAdmin);
   const token = localStorage.getItem('userToken');
   useEffect(() => {
-    dispatch(manageAdmin(token));
+    dispatch(getAllAdmins(token));
   }, []);
 
   const onDelete = userId => {

@@ -1,11 +1,11 @@
 import SettingServices from '../../../services/setting-services/SettingServices';
 import SETTING_REDUX_CONSTANTS from '../../constants/SettingReduxConstant';
-import { errorNotification } from '../../../constants/Toast';
+import { errorNotification, successNotification } from '../../../constants/Toast';
 
 // eslint-disable-next-line import/prefer-default-export
-export const errorMessage = token => {
+export const getAllErrorMessage = () => {
   return dispatch => {
-    SettingServices.errorMessage(token)
+    SettingServices.getAllErrorMessage()
       .then(response => {
         if (response.data.status === 'SUCCESS') {
           dispatch({
@@ -19,9 +19,21 @@ export const errorMessage = token => {
           errorNotification('It seems like server is down, Please try after sometime.');
         } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
-        } else if (e.response.data.status === 'INVALID_EMAIL_OR_PASSWORD') {
-          errorNotification('Invalid credential');
         }
       });
+  };
+};
+
+export const updateErrorMessage = (id, data) => {
+  return dispatch => {
+    SettingServices.updateErrorMessage(id, data)
+      .then(res => {
+        dispatch({
+          type: SETTING_REDUX_CONSTANTS.UPDATE_ERROR_MESSAGE,
+          data: res.data,
+        });
+        successNotification('Error Message updated successfully');
+      })
+      .catch(() => errorNotification('Error during updating quote'));
   };
 };
