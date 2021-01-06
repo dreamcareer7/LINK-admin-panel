@@ -4,7 +4,7 @@ import './add-quote.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addQuote,
-  deleteQuote,
+  deleteQuote, getSingleQuote,
   updateQuote,
 } from '../../../../redux/actions/authActions/QuoteActions';
 import { errorNotification } from '../../../../constants/Toast';
@@ -21,7 +21,7 @@ function AddQuote() {
 
   useEffect(() => {
     // for edit
-    if (id) {
+    if (id && selectedQuoteData) {
       setQuote(selectedQuoteData.quote);
       setQuoteBy(selectedQuoteData.quoteBy);
       setTags(selectedQuoteData.tags.map(e => e.tag).join(','));
@@ -31,7 +31,11 @@ function AddQuote() {
           : 'false'
       );
     }
-  }, []);
+  }, [selectedQuoteData]);
+  useEffect(()=>{
+   dispatch(getSingleQuote(id));
+  },[]);
+
   const discardQuoteChanges = () => {
     setQuote('');
     setQuoteBy('');

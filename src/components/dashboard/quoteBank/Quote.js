@@ -10,7 +10,7 @@ import { errorNotification } from '../../../constants/Toast';
 import { deleteQuote, setSelectedQuoteData } from '../../../redux/actions/authActions/QuoteActions';
 import QUOTE_REDUX_CONSTANTS from '../../../redux/constants/QuoteReduxConstant';
 
-function Quote({ quote }) {
+  function Quote({ quote }) {
   const [isSelected, setIsSelected] = useState(
     quote && quote.isPublished ? quote.isPublished.toString() : 'false'
   );

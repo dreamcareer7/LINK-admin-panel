@@ -9,5 +9,7 @@ const QuoteServices = {
   deleteQuote: id => ApiService.deleteData(QUOTE_URLS.DELETE_QUOTE_URL + id),
   addQuote: data => ApiService.postData(QUOTE_URLS.ADD_QUOTE_URL, data),
   updateQuote: (id, data) => ApiService.putData(QUOTE_URLS.UPDATE_QUOTE_URL + id, data),
+  getSingleQuote: (id) => ApiService.getData(QUOTE_URLS.GET_SINGLE_QUOTE_URL + id),
+
 };
 export default QuoteServices;

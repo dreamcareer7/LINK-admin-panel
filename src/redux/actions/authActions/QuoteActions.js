@@ -38,6 +38,20 @@ export const deleteQuote = id => {
       });
   };
 };
+export const getSingleQuote = id => {
+    return dispatch => {
+        QuoteServices.getSingleQuote(id)
+            .then((response) => {
+                dispatch({
+                    type: QUOTE_REDUX_CONSTANTS.SET_SELECTED_QUOTE_DATA,
+                    data:response.data.data,
+                });
+                  })
+            .catch(e => {
+                console.log(e);
+            });
+    };
+};
 
 export const addQuote = data => {
   return dispatch => {

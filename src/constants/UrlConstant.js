@@ -32,4 +32,5 @@ export const QUOTE_URLS = {
   DELETE_QUOTE_URL: `${BASE_URL}quote/delete-quote/`,
   ADD_QUOTE_URL: `${BASE_URL}quote/add-quote/`,
   UPDATE_QUOTE_URL: `${BASE_URL}quote/update-quote/`,
+  GET_SINGLE_QUOTE_URL:`${BASE_URL}admin/get-admin/`,
 };
