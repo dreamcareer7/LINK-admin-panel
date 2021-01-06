@@ -45,13 +45,17 @@
   }
   .menu-link {
     text-decoration: none;
-    span.active {
-      color: red !important;
+     span:hover {
+      color: #ffffff;
     }
   }
+  .active{
+    span{
+      color: #ffffff
+    }
+  }
+
 }
-
-
 
 .copyright {
   margin: 10px auto;

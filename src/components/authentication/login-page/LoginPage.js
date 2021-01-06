@@ -23,7 +23,7 @@ function LoginPage() {
       if (loggedUser.isTwoFAEnabled) {
         history.replace('/verificationPage');
       } else {
-        history.replace('/');
+        history.replace('/dashboard');
       }
     }
   }, [loggedUser]);

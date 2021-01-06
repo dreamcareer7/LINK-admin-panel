@@ -19,14 +19,14 @@ function SideBar() {
   return (
     <div>
       <div className="">
-        <NavLink className="dashboard-logo" to="/" replace>
+        <NavLink className="dashboard-logo" to="/dashboard" replace>
           <img alt="Linkfluencer" src={linkfluencer} />
         </NavLink>
       </div>
       <div className="menu-bar">
         <div className="menu">
-          <div className="menu-item  active-menu">
-            <NavLink className="menu-link" to="/" replace>
+          <div className="menu-item">
+            <NavLink className="menu-link" to="/dashboard" replace>
               <img alt="home" src={home} /> <span>Dashboard</span>
             </NavLink>
           </div>
@@ -38,7 +38,7 @@ function SideBar() {
           </div>
 
           <div className="menu-item">
-            <NavLink activeClassName="active" className="menu-link active" to="/quoteBank" replace>
+            <NavLink  className="menu-link"  to="/quoteBank" replace>
               <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
             </NavLink>
           </div>

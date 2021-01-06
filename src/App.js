@@ -1,6 +1,6 @@
 import React from 'react';
 import Notifications from 'react-notify-toast';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {Redirect, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LoginPage from './components/authentication/login-page/LoginPage';
 import VerificationPage from './components/authentication/verification-page/VerificationPage';
@@ -18,16 +18,20 @@ import QuoteBank from './components/dashboard/quoteBank/QuoteBank';
 import EditAdmin from './components/dashboard/settings/manage-admins/EditAdmin/EditAdmin';
 
 const PrivateRoute = ({ component, ...options }) => {
+  const isLoggedIn = localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0
   const finalComponent =
-    localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0
+      isLoggedIn
       ? component
       : LoginPage;
-
+  if(options.path === '/' && isLoggedIn){return <Route {...options} > <Redirect to='/dashboard'/></Route>}
   return <Route {...options} component={finalComponent} />;
 };
 
 PrivateRoute.propTypes = {
-  component: PropTypes.func.isRequired,
+  component: PropTypes.func,
+};
+PrivateRoute.defaultProps = {
+  component: null,
 };
 
 function App() {
@@ -41,7 +45,8 @@ function App() {
             <Route exact path="/forgot" component={ForgotPasswordPage} />
             <Route exact path="/authAdmin/reset-password/:token" component={SetNewPassword} />
             <Layout>
-              <PrivateRoute exact path="/" component={Dashboard} />
+              <PrivateRoute exact path="/"/>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/subscribers" component={Subscribers} />
               <PrivateRoute exact path="/settings" component={Settings} />
               <PrivateRoute exact path="/error-message" component={ErrorMessages} />
