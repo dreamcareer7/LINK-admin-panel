@@ -42,6 +42,7 @@ export const getSingleQuote = id => {
     return dispatch => {
         QuoteServices.getSingleQuote(id)
             .then((response) => {
+                console.log('response of get single quote=>',response);
                 dispatch({
                     type: QUOTE_REDUX_CONSTANTS.SET_SELECTED_QUOTE_DATA,
                     data:response.data.data,
