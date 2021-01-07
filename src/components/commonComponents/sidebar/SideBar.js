@@ -7,14 +7,13 @@ import home from '../../../assets/images/home.png';
 import group from '../../../assets/images/group.png';
 import rightQuote from '../../../assets/images/right-quote-sign.png';
 import gear from '../../../assets/images/gear.png';
-import { clearUserData } from '../../../redux/actions/authActions/AuthActions';
+import { logOutUser} from '../../../redux/actions/authActions/AuthActions';
 
 function SideBar() {
   const dispatch = useDispatch();
   const history = useHistory();
   const onLogOut = () => {
-    dispatch(clearUserData());
-    history.push('/login');
+    dispatch(logOutUser(()=>{history.push('/login')}));
   };
   return (
     <div>

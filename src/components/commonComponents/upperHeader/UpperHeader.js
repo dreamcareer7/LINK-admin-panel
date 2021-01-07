@@ -6,14 +6,13 @@ import search from '../../../assets/images/search.png';
 import user from '../../../assets/images/dummy-user.jpg';
 import downArrow from '../../../assets/images/arrow_down.png';
 import logout from '../../../assets/images/logout.svg';
-import {clearUserData} from "../../../redux/actions/authActions/AuthActions";
+import {logOutUser} from "../../../redux/actions/authActions/AuthActions";
 
 function UpperHeader() {
   const dispatch = useDispatch();
   const history = useHistory();
   const onLogOut = () => {
-    dispatch(clearUserData());
-    history.push('/login');
+    dispatch(logOutUser(()=>{history.push('/login')}));
   };
   return (
     <div className="upper-header-block">
@@ -29,7 +28,6 @@ function UpperHeader() {
         <label>Michelle Obama</label>
         <div className="down-arrow">
           <img src={downArrow}/>
-
           <div className="user-dropdown">
             <div className="dropdown-option">
               <img src={logout} />

@@ -6,7 +6,8 @@ import { getAllQuotes } from '../../../redux/actions/authActions/QuoteActions';
 import Quote from './Quote';
 
 function QuoteBank() {
-  const { docs: quotes } = useSelector(({ allQuotes }) => allQuotes);
+    const allQuotesData  = useSelector(({ allQuotes }) => allQuotes);
+    const quotes = allQuotesData && allQuotesData.docs ? allQuotesData.docs : [];
   const [data, setData] = useState(quotes);
   const dispatch = useDispatch();
   const history = useHistory();

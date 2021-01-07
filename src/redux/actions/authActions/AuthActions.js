@@ -29,7 +29,7 @@ export const loginUser = (emailAddress, password) => {
   };
 };
 
-export const logOutUser = () => {
+export const logOutUser = (callBack) => {
   return dispatch => {
     AuthService.logOutUser()
       .then(response => {
@@ -39,6 +39,7 @@ export const logOutUser = () => {
             type: AUTH_REDUX_CONSTANTS.USER_LOGOUT,
             data: null,
           });
+          callBack();
         }
       })
       .catch(e => {
@@ -69,15 +70,5 @@ export const getLogedInUser = () => {
           errorNotification('Internal server error');
         }
       });
-  };
-};
-
-export const clearUserData = () => {
-  return dispatch => {
-    clearAuthToken();
-    dispatch({
-      type: AUTH_REDUX_CONSTANTS.USER_LOGOUT,
-      data: null,
-    });
   };
 };
