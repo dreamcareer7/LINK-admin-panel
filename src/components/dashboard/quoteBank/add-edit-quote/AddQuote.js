@@ -64,7 +64,7 @@ function AddQuote() {
     } else if (quoteBy.toString().trim().length === 0) {
       errorNotification('Please enter author');
     } else {
-      const data = { quote, quoteBy, tags: tags.split(','), isPublished };
+      const data = { quote:quote.trim(), quoteBy:quoteBy.trim(), tags: tags.trim().split(','), isPublished };
       if (id) {
         // data.isPublished = isPublished;
         dispatch(updateQuote(id, data));

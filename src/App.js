@@ -39,8 +39,8 @@ function App() {
     <div className="App">
       <Notifications />
       <Router>
-        <Route>
-          <Switch>
+          <Route>
+            <Switch>
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/forgot" component={ForgotPasswordPage} />
             <Route exact path="/authAdmin/reset-password/:token" component={SetNewPassword} />
