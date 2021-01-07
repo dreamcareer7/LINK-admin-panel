@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import './upperHeader.scss';
@@ -11,7 +11,6 @@ import {clearUserData} from "../../../redux/actions/authActions/AuthActions";
 function UpperHeader() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [isDropDownOpen,setIsDropDownOPen] = useState(false);
   const onLogOut = () => {
     dispatch(clearUserData());
     history.push('/login');
@@ -24,19 +23,21 @@ function UpperHeader() {
           <img src={search} />{' '}
         </button>
       </div>
+      <div className='logout-area'>
       <div className="upper-header--rounded-block">
         <img className="user-dp" src={user} />
         <label>Michelle Obama</label>
-        <div className="down-arrow" onClick={()=>setIsDropDownOPen(!isDropDownOpen)}>
+        <div className="down-arrow">
           <img src={downArrow}/>
-          {isDropDownOpen ?
+
           <div className="user-dropdown">
             <div className="dropdown-option">
               <img src={logout} />
               <span onClick={onLogOut}>Logout</span>
             </div>
-          </div> : <></>}
+          </div>
         </div>
+      </div>
       </div>
     </div>
   );
