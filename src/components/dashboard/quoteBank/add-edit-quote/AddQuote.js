@@ -33,7 +33,9 @@ function AddQuote() {
     }
   }, [selectedQuoteData]);
   useEffect(()=>{
-   dispatch(getSingleQuote(id));
+    if(id) {
+      dispatch(getSingleQuote(id));
+    }
   },[]);
 
   const discardQuoteChanges = () => {
