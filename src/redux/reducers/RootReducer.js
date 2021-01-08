@@ -7,6 +7,7 @@ import { allQuotes, selectedQuote } from './QuoteReducer';
 import { editAdminReducer } from './AdminEditReducer';
 import { subscrberReducer } from './SubScribersReducer';
 import { Admin2FAReducer } from './2FaReducerReducer';
+import { dashboardReducer } from './dashboardReducer';
 
 import AUTH_REDUX_CONSTANTS from '../constants/AuthReduxConstant';
 
@@ -19,6 +20,7 @@ const appReducer = combineReducers({
   selectedQuote,
   subscrberReducer,
   Admin2FAReducer,
+  dashboardReducer,
 });
 
 const rootReducer = (state, action) => {

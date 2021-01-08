@@ -29,7 +29,7 @@ export const loginUser = (emailAddress, password) => {
   };
 };
 
-export const logOutUser = (callBack) => {
+export const logOutUser = callBack => {
   return dispatch => {
     AuthService.logOutUser()
       .then(response => {

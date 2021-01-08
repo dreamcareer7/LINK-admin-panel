@@ -2,21 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Bar } from 'react-chartjs-2';
 
-const state = {
-  labels: ['January', 'February', 'March', 'April', 'May'],
-  datasets: [
-    {
-      label: 'Rainfall',
-      backgroundColor: '#45b3e0',
-      borderColor: '#45b3e0',
-      borderWidth: 2,
-      data: [65, 59, 80, 81, 56],
-    },
-  ],
-};
-
 const BarChart = props => {
-  const { titles } = props;
+  const { titles, chartData } = props;
+  const state = {
+    labels: chartData && chartData.data.map(e => e._id),
+    datasets: [
+      {
+        label: 'Rainfall',
+        backgroundColor: '#4282fe',
+        borderColor: '#4282fe',
+        borderWidth: 2,
+        data: chartData && chartData.data.map(e => e.total),
+      },
+    ],
+  };
+
   return (
     <div>
       <Bar
@@ -30,6 +30,22 @@ const BarChart = props => {
           legend: {
             display: false,
           },
+          scales: {
+            xAxes: [
+              {
+                gridLines: {
+                  drawOnChartArea: false,
+                },
+              },
+            ],
+            yAxes: [
+              {
+                gridLines: {
+                  drawOnChartArea: false,
+                },
+              },
+            ],
+          },
         }}
       />
     </div>
@@ -38,5 +54,7 @@ const BarChart = props => {
 
 BarChart.propTypes = {
   titles: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  chartData: PropTypes.object.isRequired,
 };
 export default BarChart;

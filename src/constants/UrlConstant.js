@@ -29,11 +29,11 @@ export const SUBSCRIBERS_URLS = {
 
 export const DASHBOARD_URLS = {
   DEAL_VALUE_DATA: `${BASE_URL}admin-analytics/deal-value`,
-  INDUSTRY_VALUE_DATA: `${BASE_URL}admin-analytics/deal-value`,
-  GENDER_VALUE_DATA: `${BASE_URL}admin-analytics/deal-value`,
-  SUBSCRIPTION_VALUE_DATA: `${BASE_URL}admin-analytics/deal-value`,
+  INDUSTRIES_VALUE_DATA: `${BASE_URL}admin-analytics/industries`,
+  GENDER_VALUE_DATA: `${BASE_URL}admin-analytics/gender`,
+  SUBSCRIPTION_VALUE_DATA: `${BASE_URL}admin-analytics/subscription`,
   OPPORTUNITY_VALUE_DATA: `${BASE_URL}admin-analytics/opportunities`,
-  COMPANY_VALUE_DATA: `${BASE_URL}admin-analytics/opportunities`,
+  COMPANY_VALUE_DATA: `${BASE_URL}admin-analytics/company-size`,
 };
 
 export const MANAGE_ADMIN_URLS = {
@@ -50,5 +50,5 @@ export const QUOTE_URLS = {
   DELETE_QUOTE_URL: `${BASE_URL}quote/delete-quote/`,
   ADD_QUOTE_URL: `${BASE_URL}quote/add-quote/`,
   UPDATE_QUOTE_URL: `${BASE_URL}quote/update-quote/`,
-  GET_SINGLE_QUOTE_URL:`${BASE_URL}quote/get-quote/`,
+  GET_SINGLE_QUOTE_URL: `${BASE_URL}quote/get-quote/`,
 };

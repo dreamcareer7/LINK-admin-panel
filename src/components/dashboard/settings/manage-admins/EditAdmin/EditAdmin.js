@@ -82,7 +82,7 @@ function EditAdmin() {
         }
       })
       .catch(e => {
-        errorNotification('Error', e);
+        errorNotification('Verification is failde. Please try again', e);
       });
   };
 

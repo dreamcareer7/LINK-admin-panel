@@ -1,9 +1,9 @@
 import React from 'react';
+import { Pie } from 'react-chartjs-2';
 import PropTypes from 'prop-types';
-import { Doughnut } from 'react-chartjs-2';
 
-const DoughnutChart = props => {
-  const { titles, chartData } = props;
+const CompanyChart = props => {
+  const { chartData } = props;
   const state = {
     labels: chartData && chartData.data.map(e => e._id),
     datasets: [
@@ -15,14 +15,15 @@ const DoughnutChart = props => {
       },
     ],
   };
+
   return (
     <div>
-      <Doughnut
+      <Pie
         data={state}
         options={{
           title: {
             display: true,
-            text: titles,
+            text: 'Company Size',
             fontSize: 20,
           },
           legend: {
@@ -35,9 +36,8 @@ const DoughnutChart = props => {
   );
 };
 
-DoughnutChart.propTypes = {
-  titles: PropTypes.string.isRequired,
+CompanyChart.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   chartData: PropTypes.object.isRequired,
 };
-export default DoughnutChart;
+export default CompanyChart;
