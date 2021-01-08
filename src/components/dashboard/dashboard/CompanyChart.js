@@ -25,6 +25,7 @@ const CompanyChart = props => {
             display: true,
             text: 'Company Size',
             fontSize: 20,
+            fontColor: 'black',
           },
           legend: {
             display: true,

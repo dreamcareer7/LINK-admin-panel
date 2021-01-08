@@ -25,10 +25,14 @@ const BarChart = props => {
           title: {
             display: true,
             text: titles,
-            fontSize: 20,
+            fontSize: 30,
+            fontColor:'black'
           },
           legend: {
             display: false,
+            labels: {
+              fontColor: 'black',
+            },
           },
           scales: {
             xAxes: [
@@ -36,12 +40,18 @@ const BarChart = props => {
                 gridLines: {
                   drawOnChartArea: false,
                 },
+                ticks: {
+                  fontColor: 'black', // this here
+                },
               },
             ],
             yAxes: [
               {
                 gridLines: {
                   drawOnChartArea: false,
+                },
+                ticks: {
+                  fontColor: 'black', // this here
                 },
               },
             ],

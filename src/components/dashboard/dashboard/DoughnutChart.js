@@ -24,6 +24,7 @@ const DoughnutChart = props => {
             display: true,
             text: titles,
             fontSize: 20,
+            fontColor: 'black',
           },
           legend: {
             display: true,
