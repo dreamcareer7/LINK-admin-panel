@@ -6,7 +6,6 @@ import QUOTE_REDUX_CONSTANTS from '../../constants/QuoteReduxConstant';
 export const getAllQuotes = dispatch => {
   QuoteServices.getAllQuotes(1, 500)
     .then(response => {
-        console.log('response quotes=>',response)
       if (response.data.status === 'SUCCESS') {
         dispatch({
           type: QUOTE_REDUX_CONSTANTS.ALL_QUOTE,
@@ -43,7 +42,6 @@ export const getSingleQuote = id => {
     return dispatch => {
         QuoteServices.getSingleQuote(id)
             .then((response) => {
-                console.log('response of get single quote=>',response);
                 dispatch({
                     type: QUOTE_REDUX_CONSTANTS.SET_SELECTED_QUOTE_DATA,
                     data:response.data.data,
