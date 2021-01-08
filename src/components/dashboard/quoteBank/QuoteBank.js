@@ -11,6 +11,8 @@ function QuoteBank() {
   const [data, setData] = useState(quotes);
   const dispatch = useDispatch();
   const history = useHistory();
+ console.log("allQuotesData=>",allQuotesData);
+ console.log("quotes=>",quotes);
 
   useEffect(() => {
     dispatch(getAllQuotes);
@@ -72,8 +74,9 @@ function QuoteBank() {
           </div>
         </div>
       </div>
+
       <div className="no-of-results-in-display">Showing 1-20 of 357 results</div>
-      <div className="quote-table">
+      {quotes.length !== 0 ?<div className="quote-table">
         <div className="tr heading">
           <div className="td quote">Quote</div>
           <div className="td author">Author</div>
@@ -82,7 +85,7 @@ function QuoteBank() {
           <div className="td action" />
         </div>
         {data && data.map(quote => <Quote key={quote._id} quote={quote} />)}
-      </div>
+      </div>:<h1>No quote data available</h1>}
     </div>
   );
 }
