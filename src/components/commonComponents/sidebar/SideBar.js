@@ -7,13 +7,17 @@ import home from '../../../assets/images/home.png';
 import group from '../../../assets/images/group.png';
 import rightQuote from '../../../assets/images/right-quote-sign.png';
 import gear from '../../../assets/images/gear.png';
-import { logOutUser} from '../../../redux/actions/authActions/AuthActions';
+import { logOutUser } from '../../../redux/actions/authActions/AuthActions';
 
 function SideBar() {
   const dispatch = useDispatch();
   const history = useHistory();
   const onLogOut = () => {
-    dispatch(logOutUser(()=>{history.push('/login')}));
+    dispatch(
+      logOutUser(() => {
+        history.push('/login');
+      }),
+    );
   };
   return (
     <div>
@@ -37,7 +41,7 @@ function SideBar() {
           </div>
 
           <div className="menu-item">
-            <NavLink  className="menu-link"  to="/quoteBank" replace>
+            <NavLink className="menu-link" to="/quoteBank" replace>
               <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
             </NavLink>
           </div>

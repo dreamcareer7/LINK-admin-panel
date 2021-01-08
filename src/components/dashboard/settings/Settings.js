@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './settings.scss';
 import ErrorMessages from './error-messages/ErrorMessages';
 import ManageAdmins from './manage-admins/ManageAdmins';
 
 function Settings() {
+  const history = useHistory();
   const [activeComponent, setActiveComponent] = React.useState(<ErrorMessages key="error" />);
   const [keys, setKeys] = useState('error');
 
@@ -33,7 +35,11 @@ function Settings() {
           </div>
         </div>
         {keys === 'manage' ? (
-          <div style={{ float: 'right' }} className="button success-button">
+          <div
+            style={{ float: 'right' }}
+            className="button success-button"
+            onClick={() => history.push('/addAdmin')}
+          >
             ADD ADMIN
           </div>
         ) : (

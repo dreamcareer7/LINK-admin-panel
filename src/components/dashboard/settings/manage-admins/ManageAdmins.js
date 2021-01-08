@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteUser,
@@ -11,14 +12,19 @@ import './manage-admins.scss';
 
 const ManageAdmins = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const manageAdminData = useSelector(state => state.manageAdmin);
-  const token = localStorage.getItem('userToken');
   useEffect(() => {
-    dispatch(getAllAdmins(token));
+    dispatch(getAllAdmins());
   }, []);
 
   const onDelete = userId => {
     dispatch(deleteUser(userId));
+  };
+
+  const onEditAdmin = userId => {
+    console.log(userId);
+    history.push(`/settings/${userId}`);
   };
 
   return (
@@ -49,7 +55,12 @@ const ManageAdmins = () => {
                       <div className="td">{value && value.phone}</div>
                     </div>
                     <div className="action-cell">
-                      <img className="mr-5" src={edit} alt="" />
+                      <img
+                        className="mr-5"
+                        src={edit}
+                        alt=""
+                        onClick={() => onEditAdmin(value._id)}
+                      />
                       <img src={bin} alt="" onClick={() => onDelete(value._id)} />
                     </div>
                   </div>
@@ -86,7 +97,7 @@ const ManageAdmins = () => {
                       <div className="td">{val && val.phone}</div>
                     </div>
                     <div className="action-cell">
-                      <img className="mr-5" src={edit} />
+                      <img className="mr-5" src={edit} onClick={() => onEditAdmin(val._id)} />
                       <img src={bin} onClick={() => onDelete(val._id)} />
                     </div>
                   </div>

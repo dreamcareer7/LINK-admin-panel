@@ -9,7 +9,6 @@ import './error-messages.scss';
 function ErrorMessages() {
   const dispatch = useDispatch();
   const errorData = useSelector(state => state.errorMessage);
-  console.log(errorData);
   const [error, setError] = useState({
     title: '',
     text: '',
@@ -20,13 +19,10 @@ function ErrorMessages() {
     dispatch(getAllErrorMessage());
   }, []);
 
-  const onErrorChange = (e, id) => {
+  const onErrorChange = id => {
     // console.log('onErrorChange', e.currentTarget.textContent, id);
-    const titles = document.getElementById('title').innerHTML;
-    const errorText = document.getElementById('text').innerHTML;
-    console.log(titles);
-    const tmpArr = e.currentTarget.textContent;
-    console.log('1 onErrorChange', tmpArr, userId);
+    const titles = document.getElementById('title').textContent;
+    const errorText = document.getElementById('text').textContent;
     setUserId(id);
     setError({
       title: titles,
@@ -42,14 +38,14 @@ function ErrorMessages() {
   return (
     <>
       <div className="error-message-list">
-        {errorData &&
-          errorData.map(value => (
-            <React.Fragment key={value._id}>
-              {typeof errorData !== 'undefined' && errorData.length > 0 ? (
+        {errorData && errorData.length > 0 ? (
+          <>
+            {errorData.map(value => (
+              <React.Fragment key={value._id}>
                 <div
                   contentEditable="true"
                   suppressContentEditableWarning="true"
-                  onInput={e => onErrorChange(e, value._id)}
+                  onInput={() => onErrorChange(value._id)}
                   className="common-input error-message"
                 >
                   <div
@@ -63,11 +59,12 @@ function ErrorMessages() {
                     {value && value.text && value.text}{' '}
                   </div>
                 </div>
-              ) : (
-                <div className="common-content">Error Message Empty</div>
-              )}
-            </React.Fragment>
-          ))}
+              </React.Fragment>
+            ))}
+          </>
+        ) : (
+          <div className="common-content">Error Message Empty</div>
+        )}
       </div>
       {errorData && errorData.length > 0 && (
         <div>

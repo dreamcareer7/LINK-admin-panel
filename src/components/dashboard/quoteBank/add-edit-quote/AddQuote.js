@@ -86,12 +86,7 @@ function AddQuote() {
       </div>
       <div className="add-quote-block">
         <div className="common-title mb-5">Quote</div>
-        <textarea
-          rows="3"
-          className="common-input"
-          value={quote}
-          onChange={e => setQuote(e.target.value)}
-        />
+        <textarea rows="3" className="common-input" value={quote} onChange={e => e.target.value} />
       </div>
       <div className="add-edit-quote-block">
         <div className="common-title mb-5">

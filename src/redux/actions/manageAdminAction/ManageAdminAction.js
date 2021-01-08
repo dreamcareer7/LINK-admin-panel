@@ -16,11 +16,75 @@ export const getAllAdmins = () => {
       })
       .catch(e => {
         if (e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('sss It seems like server is down, Please try after sometime.');
         } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
+  };
+};
+
+export const getAdminById = id => {
+  return dispatch => {
+    ManageAdminService.getAdmin(id)
+      .then(response => {
+        if (response.data.status === 'SUCCESS') {
+          dispatch({
+            type: ADMIN_REDUX_CONSTANTS.GET_ADMIN_BY_ID,
+            data: response.data.data,
+          });
+        }
+      })
+      .catch(() => errorNotification('Error during Geting Admin'));
+  };
+};
+
+export const editAdminById = (id, data) => {
+  return async dispatch => {
+    await ManageAdminService.editAdmin(id, data)
+      .then(response => {
+        if (response.data.status === 'SUCCESS') {
+          dispatch({
+            type: ADMIN_REDUX_CONSTANTS.UPDATE_ADMIN,
+            data: response.data.data,
+          });
+          successNotification('Admin Updeted successfully');
+        }
+      })
+      .catch(e => {
+        return Promise.reject(e);
+      });
+  };
+};
+
+export const addAdmin = data => {
+  return dispatch => {
+    ManageAdminService.addAdmin(data)
+      .then(res => {
+        if (res.data.status === 'SUCCESS') {
+          dispatch({
+            type: ADMIN_REDUX_CONSTANTS.ADD_NEW_ADMIN,
+            data: res.data.data,
+          });
+          successNotification('Admin added successfully');
+        }
+      })
+      .catch(() => errorNotification('Error during adding Admin'));
+  };
+};
+
+export const generate2FA = () => {
+  return dispatch => {
+    ManageAdminService.generate2FA()
+      .then(response => {
+        if (response.data.status === 'SUCCESS') {
+          dispatch({
+            type: ADMIN_REDUX_CONSTANTS.GENERATE_2FA,
+            data: response.data.data,
+          });
+        }
+      })
+      .catch(() => errorNotification('Error during 2FA'));
   };
 };
 

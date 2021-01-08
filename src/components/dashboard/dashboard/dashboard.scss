@@ -1,0 +1,56 @@
+.action-buttons {
+  display: flex;
+  align-items: center;
+}
+.sub-type {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mt-40{
+  margin-top: 40;
+}
+.filter-action input {
+  min-width: 30px !important;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 0 10px;
+}
+
+.column-100 {
+  float: left;
+  width: 100%;
+  padding: 50 10px;
+}
+.row {margin: 0 -5px;}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+.bar{
+  padding: 130px;
+  canvas{
+    width: 100% !important;
+    height: 500px !important;
+  }
+}

@@ -1,9 +1,17 @@
-@import "src/styles/index";
+@import 'src/styles/index';
 
 .edit-admin-container {
   width: 70%;
   min-width: 700px;
   max-width: 900px;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+
+.text-2fa {
+  color: $info-color;
+  font-weight: 700;
 }
 
 .DP-image {
@@ -59,8 +67,8 @@
   margin-top: 10px;
 
   input {
-    margin-right: 10px;
-    padding: 7px 10px;
+    width: 50px !important;
+    height: 23px;
   }
 
   button {

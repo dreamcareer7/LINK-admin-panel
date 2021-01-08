@@ -15,11 +15,8 @@ export const getAllErrorMessage = () => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
-          errorNotification('Internal server error');
-        }
+        errorNotification('Error during updating');
+        return Promise.reject(e);
       });
   };
 };

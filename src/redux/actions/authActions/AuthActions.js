@@ -72,3 +72,29 @@ export const getLogedInUser = () => {
       });
   };
 };
+
+export const configure2FA = data => {
+  return async dispatch => {
+    AuthService.configure2FA(data)
+      .then(res => {
+        if (res.data.status === 'SUCCESS') {
+          dispatch({
+            type: AUTH_REDUX_CONSTANTS.CONFIGURE_2FA,
+          });
+        }
+      })
+      .catch(e => {
+        return Promise.reject(e);
+      });
+  };
+};
+
+export const clearUserData = () => {
+  return dispatch => {
+    clearAuthToken();
+    dispatch({
+      type: AUTH_REDUX_CONSTANTS.USER_LOGOUT,
+      data: null,
+    });
+  };
+};
