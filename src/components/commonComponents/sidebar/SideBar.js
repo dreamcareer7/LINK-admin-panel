@@ -7,7 +7,6 @@ import group from '../../../assets/images/group.png';
 import rightQuote from '../../../assets/images/right-quote-sign.png';
 import gear from '../../../assets/images/gear.png';
 
-
 function SideBar() {
   return (
     <div>

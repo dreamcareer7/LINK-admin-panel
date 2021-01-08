@@ -4,7 +4,8 @@ import './add-quote.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addQuote,
-  deleteQuote, getSingleQuote,
+  deleteQuote,
+  getSingleQuote,
   updateQuote,
 } from '../../../../redux/actions/authActions/QuoteActions';
 import { errorNotification } from '../../../../constants/Toast';
@@ -32,11 +33,11 @@ function AddQuote() {
       );
     }
   }, [selectedQuoteData]);
-  useEffect(()=>{
-    if(id) {
+  useEffect(() => {
+    if (id) {
       dispatch(getSingleQuote(id));
     }
-  },[]);
+  }, []);
 
   const discardQuoteChanges = () => {
     setQuote('');
@@ -66,7 +67,12 @@ function AddQuote() {
     } else if (quoteBy.toString().trim().length === 0) {
       errorNotification('Please enter author');
     } else {
-      const data = { quote:quote.trim(), quoteBy:quoteBy.trim(), tags: tags.trim().split(','), isPublished };
+      const data = {
+        quote: quote.trim(),
+        quoteBy: quoteBy.trim(),
+        tags: tags.trim().split(','),
+        isPublished,
+      };
       if (id) {
         // data.isPublished = isPublished;
         dispatch(updateQuote(id, data));
@@ -88,7 +94,12 @@ function AddQuote() {
       </div>
       <div className="add-quote-block">
         <div className="common-title mb-5">Quote</div>
-        <textarea rows="3" className="common-input" value={quote} onChange={e => setQuote(e.target.value)} />
+        <textarea
+          rows="3"
+          className="common-input"
+          value={quote}
+          onChange={e => setQuote(e.target.value)}
+        />
       </div>
       <div className="add-edit-quote-block">
         <div className="common-title mb-5">

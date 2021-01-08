@@ -6,8 +6,8 @@ import { getAllQuotes } from '../../../redux/actions/authActions/QuoteActions';
 import Quote from './Quote';
 
 function QuoteBank() {
-    const allQuotesData  = useSelector(({ allQuotes }) => allQuotes);
-    const quotes = allQuotesData && allQuotesData.docs ? allQuotesData.docs : [];
+  const allQuotesData = useSelector(({ allQuotes }) => allQuotes);
+  const quotes = allQuotesData && allQuotesData.docs ? allQuotesData.docs : [];
   const [data, setData] = useState(quotes);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -73,16 +73,20 @@ function QuoteBank() {
       </div>
 
       <div className="no-of-results-in-display">Showing 1-20 of 357 results</div>
-      {quotes.length !== 0 ?<div className="quote-table">
-        <div className="tr heading">
-          <div className="td quote">Quote</div>
-          <div className="td author">Author</div>
-          <div className="td tags">Tags</div>
-          <div className="td status">Status</div>
-          <div className="td action" />
+      {quotes.length !== 0 ? (
+        <div className="quote-table">
+          <div className="tr heading">
+            <div className="td quote">Quote</div>
+            <div className="td author">Author</div>
+            <div className="td tags">Tags</div>
+            <div className="td status">Status</div>
+            <div className="td action" />
+          </div>
+          {data && data.map(quote => <Quote key={quote._id} quote={quote} />)}
         </div>
-        {data && data.map(quote => <Quote key={quote._id} quote={quote} />)}
-      </div>:<div>No quote data available</div>}
+      ) : (
+        <div>No quote data available</div>
+      )}
     </div>
   );
 }

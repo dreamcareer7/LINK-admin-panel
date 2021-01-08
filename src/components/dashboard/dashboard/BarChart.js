@@ -4,6 +4,7 @@ import { Bar } from 'react-chartjs-2';
 
 const BarChart = props => {
   const { titles, chartData } = props;
+  console.log(chartData && chartData.data.map(e => e.total));
   const state = {
     labels: chartData && chartData.data.map(e => e._id),
     datasets: [
@@ -12,6 +13,7 @@ const BarChart = props => {
         backgroundColor: '#4282fe',
         borderColor: '#4282fe',
         borderWidth: 2,
+        spanGaps: true,
         data: chartData && chartData.data.map(e => e.total),
       },
     ],
@@ -26,7 +28,7 @@ const BarChart = props => {
             display: true,
             text: titles,
             fontSize: 30,
-            fontColor:'black'
+            fontColor: 'black',
           },
           legend: {
             display: false,
@@ -52,6 +54,7 @@ const BarChart = props => {
                 },
                 ticks: {
                   fontColor: 'black', // this here
+                  beginAtZero: true,
                 },
               },
             ],

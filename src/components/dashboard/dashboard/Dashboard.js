@@ -16,6 +16,7 @@ import {
 
 const Dashboard = () => {
   const chartData = useSelector(state => state.dashboardReducer);
+  console.log(chartData);
   const [subscription, setSubscrptionType] = useState('MONTHLY');
   const [today, setToday] = useState(moment().format('yyyy-MM-DD'));
   const [previousDate, setPreviusDate] = useState(
@@ -178,7 +179,7 @@ const Dashboard = () => {
           <div className="column-100">
             <div className="card bar">
               <BarChart
-                chartData={chartData && chartData.opportunityValue && chartData.opportunityValue}
+                chartData={chartData && chartData.dealValue && chartData.opportunityValue}
                 titles="Opportunity Stages"
               />
             </div>
