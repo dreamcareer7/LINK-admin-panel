@@ -7,7 +7,7 @@
   justify-content: space-between;
 }
 
-.mt-40{
+.mt-40 {
   margin-top: 40;
 }
 .filter-action input {
@@ -21,14 +21,15 @@
 }
 
 .column-100 {
-  float: left;
   width: 100%;
-  padding: 50 10px;
+  padding: 10px 10px;
 }
-.row {margin: 0 -5px;}
+.row {
+  margin: 0 -5px;
+}
 
 .row:after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
@@ -47,9 +48,15 @@
   text-align: center;
   background-color: #f1f1f1;
 }
-.bar{
-    canvas{
+.bar {
+  canvas {
     width: 100% !important;
-    height: 500px !important;
+    // height: 500px !important;
   }
+}
+.container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  height: 400px;
+  position: relative;
 }

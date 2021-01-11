@@ -20,12 +20,41 @@ const DoughnutChart = props => {
       <Doughnut
         data={state}
         options={{
+          plugins: {
+            labels: {
+              render: 'value',
+            },
+          },
           title: {
             display: true,
             text: titles,
             fontSize: 20,
             fontColor: 'black',
           },
+          // animation: {
+          //   onComplete: e => {
+          //     const chartInstance = e.chart;
+          //     const { ctx } = chartInstance;
+          //     console.log(e.chart);
+          //     ctx.font = Chart.helpers.fontString(
+          //       Chart.defaults.global.defaultFontSize,
+          //       Chart.defaults.global.defaultFontStyle,
+          //       Chart.defaults.global.defaultFontFamily,
+          //     );
+          //     ctx.textAlign = 'center';
+          //     ctx.textBaseline = 'bottom';
+
+          //     state.datasets.forEach((dataset, i) => {
+          //       const meta = chartInstance.controller.getDatasetMeta(i);
+          //       meta.data.forEach((bar, index) => {
+          //         if (dataset.data[index] > 0) {
+          //           const data = dataset.data[index];
+          //           ctx.fillText(`${data}`, bar._model.x, bar._model.y);
+          //         }
+          //       });
+          //     });
+          //   },
+          // },
           legend: {
             display: true,
             position: 'left',
