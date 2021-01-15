@@ -6,7 +6,10 @@ import search from '../../../assets/images/search.png';
 import user from '../../../assets/images/dummy-user.jpg';
 import downArrow from '../../../assets/images/arrow_down.png';
 import logout from '../../../assets/images/logout.svg';
+import account from '../../../assets/images/account.svg';
+import help from '../../../assets/images/lifesaver.svg';
 import { logOutUser } from '../../../redux/actions/authActions/AuthActions';
+import Account from './Account/Account';
 
 function UpperHeader() {
   const dispatch = useDispatch();
@@ -33,6 +36,14 @@ function UpperHeader() {
           <div className="down-arrow">
             <img src={downArrow} />
             <div className="user-dropdown">
+              <div className="dropdown-option">
+                <img src={account} />
+                <span onClick={Account}>Account</span>
+              </div>
+              <div className="dropdown-option">
+                <img src={help} />
+                <span onClick={Account}>Help & Support</span>
+              </div>
               <div className="dropdown-option">
                 <img src={logout} />
                 <span onClick={onLogOut}>Logout</span>
