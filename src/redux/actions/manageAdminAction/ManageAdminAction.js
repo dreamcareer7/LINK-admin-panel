@@ -91,12 +91,14 @@ export const generate2FA = () => {
 export const deleteUser = id => {
   return dispatch => {
     ManageAdminService.deleteUser(id)
-      .then(() => {
-        dispatch({
-          type: ADMIN_REDUX_CONSTANTS.DELETE_ADMIN,
-          id,
-        });
-        successNotification('Admin deleted successfully');
+      .then(res => {
+        if (res.data.status === 'SUCCESS') {
+          dispatch({
+            type: ADMIN_REDUX_CONSTANTS.DELETE_ADMIN,
+            id,
+          });
+          successNotification('Admin deleted successfully');
+        }
       })
       .catch(() => errorNotification('Error during deleting Admin'));
   };

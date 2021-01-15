@@ -1,0 +1,78 @@
+@import 'src/styles/index';
+
+.edit-sub-container {
+  width: 70%;
+  min-width: 700px;
+  max-width: 900px;
+}
+
+.mt-33 {
+  margin-top: 33px;
+}
+
+.DP-image {
+  height: 40px;
+  width: 40px;
+  min-height: 40px;
+  min-width: 40px;
+  margin: 20px 0 15px 0;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+.sub-tag {
+  .monthly {
+    background: #12143f;
+    color: #fff;
+    border-radius: 14px;
+    font-size: 10px;
+    padding: 5px;
+    height: 20px;
+    width: 77px;
+    text-align: center;
+  }
+  .act {
+    background: #43c643;
+    color: #fff;
+    padding: 5px;
+    height: 20px;
+    border-radius: 14px;
+    font-size: 10px;
+    width: 77px;
+    text-align: center;
+    margin-left: 5px;
+  }
+  .vic {
+    background: #f59e13;
+    color: #fff;
+    padding: 7px;
+    padding: 5px;
+    height: 20px;
+    border-radius: 14px;
+    font-size: 10px;
+    width: 77px;
+    text-align: center;
+    margin-left: 5px;
+  }
+}
+
+.column-5 {
+  float: left;
+  width: 5%;
+  padding: 0 10px;
+}
+
+.column-95 {
+  float: right;
+  width: 95%;
+  padding: 0 10px;
+}
+
+.admin-detail {
+  display: flex;
+
+  div {
+    flex: 0 0 25%;
+    min-width: 140px;
+  }
+}

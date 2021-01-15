@@ -25,11 +25,13 @@ export const updateErrorMessage = (id, data) => {
   return dispatch => {
     SettingServices.updateErrorMessage(id, data)
       .then(res => {
-        dispatch({
-          type: SETTING_REDUX_CONSTANTS.UPDATE_ERROR_MESSAGE,
-          data: res.data,
-        });
-        successNotification('Error Message updated successfully');
+        if (res.data.status === 'SUCCESS') {
+          dispatch({
+            type: SETTING_REDUX_CONSTANTS.UPDATE_ERROR_MESSAGE,
+            data: res.data,
+          });
+          successNotification('Error Message updated successfully');
+        }
       })
       .catch(() => errorNotification('Error during updating quote'));
   };

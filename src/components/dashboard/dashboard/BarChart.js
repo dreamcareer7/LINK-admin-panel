@@ -30,7 +30,6 @@ const BarChart = props => {
               render: 'value',
             },
           },
-          active:[],
           tooltips: { enabled: false },
           hover: { mode: null },
           maintainAspectRatio: false,
@@ -56,7 +55,7 @@ const BarChart = props => {
               ctx.font = Chart.helpers.fontString(
                 Chart.defaults.global.defaultFontSize,
                 Chart.defaults.global.defaultFontStyle,
-                Chart.defaults.global.defaultFontFamily,
+                Chart.defaults.global.defaultFontFamily
               );
               ctx.textAlign = 'center';
               ctx.textBaseline = 'bottom';

@@ -1,18 +1,33 @@
 import React, { useEffect } from 'react';
+import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllSubscribers } from '../../../redux/actions/subscribersAction/SubscribersActuion';
-import User from '../../../assets/images/dummy-user.jpg';
+import { useHistory } from 'react-router-dom';
+import {
+  deleteSubscribers,
+  getAllSubscribers,
+} from '../../../redux/actions/subscribersAction/SubscribersActuion';
 import edit from '../../../assets/images/pencil.png';
 import bin from '../../../assets/images/delete.png';
+import User from '../../../assets/images/avatar.jpg';
 import './subscribers.scss';
 
 function Subscribers() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const allSubscribers = useSelector(state => state.subscrberReducer);
   console.log(allSubscribers);
   useEffect(() => {
-    dispatch(getAllSubscribers({ page: 1, limit: 2 }));
+    dispatch(getAllSubscribers({ page: 1, limit: 500 }));
   }, []);
+
+  const onEditSub = subId => {
+    history.push(`/subscribers/${subId}`);
+  };
+
+  const onDeleteSub = subId => {
+    console.log('sub', subId);
+    dispatch(deleteSubscribers(subId));
+  };
 
   return (
     <div>
@@ -30,7 +45,12 @@ function Subscribers() {
           <div className="filter">
             <div className="filter-label">Subscription Type:</div>
             <div className="filter-action">
-              <select />
+              <select>
+                <option value="asc">Free Trial</option>
+                <option value="dsc">Monthly</option>
+                <option value="dsc">Yearly</option>
+                <option value="dsc">Paused</option>
+              </select>
             </div>
           </div>
 
@@ -45,12 +65,9 @@ function Subscribers() {
           </div>
         </div>
         <div className="action-buttons">
-          <button type="button" className="button success-button">
+          {/* <button type="button" className="button success-button" onClick={() => history.push('/add-subscribers')}>
             ADD SUBSCRIBER
-          </button>
-          <button type="button" className="button primary-button">
-            DOWNLOAD
-          </button>
+          </button> */}
         </div>
       </div>
       <div>
@@ -72,18 +89,30 @@ function Subscribers() {
                   <div className="tr">
                     <div className="admin-table-details">
                       <div className="td name">
-                        <img src={User} />
+                        <img
+                          src={
+                            value && value.profilePicUrl && value.profilePicUrl
+                              ? value.profilePicUrl
+                              : User
+                          }
+                        />
                         {value.firstName}
                       </div>
 
                       <div className="td">{value.email}</div>
                       <div className="td">{value.phone}</div>
                       <div className="td">{value.phone}</div>
-                      <div className="td">{value.phone}</div>
+                      <div className="td">Yearly</div>
+                      <div className="td">{moment(value.createdAt).format('L')}</div>
                     </div>
                     <div className="action-cell">
-                      <img className="mr-5" src={edit} alt="" />
-                      <img src={bin} alt="" />
+                      <img
+                        className="mr-5"
+                        src={edit}
+                        alt=""
+                        onClick={() => onEditSub(value._id)}
+                      />
+                      <img src={bin} alt="" onClick={() => onDeleteSub(value._id)} />
                     </div>
                   </div>
                 </div>

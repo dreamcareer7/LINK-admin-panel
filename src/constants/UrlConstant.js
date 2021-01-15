@@ -25,6 +25,7 @@ export const SETTING_URLS = {
 
 export const SUBSCRIBERS_URLS = {
   GET_ALL_SUBSCRIBERS: `${BASE_URL}subscribers/get-subscribers`,
+  DELETE_SUBSCRIPTION: `${BASE_URL}subscribers/delete-subscription/`,
 };
 
 export const DASHBOARD_URLS = {

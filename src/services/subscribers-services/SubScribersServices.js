@@ -6,6 +6,7 @@ const SubscriberService = {
     ApiService.getData(
       `${SUBSCRIBERS_URLS.GET_ALL_SUBSCRIBERS}?page=${data.page}&limit=${data.limit}`
     ),
+  deleteSub: id => ApiService.deleteData(SUBSCRIBERS_URLS.DELETE_SUBSCRIPTION + id),
 };
 
 export default SubscriberService;

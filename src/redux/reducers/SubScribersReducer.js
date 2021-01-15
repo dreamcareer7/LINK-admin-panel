@@ -7,6 +7,9 @@ export const subscrberReducer = (state = null, action) => {
     case SUBSCRIBERS_REDUX_CONSTANTS.GET_ALL_SUBSCRIBERS:
       return action.data;
 
+    case SUBSCRIBERS_REDUX_CONSTANTS.DELETE_SUBSCRIBERS:
+      return { ...state, docs: state.docs.filter(sub => sub._id !== action.subId) };
+
     default:
       return state;
   }

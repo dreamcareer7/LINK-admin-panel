@@ -13,13 +13,16 @@ import Integrations from './components/dashboard/settings/integrations/Integrati
 
 import Layout from './components/commonComponents/layout/Layout';
 import Settings from './components/dashboard/settings/Settings';
-import Subscribers from './components/dashboard/subscribers/Subscribers';
+// import Subscribers from './components/dashboard/subscribers/Subscribers';
 import QuoteBank from './components/dashboard/quoteBank/QuoteBank';
 import EditAdmin from './components/dashboard/settings/manage-admins/EditAdmin/EditAdmin';
 import ManageAdmins from './components/dashboard/settings/manage-admins/ManageAdmins';
+import AddSubscribers from './components/dashboard/subscribers/EditSubscribers/EditSubscribers';
+import Subscribed from './components/dashboard/subscribers/subscribed';
 
 const PrivateRoute = ({ component, ...options }) => {
-  const isLoggedIn = localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0;
+  const isLoggedIn =
+    localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0;
   const finalComponent = isLoggedIn ? component : LoginPage;
   if (options.path === '/' && isLoggedIn) {
     return (
@@ -53,7 +56,8 @@ function App() {
             <Layout>
               <PrivateRoute exact path="/" />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute exact path="/subscribers" component={Subscribers} />
+              <PrivateRoute exact path="/subscribers" component={Subscribed} />
+              <PrivateRoute exact path="/subscribers/:subId" component={AddSubscribers} />
               <PrivateRoute exact path="/settings" component={Settings} />
               <PrivateRoute exact path="/error-message" component={ErrorMessages} />
               <PrivateRoute exact path="/integrations" component={Integrations} />
