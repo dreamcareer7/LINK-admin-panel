@@ -9,7 +9,6 @@ import logout from '../../../assets/images/logout.svg';
 import account from '../../../assets/images/account.svg';
 import help from '../../../assets/images/lifesaver.svg';
 import { logOutUser } from '../../../redux/actions/authActions/AuthActions';
-import Account from './Account/Account';
 
 function UpperHeader() {
   const dispatch = useDispatch();
@@ -20,6 +19,9 @@ function UpperHeader() {
         history.push('/login');
       })
     );
+  };
+  const onAccountClick = () => {
+    history.replace('/account');
   };
   return (
     <div className="upper-header-block">
@@ -36,17 +38,17 @@ function UpperHeader() {
           <div className="down-arrow">
             <img src={downArrow} />
             <div className="user-dropdown">
-              <div className="dropdown-option">
+              <div className="dropdown-option" onClick={onAccountClick}>
                 <img src={account} />
-                <span onClick={Account}>Account</span>
+                <span>Account</span>
               </div>
               <div className="dropdown-option">
                 <img src={help} />
-                <span onClick={Account}>Help & Support</span>
+                <span>Help & Support</span>
               </div>
-              <div className="dropdown-option">
+              <div className="dropdown-option" onClick={onLogOut}>
                 <img src={logout} />
-                <span onClick={onLogOut}>Logout</span>
+                <span>Logout</span>
               </div>
             </div>
           </div>
