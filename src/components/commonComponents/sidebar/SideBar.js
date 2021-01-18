@@ -2,10 +2,10 @@ import React from 'react';
 import './sidebar.scss';
 import { NavLink } from 'react-router-dom';
 import linkfluencer from '../../../assets/images/linkfluencer.png';
-import home from '../../../assets/images/home.png';
-import group from '../../../assets/images/group.png';
-import rightQuote from '../../../assets/images/right-quote-sign.png';
-import gear from '../../../assets/images/gear.png';
+import home from '../../../assets/images/home.svg';
+import group from '../../../assets/images/group.svg';
+import rightQuote from '../../../assets/images/right-quotation-mark.svg';
+import gear from '../../../assets/images/settings.svg';
 
 function SideBar() {
   return (
@@ -17,29 +17,21 @@ function SideBar() {
       </div>
       <div className="menu-bar">
         <div className="menu">
-          <div className="menu-item">
-            <NavLink className="menu-link" to="/dashboard" replace>
-              <img alt="home" src={home} /> <span>Dashboard</span>
-            </NavLink>
-          </div>
+          <NavLink className="menu-item" to="/dashboard" replace>
+            <img alt="home" src={home} /> <span>Dashboard</span>
+          </NavLink>
 
-          <div className="menu-item">
-            <NavLink className="menu-link" to="/subscribers" replace>
-              <img alt="subscribers" src={group} /> <span>Subscribers</span>
-            </NavLink>
-          </div>
+          <NavLink className="menu-item" to="/subscribers" replace>
+            <img alt="subscribers" src={group} /> <span>Subscribers</span>
+          </NavLink>
 
-          <div className="menu-item">
-            <NavLink className="menu-link" to="/quoteBank" replace>
-              <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
-            </NavLink>
-          </div>
+          <NavLink className="menu-item" to="/quoteBank" replace>
+            <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
+          </NavLink>
 
-          <div className="menu-item">
-            <NavLink className="menu-link" to="/settings" replace>
-              <img alt="settings" src={gear} /> <span>Settings</span>
-            </NavLink>
-          </div>
+          <NavLink className="menu-item" to="/settings" replace>
+            <img alt="settings" src={gear} /> <span>Settings</span>
+          </NavLink>
         </div>
         <div className="copyright">Copyright 2021. Linkfluencer Pvt. Ltd.</div>
       </div>

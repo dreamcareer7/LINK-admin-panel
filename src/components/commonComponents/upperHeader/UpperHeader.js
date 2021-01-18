@@ -33,9 +33,9 @@ function UpperHeader() {
           <div className="down-arrow">
             <img src={downArrow} />
             <div className="user-dropdown">
-              <div className="dropdown-option">
+              <div className="dropdown-option" onClick={onLogOut}>
                 <img src={logout} />
-                <span onClick={onLogOut}>Logout</span>
+                <span>Logout</span>
               </div>
             </div>
           </div>

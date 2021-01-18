@@ -3,6 +3,7 @@ import Invited from './Invited';
 import Subscribers from './Subscribers';
 
 import './subscribers.scss';
+import AddInvited from './AddInvited/AddInvited';
 
 const Subscribed = () => {
   const [activeComponent, setActiveComponent] = React.useState(<Subscribers key="error" />);
@@ -28,9 +29,18 @@ const Subscribed = () => {
             Invited
           </div>
         </div>
-        <button type="button" className="button primary-button">
-          DOWNLOAD
-        </button>
+        <div className="d-flex">
+          <button
+            type="button"
+            className="button success-button mr-10"
+            onClick={() => onChangeComponent(<AddInvited key="manage" />)}
+          >
+            ADD
+          </button>
+          <button type="button" className="button primary-button">
+            DOWNLOAD
+          </button>
+        </div>
       </div>
       <div className="">{activeComponent}</div>
     </>
