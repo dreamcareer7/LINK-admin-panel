@@ -31,7 +31,7 @@ const BarChart = props => {
             },
           },
           tooltips: { enabled: false },
-          hover: { mode: null },
+          hover: { mode: null, animationDuration: 0 },
           maintainAspectRatio: false,
           responsive: true,
           title: {
