@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import linkFluencer from '../../../assets/images/linkfluencer.png';
+import showPass from '../../../assets/images/showPass.svg';
 import './login.scss';
 import user from '../../../assets/images/user.png';
 import padlock from '../../../assets/images/padlock.png';
-import hideInterface from '../../../assets/images/hide-interface-symbol.png';
+import hidePass from '../../../assets/images/hidePass.svg';
 import {
   checkForEmail,
   errorNotification,
@@ -72,7 +73,7 @@ function LoginPage() {
             <img
               alt="hide-pswrd"
               className="show-hide-pswrd"
-              src={showPassword ? user : hideInterface}
+              src={showPassword ? showPass : hidePass}
             />
           </button>
         </div>
