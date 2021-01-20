@@ -120,10 +120,9 @@ export const updateSubscribers = (id, data) => {
           successNotification('Subscribers updated successfully');
         }
       })
-      .catch(() => errorNotification('Error during updating Subscribers'));
+      .catch((e) => {console.log('error=>',e);errorNotification('Error during updating Subscribers');});
   };
 };
-
 export const deleteSubscribers = subId => {
   return async dispatch => {
     SubscriberService.deleteSub(subId)
@@ -136,6 +135,6 @@ export const deleteSubscribers = subId => {
           successNotification('Subscribers deleted successfully');
         }
       })
-      .catch(() => errorNotification('Error during deleting Subscribers'));
+      .catch((e) => {console.log("error->",e);errorNotification('Error during deleting Subscribers')});
   };
 };

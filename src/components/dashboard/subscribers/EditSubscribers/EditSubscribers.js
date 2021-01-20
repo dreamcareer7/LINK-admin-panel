@@ -7,9 +7,10 @@ import {
   deleteSubscribers,
   getCompanySize,
   getIndutries,
-  getSubscribersById,
+  getSubscribersById, updateSubscribers,
 } from '../../../../redux/actions/subscribersAction/SubscribersAction';
 import './Editsubscribers.scss';
+import {errorNotification} from "../../../../constants/Toast";
 
 const AddSubscribers = () => {
   const { subId } = useParams();
@@ -29,12 +30,11 @@ const AddSubscribers = () => {
     ave_dealvalue: '',
     industry: '',
     company_size: '',
-    vic_sub: '',
+    vicSub: 'true',
     status: '',
   });
 
   const updateField = e => {
-    console.log(e.target.value);
     setFormValue({
       ...form,
       [e.target.name]: e.target.value,
@@ -50,7 +50,7 @@ const AddSubscribers = () => {
     if (data && data.client) {
       if (data.client && data.client) {
         setFormValue({
-          username: data.client.firstName && data.client.firstName,
+          username: data.client.firstName && `${data.client.firstName} ${data.client.lastName}` ,
           email: data.client.email && data.client.email,
           phone: data.client.phone && data.client.phone,
           subscription_date: moment(data.client.createdAt && data.client.createdAt).format(
@@ -63,7 +63,7 @@ const AddSubscribers = () => {
           ave_dealvalue: data.client.ave_dealvalue && data.client.ave_dealvalue,
           industry: data.client.industry && data.client.industry,
           company_size: data.client.company_size && data.client.company_size,
-          vic_sub: data.client.vic_sub && data.client.vic_sub,
+          vicSub: data.client.vicSub && data.client.vicSub,
           status: data.client.status && data.client.status,
         });
       }
@@ -80,28 +80,43 @@ const AddSubscribers = () => {
     data && data.client && data.client.ave_dealvalue,
     data && data.client && data.client.industry,
     data && data.client && data.client.company_size,
-    data && data.client && data.client.vic_sub,
+    data && data.client && data.client.vicSub,
     data && data.client && data.client.status,
   ]);
 
   const onSubmitSub = e => {
     e.preventDefault();
-    const formData = {
-      firstName: form.username,
-      email: form.email,
-      phone: form.phone,
-      industry: form.industry,
-      gender: form.gender,
-      companyLocation: form.location,
-      selectedPlan: {
-        currentPlan: form.sub_type,
-      },
-    };
-    console.log(formData);
-    // dispatch(updateSubscribers(subId, data));
+    const userName = form.username.split(' ');
+
+    if(form.industry === "none"){
+      errorNotification("Please enter industry");
+    }
+    else if(!form.location){
+      errorNotification("Please enter location");
+    }
+    else {
+      const formData = {
+        firstName: userName[0],
+        lastName: userName[1] || '',
+        email: form.email,
+        phone: form.phone,
+        industry: form.industry,
+        gender: form.gender,
+        companyLocation: form.location,
+        vicSub: form.vicSub,
+        selectedPlan: {
+          currentPlan: form.sub_type,
+        },
+      };
+      console.log(formData);
+      dispatch(updateSubscribers(subId, formData));
+      history.replace('/subscribers');
+    }
   };
 
-  const onDiscardChanges = () => {};
+  const onDiscardChanges = () => {
+    history.replace('/subscribers');
+  };
 
   const onDeleteSubscribers = () => {
     dispatch(deleteSubscribers(subId));
@@ -115,7 +130,7 @@ const AddSubscribers = () => {
           <span>/ EDIT / EDIT SUBSCRIBERS</span>
         </div>
         <div className="column-5">
-          <img className="DP-image" src={User} />
+          <img className="DP-image" src={data && data.client && data.client.profilePicUrl ? data.client.profilePicUrl :User} />
         </div>
         <div className="column-95">
           <div className="sub-tag d-flex mt-33">
@@ -123,7 +138,7 @@ const AddSubscribers = () => {
             <span className="act">ACTIVE</span>
             <span className="vic">VIC</span>
           </div>
-          <form onSubmit={onSubmitSub}>
+          <form>
             <div className="admin-detail mt-20">
               <div id="name" className="mr-20">
                 <div className="common-title mb-5">Name</div>
@@ -198,11 +213,7 @@ const AddSubscribers = () => {
               </div>
               <div className="mr-20">
                 <div className="common-title mb-5">Location</div>
-                <select name="location" onChange={updateField} className="common-input">
-                  <option>India</option>
-                  <option>Australia</option>
-                  <option>UAE</option>
-                </select>
+                <input type="text" name="location" onChange={updateField} className="common-input" value={form.location}/>
               </div>
               <div className="mr-20">
                 <div className="common-title mb-5">Subscription Type</div>
@@ -211,6 +222,7 @@ const AddSubscribers = () => {
                   value={form.sub_type}
                   onChange={updateField}
                   className="common-input"
+                  disabled
                 >
                   <option value="FREE_TRIAL">Free Trial</option>
                   <option value="MONTHLY">Monthly</option>
@@ -223,15 +235,12 @@ const AddSubscribers = () => {
             <div className="admin-detail mt-40">
               <div className="mr-20">
                 <div className="common-title mb-5">Average Deal Value</div>
-                <select name="ave_dealvalue" onChange={updateField} className="common-input">
-                  <option>$100-$200</option>
-                  <option>$300-$400</option>
-                  <option>$500-$1000</option>
-                </select>
+                <input type="text" name="ave_dealvalue" onChange={updateField} className="common-input" value={`${form.ave_dealvalue ? `$ ${form.ave_dealvalue}`: ' - ' }`} disabled={!form.ave_dealvalue}/>
               </div>
               <div className="mr-20">
                 <div className="common-title mb-5">Industry</div>
-                <select className="common-input" value={form.industry} name="industry">
+                <select className="common-input" value={form.industry} name="industry" onChange={updateField}>
+                  <option value="none">None</option>
                   {industries &&
                     industries.data &&
                     industries.data.map(value => <option key={value}>{value}</option>)}
@@ -254,9 +263,9 @@ const AddSubscribers = () => {
             <div className="admin-detail mt-40">
               <div className="mr-20" onChange={updateField}>
                 <div className="common-title mb-5">VIC Subscriber?</div>
-                <select className="common-input" onChange={updateField} name="vic_sub">
-                  <option>Yes</option>
-                  <option>No</option>
+                <select className="common-input" onChange={updateField} name="vicSub" value={form.vicSub}>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
                 </select>
               </div>
               <div className="mr-20">
@@ -268,7 +277,7 @@ const AddSubscribers = () => {
               </div>
             </div>
             <div className="buttons-row mt-40">
-              <button type="submit" className="button success-button mr-10">
+              <button type="submit" className="button success-button mr-10" onClick={onSubmitSub}>
                 SAVE CHANGES
               </button>
               <button

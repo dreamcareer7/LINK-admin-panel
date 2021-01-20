@@ -67,10 +67,26 @@ export const subscrberReducer = (state = initialValue, action) => {
       };
 
     case SUBSCRIBERS_REDUX_CONSTANTS.UPDATE_SUBSCRIBERS:
-      return { ...state, docs: state.docs.filter(sub => sub._id !== action.subId) };
+      return {
+        ...state,
+        getAllSub: {
+          ...state.getAllSub,
+          data: action.data,
+        },
+      };
 
     case SUBSCRIBERS_REDUX_CONSTANTS.DELETE_SUBSCRIBERS:
-      return state;
+      console.log('state=>',state);
+      return {
+        ...state,
+        getAllSub: {
+          ...state.getAllSub,
+          data: {...state.getAllSub.data,
+            docs:
+                state.getAllSub.data.docs.filter(e=>e._id !== action.subId),
+          }
+        },
+      };
 
     default:
       return state;
