@@ -2,9 +2,9 @@ import { SUBSCRIBERS_URLS } from '../../constants/UrlConstant';
 import ApiService from '../api-service/ApiService';
 
 const SubscriberService = {
-  getAllSubscribers: data =>
+  getAllSubscribers: (page,limit) =>
     ApiService.getData(
-      `${SUBSCRIBERS_URLS.GET_ALL_SUBSCRIBERS}?page=${data.page}&limit=${data.limit}`
+      `${SUBSCRIBERS_URLS.GET_ALL_SUBSCRIBERS}?page=${page}&limit=${limit}`
     ),
   getIndustry: () => ApiService.getData(SUBSCRIBERS_URLS.GET_INDUSTRY),
   getInvitee: () => ApiService.getData(SUBSCRIBERS_URLS.INVITEE_SUBSCRIBERS),

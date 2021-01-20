@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useMemo} from 'react';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Pagination from "react-js-pagination";
 import {
   deleteSubscribers,
   getAllSubscribers,
@@ -15,10 +16,17 @@ function Subscribers() {
   const dispatch = useDispatch();
   const history = useHistory();
   const allSubscribers = useSelector(state => state.subscrberReducer.getAllSub);
+  const docs = useMemo(
+      () => (allSubscribers && allSubscribers.data ? allSubscribers.data : []),
+      [allSubscribers]
+  );
+  const subScribers = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
   useEffect(() => {
-    dispatch(getAllSubscribers({ page: 1, limit: 500 }));
+    dispatch(getAllSubscribers(1));
   }, []);
 
+
+  const activePage = useMemo(() => (allSubscribers && allSubscribers.page ? allSubscribers.page : 1), [allSubscribers]);
   const onEditSub = subId => {
     history.push(`/subscribers/${subId}`);
   };
@@ -26,6 +34,9 @@ function Subscribers() {
   const onDeleteSub = subId => {
     dispatch(deleteSubscribers(subId));
   };
+  const handlePageChange = page =>{
+    dispatch(getAllSubscribers(page))
+  }
 
   return (
     <div>
@@ -80,12 +91,10 @@ function Subscribers() {
             </div>
             <div className="action-cell" />
           </div>
-          {allSubscribers &&
-          allSubscribers.data &&
-          allSubscribers.data.docs &&
-          allSubscribers.data.docs.length > 0 ? (
+          {subScribers &&
+            subScribers.length > 0 ? (
             <>
-              {allSubscribers.data.docs.map(value => (
+              {subScribers.map(value => (
                 <div key={value._id} className="row-container">
                   <div className="tr">
                     <div className="admin-table-details">
@@ -129,6 +138,15 @@ function Subscribers() {
             </>
           )}
         </div>
+        <Pagination
+            activePage={activePage}
+            itemsCountPerPage={10}
+            totalItemsCount={allSubscribers.total || 1}
+            pageRangeDisplayed={3}
+            onChange={handlePageChange}
+            itemClass="page-item"
+            linkClass="page-link"
+        />
       </div>
     </div>
   );
