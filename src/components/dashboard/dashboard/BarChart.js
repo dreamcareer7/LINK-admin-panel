@@ -9,7 +9,6 @@ const BarChart = props => {
     labels: chartData && chartData.data.map(e => e._id),
     datasets: [
       {
-        label: 'Rainfall',
         backgroundColor: '#4282fe',
         borderColor: '#4282fe',
         borderWidth: 2,
@@ -51,11 +50,10 @@ const BarChart = props => {
             onComplete: e => {
               const chartInstance = e.chart;
               const { ctx } = chartInstance;
-              console.log(e.chart);
               ctx.font = Chart.helpers.fontString(
                 Chart.defaults.global.defaultFontSize,
                 Chart.defaults.global.defaultFontStyle,
-                Chart.defaults.global.defaultFontFamily
+                Chart.defaults.global.defaultFontFamily,
               );
               ctx.textAlign = 'center';
               ctx.textBaseline = 'bottom';

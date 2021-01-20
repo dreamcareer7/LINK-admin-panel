@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import {
   deleteSubscribers,
   getAllSubscribers,
-} from '../../../redux/actions/subscribersAction/SubscribersActuion';
+} from '../../../redux/actions/subscribersAction/SubscribersAction';
 import edit from '../../../assets/images/pencil.png';
 import bin from '../../../assets/images/delete.png';
 import User from '../../../assets/images/avatar.jpg';
@@ -14,7 +14,7 @@ import './subscribers.scss';
 function Subscribers() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const allSubscribers = useSelector(state => state.subscrberReducer);
+  const allSubscribers = useSelector(state => state.subscrberReducer.getAllSub);
   console.log(allSubscribers);
   useEffect(() => {
     dispatch(getAllSubscribers({ page: 1, limit: 500 }));
@@ -82,9 +82,12 @@ function Subscribers() {
             </div>
             <div className="action-cell" />
           </div>
-          {allSubscribers && allSubscribers.docs && allSubscribers.docs.length > 0 ? (
+          {allSubscribers &&
+          allSubscribers.data &&
+          allSubscribers.data.docs &&
+          allSubscribers.data.docs.length > 0 ? (
             <>
-              {allSubscribers.docs.map(value => (
+              {allSubscribers.data.docs.map(value => (
                 <div key={value._id} className="row-container">
                   <div className="tr">
                     <div className="admin-table-details">

@@ -91,28 +91,28 @@ const Dashboard = () => {
               <input
                 type="radio"
                 name="subscription"
-                checked={subscription === 'FREETRIAL'}
+                defaultChecked={subscription === 'FREETRIAL'}
                 value="FREETRIAL"
               />
               Free Trial
               <input
                 type="radio"
                 name="subscription"
-                checked={subscription === 'MONTHLY'}
+                defaultChecked={subscription === 'MONTHLY'}
                 value="MONTHLY"
               />
               Monthly
               <input
                 type="radio"
                 name="subscription"
-                checked={subscription === 'YEARLY'}
+                defaultChecked={subscription === 'YEARLY'}
                 value="YEARLY"
               />
               Yearly
               <input
                 type="radio"
                 name="subscription"
-                checked={subscription === 'PAUSED'}
+                defaultChecked={subscription === 'PAUSED'}
                 value="PAUSED"
               />
               Paused

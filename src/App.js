@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Notifications from 'react-notify-toast';
 import { Redirect, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LoginPage from './components/authentication/login-page/LoginPage';
 import VerificationPage from './components/authentication/verification-page/VerificationPage';
@@ -22,8 +23,7 @@ import Subscribed from './components/dashboard/subscribers/subscribed';
 import AddInvited from './components/dashboard/subscribers/AddInvited/AddInvited';
 
 const PrivateRoute = ({ component, ...options }) => {
-  const isLoggedIn =
-    localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0;
+  const isLoggedIn = localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0;
   const finalComponent = isLoggedIn ? component : LoginPage;
   if (options.path === '/' && isLoggedIn) {
     return (
@@ -43,12 +43,15 @@ PrivateRoute.defaultProps = {
   component: null,
 };
 
-function App() {
+function App(props) {
+  const { loadingBar } = props;
+  console.log(loadingBar);
   return (
     <div className="App">
       <Notifications />
       <Router>
-        <Route>
+        <Suspense>
+          {/* {Boolean(loadingBar.default) && <div className="loader ajax-global-spin" />} */}
           <Switch>
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/forgot" component={ForgotPasswordPage} />
@@ -71,10 +74,19 @@ function App() {
               <PrivateRoute exact path="/addInvited" component={AddInvited} />
             </Layout>
           </Switch>
-        </Route>
+        </Suspense>
       </Router>
     </div>
   );
 }
+App.propTypes = {
+  loadingBar: PropTypes.string.isRequired,
+};
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    loadingBar: state.loadingBar,
+  };
+};
 
-export default App;
+export default connect(mapStateToProps)(App);

@@ -15,8 +15,11 @@ export const getAllErrorMessage = () => {
         }
       })
       .catch(e => {
-        errorNotification('Error during updating');
-        return Promise.reject(e);
+        if (e.response.data.status === undefined) {
+          errorNotification('It seems like server is down, Please try after sometime.');
+        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+          errorNotification('Internal server error');
+        }
       });
   };
 };
@@ -33,6 +36,6 @@ export const updateErrorMessage = (id, data) => {
           successNotification('Error Message updated successfully');
         }
       })
-      .catch(() => errorNotification('Error during updating quote'));
+      .catch(() => errorNotification('Error during updating Error Message'));
   };
 };

@@ -26,6 +26,11 @@ export const SETTING_URLS = {
 export const SUBSCRIBERS_URLS = {
   GET_ALL_SUBSCRIBERS: `${BASE_URL}subscribers/get-subscribers`,
   DELETE_SUBSCRIPTION: `${BASE_URL}subscribers/delete-subscription/`,
+  GET_SUBSCRIPTION_BYID: `${BASE_URL}subscribers/get-subscriber/`,
+  GET_INDUSTRY: `${BASE_URL}organization/admin-industries`,
+  GET_COMPANY_SIZE: `${BASE_URL}organization/admin-companysize`,
+  UPDATE_SUBSCRIPTION: `${BASE_URL}subscribers/update-subscriber/`,
+  INVITEE_SUBSCRIBERS: `${BASE_URL}client-invitation/get-invitations`,
 };
 
 export const DASHBOARD_URLS = {

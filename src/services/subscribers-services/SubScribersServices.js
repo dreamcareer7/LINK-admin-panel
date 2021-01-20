@@ -6,6 +6,11 @@ const SubscriberService = {
     ApiService.getData(
       `${SUBSCRIBERS_URLS.GET_ALL_SUBSCRIBERS}?page=${data.page}&limit=${data.limit}`
     ),
+  getIndustry: () => ApiService.getData(SUBSCRIBERS_URLS.GET_INDUSTRY),
+  getInvitee: () => ApiService.getData(SUBSCRIBERS_URLS.INVITEE_SUBSCRIBERS),
+  getCompany: () => ApiService.getData(SUBSCRIBERS_URLS.GET_COMPANY_SIZE),
+  getSubById: id => ApiService.getData(SUBSCRIBERS_URLS.GET_SUBSCRIPTION_BYID + id),
+  updateSub: (id, data) => ApiService.putData(SUBSCRIBERS_URLS.UPDATE_SUBSCRIPTION + id, data),
   deleteSub: id => ApiService.deleteData(SUBSCRIBERS_URLS.DELETE_SUBSCRIPTION + id),
 };
 

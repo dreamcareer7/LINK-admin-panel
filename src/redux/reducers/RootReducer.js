@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { combineReducers } from 'redux';
+import { loadingBarReducer } from 'react-redux-loading-bar';
 import { loggedUser } from './AuthReducer';
 import { errorMessage } from './settingReducer';
 import manageAdmin from './manageAdminReducer';
@@ -12,6 +13,7 @@ import { dashboardReducer } from './dashboardReducer';
 import AUTH_REDUX_CONSTANTS from '../constants/AuthReduxConstant';
 
 const appReducer = combineReducers({
+  loadingBar: loadingBarReducer,
   loggedUser,
   errorMessage,
   manageAdmin,
