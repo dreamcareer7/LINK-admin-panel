@@ -48,7 +48,7 @@ const AddSubscribers = () => {
       dispatch(getSubscribersById(subId));
     }
     if (data && data.client) {
-      if (data.client && data.client) {
+        console.log("data=>",data.client);
         setFormValue({
           username: data.client.firstName && `${data.client.firstName} ${data.client.lastName}` ,
           email: data.client.email && data.client.email,
@@ -57,7 +57,7 @@ const AddSubscribers = () => {
             'yyyy-MM-DD'
           ),
           lifetime_payment: data.client.lifetime_payment && data.client.lifetime_payment,
-          gender: data.client.gender && data.client.gender,
+          gender: data.client.gender ? data.client.gender : 'none'  ,
           location: data.client.companyLocation && data.client.companyLocation,
           sub_type: data.client.selectedPlan && data.client.selectedPlan.status,
           ave_dealvalue: data.client.ave_dealvalue && data.client.ave_dealvalue,
@@ -66,7 +66,6 @@ const AddSubscribers = () => {
           vicSub: data.client.vicSub && data.client.vicSub,
           status: data.client.status && data.client.status,
         });
-      }
     }
   }, [
     data && data.client && data.client.firstName,
@@ -75,7 +74,7 @@ const AddSubscribers = () => {
     data && data.client && data.client.subscription_date,
     data && data.client && data.client.lifetime_payment,
     data && data.client && data.client.gender,
-    data && data.client && data.client.location,
+    data && data.client && data.client.companyLocation,
     data && data.client && data.client.selectedPlan && data.client.selectedPlan.status,
     data && data.client && data.client.ave_dealvalue,
     data && data.client && data.client.industry,
@@ -88,21 +87,35 @@ const AddSubscribers = () => {
     e.preventDefault();
     const userName = form.username.split(' ');
 
-    if(form.industry === "none"){
-      errorNotification("Please enter industry");
+    console.log('form',form);
+    if(!form.username || form.username && form.username.trim().length === 0){
+      errorNotification("Please enter name");
     }
-    else if(!form.location){
+    else if(!form.phone || form.phone && form.phone.trim().length === 0){
+      errorNotification("Please enter phone number");
+    }
+    else if(!form.email || form.email && form.email.trim().length === 0){
+      errorNotification("Please enter phone number");
+    }
+    else if(!form.gender || form.gender && form.gender === "none"){
+      errorNotification("Please select gender");
+    }
+    else if(!form.location || form.location && form.location.trim().length === 0){
       errorNotification("Please enter location");
     }
+   else if(!form.industry || form.industry && form.industry === "none"){
+      errorNotification("Please select industry");
+    }
+
     else {
       const formData = {
-        firstName: userName[0],
-        lastName: userName[1] || '',
-        email: form.email,
-        phone: form.phone,
+        firstName: userName[0] && userName[0].trim() || '',
+        lastName: userName[1] && userName[1].trim() || '',
+        email: form.email.trim() || '',
+        phone: form.phone.trim() || '',
         industry: form.industry,
         gender: form.gender,
-        companyLocation: form.location,
+        companyLocation: form.location.trim() || '',
         vicSub: form.vicSub,
         selectedPlan: {
           currentPlan: form.sub_type,
@@ -206,6 +219,7 @@ const AddSubscribers = () => {
                   onChange={updateField}
                   className="common-input"
                 >
+                  <option value="none">Select</option>
                   <option value="FEMALE">Female</option>
                   <option value="MALE">Male</option>
                   <option value="OTHER">Others</option>
