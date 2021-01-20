@@ -48,7 +48,6 @@ const AddSubscribers = () => {
       dispatch(getSubscribersById(subId));
     }
     if (data && data.client) {
-        console.log("data=>",data.client);
         setFormValue({
           username: data.client.firstName && `${data.client.firstName} ${data.client.lastName}` ,
           email: data.client.email && data.client.email,
@@ -91,9 +90,6 @@ const AddSubscribers = () => {
     if(!form.username || form.username && form.username.trim().length === 0){
       errorNotification("Please enter name");
     }
-    else if(!form.phone || form.phone && form.phone.trim().length === 0){
-      errorNotification("Please enter phone number");
-    }
     else if(!form.email || form.email && form.email.trim().length === 0){
       errorNotification("Please enter phone number");
     }
@@ -112,7 +108,7 @@ const AddSubscribers = () => {
         firstName: userName[0] && userName[0].trim() || '',
         lastName: userName[1] && userName[1].trim() || '',
         email: form.email.trim() || '',
-        phone: form.phone.trim() || '',
+        phone: form.phone && form.phone.trim() || '',
         industry: form.industry,
         gender: form.gender,
         companyLocation: form.location.trim() || '',
@@ -121,7 +117,6 @@ const AddSubscribers = () => {
           currentPlan: form.sub_type,
         },
       };
-      console.log(formData);
       dispatch(updateSubscribers(subId, formData));
       history.replace('/subscribers');
     }

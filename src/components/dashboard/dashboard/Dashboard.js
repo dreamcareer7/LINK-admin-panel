@@ -28,12 +28,10 @@ const Dashboard = () => {
   };
 
   const onChangeFromInput = e => {
-    console.log(e.target.value);
     setPreviusDate(e.target.value);
   };
 
   const onChangeToInput = e => {
-    console.log(e.target.value);
     setToday(e.target.value);
   };
 

@@ -45,7 +45,6 @@ PrivateRoute.defaultProps = {
 
 function App(props) {
   const { loadingBar } = props;
-  console.log(loadingBar);
   return (
     <div className="App">
       <Notifications />
@@ -83,7 +82,6 @@ App.propTypes = {
   loadingBar: PropTypes.string.isRequired,
 };
 const mapStateToProps = state => {
-  console.log(state);
   return {
     loadingBar: state.loadingBar,
   };

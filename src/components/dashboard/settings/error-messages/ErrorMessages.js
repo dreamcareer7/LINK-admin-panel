@@ -31,7 +31,6 @@ function ErrorMessages() {
   };
 
   const saveChangeError = () => {
-    console.log('error', error);
     dispatch(updateErrorMessage(userId, error));
   };
 

@@ -15,7 +15,6 @@ function Subscribers() {
   const dispatch = useDispatch();
   const history = useHistory();
   const allSubscribers = useSelector(state => state.subscrberReducer.getAllSub);
-  console.log(allSubscribers);
   useEffect(() => {
     dispatch(getAllSubscribers({ page: 1, limit: 500 }));
   }, []);
@@ -25,7 +24,6 @@ function Subscribers() {
   };
 
   const onDeleteSub = subId => {
-    console.log('sub', subId);
     dispatch(deleteSubscribers(subId));
   };
 

@@ -33,7 +33,6 @@ export const deleteQuote = id => {
         successNotification('Quote deleted successfully');
       })
       .catch(e => {
-        console.log(e);
         errorNotification('Error during deleting quote');
       });
   };

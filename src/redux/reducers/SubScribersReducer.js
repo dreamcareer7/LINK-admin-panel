@@ -71,12 +71,14 @@ export const subscrberReducer = (state = initialValue, action) => {
         ...state,
         getAllSub: {
           ...state.getAllSub,
-          data: action.data,
+          data: {...state.getAllSub.data,
+            docs:
+            state.getAllSub.data.docs? state.getAllSub.data.docs.map(e=>e._id === action.data._id ? action.data : e):state.getAllSub.data.docs,
+          }
         },
       };
 
     case SUBSCRIBERS_REDUX_CONSTANTS.DELETE_SUBSCRIBERS:
-      console.log('state=>',state);
       return {
         ...state,
         getAllSub: {

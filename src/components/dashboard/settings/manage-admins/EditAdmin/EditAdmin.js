@@ -99,7 +99,6 @@ function EditAdmin() {
         email: adminEmail,
         phone: adminPhone,
       };
-      console.log(adminName);
       if (userId) {
         dispatch(editAdminById((userId, data)));
       } else {
