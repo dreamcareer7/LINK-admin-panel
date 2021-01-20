@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import { useHistory } from 'react-router-dom';
+import Pagination from 'react-js-pagination';
 import './quoteBank.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllQuotes } from '../../../redux/actions/authActions/QuoteActions';
@@ -7,16 +8,27 @@ import Quote from './Quote';
 
 function QuoteBank() {
   const allQuotesData = useSelector(({ allQuotes }) => allQuotes);
-  const quotes = allQuotesData && allQuotesData.docs ? allQuotesData.docs : [];
+  const quotes = useMemo(
+      () => (allQuotesData && allQuotesData.docs ? allQuotesData.docs : []),
+      [allQuotesData]
+  );
+  console.log(allQuotesData.pages)
+  // const quotes = allQuotesData && allQuotesData.docs ? allQuotesData.docs : [];
   const [data, setData] = useState(quotes);
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
-    dispatch(getAllQuotes);
+    dispatch(getAllQuotes(1));
   }, []);
   useEffect(() => {
     setData(quotes);
   }, [quotes]);
+
+  const handlePageChange = page =>{
+    dispatch(getAllQuotes(page));
+  }
+
+  const activePage = useMemo(() => (allQuotesData && allQuotesData.page ? allQuotesData.page : 1), [allQuotesData]);
 
   const onClickAddQuote = () => {
     history.replace('/quote');
@@ -74,6 +86,7 @@ function QuoteBank() {
 
       <div className="no-of-results-in-display">Showing 1-20 of 357 results</div>
       {quotes.length !== 0 ? (
+          <>
         <div className="quote-table">
           <div className="tr heading">
             <div className="td quote">Quote</div>
@@ -84,9 +97,21 @@ function QuoteBank() {
           </div>
           {data && data.map(quote => <Quote key={quote._id} quote={quote} />)}
         </div>
+            <Pagination
+                activePage={activePage}
+                itemsCountPerPage={10}
+                totalItemsCount={allQuotesData.total || 1}
+                pageRangeDisplayed={3}
+                onChange={handlePageChange}
+                itemClass="page-item"
+                linkClass="page-link"
+            />
+        </>
       ) : (
         <div>No quote data available</div>
       )}
+
+
     </div>
   );
 }

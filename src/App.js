@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React  from 'react';
 import Notifications from 'react-notify-toast';
 import { Redirect, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -43,14 +43,12 @@ PrivateRoute.defaultProps = {
   component: null,
 };
 
-function App(props) {
-  const { loadingBar } = props;
+function App() {
+
   return (
     <div className="App">
       <Notifications />
       <Router>
-        <Suspense>
-          {/* {Boolean(loadingBar.default) && <div className="loader ajax-global-spin" />} */}
           <Switch>
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/forgot" component={ForgotPasswordPage} />
@@ -73,14 +71,11 @@ function App(props) {
               <PrivateRoute exact path="/addInvited" component={AddInvited} />
             </Layout>
           </Switch>
-        </Suspense>
       </Router>
     </div>
   );
 }
-App.propTypes = {
-  loadingBar: PropTypes.string.isRequired,
-};
+
 const mapStateToProps = state => {
   return {
     loadingBar: state.loadingBar,
