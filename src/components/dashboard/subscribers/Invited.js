@@ -1,14 +1,26 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useMemo} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Pagination from "react-js-pagination";
 import User from '../../../assets/images/avatar.jpg';
-import { getInviteeSubscribers } from '../../../redux/actions/subscribersAction/SubscribersAction';
+import {getInviteeSubscribers} from '../../../redux/actions/subscribersAction/SubscribersAction';
+
 
 const Invited = () => {
   const dispatch = useDispatch();
-  const invitee = useSelector(state => state.subscrberReducer.invite);
+  const allInvitee = useSelector(state => state.subscrberReducer.invite);
+  const docs = useMemo(
+      () => (allInvitee && allInvitee.data ? allInvitee.data : []),
+      [allInvitee]
+  );
+  const  invitee = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
+  const activePage = useMemo(() => (allInvitee && allInvitee.page ? allInvitee.page : 1), [allInvitee]);
+
   useEffect(() => {
-    dispatch(getInviteeSubscribers());
+    dispatch(getInviteeSubscribers(1));
   }, []);
+  const handlePageChange = page =>{
+    dispatch(getInviteeSubscribers(page))
+  }
   return (
     <>
       <div>
@@ -21,9 +33,10 @@ const Invited = () => {
                 <div className="td">PHONE</div>
               </div>
             </div>
-            {invitee && invitee.data && invitee.data.length > 0 ? (
-              <>
-                {invitee.data.map(value => (
+            {invitee && invitee.length > 0 ? (
+                <>
+              <div>
+                {invitee.map(value => (
                   <div className="row-container" key={value._id}>
                     <div className="tr">
                       <div className="admin-table-details">
@@ -44,6 +57,16 @@ const Invited = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+                  <Pagination
+                      activePage={activePage}
+                      itemsCountPerPage={10}
+                      totalItemsCount={allInvitee.total || 1}
+                      pageRangeDisplayed={3}
+                      onChange={handlePageChange}
+                      itemClass="page-item"
+                      linkClass="page-link"
+                  />
               </>
             ) : (
               <>
