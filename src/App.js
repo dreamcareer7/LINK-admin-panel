@@ -20,6 +20,7 @@ import EditAdmin from './components/dashboard/settings/manage-admins/EditAdmin/E
 import ManageAdmins from './components/dashboard/settings/manage-admins/ManageAdmins';
 import Subscriber from './components/dashboard/subscribers/subscriber';
 import AddInvited from './components/dashboard/subscribers/AddInvited/AddInvited';
+import AddSubscribers from "./components/dashboard/subscribers/EditSubscribers/EditSubscribers";
 
 
 const PrivateRoute = ({ component, ...options }) => {
@@ -58,6 +59,7 @@ function App() {
               <PrivateRoute exact path="/" />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/subscribers/:type" component={Subscriber} />
+              <PrivateRoute exact path="/subscribers/subscribed/:type" component={AddSubscribers} />
               <PrivateRoute exact path="/settings" component={Settings} />
               <PrivateRoute exact path="/error-message" component={ErrorMessages} />
               <PrivateRoute exact path="/integrations" component={Integrations} />

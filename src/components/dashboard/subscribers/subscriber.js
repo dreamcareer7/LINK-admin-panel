@@ -19,6 +19,9 @@ const Subscriber = () => {
   const onAddInvite = () =>{
     history.push('/subscribers/invited/addInvited')
   }
+  const onDownloadClick = () =>{
+
+  }
   return (
     <>
       <div className="subscribed-buttons-row">
@@ -45,7 +48,7 @@ const Subscriber = () => {
           >
             ADD
           </button>}
-          <button type="button" className="button primary-button">
+          <button type="button" className="button primary-button" onClick={onDownloadClick}>
             DOWNLOAD
           </button>
         </div>

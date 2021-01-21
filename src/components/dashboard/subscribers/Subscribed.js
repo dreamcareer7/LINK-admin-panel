@@ -28,7 +28,7 @@ function Subscribed() {
 
   const activePage = useMemo(() => (allSubscribers && allSubscribers.page ? allSubscribers.page : 1), [allSubscribers]);
   const onEditSub = subId => {
-    history.push(`/subscribers/${subId}`);
+    history.push(`/subscribers/subscribed/${subId}`);
   };
 
   const onDeleteSub = subId => {

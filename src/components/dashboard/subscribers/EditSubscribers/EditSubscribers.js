@@ -118,17 +118,17 @@ const AddSubscribers = () => {
         },
       };
       dispatch(updateSubscribers(subId, formData));
-      history.replace('/subscribers');
+      history.replace('/subscribers/subscribed');
     }
   };
 
   const onDiscardChanges = () => {
-    history.replace('/subscribers');
+    history.replace('/subscribers/subscribed');
   };
 
   const onDeleteSubscribers = () => {
     dispatch(deleteSubscribers(subId));
-    history.push('/subscribers');
+    history.push('/subscribers/subscribed');
   };
   return (
     <>
