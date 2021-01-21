@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Invited from './Invited';
 import Subscribers from './Subscribers';
 
 import './subscribers.scss';
-import AddInvited from './AddInvited/AddInvited';
+
 
 const Subscribed = () => {
+
+  const history = useHistory();
   const [activeComponent, setActiveComponent] = React.useState(<Subscribers key="error" />);
   const [keys, setKeys] = useState('error');
   const onChangeComponent = component => {
     setKeys(component.key);
     setActiveComponent(component);
+
   };
+  const onAddInvite = () =>{
+    history.push('/addInvited')
+  }
   return (
     <>
       <div className="subscribed-buttons-row">
@@ -30,13 +37,14 @@ const Subscribed = () => {
           </div>
         </div>
         <div className="d-flex">
+          {keys !== "error"?
           <button
             type="button"
             className="button success-button mr-10"
-            onClick={() => onChangeComponent(<AddInvited key="manage" />)}
+            onClick={() => onAddInvite()}
           >
             ADD
-          </button>
+          </button> :<></>}
           <button type="button" className="button primary-button">
             DOWNLOAD
           </button>

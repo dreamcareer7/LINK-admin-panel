@@ -21,6 +21,7 @@ import ManageAdmins from './components/dashboard/settings/manage-admins/ManageAd
 import AddSubscribers from './components/dashboard/subscribers/EditSubscribers/EditSubscribers';
 import Subscribed from './components/dashboard/subscribers/subscribed';
 import AddInvited from './components/dashboard/subscribers/AddInvited/AddInvited';
+import Invited from "./components/dashboard/subscribers/Invited";
 
 const PrivateRoute = ({ component, ...options }) => {
   const isLoggedIn = localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0;
@@ -69,6 +70,7 @@ function App() {
               <PrivateRoute exact path="/quote" component={AddQuote} />
               <PrivateRoute exact path="/quote/:id" component={AddQuote} />
               <PrivateRoute exact path="/addInvited" component={AddInvited} />
+              <PrivateRoute exact path="/invited" component={Invited} />
             </Layout>
           </Switch>
       </Router>
