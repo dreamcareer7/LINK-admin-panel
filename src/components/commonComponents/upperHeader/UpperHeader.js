@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './upperHeader.scss';
@@ -22,20 +22,23 @@ function UpperHeader() {
   ]);
   const subScribers = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
   console.log('get all subscriber=>', subScribers);
+
+  const [filtered, setFiltered] = useState([]);
   useEffect(() => {
     dispatch(getAllSubscribers(1));
   }, []);
 
   const onSearch = e => {
-    /* if (e.target.value && e.target.value.trim().length > 0) {
-      setFiltered(array.filter(f => f.match(e.target.value)));
+    if (e.target.value && e.target.value.trim().length > 0) {
+      console.log('value->', e.target.value);
+      const data = {
+        name: e.target.value,
+      };
+      SubscriberService.searchSubscriber(data).then(r => console.log('search res=>', r));
+      /* setFiltered(array.filter(f => f.match(e.target.value))); */
     } else {
       setFiltered([]);
-    } */
-    const data = {
-      name: e.target.value,
-    };
-    SubscriberService.searchSubscriber(data).then(r => console.log('search res=>', r));
+    }
   };
   const onLogOut = () => {
     dispatch(
@@ -52,7 +55,7 @@ function UpperHeader() {
           <div className="down-arrow">
             <img src={search} />{' '}
             <div className="search-area">
-              {subScribers.map(e => (
+              {filtered.map(e => (
                 <div className="open-search-area">{e.firstName}</div>
               ))}
             </div>
