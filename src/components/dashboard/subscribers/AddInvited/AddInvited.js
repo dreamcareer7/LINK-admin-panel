@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -12,7 +13,7 @@ function AddInvited() {
   const history = useHistory();
   const dispatch = useDispatch();
   const onCancelInvited = () => {
-    history.replace('/subscribers/invited');
+    history.goBack();
   };
   const addInvited = () => {
     const userName = name.split(' ');
@@ -34,7 +35,7 @@ function AddInvited() {
         phone,
       };
       dispatch(addInviteeSubscribers(data));
-      history.push('/subscribers');
+      history.goBack();
     }
   };
 
