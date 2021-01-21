@@ -34,11 +34,21 @@ function UpperHeader() {
       const data = {
         name: e.target.value,
       };
-      SubscriberService.searchSubscriber(data).then(r => console.log('search res=>', r));
+      SubscriberService.searchSubscriber(data).then(r => {
+        console.log('search res=>', r.data.data);
+        const searchResult = r.data.data;
+        setFiltered(searchResult);
+      });
       /* setFiltered(array.filter(f => f.match(e.target.value))); */
     } else {
       setFiltered([]);
     }
+  };
+
+  const onClickSearchedVal = val => {
+    console.log('id of search', val);
+    history.push(`/subscribers/subscribed/${val}`);
+    setFiltered([]);
   };
   const onLogOut = () => {
     dispatch(
@@ -56,7 +66,9 @@ function UpperHeader() {
             <img src={search} />{' '}
             <div className="search-area">
               {filtered.map(e => (
-                <div className="open-search-area">{e.firstName}</div>
+                <div className="open-search-area" onClick={() => onClickSearchedVal(e._id)}>
+                  {e.firstName}
+                </div>
               ))}
             </div>
           </div>
