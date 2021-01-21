@@ -65,6 +65,26 @@ export const getInviteeSubscribers = page => {
       });
   };
 };
+export const addInviteeSubscribers = data => {
+  return dispatch => {
+    SubscriberService.addInvitee(data)
+        .then(response => {
+          if (response.data.status === 'SUCCESS') {
+            dispatch({
+              type: SUBSCRIBERS_REDUX_CONSTANTS.ADD_INVITEE_SUBSCRIBER,
+              data: response.data.data,
+            });
+          }
+        })
+        .catch(e => {
+          if (e.response.data.status === undefined) {
+            errorNotification('It seems like server is down, Please try after sometime.');
+          } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+            errorNotification('Internal server error');
+          }
+        });
+  };
+};
 
 export const getCompanySize = data => {
   return dispatch => {

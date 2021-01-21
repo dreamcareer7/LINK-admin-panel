@@ -17,6 +17,9 @@ const initialValue = {
   invite: {
     data: [],
   },
+  invitee:{
+    data:[],
+  }
 };
 // eslint-disable-next-line import/prefer-default-export
 export const subscrberReducer = (state = initialValue, action) => {
@@ -35,6 +38,15 @@ export const subscrberReducer = (state = initialValue, action) => {
         ...state,
         invite: {
           ...state.invite,
+          data: action.data,
+        },
+      };
+
+    case SUBSCRIBERS_REDUX_CONSTANTS.ADD_INVITEE_SUBSCRIBER:
+      return {
+        ...state,
+        invitee: {
+          ...state.invitee,
           data: action.data,
         },
       };
