@@ -4,6 +4,8 @@ import Invited from './Invited';
 import Subscribed from './Subscribed';
 
 import './subscribers.scss';
+import {downloadFile} from "../../../helpers/DownloadHelper";
+import SubscriberService from "../../../services/subscribers-services/SubScribersServices";
 
 
 const Subscriber = () => {
@@ -20,7 +22,18 @@ const Subscriber = () => {
     history.push('/subscribers/invited/addInvited')
   }
   const onDownloadClick = () =>{
-
+      if(type === 'subscribed'){
+        SubscriberService.downloadSubscriber().then(r => {
+          const subscribersData = r.data
+          downloadFile(subscribersData, "subscribers.csv")
+        }).catch(e=>console.log(e))
+      }
+      else if(type === 'invited'){
+        SubscriberService.downloadInvitees().then(r => {
+          const inviteeData = r.data
+          downloadFile(inviteeData, "invitees.csv")
+        }).catch(e=>console.log(e))
+      }
   }
   return (
     <>

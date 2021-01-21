@@ -60,16 +60,17 @@ function App() {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/subscribers/:type" component={Subscriber} />
               <PrivateRoute exact path="/subscribers/subscribed/:type" component={AddSubscribers} />
+              <PrivateRoute exact path="/subscribers/invited/addInvited" component={AddInvited} />
               <PrivateRoute exact path="/settings" component={Settings} />
+              <PrivateRoute exact path="/addAdmin" component={EditAdmin} />
+              <PrivateRoute exact path="/settings/:userId" component={EditAdmin} />
               <PrivateRoute exact path="/error-message" component={ErrorMessages} />
               <PrivateRoute exact path="/integrations" component={Integrations} />
               <PrivateRoute exact path="/manage-admin" component={ManageAdmins} />
-              <PrivateRoute exact path="/settings/:userId" component={EditAdmin} />
-              <PrivateRoute exact path="/addAdmin" component={EditAdmin} />
               <PrivateRoute exact path="/quoteBank" component={QuoteBank} />
               <PrivateRoute exact path="/quote" component={AddQuote} />
               <PrivateRoute exact path="/quote/:id" component={AddQuote} />
-              <PrivateRoute exact path="/subscribers/invited/addInvited" component={AddInvited} />
+
             </Layout>
           </Switch>
       </Router>

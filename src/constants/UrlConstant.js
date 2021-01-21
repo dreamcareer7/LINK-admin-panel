@@ -31,7 +31,9 @@ export const SUBSCRIBERS_URLS = {
   GET_COMPANY_SIZE: `${BASE_URL}organization/admin-companysize`,
   UPDATE_SUBSCRIPTION: `${BASE_URL}subscribers/update-subscriber/`,
   INVITEE_SUBSCRIBERS: `${BASE_URL}client-invitation/get-invitations`,
-  ADD_INVITED_SUBSCRIBERS:`${BASE_URL}client-invitation/send-invitation`
+  ADD_INVITED_SUBSCRIBERS:`${BASE_URL}client-invitation/send-invitation`,
+  DOWNLOAD_SUBSCRIBERS:`${BASE_URL}subscribers/get-subscribers/download`,
+  DOWNLOAD_INVITEES:`${BASE_URL}client-invitation/get-invitations/download`
 };
 
 export const DASHBOARD_URLS = {

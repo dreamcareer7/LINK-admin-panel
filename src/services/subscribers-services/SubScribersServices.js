@@ -13,6 +13,8 @@ const SubscriberService = {
   getSubById: id => ApiService.getData(SUBSCRIBERS_URLS.GET_SUBSCRIPTION_BYID + id),
   updateSub: (id, data) => ApiService.putData(SUBSCRIBERS_URLS.UPDATE_SUBSCRIPTION + id, data),
   deleteSub: id => ApiService.deleteData(SUBSCRIBERS_URLS.DELETE_SUBSCRIPTION + id),
+  downloadSubscriber :()=> ApiService.getData(SUBSCRIBERS_URLS.DOWNLOAD_SUBSCRIBERS),
+  downloadInvitees:() => ApiService.getData(SUBSCRIBERS_URLS.DOWNLOAD_INVITEES),
 };
 
 export default SubscriberService;
