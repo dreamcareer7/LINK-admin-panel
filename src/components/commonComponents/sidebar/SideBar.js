@@ -21,7 +21,7 @@ function SideBar() {
             <img alt="home" src={home} /> <span>Dashboard</span>
           </NavLink>
 
-          <NavLink className="menu-item" to="/subscribers" replace>
+          <NavLink className="menu-item" to="/subscribers/subscribed" replace>
             <img alt="subscribers" src={group} /> <span>Subscribers</span>
           </NavLink>
 

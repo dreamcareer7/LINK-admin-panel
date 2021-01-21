@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addInviteeSubscribers } from '../../../../redux/actions/subscribersAction/SubscribersAction';
-import {checkForEmail, checkForPhone, errorNotification} from '../../../../constants/Toast';
+import {checkForEmail, errorNotification} from '../../../../constants/Toast';
 
 function AddInvited() {
   const [name, setName] = useState('');
@@ -12,14 +12,12 @@ function AddInvited() {
   const history = useHistory();
   const dispatch = useDispatch();
   const onCancelInvited = () => {
-    history.replace('/subscribers');
+    history.replace('/subscribers/invited');
   };
   const addInvited = () => {
     const userName = name.split(' ');
     if ((!name && !userName) || (userName && userName.toString().trim().length === 0)) {
       errorNotification('Please enter invitee name');
-    }else if(!userName[1] || userName[1] && userName[1].toString().trim().length === 0){
-      errorNotification('Please specify last name');
     }
     else if (!email || (email && email.toString().trim().length === 0)) {
       errorNotification('Please enter invitee email');
@@ -27,8 +25,6 @@ function AddInvited() {
       errorNotification('Please valid email');
     } else if (!phone || (phone && phone.toString().trim().length === 0)) {
       errorNotification('Please enter invitee phone');
-    }else if (!checkForPhone(phone)){
-      errorNotification('Please enter valid phone');
     }
     else {
       const data = {

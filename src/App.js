@@ -18,10 +18,9 @@ import Settings from './components/dashboard/settings/Settings';
 import QuoteBank from './components/dashboard/quoteBank/QuoteBank';
 import EditAdmin from './components/dashboard/settings/manage-admins/EditAdmin/EditAdmin';
 import ManageAdmins from './components/dashboard/settings/manage-admins/ManageAdmins';
-import AddSubscribers from './components/dashboard/subscribers/EditSubscribers/EditSubscribers';
 import Subscriber from './components/dashboard/subscribers/subscriber';
 import AddInvited from './components/dashboard/subscribers/AddInvited/AddInvited';
-import Invited from "./components/dashboard/subscribers/Invited";
+
 
 const PrivateRoute = ({ component, ...options }) => {
   const isLoggedIn = localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0;
@@ -58,8 +57,7 @@ function App() {
             <Layout>
               <PrivateRoute exact path="/" />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute exact path="/subscribers" component={Subscriber} />
-              <PrivateRoute exact path="/subscribers/:subId" component={AddSubscribers} />
+              <PrivateRoute exact path="/subscribers/:type" component={Subscriber} />
               <PrivateRoute exact path="/settings" component={Settings} />
               <PrivateRoute exact path="/error-message" component={ErrorMessages} />
               <PrivateRoute exact path="/integrations" component={Integrations} />
@@ -69,8 +67,7 @@ function App() {
               <PrivateRoute exact path="/quoteBank" component={QuoteBank} />
               <PrivateRoute exact path="/quote" component={AddQuote} />
               <PrivateRoute exact path="/quote/:id" component={AddQuote} />
-              <PrivateRoute exact path="/addInvited" component={AddInvited} />
-              <PrivateRoute exact path="/invited" component={Invited} />
+              <PrivateRoute exact path="/subscribers/invited/addInvited" component={AddInvited} />
             </Layout>
           </Switch>
       </Router>
