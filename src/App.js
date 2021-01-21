@@ -19,7 +19,7 @@ import QuoteBank from './components/dashboard/quoteBank/QuoteBank';
 import EditAdmin from './components/dashboard/settings/manage-admins/EditAdmin/EditAdmin';
 import ManageAdmins from './components/dashboard/settings/manage-admins/ManageAdmins';
 import AddSubscribers from './components/dashboard/subscribers/EditSubscribers/EditSubscribers';
-import Subscribed from './components/dashboard/subscribers/subscribed';
+import Subscriber from './components/dashboard/subscribers/subscriber';
 import AddInvited from './components/dashboard/subscribers/AddInvited/AddInvited';
 import Invited from "./components/dashboard/subscribers/Invited";
 
@@ -58,7 +58,7 @@ function App() {
             <Layout>
               <PrivateRoute exact path="/" />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute exact path="/subscribers" component={Subscribed} />
+              <PrivateRoute exact path="/subscribers" component={Subscriber} />
               <PrivateRoute exact path="/subscribers/:subId" component={AddSubscribers} />
               <PrivateRoute exact path="/settings" component={Settings} />
               <PrivateRoute exact path="/error-message" component={ErrorMessages} />

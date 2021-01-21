@@ -12,7 +12,7 @@ import bin from '../../../assets/images/delete.png';
 import User from '../../../assets/images/avatar.jpg';
 import './subscribers.scss';
 
-function Subscribers() {
+function Subscribed() {
   const dispatch = useDispatch();
   const history = useHistory();
   const allSubscribers = useSelector(state => state.subscrberReducer.getAllSub);
@@ -155,4 +155,4 @@ function Subscribers() {
   );
 }
 
-export default Subscribers;
+export default Subscribed;

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Invited from './Invited';
-import Subscribers from './Subscribers';
+import Subscribed from './Subscribed';
 
 import './subscribers.scss';
 
 
-const Subscribed = () => {
+const Subscriber = () => {
 
   const history = useHistory();
-  const [activeComponent, setActiveComponent] = React.useState(<Subscribers key="error" />);
+  const [activeComponent, setActiveComponent] = React.useState(<Subscribed key="error" />);
   const [keys, setKeys] = useState('error');
   const onChangeComponent = component => {
     setKeys(component.key);
@@ -25,7 +25,7 @@ const Subscribed = () => {
         <div className="d-flex">
           <div
             className={keys === 'error' ? 'sub-button active-menu' : 'sub-button'}
-            onClick={() => onChangeComponent(<Subscribers key="error" />)}
+            onClick={() => onChangeComponent(<Subscribed key="error" />)}
           >
             Subscribed
           </div>
@@ -55,4 +55,4 @@ const Subscribed = () => {
   );
 };
 
-export default Subscribed;
+export default Subscriber;
