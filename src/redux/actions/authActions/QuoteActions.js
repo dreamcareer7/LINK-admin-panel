@@ -5,7 +5,7 @@ import QUOTE_REDUX_CONSTANTS from '../../constants/QuoteReduxConstant';
 // eslint-disable-next-line import/prefer-default-export
 export const getAllQuotes = (page) =>{
     return dispatch => {
-        QuoteServices.getAllQuotes(page, 10)
+        QuoteServices.getAllQuotes(page, 9)
             .then(response => {
                 if (response.data.status === 'SUCCESS') {
                     dispatch({

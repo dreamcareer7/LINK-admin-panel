@@ -12,7 +12,6 @@ function QuoteBank() {
       () => (allQuotesData && allQuotesData.docs ? allQuotesData.docs : []),
       [allQuotesData]
   );
-  console.log(allQuotesData.pages)
   // const quotes = allQuotesData && allQuotesData.docs ? allQuotesData.docs : [];
   const [data, setData] = useState(quotes);
   const dispatch = useDispatch();

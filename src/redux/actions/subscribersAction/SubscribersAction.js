@@ -5,7 +5,7 @@ import SubscriberService from '../../../services/subscribers-services/SubScriber
 // eslint-disable-next-line import/prefer-default-export
 export const getAllSubscribers = (page) => {
   return dispatch => {
-    SubscriberService.getAllSubscribers(page,10)
+    SubscriberService.getAllSubscribers(page,9)
       .then(response => {
         if (response.data.status === 'SUCCESS') {
           dispatch({

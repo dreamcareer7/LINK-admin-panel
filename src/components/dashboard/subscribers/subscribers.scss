@@ -34,10 +34,14 @@
   color: $placeholder-color;
 }
 
+.fix-size{
+  min-height: 68vh;
+}
 .admin-table {
   width: 100%;
   font-size: 14px;
   font-weight: 500;
+
 
   select {
     min-width: 100%;

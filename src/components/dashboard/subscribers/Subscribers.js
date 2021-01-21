@@ -80,7 +80,7 @@ function Subscribers() {
         </div>
       </div>
       <div>
-        <div className="admin-table mt-40">
+        <div className="admin-table mt-40 fix-size">
           <div className="tr heading">
             <div className="admin-table-details">
               <div className="td">NAME</div>
@@ -138,15 +138,18 @@ function Subscribers() {
             </>
           )}
         </div>
-        <Pagination
-            activePage={activePage}
-            itemsCountPerPage={10}
-            totalItemsCount={allSubscribers.total || 1}
-            pageRangeDisplayed={3}
-            onChange={handlePageChange}
-            itemClass="page-item"
-            linkClass="page-link"
-        />
+        {subScribers &&
+        subScribers.length > 0 ?
+          <Pagination
+              activePage={activePage}
+              itemsCountPerPage={10}
+              totalItemsCount={allSubscribers.total || 1}
+              pageRangeDisplayed={3}
+              onChange={handlePageChange}
+              itemClass="page-item"
+              linkClass="page-link"
+          />
+        :<></>}
       </div>
     </div>
   );
