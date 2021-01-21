@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addInviteeSubscribers } from '../../../../redux/actions/subscribersAction/SubscribersAction';
-import { checkForEmail, errorNotification } from '../../../../constants/Toast';
+import {checkForEmail, checkForPhone, errorNotification} from '../../../../constants/Toast';
 
 function AddInvited() {
   const [name, setName] = useState('');
@@ -27,6 +27,8 @@ function AddInvited() {
       errorNotification('Please valid email');
     } else if (!phone || (phone && phone.toString().trim().length === 0)) {
       errorNotification('Please enter invitee phone');
+    }else if (!checkForPhone(phone)){
+      errorNotification('Please enter valid phone');
     }
     else {
       const data = {

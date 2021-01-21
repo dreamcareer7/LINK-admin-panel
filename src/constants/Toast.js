@@ -29,3 +29,6 @@ export const replaceHiddenCharacters = string => {
 export const checkForEmail = emailAddress => {
   return /.+@.+\.[A-Za-z]+$/.test(emailAddress);
 };
+export const checkForPhone = phone => {
+  return /^\d{10}$/.test(phone);
+}

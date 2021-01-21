@@ -84,7 +84,7 @@ function QuoteBank() {
         </div>
       </div>
 
-      <div className="no-of-results-in-display">Showing 1-20 of 357 results</div>
+      <div className="no-of-results-in-display">Showing {(allQuotesData.page - 1 ) * (allQuotesData.limit) + 1} to {allQuotesData.page * allQuotesData.limit} of {allQuotesData.total} results</div>
       {quotes.length !== 0 ? (
           <>
         <div className="quote-table">
