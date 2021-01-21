@@ -1,8 +1,8 @@
-import React, {useEffect, useMemo} from 'react';
+import React, { useEffect, useMemo } from 'react';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Pagination from "react-js-pagination";
+import Pagination from 'react-js-pagination';
 import {
   deleteSubscribers,
   getAllSubscribers,
@@ -16,17 +16,18 @@ function Subscribed() {
   const dispatch = useDispatch();
   const history = useHistory();
   const allSubscribers = useSelector(state => state.subscrberReducer.getAllSub);
-  const docs = useMemo(
-      () => (allSubscribers && allSubscribers.data ? allSubscribers.data : []),
-      [allSubscribers]
-  );
+  const docs = useMemo(() => (allSubscribers && allSubscribers.data ? allSubscribers.data : []), [
+    allSubscribers,
+  ]);
   const subScribers = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
   useEffect(() => {
     dispatch(getAllSubscribers(1));
   }, []);
 
-
-  const activePage = useMemo(() => (allSubscribers && allSubscribers.page ? allSubscribers.page : 1), [allSubscribers]);
+  const activePage = useMemo(
+    () => (allSubscribers && allSubscribers.page ? allSubscribers.page : 1),
+    [allSubscribers]
+  );
   const onEditSub = subId => {
     history.push(`/subscribers/subscribed/${subId}`);
   };
@@ -34,9 +35,9 @@ function Subscribed() {
   const onDeleteSub = subId => {
     dispatch(deleteSubscribers(subId));
   };
-  const handlePageChange = page =>{
-    dispatch(getAllSubscribers(page))
-  }
+  const handlePageChange = page => {
+    dispatch(getAllSubscribers(page));
+  };
 
   return (
     <div>
@@ -91,8 +92,7 @@ function Subscribed() {
             </div>
             <div className="action-cell" />
           </div>
-          {subScribers &&
-            subScribers.length > 0 ? (
+          {subScribers && subScribers.length > 0 ? (
             <>
               {subScribers.map(value => (
                 <div key={value._id} className="row-container">
@@ -138,18 +138,19 @@ function Subscribed() {
             </>
           )}
         </div>
-        {subScribers &&
-        subScribers.length > 0 ?
+        {subScribers && subScribers.length > 0 ? (
           <Pagination
-              activePage={activePage}
-              itemsCountPerPage={10}
-              totalItemsCount={allSubscribers.total || 1}
-              pageRangeDisplayed={3}
-              onChange={handlePageChange}
-              itemClass="page-item"
-              linkClass="page-link"
+            activePage={activePage}
+            itemsCountPerPage={10}
+            totalItemsCount={allSubscribers.total || 1}
+            pageRangeDisplayed={3}
+            onChange={handlePageChange}
+            itemClass="page-item"
+            linkClass="page-link"
           />
-        :<></>}
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
