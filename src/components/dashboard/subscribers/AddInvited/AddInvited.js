@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addInviteeSubscribers } from '../../../../redux/actions/subscribersAction/SubscribersAction';
+import { addInvitee } from '../../../../redux/actions/subscribersAction/SubscribersAction';
 import {checkForEmail, errorNotification} from '../../../../constants/Toast';
 
 function AddInvited() {
@@ -34,7 +34,7 @@ function AddInvited() {
         email,
         phone,
       };
-      dispatch(addInviteeSubscribers(data));
+      dispatch(addInvitee(data));
       history.goBack();
     }
   };

@@ -8,6 +8,10 @@ import Quote from './Quote';
 
 function QuoteBank() {
   const allQuotesData = useSelector(({ allQuotes }) => allQuotes);
+  const [sorting,setSorting] = useState('RECENT');
+  const [pageNum,setPageNum] = useState(1);
+  const [status,setStatus] = useState('all')
+
   const quotes = useMemo(
       () => (allQuotesData && allQuotesData.docs ? allQuotesData.docs : []),
       [allQuotesData]
@@ -17,37 +21,33 @@ function QuoteBank() {
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
-    dispatch(getAllQuotes(1));
+    dispatch(getAllQuotes(1,sorting));
   }, []);
   useEffect(() => {
     setData(quotes);
   }, [quotes]);
 
   const handlePageChange = page =>{
-    dispatch(getAllQuotes(page));
+    setPageNum(page);
+    dispatch(getAllQuotes(page,sorting));
+  }
+  const handleSortChange = (e) =>{
+    setSorting(e.target.value);
+    dispatch(getAllQuotes(pageNum,sorting));
+  }
+  const handleStatusFilter = (e) =>{
+    setStatus(e.target.value);
+    if(e.target.value !== 'all') {
+      dispatch(getAllQuotes(pageNum, sorting, e.target.value));
+    }else if(e.target.value === 'all'){
+      dispatch(getAllQuotes(pageNum, sorting));
+    }
   }
 
   const activePage = useMemo(() => (allQuotesData && allQuotesData.page ? allQuotesData.page : 1), [allQuotesData]);
 
   const onClickAddQuote = () => {
     history.replace('/quote');
-  };
-
-  const applyStatusFilter = event => {
-    switch (event.target.value) {
-      case 'true':
-        // eslint-disable-next-line no-case-declarations
-        const activeQuotes = quotes.filter(e => e.isPublished === true);
-        setData(activeQuotes);
-        break;
-      case 'false':
-        // eslint-disable-next-line no-case-declarations
-        const inActiveQuotes = quotes.filter(e => e.isPublished === false);
-        setData(inActiveQuotes);
-        break;
-      default:
-        setData(quotes);
-    }
   };
 
   return (
@@ -58,7 +58,7 @@ function QuoteBank() {
             <div className="filter">
               <div className="filter-label">Status</div>
               <div className="filter-action">
-                <select onChange={applyStatusFilter}>
+                <select value={status} onChange={e=>handleStatusFilter(e)}>
                   <option value="all">All</option>
                   <option value="true">Active</option>
                   <option value="false">InActive</option>
@@ -68,9 +68,9 @@ function QuoteBank() {
             <div className="filter">
               <div className="filter-label">Sorting</div>
               <div className="filter-action">
-                <select>
-                  <option value="asc">Ascending</option>
-                  <option value="dsc">Descending</option>
+                <select onChange={e=>handleSortChange(e)} value={sorting}>
+                  <option value="OLD">Ascending</option>
+                  <option value="RECENT">Descending</option>
                 </select>
               </div>
             </div>

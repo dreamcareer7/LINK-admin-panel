@@ -65,7 +65,7 @@ export const getInviteeSubscribers = page => {
       });
   };
 };
-export const addInviteeSubscribers = data => {
+export const addInvitee = data => {
   return dispatch => {
     SubscriberService.addInvitee(data)
         .then(response => {
