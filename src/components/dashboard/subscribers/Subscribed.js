@@ -131,9 +131,7 @@ function Subscribed() {
           ) : (
             <>
               <div className="row-container">
-                <div className="tr">
-                  <div className="admin-table-details ">Empty Data</div>
-                </div>
+                <div style={{ textAlign: 'center', marginTop: '5vh' }}>Empty Data</div>
               </div>
             </>
           )}
