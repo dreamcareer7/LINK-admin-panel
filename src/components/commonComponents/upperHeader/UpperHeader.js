@@ -16,6 +16,7 @@ function UpperHeader() {
   const dispatch = useDispatch();
   const history = useHistory();
   const allSubscribers = useSelector(state => state.subscrberReducer.getAllSub);
+  const [searchText, setSearchText] = useState('');
 
   const docs = useMemo(() => (allSubscribers && allSubscribers.data ? allSubscribers.data : []), [
     allSubscribers,
@@ -29,9 +30,11 @@ function UpperHeader() {
   }, []);
 
   const onSearch = e => {
-    if (e.target.value && e.target.value.trim().length > 0) {
+    const text = e.target.value;
+    setSearchText(text);
+    if (text && text.trim().length > 0) {
       const data = {
-        name: e.target.value,
+        name: text,
       };
       SubscriberService.searchSubscriber(data).then(r => {
         console.log('search res=>', r.data.data);
@@ -48,6 +51,7 @@ function UpperHeader() {
     console.log('id of search', val);
     history.push(`/subscribers/subscribed/${val}`);
     setFiltered([]);
+    setSearchText('');
   };
   const onLogOut = () => {
     dispatch(
@@ -59,7 +63,7 @@ function UpperHeader() {
   return (
     <div className="upper-header-block">
       <div className="upper-header--rounded-block search-block">
-        <input placeholder="Search Subscriber" onChange={onSearch} />
+        <input placeholder="Search Subscriber" value={searchText} onChange={onSearch} />
         <button type="button">
           <div className="down-arrow">
             <img src={search} />{' '}
