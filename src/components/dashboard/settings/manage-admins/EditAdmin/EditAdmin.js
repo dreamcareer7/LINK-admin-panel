@@ -29,7 +29,6 @@ function EditAdmin() {
   const [selected, setSelected] = useState(false);
 
   const dispatch = useDispatch();
-  console.log('userId->', userId);
   useEffect(() => {
     if (userId !== 'addAdmin') {
       dispatch(getAdminById(userId));

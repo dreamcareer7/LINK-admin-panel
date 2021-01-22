@@ -48,7 +48,6 @@ function UpperHeader() {
   };
 
   const onClickSearchedVal = val => {
-    console.log('id of search', val);
     history.push(`/subscribers/subscribed/${val}`);
     setFiltered([]);
     setSearchText('');
