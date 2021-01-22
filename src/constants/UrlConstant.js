@@ -54,6 +54,7 @@ export const MANAGE_ADMIN_URLS = {
   UPDATE_ADMIN: `${BASE_URL}admin/update/`,
   DELETE_ADMIN: `${BASE_URL}admin/delete/`,
   GENERATE_2FA: `${BASE_URL}authAdmin/generate-2fa`,
+  CHANGE_PASSWORD: `${BASE_URL}authAdmin/change-password`,
 };
 export const QUOTE_URLS = {
   ALL_QUOTE_URL: `${BASE_URL}quote/all-quote`,

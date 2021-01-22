@@ -103,3 +103,19 @@ export const deleteUser = id => {
       .catch(() => errorNotification('Error during deleting Admin'));
   };
 };
+
+export const changeAdminPass = data => {
+  return dispatch => {
+    ManageAdminService.changeAdminPass(data)
+      .then(response => {
+        if (response.data.status === 'SUCCESS') {
+          dispatch({
+            type: ADMIN_REDUX_CONSTANTS.CHANGE_PASS,
+            data: response.data.data,
+          });
+          successNotification('Password successfully changed');
+        }
+      })
+      .catch(() => errorNotification('Please check your current password'));
+  };
+};

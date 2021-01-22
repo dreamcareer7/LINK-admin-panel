@@ -8,12 +8,17 @@ import user from '../../../../../assets/images/dummy-user.jpg';
 import copy from '../../../../../assets/images/copy.svg';
 import {
   addAdmin,
+  changeAdminPass,
   editAdminById,
   generate2FA,
   getAdminById,
 } from '../../../../../redux/actions/manageAdminAction/ManageAdminAction';
 import AuthService from '../../../../../services/auth-services/AuthSevices';
-import { errorNotification, successNotification } from '../../../../../constants/Toast';
+import {
+  errorNotification,
+  successNotification,
+  warningNotification,
+} from '../../../../../constants/Toast';
 import { configure2FA } from '../../../../../redux/actions/authActions/AuthActions';
 
 function EditAdmin() {
@@ -27,6 +32,10 @@ function EditAdmin() {
   const [adminPhone, setAdminPhone] = useState('');
   const [show2Fa, set2FaShow] = useState(false);
   const [selected, setSelected] = useState(false);
+
+  const [currentPass, setCurrentPass] = useState('');
+  const [newPass, setNewPass] = useState('');
+  const [confirmPass, setConfirmPass] = useState('');
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -47,6 +56,30 @@ function EditAdmin() {
     editAdmin && editAdmin.firstName && editAdmin.firstName,
     editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled,
   ]);
+
+  const onClickChangePass = () => {
+    console.log({ currentPass, newPass, confirmPass });
+    if (!currentPass || currentPass.trim().length === 0) {
+      errorNotification('Please enter current password');
+    } else if (!newPass || newPass.trim().length === 0) {
+      errorNotification('Please enter new password');
+    } else if (!confirmPass || confirmPass.trim().length === 0) {
+      errorNotification('Please confirm different password');
+    } else if (currentPass === newPass) {
+      errorNotification('Please enter different password');
+    } else if (newPass !== confirmPass) {
+      warningNotification('Password does not match');
+    } else {
+      const data = {
+        oldPassword: currentPass,
+        newPassword: confirmPass,
+      };
+      dispatch(changeAdminPass(data));
+    }
+    setConfirmPass('');
+    setCurrentPass('');
+    setNewPass('');
+  };
 
   const onCancel = () => {
     history.push('/settings/manageAdmin');
@@ -158,6 +191,58 @@ function EditAdmin() {
           />
         </div>
       </div>
+      {userId !== 'addAdmin' && (
+        <div style={{ marginTop: 30 }}>
+          <div className="admin-detail">
+            <div id="name" className="mr-20">
+              <div className="common-title mb-5">Current Password</div>
+              <input
+                className="common-input"
+                name="currentPass"
+                placeholder="current password"
+                type="password"
+                value={currentPass}
+                onChange={e => setCurrentPass(e.target.value)}
+              />
+            </div>
+
+            <div id="newPass" className="mr-20">
+              <div className="common-title mb-5">New password</div>
+              <input
+                className="common-input"
+                type="password"
+                name="newPass"
+                placeholder="new password"
+                value={newPass}
+                onChange={e => setNewPass(e.target.value)}
+              />
+            </div>
+            <div id="confirmPass" className="mr-20">
+              <div className="common-title mb-5">Confirm Password</div>
+              <input
+                className="common-input"
+                type="password"
+                name="confirmPass"
+                placeholder="confirm password"
+                value={confirmPass}
+                onChange={e => setConfirmPass(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="buttons-row">
+            <button
+              type="button"
+              className="button success-button mr-10"
+              onClick={onClickChangePass}
+            >
+              CHANGE PASSWORD
+            </button>
+            <button type="button" className="button primary-button mr-10">
+              UPDATE
+            </button>
+          </div>
+        </div>
+      )}
 
       {userId === 'addAdmin' && (
         <div className="buttons-row">

@@ -13,6 +13,8 @@ const manageAdminReducer = (state = null, action) => {
       // eslint-disable-next-line no-case-declarations
       // const findIndex = state.data.findIndex(item => item._id === action.data._id);
       return state;
+    case ADMIN_REDUX_CONSTANTS.CHANGE_PASS:
+      return state;
 
     default:
       return state;

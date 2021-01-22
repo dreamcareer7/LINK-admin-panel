@@ -8,6 +8,7 @@ const ManageAdminService = {
   editAdmin: (id, data) => ApiService.putData(MANAGE_ADMIN_URLS.UPDATE_ADMIN + id, data),
   deleteUser: id => ApiService.deleteData(MANAGE_ADMIN_URLS.DELETE_ADMIN + id),
   generate2FA: () => ApiService.getData(MANAGE_ADMIN_URLS.GENERATE_2FA),
+  changeAdminPass: data => ApiService.postData(MANAGE_ADMIN_URLS.CHANGE_PASSWORD, data),
 };
 
 export default ManageAdminService;
