@@ -41,20 +41,17 @@ function ErrorMessages() {
           <>
             {errorData.map(value => (
               <React.Fragment key={value._id}>
-                <div
-                  contentEditable="true"
-                  suppressContentEditableWarning="true"
-                  onInput={() => onErrorChange(value._id)}
-                  className="common-input error-message"
-                >
-                  <div
-                    className="common-title"
-                    id="title"
-                    value={value && value.title && value.title}
-                  >
+                <div className="common-input error-message">
+                  <div className="common-title" id="title">
                     {value && value.title && value.title}
                   </div>
-                  <div id="text" className="common-content">
+                  <div
+                    id="text"
+                    className="common-content"
+                    contentEditable="true"
+                    suppressContentEditableWarning="true"
+                    onInput={() => onErrorChange(value._id)}
+                  >
                     {value && value.text && value.text}{' '}
                   </div>
                 </div>

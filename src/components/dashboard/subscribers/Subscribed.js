@@ -111,7 +111,6 @@ function Subscribed() {
 
                       <div className="td">{value.email}</div>
                       <div className="td">{value.phone}</div>
-                      <div className="td">{value.phone}</div>
                       <div className="td">Yearly</div>
                       <div className="td">{moment(value.createdAt).format('L')}</div>
                     </div>

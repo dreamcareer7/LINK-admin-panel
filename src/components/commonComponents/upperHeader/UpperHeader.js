@@ -30,7 +30,6 @@ function UpperHeader() {
 
   const onSearch = e => {
     if (e.target.value && e.target.value.trim().length > 0) {
-      console.log('value->', e.target.value);
       const data = {
         name: e.target.value,
       };
