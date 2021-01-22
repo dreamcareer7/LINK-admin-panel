@@ -9,7 +9,7 @@ import Quote from './Quote';
 function QuoteBank() {
   const allQuotesData = useSelector(({ allQuotes }) => allQuotes);
   const [sorting, setSorting] = useState('RECENT');
-  const [pageNum, setPageNum] = useState(1);
+  // const [pageNum, setPageNum] = useState(1);
   const [status, setStatus] = useState('all');
 
   const quotes = useMemo(() => (allQuotesData && allQuotesData.docs ? allQuotesData.docs : []), [
@@ -27,20 +27,20 @@ function QuoteBank() {
   }, [quotes]);
 
   const handlePageChange = page => {
-    setPageNum(page);
-    dispatch(getAllQuotes(page, sorting));
+    // setPageNum(page);
+    dispatch(getAllQuotes(page, sorting, status));
   };
   const handleSortChange = e => {
     setSorting(e.target.value);
-    dispatch(getAllQuotes(pageNum, e.target.value));
+    dispatch(getAllQuotes(1, e.target.value));
   };
   const handleStatusFilter = e => {
-    setStatus(e.target.value);
     if (e.target.value !== 'all') {
-      dispatch(getAllQuotes(pageNum, sorting, e.target.value));
-    } else if (e.target.value === 'all') {
-      dispatch(getAllQuotes(pageNum, sorting));
+      dispatch(getAllQuotes(1, sorting, e.target.value));
+    } else {
+      dispatch(getAllQuotes(1, sorting));
     }
+    setStatus(e.target.value);
   };
 
   const activePage = useMemo(() => (allQuotesData && allQuotesData.page ? allQuotesData.page : 1), [

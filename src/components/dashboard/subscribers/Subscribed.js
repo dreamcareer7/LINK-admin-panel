@@ -22,7 +22,7 @@ function Subscribed() {
   ]);
   const subScribers = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
 
-  const [sorting, setSorting] = useState('RECENT');
+  const [sorting, setSorting] = useState('DESC');
   const [pageNum, setPageNum] = useState(1);
   const [fromDate, setFromDate] = useState(moment().subtract(30, 'days').toDate());
   const [toDate, setToDate] = useState(moment().toDate());
