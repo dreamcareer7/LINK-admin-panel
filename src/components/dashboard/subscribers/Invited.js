@@ -26,7 +26,6 @@ const Invited = () => {
     setPageNum(page);
   };
   const onDeleteInvitee = id => {
-    console.log('invitee id=>', id);
     dispatch(deleteInvitee(id));
     dispatch(getInviteeSubscribers(pageNum));
   };
@@ -63,7 +62,7 @@ const Invited = () => {
                           <div className="td">{value.email}</div>
                           <div className="td">{value.phone}</div>
                         </div>
-                        <div className="action-cell">
+                        <div className="action-cell" style={{ width: 40 }}>
                           <img src={bin} alt="" onClick={() => onDeleteInvitee(value._id)} />
                         </div>
                       </div>
