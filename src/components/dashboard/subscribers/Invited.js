@@ -1,12 +1,17 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from 'react-js-pagination';
 import User from '../../../assets/images/avatar.jpg';
-import { getInviteeSubscribers } from '../../../redux/actions/subscribersAction/SubscribersAction';
+import {
+  deleteInvitee,
+  getInviteeSubscribers,
+} from '../../../redux/actions/subscribersAction/SubscribersAction';
+import bin from '../../../assets/images/delete.png';
 
 const Invited = () => {
   const dispatch = useDispatch();
   const allInvitee = useSelector(state => state.subscrberReducer.invite);
+  const [pageNum, setPageNum] = useState(1);
   const docs = useMemo(() => (allInvitee && allInvitee.data ? allInvitee.data : []), [allInvitee]);
   const invitee = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
   const activePage = useMemo(() => (allInvitee && allInvitee.page ? allInvitee.page : 1), [
@@ -18,6 +23,12 @@ const Invited = () => {
   }, []);
   const handlePageChange = page => {
     dispatch(getInviteeSubscribers(page));
+    setPageNum(page);
+  };
+  const onDeleteInvitee = id => {
+    console.log('invitee id=>', id);
+    dispatch(deleteInvitee(id));
+    dispatch(getInviteeSubscribers(pageNum));
   };
   return (
     <>
@@ -51,6 +62,9 @@ const Invited = () => {
 
                           <div className="td">{value.email}</div>
                           <div className="td">{value.phone}</div>
+                        </div>
+                        <div className="action-cell">
+                          <img src={bin} alt="" onClick={() => onDeleteInvitee(value._id)} />
                         </div>
                       </div>
                     </div>

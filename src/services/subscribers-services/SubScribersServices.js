@@ -15,6 +15,7 @@ const SubscriberService = {
   downloadSubscriber: () => ApiService.getData(SUBSCRIBERS_URLS.DOWNLOAD_SUBSCRIBERS),
   downloadInvitees: () => ApiService.getData(SUBSCRIBERS_URLS.DOWNLOAD_INVITEES),
   searchSubscriber: name => ApiService.putData(SUBSCRIBERS_URLS.SEARCH_SUBSCRIBERS, name),
+  deleteInvitee: id => ApiService.deleteData(SUBSCRIBERS_URLS.DELETE_INVITEE + id),
 };
 
 export default SubscriberService;

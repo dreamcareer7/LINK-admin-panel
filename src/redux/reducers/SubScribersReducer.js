@@ -17,9 +17,9 @@ const initialValue = {
   invite: {
     data: [],
   },
-  invitee:{
-    data:[],
-  }
+  invitee: {
+    data: [],
+  },
 };
 // eslint-disable-next-line import/prefer-default-export
 export const subscrberReducer = (state = initialValue, action) => {
@@ -43,6 +43,15 @@ export const subscrberReducer = (state = initialValue, action) => {
       };
 
     case SUBSCRIBERS_REDUX_CONSTANTS.ADD_INVITEE_SUBSCRIBER:
+      return {
+        ...state,
+        invitee: {
+          ...state.invitee,
+          data: action.data,
+        },
+      };
+
+    case SUBSCRIBERS_REDUX_CONSTANTS.DELETE_INVITEE_SUBSCRIBER:
       return {
         ...state,
         invitee: {
@@ -83,10 +92,12 @@ export const subscrberReducer = (state = initialValue, action) => {
         ...state,
         getAllSub: {
           ...state.getAllSub,
-          data: {...state.getAllSub.data,
-            docs:
-            state.getAllSub.data.docs? state.getAllSub.data.docs.map(e=>e._id === action.data._id ? action.data : e):state.getAllSub.data.docs,
-          }
+          data: {
+            ...state.getAllSub.data,
+            docs: state.getAllSub.data.docs
+              ? state.getAllSub.data.docs.map(e => (e._id === action.data._id ? action.data : e))
+              : state.getAllSub.data.docs,
+          },
         },
       };
 
@@ -95,10 +106,10 @@ export const subscrberReducer = (state = initialValue, action) => {
         ...state,
         getAllSub: {
           ...state.getAllSub,
-          data: {...state.getAllSub.data,
-            docs:
-                state.getAllSub.data.docs.filter(e=>e._id !== action.subId),
-          }
+          data: {
+            ...state.getAllSub.data,
+            docs: state.getAllSub.data.docs.filter(e => e._id !== action.subId),
+          },
         },
       };
 

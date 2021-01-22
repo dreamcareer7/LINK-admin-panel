@@ -74,6 +74,28 @@ export const addInvitee = data => {
             type: SUBSCRIBERS_REDUX_CONSTANTS.ADD_INVITEE_SUBSCRIBER,
             data: response.data.data,
           });
+          successNotification('Invitee added successfully');
+        }
+      })
+      .catch(e => {
+        if (e.response.data.status === undefined) {
+          errorNotification('It seems like server is down, Please try after sometime.');
+        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+          errorNotification('Internal server error');
+        }
+      });
+  };
+};
+export const deleteInvitee = id => {
+  return dispatch => {
+    SubscriberService.deleteInvitee(id)
+      .then(response => {
+        if (response.data.status === 'SUCCESS') {
+          dispatch({
+            type: SUBSCRIBERS_REDUX_CONSTANTS.DELETE_INVITEE_SUBSCRIBER,
+            data: response.data.data,
+          });
+          successNotification('Invitee deleted successfully');
         }
       })
       .catch(e => {
