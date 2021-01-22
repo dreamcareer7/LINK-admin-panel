@@ -3,9 +3,9 @@ import SUBSCRIBERS_REDUX_CONSTANTS from '../../constants/SubscribersConstant';
 import SubscriberService from '../../../services/subscribers-services/SubScribersServices';
 
 // eslint-disable-next-line import/prefer-default-export
-export const getAllSubscribers = page => {
+export const getAllSubscribers = data => {
   return dispatch => {
-    SubscriberService.getAllSubscribers(page, 10)
+    SubscriberService.getAllSubscribers(data)
       .then(response => {
         if (response.data.status === 'SUCCESS') {
           dispatch({

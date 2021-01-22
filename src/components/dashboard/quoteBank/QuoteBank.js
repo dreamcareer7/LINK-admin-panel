@@ -32,7 +32,7 @@ function QuoteBank() {
   };
   const handleSortChange = e => {
     setSorting(e.target.value);
-    dispatch(getAllQuotes(pageNum, sorting));
+    dispatch(getAllQuotes(pageNum, e.target.value));
   };
   const handleStatusFilter = e => {
     setStatus(e.target.value);

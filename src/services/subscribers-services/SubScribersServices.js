@@ -2,8 +2,21 @@ import { SUBSCRIBERS_URLS } from '../../constants/UrlConstant';
 import ApiService from '../api-service/ApiService';
 
 const SubscriberService = {
-  getAllSubscribers: (page, limit) =>
-    ApiService.getData(`${SUBSCRIBERS_URLS.GET_ALL_SUBSCRIBERS}?page=${page}&limit=${limit}`),
+  getAllSubscribers: ({
+    page = 1,
+    limit = 10,
+    sorting = 'DESC',
+    startDate,
+    endDate,
+    subscriptionType,
+  }) =>
+    ApiService.getData(
+      `${SUBSCRIBERS_URLS.GET_ALL_SUBSCRIBERS}?page=${page}&limit=${limit}&sortOrder=${sorting}${
+        startDate ? `&startDate=${startDate}` : ''
+      }${endDate ? `&endDate=${endDate}` : ''}${
+        subscriptionType ? `&subscriptionType=${subscriptionType}` : ''
+      }`
+    ),
   getIndustry: () => ApiService.getData(SUBSCRIBERS_URLS.GET_INDUSTRY),
   getInvitee: (page, limit) =>
     ApiService.getData(`${SUBSCRIBERS_URLS.INVITEE_SUBSCRIBERS}?page=${page}&limit=${limit}`),

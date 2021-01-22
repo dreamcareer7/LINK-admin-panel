@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -11,6 +11,7 @@ import edit from '../../../assets/images/pencil.png';
 import bin from '../../../assets/images/delete.png';
 import User from '../../../assets/images/avatar.jpg';
 import './subscribers.scss';
+import { errorNotification } from '../../../constants/Toast';
 
 function Subscribed() {
   const dispatch = useDispatch();
@@ -20,9 +21,75 @@ function Subscribed() {
     allSubscribers,
   ]);
   const subScribers = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
+
+  const [sorting, setSorting] = useState('RECENT');
+  const [pageNum, setPageNum] = useState(1);
+  const [fromDate, setFromDate] = useState(moment().subtract(30, 'days').toDate());
+  const [toDate, setToDate] = useState(moment().toDate());
+  const [subType, setSubType] = useState('all');
+
+  const handleSortChange = e => {
+    const sort = e.target.value;
+    setSorting(sort);
+    const data = {
+      page: pageNum,
+      sorting: sort,
+    };
+    dispatch(getAllSubscribers(data));
+  };
   useEffect(() => {
-    dispatch(getAllSubscribers(1));
+    const data = {
+      page: 1,
+      sorting,
+    };
+    dispatch(getAllSubscribers(data));
   }, []);
+
+  const handleFromDateChange = e => {
+    const date = e.target.value;
+    if (moment(date).isAfter(toDate)) {
+      errorNotification('From date should be less than to date');
+    } else {
+      setFromDate(date);
+      const data = {
+        page: pageNum,
+        sorting,
+        startDate: moment(date).toISOString(),
+        endDate: moment(toDate).toISOString(),
+      };
+      dispatch(getAllSubscribers(data));
+    }
+  };
+  const handleToDateChange = e => {
+    const date = e.target.value;
+    if (moment(date).isBefore(fromDate)) {
+      errorNotification('To date should be greater than from date');
+    } else {
+      setToDate(date);
+      const data = {
+        page: pageNum,
+        sorting,
+        startDate: moment(fromDate).toISOString(),
+        endDate: moment(date).toISOString(),
+      };
+      dispatch(getAllSubscribers(data));
+    }
+  };
+
+  const onChangeSubType = e => {
+    const subscriptionType = e.target.value;
+    setSubType(subscriptionType);
+    if (subscriptionType !== 'all') {
+      const data = {
+        page: pageNum,
+        sorting,
+        startDate: moment(fromDate).toISOString(),
+        endDate: moment(toDate).toISOString(),
+        subscriptionType,
+      };
+      dispatch(getAllSubscribers(data));
+    }
+  };
 
   const activePage = useMemo(
     () => (allSubscribers && allSubscribers.page ? allSubscribers.page : 1),
@@ -36,7 +103,8 @@ function Subscribed() {
     dispatch(deleteSubscribers(subId));
   };
   const handlePageChange = page => {
-    dispatch(getAllSubscribers(page));
+    setPageNum(page);
+    dispatch(getAllSubscribers(page, sorting));
   };
 
   return (
@@ -48,18 +116,31 @@ function Subscribed() {
               Date Range
             </label>
             <div className="filter-action">
-              <input name="from" type="date" placeholder="From" />
-              <input name="to" type="date" placeholder="To" />
+              <input
+                name="from"
+                type="date"
+                placeholder="From"
+                value={moment(fromDate).format('YYYY-MM-DD')}
+                onChange={handleFromDateChange}
+              />
+              <input
+                name="to"
+                type="date"
+                placeholder="To"
+                value={moment(toDate).format('YYYY-MM-DD')}
+                onChange={handleToDateChange}
+              />
             </div>
           </div>
           <div className="filter">
             <div className="filter-label">Subscription Type:</div>
             <div className="filter-action">
-              <select>
-                <option value="asc">Free Trial</option>
-                <option value="dsc">Monthly</option>
-                <option value="dsc">Yearly</option>
-                <option value="dsc">Paused</option>
+              <select value={subType} onChange={onChangeSubType}>
+                <option value="all">All</option>
+                <option value="FREE_TRIAL">Free Trial</option>
+                <option value="MONTHLY">Monthly</option>
+                <option value="YEARLY">Yearly</option>
+                <option value="CANCELLED">cancelled</option>
               </select>
             </div>
           </div>
@@ -67,9 +148,9 @@ function Subscribed() {
           <div className="filter">
             <div className="filter-label">Sorting</div>
             <div className="filter-action">
-              <select>
-                <option value="asc">Ascending</option>
-                <option value="dsc">Descending</option>
+              <select onChange={e => handleSortChange(e)} value={sorting}>
+                <option value="ASC">Ascending</option>
+                <option value="DESC">Descending</option>
               </select>
             </div>
           </div>
