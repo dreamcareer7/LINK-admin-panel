@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
-import { getAuthTokenLocalStorage } from '../../helpers/LocalStorageHelper';
+import { clearAuthToken, getAuthTokenLocalStorage } from '../../helpers/LocalStorageHelper';
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-  timeout: 3000,
+  timeout: 4000,
   params: {}, // do not remove this, its added to add params later in the config
 });
 
@@ -20,15 +20,11 @@ instance.interceptors.request.use(
   },
   error => {
     // Do something with request error
-    return Promise.reject(error);
-  }
-);
-
-instance.interceptors.response.use(
-  response => {
-    return response;
-  },
-  error => {
+    if (error.response.status === 401) {
+      clearAuthToken();
+      window.location.href = '/login';
+      return false;
+    }
     return Promise.reject(error);
   }
 );

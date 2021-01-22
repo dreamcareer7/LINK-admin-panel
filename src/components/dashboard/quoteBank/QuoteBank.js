@@ -9,13 +9,12 @@ import Quote from './Quote';
 function QuoteBank() {
   const allQuotesData = useSelector(({ allQuotes }) => allQuotes);
   const [sorting, setSorting] = useState('RECENT');
-  // const [pageNum, setPageNum] = useState(1);
   const [status, setStatus] = useState('all');
 
   const quotes = useMemo(() => (allQuotesData && allQuotesData.docs ? allQuotesData.docs : []), [
     allQuotesData,
   ]);
-  // const quotes = allQuotesData && allQuotesData.docs ? allQuotesData.docs : [];
+
   const [data, setData] = useState(quotes);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -27,7 +26,6 @@ function QuoteBank() {
   }, [quotes]);
 
   const handlePageChange = page => {
-    // setPageNum(page);
     dispatch(getAllQuotes(page, sorting, status));
   };
   const handleSortChange = e => {
