@@ -7,13 +7,15 @@ import {
   deleteSubscribers,
   getCompanySize,
   getIndutries,
-  getSubscribersById, updateSubscribers,
+  getSubscribersById,
+  updateSubscribers,
 } from '../../../../redux/actions/subscribersAction/SubscribersAction';
 import './Editsubscribers.scss';
-import {errorNotification} from "../../../../constants/Toast";
+import { errorNotification } from '../../../../constants/Toast';
 
 const AddSubscribers = () => {
   const { subId } = useParams();
+  console.log('subId', subId);
   const history = useHistory();
   const dispatch = useDispatch();
   const { data } = useSelector(state => state.subscrberReducer.getById);
@@ -48,23 +50,23 @@ const AddSubscribers = () => {
       dispatch(getSubscribersById(subId));
     }
     if (data && data.client) {
-        setFormValue({
-          username: data.client.firstName && `${data.client.firstName} ${data.client.lastName}` ,
-          email: data.client.email && data.client.email,
-          phone: data.client.phone && data.client.phone,
-          subscription_date: moment(data.client.createdAt && data.client.createdAt).format(
-            'yyyy-MM-DD'
-          ),
-          lifetime_payment: data.client.lifetime_payment && data.client.lifetime_payment,
-          gender: data.client.gender ? data.client.gender : 'none'  ,
-          location: data.client.companyLocation && data.client.companyLocation,
-          sub_type: data.client.selectedPlan && data.client.selectedPlan.status,
-          ave_dealvalue: data.client.ave_dealvalue && data.client.ave_dealvalue,
-          industry: data.client.industry && data.client.industry,
-          company_size: data.client.company_size && data.client.company_size,
-          vicSub: data.client.vicSub && data.client.vicSub,
-          status: data.client.status && data.client.status,
-        });
+      setFormValue({
+        username: data.client.firstName && `${data.client.firstName} ${data.client.lastName}`,
+        email: data.client.email && data.client.email,
+        phone: data.client.phone && data.client.phone,
+        subscription_date: moment(data.client.createdAt && data.client.createdAt).format(
+          'yyyy-MM-DD'
+        ),
+        lifetime_payment: data.client.lifetime_payment && data.client.lifetime_payment,
+        gender: data.client.gender ? data.client.gender : 'none',
+        location: data.client.companyLocation && data.client.companyLocation,
+        sub_type: data.client.selectedPlan && data.client.selectedPlan.status,
+        ave_dealvalue: data.client.ave_dealvalue && data.client.ave_dealvalue,
+        industry: data.client.industry && data.client.industry,
+        company_size: data.client.company_size && data.client.company_size,
+        vicSub: data.client.vicSub && data.client.vicSub,
+        status: data.client.status && data.client.status,
+      });
     }
   }, [
     data && data.client && data.client.firstName,
@@ -86,29 +88,23 @@ const AddSubscribers = () => {
     e.preventDefault();
     const userName = form.username.split(' ');
 
-    console.log('form',form);
-    if(!form.username || form.username && form.username.trim().length === 0){
-      errorNotification("Please enter name");
-    }
-    else if(!form.email || form.email && form.email.trim().length === 0){
-      errorNotification("Please enter phone number");
-    }
-    else if(!form.gender || form.gender && form.gender === "none"){
-      errorNotification("Please select gender");
-    }
-    else if(!form.location || form.location && form.location.trim().length === 0){
-      errorNotification("Please enter location");
-    }
-   else if(!form.industry || form.industry && form.industry === "none"){
-      errorNotification("Please select industry");
-    }
-
-    else {
+    console.log('form', form);
+    if (!form.username || (form.username && form.username.trim().length === 0)) {
+      errorNotification('Please enter name');
+    } else if (!form.email || (form.email && form.email.trim().length === 0)) {
+      errorNotification('Please enter phone number');
+    } else if (!form.gender || (form.gender && form.gender === 'none')) {
+      errorNotification('Please select gender');
+    } else if (!form.location || (form.location && form.location.trim().length === 0)) {
+      errorNotification('Please enter location');
+    } else if (!form.industry || (form.industry && form.industry === 'none')) {
+      errorNotification('Please select industry');
+    } else {
       const formData = {
-        firstName: userName[0] && userName[0].trim() || '',
-        lastName: userName[1] && userName[1].trim() || '',
+        firstName: (userName[0] && userName[0].trim()) || '',
+        lastName: (userName[1] && userName[1].trim()) || '',
         email: form.email.trim() || '',
-        phone: form.phone && form.phone.trim() || '',
+        phone: (form.phone && form.phone.trim()) || '',
         industry: form.industry,
         gender: form.gender,
         companyLocation: form.location.trim() || '',
@@ -138,7 +134,12 @@ const AddSubscribers = () => {
           <span>/ EDIT / EDIT SUBSCRIBERS</span>
         </div>
         <div className="column-5">
-          <img className="DP-image" src={data && data.client && data.client.profilePicUrl ? data.client.profilePicUrl :User} />
+          <img
+            className="DP-image"
+            src={
+              data && data.client && data.client.profilePicUrl ? data.client.profilePicUrl : User
+            }
+          />
         </div>
         <div className="column-95">
           <div className="sub-tag d-flex mt-33">
@@ -222,7 +223,13 @@ const AddSubscribers = () => {
               </div>
               <div className="mr-20">
                 <div className="common-title mb-5">Location</div>
-                <input type="text" name="location" onChange={updateField} className="common-input" value={form.location}/>
+                <input
+                  type="text"
+                  name="location"
+                  onChange={updateField}
+                  className="common-input"
+                  value={form.location}
+                />
               </div>
               <div className="mr-20">
                 <div className="common-title mb-5">Subscription Type</div>
@@ -244,11 +251,23 @@ const AddSubscribers = () => {
             <div className="admin-detail mt-40">
               <div className="mr-20">
                 <div className="common-title mb-5">Average Deal Value</div>
-                <input type="text" name="ave_dealvalue" onChange={updateField} className="common-input" value={`${form.ave_dealvalue ? `$ ${form.ave_dealvalue}`: ' - ' }`} disabled={!form.ave_dealvalue}/>
+                <input
+                  type="text"
+                  name="ave_dealvalue"
+                  onChange={updateField}
+                  className="common-input"
+                  value={`${form.ave_dealvalue ? `$ ${form.ave_dealvalue}` : ' - '}`}
+                  disabled={!form.ave_dealvalue}
+                />
               </div>
               <div className="mr-20">
                 <div className="common-title mb-5">Industry</div>
-                <select className="common-input" value={form.industry} name="industry" onChange={updateField}>
+                <select
+                  className="common-input"
+                  value={form.industry}
+                  name="industry"
+                  onChange={updateField}
+                >
                   <option value="none">None</option>
                   {industries &&
                     industries.data &&
@@ -272,7 +291,12 @@ const AddSubscribers = () => {
             <div className="admin-detail mt-40">
               <div className="mr-20" onChange={updateField}>
                 <div className="common-title mb-5">VIC Subscriber?</div>
-                <select className="common-input" onChange={updateField} name="vicSub" value={form.vicSub}>
+                <select
+                  className="common-input"
+                  onChange={updateField}
+                  name="vicSub"
+                  value={form.vicSub}
+                >
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>

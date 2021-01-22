@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import Notifications from 'react-notify-toast';
 import { Redirect, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -20,11 +20,11 @@ import EditAdmin from './components/dashboard/settings/manage-admins/EditAdmin/E
 import ManageAdmins from './components/dashboard/settings/manage-admins/ManageAdmins';
 import Subscriber from './components/dashboard/subscribers/subscriber';
 import AddInvited from './components/dashboard/subscribers/AddInvited/AddInvited';
-import AddSubscribers from "./components/dashboard/subscribers/EditSubscribers/EditSubscribers";
-
+import AddSubscribers from './components/dashboard/subscribers/EditSubscribers/EditSubscribers';
 
 const PrivateRoute = ({ component, ...options }) => {
-  const isLoggedIn = localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0;
+  const isLoggedIn =
+    localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0;
   const finalComponent = isLoggedIn ? component : LoginPage;
   if (options.path === '/' && isLoggedIn) {
     return (
@@ -45,34 +45,32 @@ PrivateRoute.defaultProps = {
 };
 
 function App() {
-
   return (
     <div className="App">
       <Notifications />
       <Router>
-          <Switch>
-            <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/forgot" component={ForgotPasswordPage} />
-            <Route exact path="/authAdmin/reset-password/:token" component={SetNewPassword} />
-            <PrivateRoute exact path="/verificationPage" component={VerificationPage} />
-            <Layout>
-              <PrivateRoute exact path="/" />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute exact path="/subscribers/:type" component={Subscriber} />
-              <PrivateRoute exact path="/subscribers/subscribed/:type" component={AddSubscribers} />
-              <PrivateRoute exact path="/subscribers/invited/addInvited" component={AddInvited} />
-              <PrivateRoute exact path="/settings" component={Settings} />
-              <PrivateRoute exact path="/addAdmin" component={EditAdmin} />
-              <PrivateRoute exact path="/settings/:userId" component={EditAdmin} />
-              <PrivateRoute exact path="/error-message" component={ErrorMessages} />
-              <PrivateRoute exact path="/integrations" component={Integrations} />
-              <PrivateRoute exact path="/manage-admin" component={ManageAdmins} />
-              <PrivateRoute exact path="/quoteBank" component={QuoteBank} />
-              <PrivateRoute exact path="/quote" component={AddQuote} />
-              <PrivateRoute exact path="/quote/:id" component={AddQuote} />
-
-            </Layout>
-          </Switch>
+        <Switch>
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/forgot" component={ForgotPasswordPage} />
+          <Route exact path="/authAdmin/reset-password/:token" component={SetNewPassword} />
+          <PrivateRoute exact path="/verificationPage" component={VerificationPage} />
+          <Layout>
+            <PrivateRoute exact path="/" />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/subscribers/:type" component={Subscriber} />
+            <PrivateRoute exact path="/subscribers/subscribed/:subId" component={AddSubscribers} />
+            <PrivateRoute exact path="/subscribers/invited/addInvited" component={AddInvited} />
+            <PrivateRoute exact path="/settings" component={Settings} />
+            <PrivateRoute exact path="/addAdmin" component={EditAdmin} />
+            <PrivateRoute exact path="/settings/:userId" component={EditAdmin} />
+            <PrivateRoute exact path="/error-message" component={ErrorMessages} />
+            <PrivateRoute exact path="/integrations" component={Integrations} />
+            <PrivateRoute exact path="/manage-admin" component={ManageAdmins} />
+            <PrivateRoute exact path="/quoteBank" component={QuoteBank} />
+            <PrivateRoute exact path="/quote" component={AddQuote} />
+            <PrivateRoute exact path="/quote/:id" component={AddQuote} />
+          </Layout>
+        </Switch>
       </Router>
     </div>
   );

@@ -3,9 +3,9 @@ import SUBSCRIBERS_REDUX_CONSTANTS from '../../constants/SubscribersConstant';
 import SubscriberService from '../../../services/subscribers-services/SubScribersServices';
 
 // eslint-disable-next-line import/prefer-default-export
-export const getAllSubscribers = (page) => {
+export const getAllSubscribers = page => {
   return dispatch => {
-    SubscriberService.getAllSubscribers(page,9)
+    SubscriberService.getAllSubscribers(page, 10)
       .then(response => {
         if (response.data.status === 'SUCCESS') {
           dispatch({
@@ -47,7 +47,7 @@ export const getIndutries = data => {
 
 export const getInviteeSubscribers = page => {
   return dispatch => {
-    SubscriberService.getInvitee(page,10)
+    SubscriberService.getInvitee(page, 10)
       .then(response => {
         if (response.data.status === 'SUCCESS') {
           dispatch({
@@ -68,21 +68,21 @@ export const getInviteeSubscribers = page => {
 export const addInvitee = data => {
   return dispatch => {
     SubscriberService.addInvitee(data)
-        .then(response => {
-          if (response.data.status === 'SUCCESS') {
-            dispatch({
-              type: SUBSCRIBERS_REDUX_CONSTANTS.ADD_INVITEE_SUBSCRIBER,
-              data: response.data.data,
-            });
-          }
-        })
-        .catch(e => {
-          if (e.response.data.status === undefined) {
-            errorNotification('It seems like server is down, Please try after sometime.');
-          } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
-            errorNotification('Internal server error');
-          }
-        });
+      .then(response => {
+        if (response.data.status === 'SUCCESS') {
+          dispatch({
+            type: SUBSCRIBERS_REDUX_CONSTANTS.ADD_INVITEE_SUBSCRIBER,
+            data: response.data.data,
+          });
+        }
+      })
+      .catch(e => {
+        if (e.response.data.status === undefined) {
+          errorNotification('It seems like server is down, Please try after sometime.');
+        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+          errorNotification('Internal server error');
+        }
+      });
   };
 };
 
@@ -140,7 +140,9 @@ export const updateSubscribers = (id, data) => {
           successNotification('Subscribers updated successfully');
         }
       })
-      .catch(() => {errorNotification('Error during updating Subscribers');});
+      .catch(() => {
+        errorNotification('Error during updating Subscribers');
+      });
   };
 };
 export const deleteSubscribers = subId => {
@@ -155,6 +157,8 @@ export const deleteSubscribers = subId => {
           successNotification('Subscribers deleted successfully');
         }
       })
-      .catch(() => {errorNotification('Error during deleting Subscribers')});
+      .catch(() => {
+        errorNotification('Error during deleting Subscribers');
+      });
   };
 };
