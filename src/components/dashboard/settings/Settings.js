@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import './settings.scss';
 import ErrorMessages from './error-messages/ErrorMessages';
 import ManageAdmins from './manage-admins/ManageAdmins';
 
 function Settings() {
   const history = useHistory();
-  const [activeComponent, setActiveComponent] = React.useState(<ErrorMessages key="error" />);
-  const [keys, setKeys] = useState('error');
+  const { type } = useParams();
+
+  const [activeComponent, setActiveComponent] = useState(type ?? 'errorMessage');
 
   const onChangeComponent = component => {
-    setKeys(component.key);
     setActiveComponent(component);
+    history.push(`/settings/${component}`);
   };
-
   return (
     <div>
       <div className="settings-buttons-row">
         <div className="d-flex">
           <div
-            className={keys === 'error' ? 'settings-button active-menu' : 'settings-button'}
-            onClick={() => onChangeComponent(<ErrorMessages key="error" />)}
+            className={
+              activeComponent === 'errorMessage' ? 'settings-button active-menu' : 'settings-button'
+            }
+            onClick={() => onChangeComponent('errorMessage')}
           >
             Error Messages
           </div>
@@ -28,17 +30,19 @@ function Settings() {
             Integrations
           </div> */}
           <div
-            className={keys === 'manage' ? 'settings-button active-menu' : 'settings-button'}
-            onClick={() => onChangeComponent(<ManageAdmins key="manage" />)}
+            className={
+              activeComponent === 'manageAdmin' ? 'settings-button active-menu' : 'settings-button'
+            }
+            onClick={() => onChangeComponent('manageAdmin')}
           >
             Manage Admins
           </div>
         </div>
-        {keys === 'manage' ? (
+        {activeComponent !== 'errorMessage' ? (
           <div
             style={{ float: 'right' }}
             className="button success-button"
-            onClick={() => history.push('/addAdmin')}
+            onClick={() => history.push('/settings/manageAdmin/addAdmin')}
           >
             ADD ADMIN
           </div>
@@ -46,7 +50,9 @@ function Settings() {
           ''
         )}
       </div>
-      <div className="settings-common-area">{activeComponent}</div>
+      <div className="settings-common-area">
+        {activeComponent === 'errorMessage' ? <ErrorMessages /> : <ManageAdmins />}
+      </div>
     </div>
   );
 }

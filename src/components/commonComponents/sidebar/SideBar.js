@@ -29,7 +29,7 @@ function SideBar() {
             <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
           </NavLink>
 
-          <NavLink className="menu-item" to="/settings" replace>
+          <NavLink className="menu-item" to="/settings/manageAdmin" replace>
             <img alt="settings" src={gear} /> <span>Settings</span>
           </NavLink>
         </div>

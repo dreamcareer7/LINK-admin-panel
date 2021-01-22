@@ -29,14 +29,15 @@ function EditAdmin() {
   const [selected, setSelected] = useState(false);
 
   const dispatch = useDispatch();
+  console.log('userId->', userId);
   useEffect(() => {
-    if (userId) {
+    if (userId !== 'addAdmin') {
       dispatch(getAdminById(userId));
     }
   }, []);
 
   useEffect(() => {
-    if (userId) {
+    if (userId !== 'addAdmin') {
       setAdminName(editAdmin && editAdmin.firstName && editAdmin.firstName);
       setAdminEmail(editAdmin && editAdmin.email && editAdmin.email);
       setAdminPhone(editAdmin && editAdmin.phone && editAdmin.phone);
@@ -49,7 +50,7 @@ function EditAdmin() {
   ]);
 
   const onCancel = () => {
-    history.push('/settings');
+    history.push('/settings/manageAdmin');
   };
 
   const onUpdateAdminEvent = () => {
@@ -59,7 +60,7 @@ function EditAdmin() {
       phone: adminPhone,
     };
     dispatch(editAdminById(userId, data));
-    history.push('/settings');
+    history.push('/settings/manageAdmin');
   };
 
   const onChangeSwitch = async e => {
@@ -99,12 +100,12 @@ function EditAdmin() {
         email: adminEmail,
         phone: adminPhone,
       };
-      if (userId) {
+      if (userId !== 'addAdmin') {
         dispatch(editAdminById((userId, data)));
       } else {
         dispatch(addAdmin(data));
       }
-      history.push('/settings');
+      history.push('/settings/manageAdmin/');
     }
   };
 
@@ -117,8 +118,8 @@ function EditAdmin() {
     <div className="edit-admin-container">
       <div className="breadcrumb common-subtitle">
         <span>MANAGE ADMINS </span>
-        {!userId && <span>/ Add Admin</span>}
-        {userId && <span>/ EDIT / UPDATE PROFILE</span>}
+        {userId === 'addAdmin' && <span>/ Add Admin</span>}
+        {userId !== 'addAdmin' && <span>/ EDIT / UPDATE PROFILE</span>}
       </div>
 
       <img className="DP-image" src={user} />
@@ -159,7 +160,7 @@ function EditAdmin() {
         </div>
       </div>
 
-      {!userId && (
+      {userId === 'addAdmin' && (
         <div className="buttons-row">
           <button
             type="button"
@@ -174,7 +175,7 @@ function EditAdmin() {
         </div>
       )}
 
-      {userId && (
+      {userId && userId !== 'addAdmin' && (
         <>
           {editAdmin && editAdmin.isLoggedIn && (
             <>

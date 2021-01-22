@@ -5,6 +5,7 @@ import {
   updateErrorMessage,
 } from '../../../../redux/actions/settingAction/SettingAction';
 import './error-messages.scss';
+import { errorNotification } from '../../../../constants/Toast';
 
 function ErrorMessages() {
   const dispatch = useDispatch();
@@ -31,7 +32,10 @@ function ErrorMessages() {
   };
 
   const saveChangeError = () => {
-    dispatch(updateErrorMessage(userId, error));
+    if (userId) dispatch(updateErrorMessage(userId, error));
+    else {
+      errorNotification('You have not changed anything');
+    }
   };
 
   return (
