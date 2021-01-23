@@ -237,9 +237,9 @@ function EditAdmin() {
             >
               CHANGE PASSWORD
             </button>
-            <button type="button" className="button primary-button mr-10">
+            {/*   <button type="button" className="button primary-button mr-10">
               UPDATE
-            </button>
+            </button>  */}
           </div>
         </div>
       )}
