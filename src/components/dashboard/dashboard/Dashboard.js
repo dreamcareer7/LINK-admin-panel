@@ -120,7 +120,7 @@ const Dashboard = () => {
       </div>
       <div className="mt-40 ">
         <div className="row">
-          <div className="column">
+          <div className="column" style={{ width: '33.33%' }}>
             <div className="card">
               <DoughnutChart
                 titles="SUBSCRIPTION"
@@ -129,7 +129,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="column">
+          <div className="column" style={{ width: '33.33%' }}>
             <div className="card">
               <CompanyChart
                 chartData={chartData && chartData.companyValue && chartData.companyValue}

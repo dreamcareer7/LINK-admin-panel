@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import OtpInput from 'react-otp-input';
 import './EditAdmin.scss';
 import Switch from 'react-switch';
+import upload from '../../../../../assets/images/upload.jpg';
 import user from '../../../../../assets/images/dummy-user.jpg';
 import copy from '../../../../../assets/images/copy.svg';
 import {
@@ -20,6 +21,7 @@ import {
   warningNotification,
 } from '../../../../../constants/Toast';
 import { configure2FA } from '../../../../../redux/actions/authActions/AuthActions';
+import ManageAdminService from '../../../../../services/manage-admin/ManageAdminServices';
 
 function EditAdmin() {
   const { userId } = useParams();
@@ -33,9 +35,13 @@ function EditAdmin() {
   const [show2Fa, set2FaShow] = useState(false);
   const [selected, setSelected] = useState(false);
 
+  const [adminLoggedIn, setAdminLoggedIn] = useState();
+
   const [currentPass, setCurrentPass] = useState('');
   const [newPass, setNewPass] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
+
+  const [addImage, setAddImage] = useState(upload);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -49,6 +55,8 @@ function EditAdmin() {
       setAdminName(editAdmin && editAdmin.firstName && editAdmin.firstName);
       setAdminEmail(editAdmin && editAdmin.email && editAdmin.email);
       setAdminPhone(editAdmin && editAdmin.phone && editAdmin.phone);
+      setAdminLoggedIn(editAdmin && editAdmin.isLoggedIn && editAdmin.isLoggedIn);
+      setAddImage(editAdmin && editAdmin.profilePic && editAdmin.profilePic);
       if (editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled !== null)
         setSelected(editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled);
     }
@@ -56,6 +64,32 @@ function EditAdmin() {
     editAdmin && editAdmin.firstName && editAdmin.firstName,
     editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled,
   ]);
+
+  const onClickUploadImg = () => {
+    console.log('upload image');
+    document.getElementById('imageDropBox').click();
+  };
+
+  const addProfilePic = event => {
+    const formData = new FormData();
+    formData.append('profile-pic', event.target.files[0]);
+    ManageAdminService.uploadProfilePic(formData)
+      .then(response => {
+        if (response) {
+          console.log('response of add image', response);
+          successNotification('Image uploaded successfully');
+          setAddImage(response.data.data.profilePicUrl);
+        } else {
+          errorNotification('It seems like server is down, Please try after sometime.');
+        }
+      })
+      .catch(e => console.log(e));
+  };
+
+  const showUploadBtn = () => {
+    setAddImage(upload);
+    ManageAdminService.deleteProfilePic();
+  };
 
   const onClickChangePass = () => {
     console.log({ currentPass, newPass, confirmPass });
@@ -131,6 +165,7 @@ function EditAdmin() {
         firstName: adminName,
         email: adminEmail,
         phone: adminPhone,
+        profilePicUrl: addImage,
       };
       if (userId !== 'addAdmin') {
         dispatch(editAdminById((userId, data)));
@@ -154,7 +189,25 @@ function EditAdmin() {
         {userId !== 'addAdmin' && <span>/ EDIT / UPDATE PROFILE</span>}
       </div>
 
-      <img className="DP-image" src={user} />
+      {userId !== 'addAdmin' && adminLoggedIn ? (
+        <>
+          {addImage !== upload && (
+            <button type="button" className="close-btn" onClick={showUploadBtn}>
+              X
+            </button>
+          )}
+          <img className="DP-image add-image" src={addImage} onClick={onClickUploadImg} />
+          <input
+            id="imageDropBox"
+            style={{ display: 'none' }}
+            type="file"
+            accept={'image/*'}
+            onChange={addProfilePic}
+          />
+        </>
+      ) : (
+        <img className="DP-image" src={user} />
+      )}
 
       <div className="admin-detail">
         <div id="name" className="mr-20">

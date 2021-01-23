@@ -9,6 +9,9 @@ const ManageAdminService = {
   deleteUser: id => ApiService.deleteData(MANAGE_ADMIN_URLS.DELETE_ADMIN + id),
   generate2FA: () => ApiService.getData(MANAGE_ADMIN_URLS.GENERATE_2FA),
   changeAdminPass: data => ApiService.postData(MANAGE_ADMIN_URLS.CHANGE_PASSWORD, data),
+  uploadProfilePic: data => ApiService.postData(MANAGE_ADMIN_URLS.ADD_PROFILE_PIC, data),
+  deleteProfilePic: profilePic =>
+    ApiService.deleteData(`${MANAGE_ADMIN_URLS.DELETE_PROFILE_PIC}?oldImageName=${profilePic}`),
 };
 
 export default ManageAdminService;

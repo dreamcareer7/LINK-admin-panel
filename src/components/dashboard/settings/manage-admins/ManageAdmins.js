@@ -46,7 +46,7 @@ const ManageAdmins = () => {
                   <div className="tr">
                     <div className="admin-table-details">
                       <div className="td name">
-                        <img src={User} />
+                        <img src={value.profilePic} />
                         {value && value.firstName}
                       </div>
 
@@ -89,7 +89,7 @@ const ManageAdmins = () => {
                   <div className="tr">
                     <div className="admin-table-details">
                       <div className="td name">
-                        <img src={User} />
+                        <img src={(val && val.profilePic) || User} />
                         {val && val.firstName}
                       </div>
                       <div className="td">{val && val.email}</div>
