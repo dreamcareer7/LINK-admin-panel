@@ -88,7 +88,19 @@ function EditAdmin() {
 
   const showUploadBtn = () => {
     setAddImage(upload);
-    ManageAdminService.deleteProfilePic();
+    const img = addImage.split('/');
+    const imgLength = img.length;
+    const addPic = img[imgLength - 1];
+    ManageAdminService.deleteProfilePic(addPic)
+      .then(r => {
+        if (r.data.status === 'SUCCESS') {
+          successNotification('Image deleted successfully');
+        }
+      })
+      .catch(e => {
+        console.log(e);
+        errorNotification('Error in deleting image');
+      });
   };
 
   const onClickChangePass = () => {
