@@ -13,8 +13,8 @@ import { dashboardReducer } from './dashboardReducer';
 import AUTH_REDUX_CONSTANTS from '../constants/AuthReduxConstant';
 
 const appReducer = combineReducers({
-  loadingBar: loadingBarReducer,
   loggedUser,
+  loadingBar: loadingBarReducer,
   errorMessage,
   manageAdmin,
   allQuotes,

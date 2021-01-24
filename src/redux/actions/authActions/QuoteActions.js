@@ -4,23 +4,25 @@ import QUOTE_REDUX_CONSTANTS from '../../constants/QuoteReduxConstant';
 
 // eslint-disable-next-line import/prefer-default-export
 export const getAllQuotes = (page, sorting, status) => {
-  return dispatch => {
-    QuoteServices.getAllQuotes(page, 10, sorting, status)
-      .then(response => {
-        if (response.data.status === 'SUCCESS') {
-          dispatch({
-            type: QUOTE_REDUX_CONSTANTS.ALL_QUOTE,
-            data: response.data.data,
-          });
-        }
-      })
-      .catch(e => {
-        if (e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
-          errorNotification('Internal server error');
-        }
-      });
+  return  dispatch => {
+    
+    return dispatch => {
+      QuoteServices.getAllQuotes(page, 10, sorting, status)
+        .then(response => {
+          if (response.data.status === 'SUCCESS') {
+            dispatch({
+              type: QUOTE_REDUX_CONSTANTS.ALL_QUOTE,
+              data: response.data.data,
+            });
+          }
+        })
+        .catch(e => {
+          if (e.response.data.status === undefined) {
+            errorNotification('It seems like server is down, Please try after sometime.');
+          } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+            errorNotification('Internal server error');
+          }
+        });
   };
 };
 

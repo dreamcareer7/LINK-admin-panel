@@ -63,6 +63,7 @@ function EditAdmin() {
   }, [
     editAdmin && editAdmin.firstName && editAdmin.firstName,
     editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled,
+    editAdmin && editAdmin.profilePic && editAdmin.profilePic,
   ]);
 
   const onClickUploadImg = () => {
