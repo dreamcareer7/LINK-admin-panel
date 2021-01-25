@@ -33,6 +33,13 @@ const Invited = () => {
     <>
       <div>
         <div>
+          {invitee && invitee.length > 0 && (
+            <div className="no-of-results-in-display">
+              Showing {(allInvitee.data.page - 1) * allInvitee.data.limit + 1} to{' '}
+              {allInvitee.data.page * allInvitee.limit || allInvitee.data.total} of{' '}
+              {allInvitee.data.total} results{' '}
+            </div>
+          )}
           <div className="admin-table mt-40">
             <div className="tr heading">
               <div className="admin-table-details">
