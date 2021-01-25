@@ -17,6 +17,7 @@ function Subscribed() {
   const dispatch = useDispatch();
   const history = useHistory();
   const allSubscribers = useSelector(state => state.subscrberReducer.getAllSub);
+  console.log('allSub=>', allSubscribers.data);
   const docs = useMemo(() => (allSubscribers && allSubscribers.data ? allSubscribers.data : []), [
     allSubscribers,
   ]);
@@ -162,6 +163,13 @@ function Subscribed() {
         </div>
       </div>
       <div>
+        {subScribers.length > 0 && (
+          <div className="no-of-results-in-display">
+            Showing {(allSubscribers.data.page - 1) * allSubscribers.data.limit + 1} to{' '}
+            {allSubscribers.data.page * allSubscribers.limit || allSubscribers.data.total} of{' '}
+            {allSubscribers.data.total} results
+          </div>
+        )}
         <div className="admin-table mt-40 fix-size">
           <div className="tr heading">
             <div className="admin-table-details">

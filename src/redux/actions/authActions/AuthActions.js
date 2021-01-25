@@ -23,7 +23,7 @@ export const loginUser = (emailAddress, password) => {
         } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         } else if (e.response.data.status === 'INVALID_EMAIL_OR_PASSWORD') {
-          errorNotification('Invalid credential');
+          errorNotification('Invalid password');
         }
       });
   };
