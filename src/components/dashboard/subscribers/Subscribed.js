@@ -17,7 +17,6 @@ function Subscribed() {
   const dispatch = useDispatch();
   const history = useHistory();
   const allSubscribers = useSelector(state => state.subscrberReducer.getAllSub);
-  console.log('allSub=>', allSubscribers.data);
   const docs = useMemo(() => (allSubscribers && allSubscribers.data ? allSubscribers.data : []), [
     allSubscribers,
   ]);

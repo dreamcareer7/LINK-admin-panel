@@ -37,7 +37,6 @@ function UpperHeader() {
         name: text,
       };
       SubscriberService.searchSubscriber(data).then(r => {
-        console.log('search res=>', r.data.data);
         const searchResult = r.data.data;
         setFiltered(searchResult);
       });

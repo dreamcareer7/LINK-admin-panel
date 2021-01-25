@@ -50,7 +50,7 @@ const Invited = () => {
             </div>
             {invitee && invitee.length > 0 ? (
               <>
-                <div style={{ minHeight: '75vh' }}>
+                <div style={{ minHeight: '69vh' }}>
                   {invitee.map(value => (
                     <div className="row-container" key={value._id}>
                       <div className="tr">

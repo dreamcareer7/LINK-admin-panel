@@ -44,7 +44,7 @@ PrivateRoute.defaultProps = {
 
 function App() {
   const loader = useSelector(state => state.loadingBar);
-  console.log('props=>', loader.default);
+  console.log('props=>', loader.defaultValue);
   return (
     <div className="App">
       <Notifications />
