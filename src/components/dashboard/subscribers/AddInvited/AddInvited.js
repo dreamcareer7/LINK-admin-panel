@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addInvitee } from '../../../../redux/actions/subscribersAction/SubscribersAction';
-import {checkForEmail, errorNotification} from '../../../../constants/Toast';
+import { checkForEmail, errorNotification } from '../../../../constants/Toast';
 
 function AddInvited() {
   const [name, setName] = useState('');
@@ -19,15 +19,13 @@ function AddInvited() {
     const userName = name.split(' ');
     if ((!name && !userName) || (userName && userName.toString().trim().length === 0)) {
       errorNotification('Please enter invitee name');
-    }
-    else if (!email || (email && email.toString().trim().length === 0)) {
+    } else if (!email || (email && email.toString().trim().length === 0)) {
       errorNotification('Please enter invitee email');
     } else if (!checkForEmail(email)) {
       errorNotification('Please valid email');
     } else if (!phone || (phone && phone.toString().trim().length === 0)) {
       errorNotification('Please enter invitee phone');
-    }
-    else {
+    } else {
       const data = {
         firstName: userName[0],
         lastName: userName[1] || '',
@@ -48,7 +46,7 @@ function AddInvited() {
 
       <div className="admin-detail">
         <div id="name" className="mr-20">
-          <div className="common-title mb-5">Name</div>
+          <div className="common-title mar-bott-5">Name</div>
           <input
             className="common-input"
             value={name}
@@ -59,7 +57,7 @@ function AddInvited() {
           />
         </div>
         <div id="email" className="mr-20">
-          <div className="common-title mb-5">Email</div>
+          <div className="common-title mar-bott-5">Email</div>
           <input
             className="common-input"
             value={email}
@@ -70,7 +68,7 @@ function AddInvited() {
           />
         </div>
         <div id="phone">
-          <div className="common-title mb-5">Phone</div>
+          <div className="common-title mar-bott-5">Phone</div>
           <input
             className="common-input"
             value={phone}

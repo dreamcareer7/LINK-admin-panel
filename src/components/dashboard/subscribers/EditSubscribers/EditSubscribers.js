@@ -140,195 +140,196 @@ const AddSubscribers = () => {
               data && data.client && data.client.profilePicUrl ? data.client.profilePicUrl : User
             }
           />
-        </div>
-        <div className="edit-subscribers-right-container">
-          <div className="sub-tag d-flex mt-33">
-            <span className="monthly">MONTHLY</span>
-            <span className="act">ACTIVE</span>
-            <span className="vic">VIC</span>
+
+          <div className="edit-subscribers-right-container">
+            <div className="sub-tag d-flex mt-30">
+              <span className="monthly">MONTHLY</span>
+              <span className="act">ACTIVE</span>
+              <span className="vic">VIC</span>
+            </div>
+            <form>
+              <div className="admin-detail mt-20">
+                <div id="name" className="mr-20">
+                  <div className="common-title mar-bott-5">Name</div>
+                  <input
+                    value={form.username}
+                    name="username"
+                    onChange={updateField}
+                    className="common-input"
+                    placeholder="Michelle Obama"
+                    type="text"
+                  />
+                </div>
+                <div id="email" className="mr-20">
+                  <div className="common-title mar-bott-5">Email</div>
+                  <input
+                    name="email"
+                    value={form.email}
+                    onChange={updateField}
+                    className="common-input"
+                    type="text"
+                    placeholder="michelle@abcmedia.com"
+                  />
+                </div>
+                <div id="phone">
+                  <div className="common-title mar-bott-5">Phone</div>
+                  <input
+                    name="phone"
+                    value={form.phone}
+                    onChange={updateField}
+                    className="common-input"
+                    type="text"
+                    placeholder="(+61)545-589-9977"
+                  />
+                </div>
+              </div>
+              <div className="admin-detail mt-30">
+                <div className="mr-20">
+                  <div className="common-title mar-bott-5">Subscription Date</div>
+                  <input
+                    name="subscription_date"
+                    value={form.subscription_date}
+                    onChange={updateField}
+                    className="common-input"
+                    type="date"
+                  />
+                </div>
+                <div className="mr-20">
+                  <div className="common-title mar-bott-5">Lifetime Payments</div>
+                  <input
+                    value={form.lifetime_payment}
+                    name="lifetime_payment"
+                    onChange={updateField}
+                    className="common-input"
+                    type="text"
+                    placeholder="michelle@abcmedia.com"
+                  />
+                </div>
+              </div>
+              <div className="admin-detail mt-40">
+                <div className="mr-20">
+                  <div className="common-title mar-bott-5">Gender</div>
+                  <select
+                    name="gender"
+                    value={form.gender}
+                    onChange={updateField}
+                    className="common-input"
+                  >
+                    <option value="none">Select</option>
+                    <option value="FEMALE">Female</option>
+                    <option value="MALE">Male</option>
+                    <option value="OTHER">Others</option>
+                  </select>
+                </div>
+                <div className="mr-20">
+                  <div className="common-title mar-bott-5">Location</div>
+                  <input
+                    type="text"
+                    name="location"
+                    onChange={updateField}
+                    className="common-input"
+                    value={form.location}
+                  />
+                </div>
+                <div className="mr-20">
+                  <div className="common-title mar-bott-5">Subscription Type</div>
+                  <select
+                    name="sub_type"
+                    value={form.sub_type}
+                    onChange={updateField}
+                    className="common-input"
+                    disabled
+                  >
+                    <option value="FREE_TRIAL">Free Trial</option>
+                    <option value="MONTHLY">Monthly</option>
+                    <option value="YEARLY">Yearly</option>
+                    <option value="PAUSED">Paused</option>
+                    <option value="CANCELLED">Cancelled</option>
+                  </select>
+                </div>
+              </div>
+              <div className="admin-detail mt-40">
+                <div className="mr-20">
+                  <div className="common-title mar-bott-5">Average Deal Value</div>
+                  <input
+                    type="text"
+                    name="ave_dealvalue"
+                    onChange={updateField}
+                    className="common-input"
+                    value={`${form.ave_dealvalue ? `$ ${form.ave_dealvalue}` : ' - '}`}
+                    disabled={!form.ave_dealvalue}
+                  />
+                </div>
+                <div className="mr-20">
+                  <div className="common-title mar-bott-5">Industry</div>
+                  <select
+                    className="common-input"
+                    value={form.industry}
+                    name="industry"
+                    onChange={updateField}
+                  >
+                    <option value="none">None</option>
+                    {industries &&
+                      industries.data &&
+                      industries.data.map(value => <option key={value}>{value}</option>)}
+                  </select>
+                </div>
+                <div className="mr-20">
+                  <div className="common-title mar-bott-5">Company Size</div>
+                  <select
+                    className="common-input"
+                    value={form.company_size}
+                    onChange={updateField}
+                    name="company_size"
+                  >
+                    {company &&
+                      company.data &&
+                      company.data.map(value => <option key={value}>{value}</option>)}
+                  </select>
+                </div>
+              </div>
+              <div className="admin-detail mt-40">
+                <div className="mr-20" onChange={updateField}>
+                  <div className="common-title mar-bott-5">VIC Subscriber?</div>
+                  <select
+                    className="common-input"
+                    onChange={updateField}
+                    name="vicSub"
+                    value={form.vicSub}
+                  >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </div>
+                <div className="mr-20">
+                  <div className="common-title mar-bott-5">Status</div>
+                  <select className="common-input" onChange={updateField} name="status">
+                    <option>Active</option>
+                    <option>In Active</option>
+                  </select>
+                </div>
+              </div>
+              <div className="buttons-row mt-40">
+                <button type="submit" className="button success-button mr-10" onClick={onSubmitSub}>
+                  SAVE CHANGES
+                </button>
+                <button
+                  type="button"
+                  onClick={onDiscardChanges}
+                  className="button primary-button mr-10"
+                >
+                  DISCARD CHANGES
+                </button>
+                <button
+                  type="button"
+                  onClick={onDeleteSubscribers}
+                  className="button danger-button mr-10"
+                >
+                  DELETE SUBSCRIBER
+                </button>
+              </div>
+            </form>
           </div>
-          <form>
-            <div className="admin-detail mt-20">
-              <div id="name" className="mr-20">
-                <div className="common-title mb-5">Name</div>
-                <input
-                  value={form.username}
-                  name="username"
-                  onChange={updateField}
-                  className="common-input"
-                  placeholder="Michelle Obama"
-                  type="text"
-                />
-              </div>
-              <div id="email" className="mr-20">
-                <div className="common-title mb-5">Email</div>
-                <input
-                  name="email"
-                  value={form.email}
-                  onChange={updateField}
-                  className="common-input"
-                  type="text"
-                  placeholder="michelle@abcmedia.com"
-                />
-              </div>
-              <div id="phone">
-                <div className="common-title mb-5">Phone</div>
-                <input
-                  name="phone"
-                  value={form.phone}
-                  onChange={updateField}
-                  className="common-input"
-                  type="text"
-                  placeholder="(+61)545-589-9977"
-                />
-              </div>
-            </div>
-            <div className="admin-detail mt-33">
-              <div className="mr-20">
-                <div className="common-title mb-5">Subscription Date</div>
-                <input
-                  name="subscription_date"
-                  value={form.subscription_date}
-                  onChange={updateField}
-                  className="common-input"
-                  type="date"
-                />
-              </div>
-              <div className="mr-20">
-                <div className="common-title mb-5">Lifetime Payments</div>
-                <input
-                  value={form.lifetime_payment}
-                  name="lifetime_payment"
-                  onChange={updateField}
-                  className="common-input"
-                  type="text"
-                  placeholder="michelle@abcmedia.com"
-                />
-              </div>
-            </div>
-            <div className="admin-detail mt-40">
-              <div className="mr-20">
-                <div className="common-title mb-5">Gender</div>
-                <select
-                  name="gender"
-                  value={form.gender}
-                  onChange={updateField}
-                  className="common-input"
-                >
-                  <option value="none">Select</option>
-                  <option value="FEMALE">Female</option>
-                  <option value="MALE">Male</option>
-                  <option value="OTHER">Others</option>
-                </select>
-              </div>
-              <div className="mr-20">
-                <div className="common-title mb-5">Location</div>
-                <input
-                  type="text"
-                  name="location"
-                  onChange={updateField}
-                  className="common-input"
-                  value={form.location}
-                />
-              </div>
-              <div className="mr-20">
-                <div className="common-title mb-5">Subscription Type</div>
-                <select
-                  name="sub_type"
-                  value={form.sub_type}
-                  onChange={updateField}
-                  className="common-input"
-                  disabled
-                >
-                  <option value="FREE_TRIAL">Free Trial</option>
-                  <option value="MONTHLY">Monthly</option>
-                  <option value="YEARLY">Yearly</option>
-                  <option value="PAUSED">Paused</option>
-                  <option value="CANCELLED">Cancelled</option>
-                </select>
-              </div>
-            </div>
-            <div className="admin-detail mt-40">
-              <div className="mr-20">
-                <div className="common-title mb-5">Average Deal Value</div>
-                <input
-                  type="text"
-                  name="ave_dealvalue"
-                  onChange={updateField}
-                  className="common-input"
-                  value={`${form.ave_dealvalue ? `$ ${form.ave_dealvalue}` : ' - '}`}
-                  disabled={!form.ave_dealvalue}
-                />
-              </div>
-              <div className="mr-20">
-                <div className="common-title mb-5">Industry</div>
-                <select
-                  className="common-input"
-                  value={form.industry}
-                  name="industry"
-                  onChange={updateField}
-                >
-                  <option value="none">None</option>
-                  {industries &&
-                    industries.data &&
-                    industries.data.map(value => <option key={value}>{value}</option>)}
-                </select>
-              </div>
-              <div className="mr-20">
-                <div className="common-title mb-5">Company Size</div>
-                <select
-                  className="common-input"
-                  value={form.company_size}
-                  onChange={updateField}
-                  name="company_size"
-                >
-                  {company &&
-                    company.data &&
-                    company.data.map(value => <option key={value}>{value}</option>)}
-                </select>
-              </div>
-            </div>
-            <div className="admin-detail mt-40">
-              <div className="mr-20" onChange={updateField}>
-                <div className="common-title mb-5">VIC Subscriber?</div>
-                <select
-                  className="common-input"
-                  onChange={updateField}
-                  name="vicSub"
-                  value={form.vicSub}
-                >
-                  <option value="true">Yes</option>
-                  <option value="false">No</option>
-                </select>
-              </div>
-              <div className="mr-20">
-                <div className="common-title mb-5">Status</div>
-                <select className="common-input" onChange={updateField} name="status">
-                  <option>Active</option>
-                  <option>In Active</option>
-                </select>
-              </div>
-            </div>
-            <div className="buttons-row mt-40">
-              <button type="submit" className="button success-button mr-10" onClick={onSubmitSub}>
-                SAVE CHANGES
-              </button>
-              <button
-                type="button"
-                onClick={onDiscardChanges}
-                className="button primary-button mr-10"
-              >
-                DISCARD CHANGES
-              </button>
-              <button
-                type="button"
-                onClick={onDeleteSubscribers}
-                className="button danger-button mr-10"
-              >
-                DELETE SUBSCRIBER
-              </button>
-            </div>
-          </form>
         </div>
       </div>
     </>

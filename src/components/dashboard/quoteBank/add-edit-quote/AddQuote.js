@@ -93,7 +93,7 @@ function AddQuote() {
         <span> {!id ? '/add quote' : '/edit quote'}</span>
       </div>
       <div className="add-quote-block">
-        <div className="common-title mb-5">Quote</div>
+        <div className="common-title mar-bott-5">Quote</div>
         <textarea
           rows="3"
           className="common-input"
@@ -102,7 +102,7 @@ function AddQuote() {
         />
       </div>
       <div className="add-edit-quote-block">
-        <div className="common-title mb-5">
+        <div className="common-title mar-bott-5">
           Tags
           <span className="placeholder-font font-600"> (Separated by commas) </span>
         </div>
@@ -115,7 +115,7 @@ function AddQuote() {
       </div>
       <div className="add-edit-quote-block author-detail">
         <div>
-          <div className="common-title mb-5">Author</div>
+          <div className="common-title mar-bott-5">Author</div>
           <input
             className="common-input"
             placeholder="Enter name"
@@ -124,7 +124,7 @@ function AddQuote() {
           />
         </div>
         <div>
-          <div className="common-title mb-5">Status</div>
+          <div className="common-title mar-bott-5">Status</div>
           <select
             className="common-select"
             onChange={onChangeStatus}

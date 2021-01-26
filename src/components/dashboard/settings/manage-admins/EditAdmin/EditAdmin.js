@@ -224,7 +224,7 @@ function EditAdmin() {
 
       <div className="admin-detail">
         <div id="name" className="mr-20">
-          <div className="common-title mb-5">Name</div>
+          <div className="common-title mar-bott-5">Name</div>
           <input
             className="common-input"
             name="name"
@@ -235,7 +235,7 @@ function EditAdmin() {
           />
         </div>
         <div id="email" className="mr-20">
-          <div className="common-title mb-5">Email</div>
+          <div className="common-title mar-bott-5">Email</div>
           <input
             className="common-input"
             value={adminEmail ?? ''}
@@ -246,7 +246,7 @@ function EditAdmin() {
           />
         </div>
         <div id="phone">
-          <div className="common-title mb-5">Phone</div>
+          <div className="common-title mar-bott-5">Phone</div>
           <input
             className="common-input"
             value={adminPhone ?? ''}
@@ -261,7 +261,7 @@ function EditAdmin() {
         <div style={{ marginTop: 30 }}>
           <div className="admin-detail">
             <div id="name" className="mr-20">
-              <div className="common-title mb-5">Current Password</div>
+              <div className="common-title mar-bott-5">Current Password</div>
               <input
                 className="common-input"
                 name="currentPass"
@@ -273,7 +273,7 @@ function EditAdmin() {
             </div>
 
             <div id="newPass" className="mr-20">
-              <div className="common-title mb-5">New password</div>
+              <div className="common-title mar-bott-5">New password</div>
               <input
                 className="common-input"
                 type="password"
@@ -284,7 +284,7 @@ function EditAdmin() {
               />
             </div>
             <div id="confirmPass" className="mr-20">
-              <div className="common-title mb-5">Confirm Password</div>
+              <div className="common-title mar-bott-5">Confirm Password</div>
               <input
                 className="common-input"
                 type="password"
@@ -329,7 +329,7 @@ function EditAdmin() {
         <>
           {editAdmin && editAdmin.isLoggedIn && (
             <>
-              <div className="common-title mb-5 mt-20">2-Step Authenticator</div>
+              <div className="common-title mar-bott-5 mt-20">2-Step Authenticator</div>
               <Switch
                 checked={selected}
                 onChange={e => onChangeSwitch(e)}
@@ -356,7 +356,7 @@ function EditAdmin() {
                           Scan this Barcode in Authenticator App
                         </div>
                         <img className="barcode" src={admin && admin.qrCode} />
-                        <div className="common-title mb-5 info-text-color">OR</div>
+                        <div className="common-title mar-bott-5 info-text-color">OR</div>
                         <div className="common-subtitle">Enter this Key Authenticator App</div>
                         <div className="key-container common-text-background">
                           <label>{admin && admin.twoFASecretKey}</label>

@@ -6,8 +6,8 @@
   max-width: 900px;
 }
 
-.mt-33 {
-  margin-top: 33px;
+.mt-30 {
+  margin-top: 30px;
 }
 
 .DP-image {
@@ -22,37 +22,30 @@
   border-radius: 50%;
 }
 .sub-tag {
+  * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 14px;
+    font-size: 10px;
+    width: 77px;
+    text-align: center;
+    margin-right: 5px;
+    line-height: 1;
+  }
   .monthly {
     background: #12143f;
     color: #fff;
-    border-radius: 14px;
-    font-size: 10px;
-    padding: 5px;
-    height: 20px;
-    width: 77px;
-    text-align: center;
   }
   .act {
     background: #43c643;
     color: #fff;
-    padding: 5px;
-    height: 20px;
-    border-radius: 14px;
-    font-size: 10px;
-    width: 77px;
-    text-align: center;
-    margin-left: 5px;
+
   }
   .vic {
     background: #f59e13;
     color: #fff;
-    padding: 5px;
-    height: 20px;
-    border-radius: 14px;
-    font-size: 10px;
-    width: 77px;
-    text-align: center;
-    margin-left: 5px;
   }
 }
 
