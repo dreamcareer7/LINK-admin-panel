@@ -44,7 +44,7 @@ const ManageAdmins = () => {
                   <div className="admin-table-details tr">
                     <div className="name">
                       <img src={User} />
-                      {value && value.firstName}
+                      {value && value.firstName && value.firstName.length > 0 ? value.firstName : "No Name Available"}
                     </div>
                     <div>{value && value.email}</div>
                     <div>{value && value.phone}</div>
