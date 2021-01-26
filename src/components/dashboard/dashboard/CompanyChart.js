@@ -19,7 +19,7 @@ const CompanyChart = props => {
     return (
         <div>
             {
-                chartData.data.length === 0
+                chartData !== null && chartData.data.length === 0
                     ? "No Data Available"
                     : <Pie
                         data={state}

@@ -22,7 +22,7 @@ const BarChart = props => {
   return (
     <div className="container">
       {
-        chartData.data.length === 0
+        chartData !== null && chartData.data.length === 0
             ? "No Data Available"
             : <Bar
                 data={state}

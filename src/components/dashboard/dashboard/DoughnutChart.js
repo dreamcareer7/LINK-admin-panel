@@ -19,7 +19,7 @@ const DoughnutChart = props => {
     return (
         <div>
             {
-                chartData.data.length === 0
+                chartData !== null && chartData.data.length === 0
                     ? "No Data Available"
                     : <Doughnut
                         data={state}
