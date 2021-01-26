@@ -168,11 +168,11 @@ function EditAdmin() {
 
   const onClickSaveAdmin = async () => {
     if (adminName.toString().trim().length === 0) {
-      errorNotification('Please enter Name!!');
+      errorNotification('Please enter name');
     } else if (adminEmail.length === 0) {
-      errorNotification('Please enter Email!!');
+      errorNotification('Please enter email');
     } else if (adminPhone.length === 0) {
-      errorNotification('Please enter Phone no!!');
+      errorNotification('Please enter phone no');
     } else if (adminName && adminEmail && adminPhone) {
       const data = {
         firstName: adminName,
