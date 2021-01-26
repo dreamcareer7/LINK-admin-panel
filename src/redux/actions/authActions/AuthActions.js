@@ -2,6 +2,7 @@ import AuthService from '../../../services/auth-services/AuthSevices';
 import AUTH_REDUX_CONSTANTS from '../../constants/AuthReduxConstant';
 import { errorNotification, successNotification } from '../../../constants/Toast';
 import { clearAuthToken } from '../../../helpers/LocalStorageHelper';
+import toggleLoader from "../loaderActions/LoaderActions";
 
 // eslint-disable-next-line import/prefer-default-export
 export const loginUser = (emailAddress, password) => {
@@ -15,9 +16,11 @@ export const loginUser = (emailAddress, password) => {
           });
           localStorage.setItem('userToken', response.data.data.token);
           successNotification('Login successfully');
+          dispatch(toggleLoader(false))
         }
       })
       .catch(e => {
+        dispatch(toggleLoader(false))
         if (e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
         } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
