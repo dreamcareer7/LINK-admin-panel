@@ -12,10 +12,11 @@
 
 .DP-image {
   height: 40px;
-  width: 40px;
+  width: 60px;
   min-height: 40px;
-  min-width: 40px;
+  min-width: 60px;
   margin: 20px 0 15px 0;
+  padding: 0 10px;
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
@@ -45,7 +46,6 @@
   .vic {
     background: #f59e13;
     color: #fff;
-    padding: 7px;
     padding: 5px;
     height: 20px;
     border-radius: 14px;
@@ -56,17 +56,9 @@
   }
 }
 
-.column-5 {
-  float: left;
-  width: 5%;
+.edit-subscribers-right-container {
+  width: calc(100% - 60px);
   padding: 0 10px;
-}
-
-.column-95 {
-  width: 95%;
-  float: right;
-  padding: 0 19px 10px;
-}
 
 .admin-detail {
   display: flex;
@@ -75,4 +67,5 @@
     flex: 0 0 25%;
     min-width: 140px;
   }
+}
 }

@@ -54,6 +54,8 @@
   display: flex;
   align-items: center;
   margin-right: 30px;
+  font-size: 14px;
+  font-weight: 500;
   color: $secondary-font-color;
 
   input {
@@ -67,8 +69,12 @@
     border-radius: 5px;
   }
 
-  input:nth-child(1) {
+  input[type = "date"]:nth-child(1) {
     margin-right: 10px;
+  }
+
+  input[type = "radio"] {
+    height: 14px;
   }
 
   select {

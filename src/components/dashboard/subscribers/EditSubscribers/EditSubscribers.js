@@ -133,7 +133,7 @@ const AddSubscribers = () => {
           <span>SUBSCRIBERS </span>
           <span>/ EDIT / EDIT SUBSCRIBERS</span>
         </div>
-        <div className="column-5">
+        <div className="d-flex">
           <img
             className="DP-image"
             src={
@@ -141,7 +141,7 @@ const AddSubscribers = () => {
             }
           />
         </div>
-        <div className="column-95">
+        <div className="edit-subscribers-right-container">
           <div className="sub-tag d-flex mt-33">
             <span className="monthly">MONTHLY</span>
             <span className="act">ACTIVE</span>

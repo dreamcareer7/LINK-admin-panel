@@ -30,12 +30,10 @@ const ManageAdmins = () => {
     <>
       <div className="admin-title mt-10">Logged in Admins</div>
       <div className="admin-table">
-        <div className="tr heading">
-          <div className="admin-table-details">
-            <div className="td">NAME</div>
-            <div className="td">EMAIL</div>
-            <div className="td">PHONE</div>
-          </div>
+        <div className="admin-table-details heading">
+          <div className="td">NAME</div>
+          <div className="td">EMAIL</div>
+          <div className="td">PHONE</div>
           <div className="action-cell" />
         </div>
         {manageAdminData &&
@@ -43,17 +41,14 @@ const ManageAdmins = () => {
             <React.Fragment key={value._id}>
               {value && value.isLoggedIn === true ? (
                 <div key={value._id} className="row-container">
-                  <div className="tr">
-                    <div className="admin-table-details">
-                      <div className="td name">
-                        <img src={value.profilePic} />
-                        {value && value.firstName}
-                      </div>
-
-                      <div className="td">{value && value.email}</div>
-                      <div className="td">{value && value.phone}</div>
+                  <div className="admin-table-details tr">
+                    <div className="name">
+                      <img src={User} />
+                      {value && value.firstName}
                     </div>
-                    <div className="action-cell">
+                    <div>{value && value.email}</div>
+                    <div>{value && value.phone}</div>
+                    <div>
                       <img
                         className="mr-5"
                         src={edit}
@@ -73,11 +68,11 @@ const ManageAdmins = () => {
 
       <div className="admin-title mt-10">All Admins</div>
       <div className="admin-table">
-        <div className="tr heading">
+        <div className="heading">
           <div className="admin-table-details">
-            <div className="td">NAME</div>
-            <div className="td">EMAIL</div>
-            <div className="td">PHONE</div>
+            <div>NAME</div>
+            <div>EMAIL</div>
+            <div>PHONE</div>
           </div>
           <div className="action-cell" />
         </div>
@@ -86,15 +81,13 @@ const ManageAdmins = () => {
             <React.Fragment key={val._id}>
               {val && !val.isLoggedIn ? (
                 <div key={val._id} className="row-container">
-                  <div className="tr">
-                    <div className="admin-table-details">
-                      <div className="td name">
-                        <img src={(val && val.profilePic) || User} />
-                        {val && val.firstName}
-                      </div>
-                      <div className="td">{val && val.email}</div>
-                      <div className="td">{val && val.phone}</div>
+                  <div className="admin-table-details tr">
+                    <div className="name">
+                      <img src={(val && val.profilePic) || User} />
+                      {val && val.firstName}
                     </div>
+                    <div>{val && val.email}</div>
+                    <div>{val && val.phone}</div>
                     <div className="action-cell">
                       <img className="mr-5" src={edit} onClick={() => onEditAdmin(val._id)} />
                       <img src={bin} onClick={() => onDelete(val._id)} />

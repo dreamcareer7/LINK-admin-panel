@@ -63,9 +63,9 @@ const Dashboard = () => {
       <div className="action-container">
         <div className="filters">
           <div className="filter">
-            <label htmlFor="from" className="filter-label">
+            <div htmlFor="from" className="filter-label">
               Date Range
-            </label>
+            </div>
             <div className="filter-action">
               <input
                 name="from"
@@ -85,35 +85,35 @@ const Dashboard = () => {
           </div>
           <div className="filter">
             <div className="filter-label">Subscription Type:</div>
-            <div className="filter-action" onChange={e => onChange(e)}>
+            <div className="filter-action mt-10" onChange={e => onChange(e)}>
               <input
                 type="radio"
                 name="subscription"
                 defaultChecked={subscription === 'FREETRIAL'}
                 value="FREETRIAL"
               />
-              Free Trial
+              <span>Free Trial</span>
               <input
                 type="radio"
                 name="subscription"
                 defaultChecked={subscription === 'MONTHLY'}
                 value="MONTHLY"
               />
-              Monthly
+              <span>Monthly</span>
               <input
                 type="radio"
                 name="subscription"
                 defaultChecked={subscription === 'YEARLY'}
                 value="YEARLY"
               />
-              Yearly
+              <span>Yearly</span>
               <input
                 type="radio"
                 name="subscription"
                 defaultChecked={subscription === 'PAUSED'}
                 value="PAUSED"
               />
-              Paused
+              <span>Paused</span>
             </div>
           </div>
         </div>

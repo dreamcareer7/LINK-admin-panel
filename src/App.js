@@ -1,7 +1,7 @@
-import React, { Suspense } from 'react';
+import React, {Suspense} from 'react';
 import Notifications from 'react-notify-toast';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import { connect, useSelector } from 'react-redux';
+import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import {connect, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import LoginPage from './components/authentication/login-page/LoginPage';
 import VerificationPage from './components/authentication/verification-page/VerificationPage';
@@ -16,9 +16,9 @@ import Settings from './components/dashboard/settings/Settings';
 // import Subscribers from './components/dashboard/subscribers/Subscribers';
 import QuoteBank from './components/dashboard/quoteBank/QuoteBank';
 import EditAdmin from './components/dashboard/settings/manage-admins/EditAdmin/EditAdmin';
-import Subscriber from './components/dashboard/subscribers/subscriber';
 import AddInvited from './components/dashboard/subscribers/AddInvited/AddInvited';
 import AddSubscribers from './components/dashboard/subscribers/EditSubscribers/EditSubscribers';
+import Subscriber from "./components/dashboard/subscribers/subscriber";
 
 const PrivateRoute = ({ component, ...options }) => {
   const isLoggedIn =

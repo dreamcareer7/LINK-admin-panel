@@ -30,38 +30,25 @@
     overflow-y: auto;
   }
 
+  .admin-table-details {
+    display: grid;
+    grid-template-columns: calc(40% - 85px) calc(35% - 15px) calc(25% - 15px) 70px;
+    align-items: flex-end;
+    gap: 15px;
+  }
+
   .tr {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
     margin-bottom: 10px;
     background-color: $secondary-variant-color;
     border-radius: 5px;
-  }
 
-  .admin-table-details {
-    display: flex;
-    align-items: center;
-    width: calc(100% - 70px);
-  }
-
-  .admin-table-details {
-    .td:nth-child(1), .td:nth-child(2), .td:nth-child(3) {
-      width: 30%;
+    div {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
-  }
-
-  .action-cell {
-    width: 70px;
-
-    img {
-      cursor: pointer;
-    }
-  }
-
-  .td:not(:nth-child(2)) {
-    padding-right: 20px;
   }
 
   .heading {

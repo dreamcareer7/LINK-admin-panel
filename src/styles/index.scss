@@ -10,6 +10,7 @@ body {
   font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: $secondary-font-color;
 }
 
 code {
@@ -69,4 +70,9 @@ textarea {
   100% {
     transform: rotate(360deg);
   }
+}
+::placeholder {
+  font-size: 12px;
+  font-weight: 400;
+  color: $placeholder-color;
 }
