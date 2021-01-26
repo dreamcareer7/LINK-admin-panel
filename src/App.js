@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 import Notifications from 'react-notify-toast';
 import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -18,6 +18,7 @@ import EditAdmin from './components/dashboard/settings/manage-admins/EditAdmin/E
 import AddInvited from './components/dashboard/subscribers/AddInvited/AddInvited';
 import AddSubscribers from './components/dashboard/subscribers/EditSubscribers/EditSubscribers';
 import SubscribersControllerRootComponent from "./components/dashboard/subscribers/SubscribersControllerRootComponent";
+import LinkLoader from "./components/commonComponents/Loader/LinkLoader";
 
 const PrivateRoute = ({ component, ...options }) => {
   const isLoggedIn =
@@ -46,34 +47,31 @@ function App() {
   return (
     <div className="App">
       <Notifications />
-
+      <LinkLoader/>
       <Router>
-        <Suspense>
-
-          <Switch>
-            <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/forgot" component={ForgotPasswordPage} />
-            <Route exact path="/authAdmin/reset-password/:token" component={SetNewPassword} />
-            <PrivateRoute exact path="/verificationPage" component={VerificationPage} />
-            <Layout>
-              <PrivateRoute exact path="/" />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute exact path="/subscribers/:type" component={SubscribersControllerRootComponent} />
-              <PrivateRoute
+        <Switch>
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/forgot" component={ForgotPasswordPage} />
+          <Route exact path="/authAdmin/reset-password/:token" component={SetNewPassword} />
+          <PrivateRoute exact path="/verificationPage" component={VerificationPage} />
+          <Layout>
+            <PrivateRoute exact path="/" />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/subscribers/:type" component={SubscribersControllerRootComponent} />
+            <PrivateRoute
                 exact
                 path="/subscribers/subscribed/:subId"
                 component={AddSubscribers}
-              />
-              <PrivateRoute exact path="/subscribers/invited/addInvited" component={AddInvited} />
-              <PrivateRoute exact path="/settings/:type" component={Settings} />
-              <PrivateRoute exact path="/settings/manageAdmin/:userId" component={EditAdmin} />
-              <PrivateRoute exact path="/integrations" component={Integrations} />
-              <PrivateRoute exact path="/quoteBank" component={QuoteBank} />
-              <PrivateRoute exact path="/quote" component={AddQuote} />
-              <PrivateRoute exact path="/quote/:id" component={AddQuote} />
-            </Layout>
-          </Switch>
-        </Suspense>
+            />
+            <PrivateRoute exact path="/subscribers/invited/addInvited" component={AddInvited} />
+            <PrivateRoute exact path="/settings/:type" component={Settings} />
+            <PrivateRoute exact path="/settings/manageAdmin/:userId" component={EditAdmin} />
+            <PrivateRoute exact path="/integrations" component={Integrations} />
+            <PrivateRoute exact path="/quoteBank" component={QuoteBank} />
+            <PrivateRoute exact path="/quote" component={AddQuote} />
+            <PrivateRoute exact path="/quote/:id" component={AddQuote} />
+          </Layout>
+        </Switch>
       </Router>
     </div>
   );
