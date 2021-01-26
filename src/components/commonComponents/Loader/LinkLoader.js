@@ -4,17 +4,10 @@ import "./LinkLoader.scss";
 function LinkLoader() {
     return (
         <div className="loader-wrapper">
-            <div className="loader">
-                <div className="roller"/>
-                <div className="roller"/>
-            </div>
-            <div className="loader loader-2">
-                <div className="roller"/>
-                <div className="roller"/>
-            </div>
-            <div className="loader loader-3">
-                <div className="roller"/>
-                <div className="roller"/>
+            <div className="ball-loader">
+                <div className="ball-loader-ball ball1"/>
+                <div className="ball-loader-ball ball2"/>
+                <div className="ball-loader-ball ball3"/>
             </div>
         </div>
     )
