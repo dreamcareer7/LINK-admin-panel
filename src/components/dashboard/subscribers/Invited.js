@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import './Invited.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from 'react-js-pagination';
 import User from '../../../assets/images/avatar.jpg';
@@ -42,10 +43,11 @@ const Invited = () => {
           )}
           <div className="admin-table mt-40">
             <div className="tr heading">
-              <div className="admin-table-details">
+              <div className="invited-table-details">
                 <div className="td">NAME</div>
                 <div className="td">EMAIL</div>
                 <div className="td">PHONE</div>
+                <div />
               </div>
             </div>
             {invitee && invitee.length > 0 ? (
@@ -53,23 +55,21 @@ const Invited = () => {
                 <div style={{ minHeight: '69vh' }}>
                   {invitee.map(value => (
                     <div className="row-container" key={value._id}>
-                      <div className="tr">
-                        <div className="admin-table-details">
-                          <div className="td name">
-                            <img
-                              src={
-                                value && value.profilePicUrl && value.profilePicUrl
-                                  ? value.profilePicUrl
-                                  : User
-                              }
-                            />
-                            {value.firstName}
-                          </div>
-
-                          <div className="td">{value.email}</div>
-                          <div className="td">{value.phone}</div>
+                      <div className="tr invited-table-details">
+                        <div className="td name">
+                          <img
+                            src={
+                              value && value.profilePicUrl && value.profilePicUrl
+                                ? value.profilePicUrl
+                                : User
+                            }
+                          />
+                          {value.firstName}
                         </div>
-                        <div className="action-cell" style={{ width: 40 }}>
+
+                        <div className="td">{value.email}</div>
+                        <div className="td">{value.phone}</div>
+                        <div className="action-cell">
                           <img src={bin} alt="" onClick={() => onDeleteInvitee(value._id)} />
                         </div>
                       </div>

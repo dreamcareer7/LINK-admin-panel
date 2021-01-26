@@ -167,28 +167,28 @@ function SubscriberListingAndFilters() {
             Showing {(allSubscribers.data.page - 1) * allSubscribers.data.limit + 1} to{' '}
             {allSubscribers.data.page * allSubscribers.limit || allSubscribers.data.total} of{' '}
             {allSubscribers.data.total} results{' '}
-            <span style={{ color: 'gray' }}>Subscription Type:</span>
-            {subType} <span style={{ color: 'gray' }}>Sorting:</span>
+            <span className="font-600 ml-10">Subscription Type: </span>
+            {subType} <span className="font-600 ml-10">Sorting: </span>
             {sorting === 'DESC' ? 'Descending' : 'Ascending'}
           </div>
         )}
         <div className="admin-table mt-40 fix-size">
           <div className="tr heading">
-            <div className="admin-table-details">
-              <div className="td">NAME</div>
-              <div className="td">EMAIL</div>
-              <div className="td">PHONE</div>
-              <div className="td">SUBSCRIPTION</div>
-              <div className="td">DATE SUBSCRIPTION</div>
+            <div className="subscribe-table-details">
+              <div>NAME</div>
+              <div>EMAIL</div>
+              <div>PHONE</div>
+              <div>SUBSCRIPTION</div>
+              <div>DATE SUBSCRIPTION</div>
+              <div className="action-cell" />
             </div>
-            <div className="action-cell" />
           </div>
           {subScribers && subScribers.length > 0 ? (
             <>
               {subScribers.map(value => (
                 <div key={value._id} className="row-container">
                   <div className="tr">
-                    <div className="admin-table-details">
+                    <div className="subscribe-table-details">
                       <div className="td name">
                         <img
                           src={
@@ -204,15 +204,15 @@ function SubscriberListingAndFilters() {
                       <div className="td">{value.phone}</div>
                       <div className="td">Yearly</div>
                       <div className="td">{moment(value.createdAt).format('L')}</div>
-                    </div>
-                    <div className="action-cell">
-                      <img
-                        className="mr-5"
-                        src={edit}
-                        alt=""
-                        onClick={() => onEditSub(value._id)}
-                      />
-                      <img src={bin} alt="" onClick={() => onDeleteSub(value._id)} />
+                      <div className="action-cell">
+                        <img
+                          className="mr-5"
+                          src={edit}
+                          alt=""
+                          onClick={() => onEditSub(value._id)}
+                        />
+                        <img src={bin} alt="" onClick={() => onDeleteSub(value._id)} />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -231,10 +231,7 @@ function SubscriberListingAndFilters() {
             activePage={activePage}
             itemsCountPerPage={10}
             totalItemsCount={allSubscribers.total || 1}
-            pageRangeDisplayed={3}
             onChange={handlePageChange}
-            itemClass="page-item"
-            linkClass="page-link"
           />
         ) : (
           <></>

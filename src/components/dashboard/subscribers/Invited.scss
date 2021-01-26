@@ -1,0 +1,7 @@
+@import "src/styles/index";
+
+.invited-table-details {
+  display: grid;
+  grid-template-columns: calc(40% - 45px) calc(40% - 45px) calc(20% - 15px) 70px;
+  gap: 15px
+}

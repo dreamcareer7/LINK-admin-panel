@@ -15,7 +15,9 @@ import { getAllSubscribers } from '../../../redux/actions/subscribersAction/Subs
 function UpperHeader() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const allSubscribers = useSelector(state => state.subscrberReducer && state.subscrberReducer.getAllSub);
+  const allSubscribers = useSelector(
+    state => state.subscrberReducer && state.subscrberReducer.getAllSub
+  );
   const [searchText, setSearchText] = useState('');
 
   const docs = useMemo(() => (allSubscribers && allSubscribers.data ? allSubscribers.data : []), [
@@ -61,7 +63,7 @@ function UpperHeader() {
   return (
     <div className="upper-header-block">
       <div className="upper-header--rounded-block search-block">
-        <input placeholder="Search SubscribersControllerRootComponent" value={searchText} onChange={onSearch} />
+        <input placeholder="Search Subscribers" value={searchText} onChange={onSearch} />
         <button type="button">
           <div className="down-arrow">
             <img src={search} />{' '}

@@ -64,7 +64,7 @@
   .subscribe-table-details {
     display: grid;
     grid-template-columns: calc(25% - 85px) calc(30% - 15px) calc(15% - 15px) calc(15% - 5px) calc(15% - 25px) 70px;
-    align-items: flex-end;
+    align-items: center;
     gap: 15px;
   }
 
@@ -76,10 +76,9 @@
     border-radius: 5px;
   }
 
-  .admin-table-details.tr div {
+  .admin-table-details.tr td {
     text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    white-space: pre-wrap;
   }
 
   .heading {
@@ -88,6 +87,10 @@
     font-size: 14px;
     font-weight: 700;
     background-color: white;
+  }
+
+  .heading div {
+    white-space: pre-wrap;
   }
 
   .name {
