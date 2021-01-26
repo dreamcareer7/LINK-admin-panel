@@ -27,6 +27,10 @@ function UpperHeader() {
   console.log('get all subscriber=>', subScribers);
 
   const [filtered, setFiltered] = useState([]);
+
+  const userList = useSelector(state => state.manageAdmin);
+  const currentUser = userList.filter(e => e.isLoggedIn)[0];
+
   useEffect(() => {
     dispatch(getAllSubscribers(1));
   }, []);
@@ -80,7 +84,7 @@ function UpperHeader() {
       <div className="logout-area">
         <div className="upper-header--rounded-block">
           <img className="user-dp" src={user} />
-          <label>Michelle Obama</label>
+          <label>{currentUser.firstName}</label>
           <div className="down-arrow">
             <img src={downArrow} />
             <div className="user-dropdown">
