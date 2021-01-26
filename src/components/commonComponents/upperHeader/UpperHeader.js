@@ -15,7 +15,7 @@ import { getAllSubscribers } from '../../../redux/actions/subscribersAction/Subs
 function UpperHeader() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const allSubscribers = useSelector(state => state.subscrberReducer.getAllSub);
+  const allSubscribers = useSelector(state => state.subscrberReducer && state.subscrberReducer.getAllSub);
   const [searchText, setSearchText] = useState('');
 
   const docs = useMemo(() => (allSubscribers && allSubscribers.data ? allSubscribers.data : []), [

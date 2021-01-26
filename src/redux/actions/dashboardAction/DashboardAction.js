@@ -15,9 +15,9 @@ export const subscriptionChartData = data => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
@@ -53,9 +53,9 @@ export const genderChartData = data => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
@@ -74,9 +74,9 @@ export const industriesChartData = data => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
@@ -95,9 +95,9 @@ export const opportunityChartData = data => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
@@ -108,6 +108,7 @@ export const dealChartData = data => {
   return dispatch => {
     DashBoardService.dealChartData(data)
       .then(response => {
+        console.log(response);
         if (response.data.status === 'SUCCESS') {
           dispatch({
             type: DASHBOARD_REDUX_CONSTANTS.DEAL_VALUES_DATA,
@@ -116,9 +117,10 @@ export const dealChartData = data => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        console.log(e);
+        if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });

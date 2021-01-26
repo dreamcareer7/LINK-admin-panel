@@ -15,9 +15,9 @@ export const getAllSubscribers = data => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
@@ -36,9 +36,9 @@ export const getIndutries = data => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
@@ -57,9 +57,9 @@ export const getInviteeSubscribers = page => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
@@ -78,9 +78,9 @@ export const addInvitee = data => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
@@ -99,9 +99,9 @@ export const deleteInvitee = id => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
@@ -120,9 +120,9 @@ export const getCompanySize = data => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
@@ -141,9 +141,9 @@ export const getSubscribersById = id => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
