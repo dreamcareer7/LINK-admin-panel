@@ -15,6 +15,7 @@ export const loginUser = (emailAddress, password) => {
             data: response.data.data,
           });
           localStorage.setItem('userToken', response.data.data.token);
+          localStorage.setItem('userName', response.data.data.firstName);
           successNotification('Login successfully');
           dispatch(toggleLoader(false))
         }

@@ -35,7 +35,7 @@ export const getAdminById = id => {
           });
         }
       })
-      .catch(() => errorNotification('Error during Geting Admin'));
+      .catch(() => errorNotification('Error during Getting Admin'));
   };
 };
 
@@ -48,7 +48,8 @@ export const editAdminById = (id, data) => {
             type: ADMIN_REDUX_CONSTANTS.UPDATE_ADMIN,
             data: response.data.data,
           });
-          successNotification('Admin Updeted successfully');
+          localStorage.setItem("userName", response.data.data.firstName)
+          successNotification('Admin Updated successfully');
         }
       })
       .catch(e => {
