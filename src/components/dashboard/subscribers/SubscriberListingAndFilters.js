@@ -13,7 +13,7 @@ import User from '../../../assets/images/avatar.jpg';
 import './subscribers.scss';
 import { errorNotification } from '../../../constants/Toast';
 
-function Subscribed() {
+function SubscriberListingAndFilters() {
   const dispatch = useDispatch();
   const history = useHistory();
   const allSubscribers = useSelector(state => state.subscrberReducer.getAllSub);
@@ -244,4 +244,4 @@ function Subscribed() {
   );
 }
 
-export default Subscribed;
+export default SubscriberListingAndFilters;

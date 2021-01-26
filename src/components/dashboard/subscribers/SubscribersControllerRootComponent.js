@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Invited from './Invited';
-import Subscribed from './Subscribed';
+import SubscriberListingAndFilters from './SubscriberListingAndFilters';
 
 import './subscribers.scss';
 import { downloadFile } from '../../../helpers/DownloadHelper';
 import SubscriberService from '../../../services/subscribers-services/SubScribersServices';
 
-const Subscriber = () => {
+const SubscribersControllerRootComponent = () => {
   const { type } = useParams();
 
   const history = useHistory();
@@ -68,9 +68,9 @@ const Subscriber = () => {
           </button>
         </div>
       </div>
-      <div className="">{activeComponent === 'subscribed' ? <Subscribed /> : <Invited />}</div>
+      <div className="">{activeComponent === 'subscribed' ? <SubscriberListingAndFilters /> : <Invited />}</div>
     </>
   );
 };
 
-export default Subscriber;
+export default SubscribersControllerRootComponent;

@@ -18,7 +18,7 @@ import QuoteBank from './components/dashboard/quoteBank/QuoteBank';
 import EditAdmin from './components/dashboard/settings/manage-admins/EditAdmin/EditAdmin';
 import AddInvited from './components/dashboard/subscribers/AddInvited/AddInvited';
 import AddSubscribers from './components/dashboard/subscribers/EditSubscribers/EditSubscribers';
-import Subscriber from "./components/dashboard/subscribers/subscriber";
+import SubscribersControllerRootComponent from "./components/dashboard/subscribers/SubscribersControllerRootComponent";
 
 const PrivateRoute = ({ component, ...options }) => {
   const isLoggedIn =
@@ -59,7 +59,7 @@ function App() {
             <Layout>
               <PrivateRoute exact path="/" />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute exact path="/subscribers/:type" component={Subscriber} />
+              <PrivateRoute exact path="/subscribers/:type" component={SubscribersControllerRootComponent} />
               <PrivateRoute
                 exact
                 path="/subscribers/subscribed/:subId"

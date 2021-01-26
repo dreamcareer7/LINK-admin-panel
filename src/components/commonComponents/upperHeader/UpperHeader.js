@@ -61,7 +61,7 @@ function UpperHeader() {
   return (
     <div className="upper-header-block">
       <div className="upper-header--rounded-block search-block">
-        <input placeholder="Search Subscriber" value={searchText} onChange={onSearch} />
+        <input placeholder="Search SubscribersControllerRootComponent" value={searchText} onChange={onSearch} />
         <button type="button">
           <div className="down-arrow">
             <img src={search} />{' '}
