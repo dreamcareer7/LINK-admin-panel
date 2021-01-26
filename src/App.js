@@ -1,7 +1,6 @@
 import React, {Suspense} from 'react';
 import Notifications from 'react-notify-toast';
 import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import LoginPage from './components/authentication/login-page/LoginPage';
 import VerificationPage from './components/authentication/verification-page/VerificationPage';
@@ -80,10 +79,4 @@ function App() {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    loadingBar: state.loadingBar,
-  };
-};
-
-export default connect(mapStateToProps)(App);
+export default App;
