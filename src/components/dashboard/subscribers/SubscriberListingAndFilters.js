@@ -206,12 +206,17 @@ function SubscriberListingAndFilters() {
                       <div className="td">{moment(value.createdAt).format('L')}</div>
                       <div className="action-cell">
                         <img
-                          className="mr-5"
+                          className="edit-image mr-5"
                           src={edit}
                           alt=""
                           onClick={() => onEditSub(value._id)}
                         />
-                        <img src={bin} alt="" onClick={() => onDeleteSub(value._id)} />
+                        <img
+                          className="delete-image"
+                          src={bin}
+                          alt=""
+                          onClick={() => onDeleteSub(value._id)}
+                        />
                       </div>
                     </div>
                   </div>
