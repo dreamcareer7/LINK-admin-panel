@@ -129,10 +129,16 @@ button:focus {
 }
 
 .common-title {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 700;
   color: $primary-font-color;
   margin-bottom: 30px;
+}
+.common-bar-chart-title{
+    font-size: 30px;
+    padding: 40px;
+  font-weight: bold;
+    color: black;
 }
 
 .common-subtitle {

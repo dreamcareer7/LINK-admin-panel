@@ -122,8 +122,8 @@ const Dashboard = () => {
         <div className="row">
           <div className="column" style={{ width: '33.33%' }}>
             <div className="card">
+              <div className="common-title">Subscription</div>
               <DoughnutChart
-                titles="Subscription"
                 chartData={chartData && chartData.subscriptionValue && chartData.subscriptionValue}
               />
             </div>
@@ -131,6 +131,7 @@ const Dashboard = () => {
 
           <div className="column" style={{ width: '33.33%' }}>
             <div className="card">
+              <div className="common-title">Company Size</div>
               <CompanyChart
                 chartData={chartData && chartData.companyValue && chartData.companyValue}
               />
@@ -139,9 +140,9 @@ const Dashboard = () => {
 
           <div className="column" style={{ width: '33.33%' }}>
             <div className="card">
+              <div className="common-title">Gender</div>
               <DoughnutChart
                 chartData={chartData && chartData.genderValue && chartData.genderValue}
-                titles="Gender"
               />
             </div>
           </div>
@@ -151,10 +152,10 @@ const Dashboard = () => {
         <div className="row">
           <div className="column-100">
             <div className="card bar">
+              <div className="common-bar-chart-title">Top 10 Industries</div>
               <BarChart
                 temp="indus"
                 chartData={chartData && chartData.industriesValue && chartData.industriesValue}
-                titles="Top 10 Industries"
               />
             </div>
           </div>
@@ -164,9 +165,9 @@ const Dashboard = () => {
         <div className="row">
           <div className="column-100">
             <div className="card bar">
+              <div className="common-bar-chart-title">Deal Values</div>
               <BarChart
                 temp="deal"
-                titles="Deal Values"
                 chartData={chartData && chartData.dealValue && chartData.dealValue}
               />
             </div>
@@ -177,10 +178,10 @@ const Dashboard = () => {
         <div className="row">
           <div className="column-100">
             <div className="card bar">
+              <div className="common-bar-chart-title">Opportunity Stages</div>
               <BarChart
                 temp="opportunity"
                 chartData={chartData && chartData.dealValue && chartData.opportunityValue}
-                titles="Opportunity Stages"
               />
             </div>
           </div>

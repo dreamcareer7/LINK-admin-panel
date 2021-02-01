@@ -87,7 +87,7 @@ function SubscriberListingAndFilters() {
         sorting,
         startDate: moment(fromDate).toISOString(),
         endDate: moment(toDate).toISOString(),
-        subscriptionType,
+        subscriptionType: subType,
       };
       dispatch(getAllSubscribers(data));
     }
