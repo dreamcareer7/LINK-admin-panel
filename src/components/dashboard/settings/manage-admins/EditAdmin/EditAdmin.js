@@ -216,13 +216,13 @@ function EditAdmin() {
       </div>
 
       {userId !== 'addAdmin' && adminLoggedIn ? (
-        <>
+        <div className="profile-image-container">
           {addImage !== upload && (
             <button type="button" className="close-btn" onClick={showUploadBtn}>
               X
             </button>
           )}
-          <img className="DP-image add-image" src={addImage} onClick={onClickUploadImg} />
+          <img className="DP-image-edit add-image" src={addImage} onClick={onClickUploadImg} />
           <input
             id="imageDropBox"
             style={{ display: 'none' }}
@@ -230,9 +230,9 @@ function EditAdmin() {
             accept={'image/*'}
             onChange={addProfilePic}
           />
-        </>
+        </div>
       ) : (
-        <img className="DP-image" src={user} />
+        <img className="DP-image-edit" src={user} />
       )}
 
       <div className="admin-detail">
