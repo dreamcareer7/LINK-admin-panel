@@ -57,7 +57,7 @@ function EditAdmin() {
       setAdminEmail(editAdmin && editAdmin.email && editAdmin.email);
       setAdminPhone(editAdmin && editAdmin.phone && editAdmin.phone);
       setAdminLoggedIn(editAdmin && editAdmin.isLoggedIn && editAdmin.isLoggedIn);
-      setAddImage(editAdmin && editAdmin.profilePic && editAdmin.profilePic);
+      setAddImage(editAdmin && editAdmin.profilePic ? editAdmin.profilePic : upload);
       if (editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled !== null)
         setSelected(editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled);
     }
