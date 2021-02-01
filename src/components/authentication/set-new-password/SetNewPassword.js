@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import padlock from '../../../assets/images/padlock.png';
-import user from '../../../assets/images/user.png';
 import hideInterface from '../../../assets/images/hide-interface-symbol.png';
+import showPass from '../../../assets/images/showPass.svg';
 import linkFluencer from '../../../assets/images/linkfluencer.png';
 import {
   errorNotification,
@@ -63,7 +63,7 @@ function SetNewPassword() {
             <img
               alt="hide-pswrd"
               className="show-hide-pswrd"
-              src={showPassword ? user : hideInterface}
+              src={showPassword ? showPass : hideInterface}
             />
           </button>
         </div>
@@ -85,7 +85,7 @@ function SetNewPassword() {
             <img
               alt="hide-pswrd"
               className="show-hide-pswrd"
-              src={showConfirmPassword ? user : hideInterface}
+              src={showConfirmPassword ? showPass : hideInterface}
             />
           </button>
         </div>
