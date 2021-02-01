@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './upperHeader.scss';
 import search from '../../../assets/images/search.png';
-import user from '../../../assets/images/dummy-user.jpg';
+import user from '../../../assets/images/user.jpg';
 import downArrow from '../../../assets/images/arrow_down.png';
 import logout from '../../../assets/images/logout.svg';
 import { logOutUser } from '../../../redux/actions/authActions/AuthActions';

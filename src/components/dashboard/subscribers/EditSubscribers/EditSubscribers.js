@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import User from '../../../../assets/images/dummy-user.jpg';
+import User from '../../../../assets/images/user.jpg';
 import {
   deleteSubscribers,
   getCompanySize,

@@ -5,7 +5,7 @@ import {
   deleteUser,
   getAllAdmins,
 } from '../../../../redux/actions/manageAdminAction/ManageAdminAction';
-import User from '../../../../assets/images/dummy-user.jpg';
+import User from '../../../../assets/images/user.jpg';
 import edit from '../../../../assets/images/pencil.png';
 import bin from '../../../../assets/images/delete.png';
 import './manage-admins.scss';

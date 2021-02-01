@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import linkFluencer from '../../../assets/images/linkfluencer.png';
-import user from '../../../assets/images/user.png';
+import user from '../../../assets/images/user.jpg';
 import AuthTextInput from '../common/text-input/AuthTextInput';
 import '../authStyle.scss';
 
