@@ -7,7 +7,7 @@ export const loggedUser = (state = null, action) => {
       return action.data;
 
     case AUTH_REDUX_CONSTANTS.CONFIGURE_2FA:
-      return null;
+      return state;
 
     default:
       return state;
