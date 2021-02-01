@@ -140,7 +140,7 @@ function SubscriberListingAndFilters() {
                 <option value="FREE_TRIAL">Free Trial</option>
                 <option value="MONTHLY">Monthly</option>
                 <option value="YEARLY">Yearly</option>
-                <option value="CANCELLED">cancelled</option>
+                <option value="CANCELLED">Cancelled</option>
               </select>
             </div>
           </div>
