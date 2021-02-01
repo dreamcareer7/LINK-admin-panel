@@ -9,7 +9,7 @@ import {
 } from '../../../redux/actions/subscribersAction/SubscribersAction';
 import edit from '../../../assets/images/pencil.png';
 import bin from '../../../assets/images/delete.png';
-import User from '../../../assets/images/avatar.jpg';
+import User from '../../../assets/images/user.jpg';
 import './subscribers.scss';
 import { errorNotification } from '../../../constants/Toast';
 import { getLabelFromValues } from '../../../helpers/mappingHelper';
