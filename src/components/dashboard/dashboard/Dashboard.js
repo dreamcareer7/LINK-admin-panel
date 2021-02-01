@@ -89,8 +89,8 @@ const Dashboard = () => {
               <input
                 type="radio"
                 name="subscription"
-                defaultChecked={subscription === 'FREETRIAL'}
-                value="FREETRIAL"
+                defaultChecked={subscription === 'FREE_TRIAL'}
+                value="FREE_TRIAL"
               />
               <span>Free Trial</span>
               <input
