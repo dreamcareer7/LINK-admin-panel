@@ -12,6 +12,8 @@ import bin from '../../../assets/images/delete.png';
 import User from '../../../assets/images/avatar.jpg';
 import './subscribers.scss';
 import { errorNotification } from '../../../constants/Toast';
+import { getLabelFromValues } from '../../../helpers/mappingHelper';
+import subTypeObject from '../../../helpers/Mapper';
 
 function SubscriberListingAndFilters() {
   const dispatch = useDispatch();
@@ -167,8 +169,9 @@ function SubscriberListingAndFilters() {
             Showing {(allSubscribers.data.page - 1) * allSubscribers.data.limit + 1} to{' '}
             {allSubscribers.data.page * allSubscribers.limit || allSubscribers.data.total} of{' '}
             {allSubscribers.data.total} results{' '}
-            <span className="font-600 ml-10">Subscription Type: </span>
-            {subType} <span className="font-600 ml-10">Sorting: </span>
+            {subType !== 'all' && <span className="font-600 ml-10">Subscription Type: </span>}
+            {getLabelFromValues(subType, subTypeObject)}{' '}
+            <span className="font-600 ml-10">Sorting: </span>
             {sorting === 'DESC' ? 'Descending' : 'Ascending'}
           </div>
         )}

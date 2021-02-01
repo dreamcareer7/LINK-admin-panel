@@ -16,6 +16,7 @@ import {
 } from '../../../../../redux/actions/manageAdminAction/ManageAdminAction';
 import AuthService from '../../../../../services/auth-services/AuthSevices';
 import {
+  checkForEmail,
   errorNotification,
   successNotification,
   warningNotification,
@@ -133,13 +134,23 @@ function EditAdmin() {
   };
 
   const onUpdateAdminEvent = () => {
-    const data = {
-      firstName: adminName,
-      email: adminEmail,
-      phone: adminPhone,
-    };
-    dispatch(editAdminById(userId, data));
-    history.push('/settings/manageAdmin');
+    if (adminName.toString().trim().length === 0) {
+      errorNotification('Please enter name');
+    } else if (adminEmail.length === 0) {
+      errorNotification('Please enter email');
+    } else if (!checkForEmail(adminEmail)) {
+      errorNotification('Please enter valid email');
+    } else if (adminPhone.length === 0) {
+      errorNotification('Please enter phone no');
+    } else {
+      const data = {
+        firstName: adminName,
+        email: adminEmail,
+        phone: adminPhone,
+      };
+      dispatch(editAdminById(userId, data));
+      history.push('/settings/manageAdmin');
+    }
   };
 
   const onChangeSwitch = async e => {
@@ -171,6 +182,8 @@ function EditAdmin() {
       errorNotification('Please enter name');
     } else if (adminEmail.length === 0) {
       errorNotification('Please enter email');
+    } else if (!checkForEmail(adminEmail)) {
+      errorNotification('Please enter valid email');
     } else if (adminPhone.length === 0) {
       errorNotification('Please enter phone no');
     } else if (adminName && adminEmail && adminPhone) {
