@@ -92,7 +92,8 @@
     color: #ffffff;
     background-color: $info-color;
     border-radius: 15px;
-    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 .pagination > a
