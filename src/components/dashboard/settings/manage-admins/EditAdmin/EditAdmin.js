@@ -257,7 +257,7 @@ function EditAdmin() {
           />
         </div>
       </div>
-      {userId !== 'addAdmin' && (
+      {userId !== 'addAdmin' && adminLoggedIn !== undefined && (
         <div style={{ marginTop: 30 }}>
           <div className="admin-detail">
             <div id="name" className="mr-20">
@@ -265,7 +265,6 @@ function EditAdmin() {
               <input
                 className="common-input"
                 name="currentPass"
-                placeholder="current password"
                 type="password"
                 value={currentPass}
                 onChange={e => setCurrentPass(e.target.value)}
@@ -278,7 +277,6 @@ function EditAdmin() {
                 className="common-input"
                 type="password"
                 name="newPass"
-                placeholder="new password"
                 value={newPass}
                 onChange={e => setNewPass(e.target.value)}
               />
@@ -289,7 +287,6 @@ function EditAdmin() {
                 className="common-input"
                 type="password"
                 name="confirmPass"
-                placeholder="confirm password"
                 value={confirmPass}
                 onChange={e => setConfirmPass(e.target.value)}
               />

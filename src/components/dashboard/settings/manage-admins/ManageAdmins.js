@@ -52,12 +52,11 @@ const ManageAdmins = () => {
                     <div>{value && value.phone}</div>
                     <div>
                       <img
-                        className="mr-5"
+                        className="edit-image ml-35"
                         src={edit}
                         alt=""
                         onClick={() => onEditAdmin(value._id)}
                       />
-                      <img src={bin} alt="" onClick={() => onDelete(value._id)} />
                     </div>
                   </div>
                 </div>
