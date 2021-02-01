@@ -26,7 +26,7 @@ function QuoteBank() {
   }, [quotes]);
 
   const handlePageChange = page => {
-    dispatch(getAllQuotes(page, sorting, status));
+    dispatch(getAllQuotes(page, sorting));
   };
   const handleSortChange = e => {
     setSorting(e.target.value);
@@ -48,7 +48,8 @@ function QuoteBank() {
   const onClickAddQuote = () => {
     history.replace('/quote');
   };
-
+  console.log('allQuotesData.total', allQuotesData.total);
+  console.log('allQuotesData.total allQuotesData.limit', allQuotesData.total % allQuotesData.limit);
   return (
     <div>
       <div className="action-container">
@@ -84,8 +85,10 @@ function QuoteBank() {
       {quotes.length !== 0 && (
         <div className="no-of-results-in-display">
           Showing {(allQuotesData.page - 1) * allQuotesData.limit + 1} to{' '}
-          {allQuotesData.page * allQuotesData.limit || allQuotesData.total} of {allQuotesData.total}{' '}
-          results
+          {allQuotesData.total % allQuotesData.limit < allQuotesData.limit
+            ? allQuotesData.total
+            : allQuotesData.page * allQuotesData.limit}{' '}
+          of {allQuotesData.total} results
         </div>
       )}
       {quotes.length !== 0 ? (
