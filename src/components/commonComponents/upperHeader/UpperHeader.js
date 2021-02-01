@@ -71,7 +71,7 @@ function UpperHeader() {
             <div className="search-area">
               {filtered.map(e => (
                 <div className="open-search-area" onClick={() => onClickSearchedVal(e._id)}>
-                  {e.firstName}
+                  {e.firstName} {e.lastName}
                 </div>
               ))}
             </div>
@@ -81,7 +81,7 @@ function UpperHeader() {
       <div className="logout-area">
         <div className="upper-header--rounded-block">
           <img className="user-dp" src={user} />
-          <label>{localStorage.getItem("userName")}</label>
+          <label>{localStorage.getItem('userName')}</label>
           <div className="down-arrow">
             <img src={downArrow} />
             <div className="user-dropdown">
