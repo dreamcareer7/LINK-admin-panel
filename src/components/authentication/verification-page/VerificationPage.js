@@ -14,8 +14,9 @@ function VerificationPage() {
     AuthService.verify2faLogin(token, verificationCode)
       .then(response => {
         if (response.data.status === 'SUCCESS') {
-          successNotification('OTP is verified');
+          successNotification('Code is verified');
           localStorage.setItem('userToken', response.data.data.token);
+          localStorage.setItem('userName', response.data.data.firstName);
           localStorage.setItem('userEmail', response.data.data.email);
           // eslint-disable-next-line no-underscore-dangle
           localStorage.setItem('userId', response.data.data._id);
@@ -30,7 +31,7 @@ function VerificationPage() {
         } else if (e.response.data.status === 'TOKEN_EXPIRED') {
           errorNotification('Please try again login');
         } else if (e.response.data.status === 'INVALID_CODE') {
-          errorNotification('Invalid otp');
+          errorNotification('Invalid verification code');
         }
       });
   };
