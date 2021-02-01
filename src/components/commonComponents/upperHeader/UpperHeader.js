@@ -86,9 +86,9 @@ function UpperHeader() {
         </button>
       </div>
       <div className="logout-area" onClick={onDropDownClick}>
-        <div className="upper-header--rounded-block">
+        <div className="upper-header--rounded-block" style={{ cursor: 'pointer' }}>
           <img className="user-dp" src={user} />
-          <label>{localStorage.getItem('userName')}</label>
+          <label style={{ cursor: 'pointer' }}>{localStorage.getItem('userName')}</label>
           <div className="down-arrow">
             <img src={downArrow} onClick={onDropDownClick} />
             {dropDown && (
