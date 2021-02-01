@@ -340,22 +340,24 @@ function EditAdmin() {
           {editAdmin && editAdmin.isLoggedIn && (
             <>
               <div className="common-title mar-bott-5 mt-20">2-Step Authenticator</div>
-              <Switch
-                checked={selected}
-                onChange={e => onChangeSwitch(e)}
-                onColor="#00A8FF"
-                onHandleColor="#07084B"
-                handleDiameter={18}
-                uncheckedIcon={false}
-                checkedIcon={false}
-                boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-                activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-                height={26}
-                width={55}
-                className="react-switch"
-                id="material-switch"
-              />{' '}
-              {editAdmin && editAdmin.isTwoFAEnabled && <p className="text-2fa">2FA is enable</p>}
+              <div className="two-fa-container">
+                <Switch
+                  checked={selected}
+                  onChange={e => onChangeSwitch(e)}
+                  onColor="#00A8FF"
+                  onHandleColor="#07084B"
+                  handleDiameter={18}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                  activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                  height={26}
+                  width={55}
+                  className="react-switch"
+                  id="material-switch"
+                />{' '}
+                {selected && <p className="text-2fa">2FA is enabled</p>}
+              </div>
               {show2Fa ? (
                 <>
                   {editAdmin && !editAdmin.isTwoFAEnabled && (

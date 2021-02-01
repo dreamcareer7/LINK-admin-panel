@@ -10,8 +10,7 @@
 }
 
 .text-2fa {
-  color: $info-color;
-  font-weight: 700;
+  padding-left: 1rem;
 }
 
 .DP-image {
@@ -118,4 +117,9 @@
     margin-left: 30px;
     cursor: pointer;
   }
+}
+
+.two-fa-container{
+  display: flex;
+  flex-direction: row;
 }
