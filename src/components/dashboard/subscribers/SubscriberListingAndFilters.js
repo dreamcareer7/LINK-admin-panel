@@ -237,6 +237,8 @@ function SubscriberListingAndFilters() {
             itemsCountPerPage={10}
             totalItemsCount={allSubscribers.total || 1}
             onChange={handlePageChange}
+            itemClass="page-item"
+            linkClass="page-link"
           />
         ) : (
           <></>
