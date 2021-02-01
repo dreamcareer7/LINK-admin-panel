@@ -41,6 +41,10 @@ const AuthService = {
       },
     });
   },
+  configure2faLogin: (twoFAStatus, code) => {
+    const data = { twoFAStatus, code };
+    return ApiService.putData(AUTH_URLS.CONFIGURE_2FA, data);
+  },
   logOutUser: () => ApiService.postData(AUTH_URLS.USER_LOGOUT),
   getLogedInUser: () => ApiService.getData(AUTH_URLS.GET_USER_DETAILS),
   configure2FA: data => ApiService.putData(AUTH_URLS.CONFIGURE_2FA, data),

@@ -29,7 +29,7 @@ function EditAdmin() {
   const history = useHistory();
   const admin = useSelector(state => state.Admin2FAReducer);
   const editAdmin = useSelector(state => state.editAdminReducer);
-  const [otp, setOtp] = useState('');
+  const [twoFaCode, setTwoFaCode] = useState('');
   const [adminName, setAdminName] = useState('');
   const [adminEmail, setAdminEmail] = useState('');
   const [adminPhone, setAdminPhone] = useState('');
@@ -164,17 +164,21 @@ function EditAdmin() {
   };
 
   const onClickVerify = () => {
-    const token = localStorage.getItem('userToken');
-    AuthService.verify2faLogin(token, otp)
-      .then(response => {
-        if (response.data.status === 'SUCCESS') {
-          successNotification('OTP is verified');
-          dispatch(AuthService.configure2FA({ twoFAStatus: true, code: otp }));
-        }
-      })
-      .catch(e => {
-        errorNotification('Verification is failde. Please try again', e);
-      });
+    if (!twoFaCode || (twoFaCode && twoFaCode.trim().length === 0)) {
+      errorNotification('Please enter 2fa code.');
+    } else if (twoFaCode && twoFaCode.trim().length !== 6) {
+      errorNotification('Please enter valid 2fa code.');
+    } else {
+      AuthService.configure2faLogin(selected, twoFaCode)
+        .then(response => {
+          if (response.data.status === 'SUCCESS') {
+            successNotification('2FA Code is verified');
+          }
+        })
+        .catch(() => {
+          errorNotification('2fa Verification is failed, Please try again.');
+        });
+    }
   };
 
   const onClickSaveAdmin = async () => {
@@ -206,7 +210,7 @@ function EditAdmin() {
     console.log(e);
   };
 
-  const handleChange = userOtp => setOtp(userOtp);
+  const handleChange = userOtp => setTwoFaCode(userOtp);
   return (
     <div className="edit-admin-container">
       <div className="breadcrumb common-subtitle">
@@ -382,7 +386,7 @@ function EditAdmin() {
                           <div>Enter the 6 digit Code you see in your Authenticator App</div>
                           <div className="code-container">
                             <OtpInput
-                              value={otp}
+                              value={twoFaCode}
                               isInputNum
                               onChange={handleChange}
                               className=""
