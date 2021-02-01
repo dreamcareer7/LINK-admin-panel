@@ -20,20 +20,21 @@ function Settings() {
         <div className="d-flex">
           <div
             className={
-              activeComponent === 'manageAdmin' ? 'settings-button active-menu' : 'settings-button'
-            }
-            onClick={() => onChangeComponent('manageAdmin')}
-          >
-            Manage Admins
-          </div>
-          <div
-            className={
               activeComponent === 'errorMessage' ? 'settings-button active-menu' : 'settings-button'
             }
             onClick={() => onChangeComponent('errorMessage')}
           >
             Error Messages
           </div>
+          <div
+            className={
+              activeComponent === 'manageAdmin' ? 'settings-button active-menu' : 'settings-button'
+            }
+            onClick={() => onChangeComponent('manageAdmin')}
+          >
+            Manage Admins
+          </div>
+
           {/* <div className="settings-button" onClick={() => history.push('/integrations')}>
             Integrations
           </div> */}
