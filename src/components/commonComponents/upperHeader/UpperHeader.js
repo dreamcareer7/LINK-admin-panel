@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './upperHeader.scss';
@@ -9,6 +9,7 @@ import logout from '../../../assets/images/logout.svg';
 import { logOutUser } from '../../../redux/actions/authActions/AuthActions';
 import SubscriberService from '../../../services/subscribers-services/SubScribersServices';
 import { getAllSubscribers } from '../../../redux/actions/subscribersAction/SubscribersAction';
+import { useOnClickOutside } from '../../../helpers/UserClickOutsideHook';
 
 /* const array = ['apple', 'banana', 'bapple', 'orange']; */
 
@@ -26,6 +27,8 @@ function UpperHeader() {
   const subScribers = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
   console.log('get all subscriber=>', subScribers);
 
+  const [dropDown, setDropDown] = useState(false);
+  const ref = useRef();
   const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
@@ -48,6 +51,10 @@ function UpperHeader() {
       setFiltered([]);
     }
   };
+  const onDropDownClick = () => {
+    setDropDown(!dropDown);
+  };
+  useOnClickOutside(ref, () => setDropDown(false));
 
   const onClickSearchedVal = val => {
     history.push(`/subscribers/subscribed/${val}`);
@@ -78,18 +85,20 @@ function UpperHeader() {
           </div>
         </button>
       </div>
-      <div className="logout-area">
+      <div className="logout-area" onClick={onDropDownClick}>
         <div className="upper-header--rounded-block">
           <img className="user-dp" src={user} />
           <label>{localStorage.getItem('userName')}</label>
           <div className="down-arrow">
-            <img src={downArrow} />
-            <div className="user-dropdown">
-              <div className="dropdown-option" onClick={onLogOut}>
-                <img src={logout} />
-                <span>Logout</span>
+            <img src={downArrow} onClick={onDropDownClick} />
+            {dropDown && (
+              <div className="user-dropdown" ref={ref}>
+                <div className="dropdown-option" onClick={onLogOut}>
+                  <img src={logout} />
+                  <span>Logout</span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
