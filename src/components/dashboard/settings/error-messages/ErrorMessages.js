@@ -47,7 +47,7 @@ function ErrorMessages() {
               <React.Fragment key={value._id}>
                 <div className="common-input error-message">
                   <div className="common-title" id="title">
-                    {value && value.title && value.title}
+                    {value && value.description && value.description}
                   </div>
                   <div
                     id="text"
