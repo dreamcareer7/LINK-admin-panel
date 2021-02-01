@@ -44,7 +44,9 @@ const ManageAdmins = () => {
                   <div className="admin-table-details tr">
                     <div className="name">
                       <img src={(value && value.profilePic) || User} />
-                      {value && value.firstName && value.firstName.length > 0 ? value.firstName : "No Name Available"}
+                      {value && value.firstName && value.firstName.length > 0
+                        ? value.firstName
+                        : 'No Name Available'}
                     </div>
                     <div>{value && value.email}</div>
                     <div>{value && value.phone}</div>
@@ -89,8 +91,12 @@ const ManageAdmins = () => {
                     <div>{val && val.email}</div>
                     <div>{val && val.phone}</div>
                     <div className="action-cell">
-                      <img className="mr-5" src={edit} onClick={() => onEditAdmin(val._id)} />
-                      <img src={bin} onClick={() => onDelete(val._id)} />
+                      <img
+                        className="edit-image mr-5"
+                        src={edit}
+                        onClick={() => onEditAdmin(val._id)}
+                      />
+                      <img className="delete-image" src={bin} onClick={() => onDelete(val._id)} />
                     </div>
                   </div>
                 </div>
