@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import linkFluencer from '../../../assets/images/linkfluencer.png';
 import showPass from '../../../assets/images/showPass.svg';
 import './login.scss';
-import user from '../../../assets/images/user.jpg';
+import user from '../../../assets/images/login-user.svg';
 import padlock from '../../../assets/images/padlock.png';
 import hidePass from '../../../assets/images/hidePass.svg';
 import {
