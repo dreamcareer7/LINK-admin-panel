@@ -7,15 +7,23 @@ import edit from '../../../assets/images/pencil.png';
 import bin from '../../../assets/images/delete.png';
 import QuoteServices from '../../../services/quotebank-services/QuoteServices';
 import { errorNotification } from '../../../constants/Toast';
-import { deleteQuote, setSelectedQuoteData } from '../../../redux/actions/authActions/QuoteActions';
+import {
+  deleteQuote,
+  getAllQuotes,
+  setSelectedQuoteData,
+} from '../../../redux/actions/authActions/QuoteActions';
 import QUOTE_REDUX_CONSTANTS from '../../../redux/constants/QuoteReduxConstant';
+import { useQuery } from '../../../helpers/GetQueryParamHook';
 
 function Quote({ quote }) {
   const [isSelected, setIsSelected] = useState(
     quote && quote.isPublished ? quote.isPublished.toString() : 'false'
   );
   const history = useHistory();
-
+  const query = useQuery();
+  const status = query.get('status');
+  const sort = query.get('sort');
+  const page = query.get('page');
   useEffect(() => {
     setIsSelected(quote.isPublished);
   }, [quote.isPublished]);
@@ -34,6 +42,7 @@ function Quote({ quote }) {
         type: QUOTE_REDUX_CONSTANTS.UPDATE_QUOTE,
         data: { ...quote, isPublished: e.target.value },
       });
+      dispatch(getAllQuotes(page, sort, status));
     } catch {
       errorNotification('Could not update status');
     }

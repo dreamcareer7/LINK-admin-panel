@@ -5,11 +5,13 @@ import './quoteBank.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllQuotes } from '../../../redux/actions/authActions/QuoteActions';
 import Quote from './Quote';
+import { useQuery } from '../../../helpers/GetQueryParamHook';
 
 function QuoteBank() {
   const allQuotesData = useSelector(({ allQuotes }) => allQuotes);
   const [sorting, setSorting] = useState('RECENT');
   const [status, setStatus] = useState('all');
+  const [pageNum, setPageNum] = useState(1);
 
   const quotes = useMemo(() => (allQuotesData && allQuotesData.docs ? allQuotesData.docs : []), [
     allQuotesData,
@@ -18,19 +20,39 @@ function QuoteBank() {
   const [data, setData] = useState(quotes);
   const dispatch = useDispatch();
   const history = useHistory();
+  const query = useQuery();
+
   useEffect(() => {
-    dispatch(getAllQuotes(1, sorting));
+    const statusParam = query.get('status');
+    const sort = query.get('sort');
+    const page = query.get('page');
+    dispatch(getAllQuotes(page, sort, statusParam !== 'all' ? statusParam : undefined));
+    setPageNum(page);
+    setStatus(statusParam);
+    setSorting(sort);
   }, []);
+
   useEffect(() => {
     setData(quotes);
   }, [quotes]);
 
+  useEffect(() => {
+    const params = new URLSearchParams();
+
+    params.append('sort', sorting);
+    params.append('status', status);
+    params.append('page', pageNum);
+    history.push({ search: params.toString() });
+  }, [sorting, status, pageNum, history]);
+
   const handlePageChange = page => {
-    dispatch(getAllQuotes(page, sorting));
+    setPageNum(page);
+    dispatch(getAllQuotes(page, sorting, status !== 'all' ? status : undefined));
   };
   const handleSortChange = e => {
     setSorting(e.target.value);
-    dispatch(getAllQuotes(1, e.target.value));
+    dispatch(getAllQuotes(1, e.target.value, status !== 'all' ? status : undefined));
+    setPageNum(1);
   };
   const handleStatusFilter = e => {
     if (e.target.value !== 'all') {
@@ -39,6 +61,7 @@ function QuoteBank() {
       dispatch(getAllQuotes(1, sorting));
     }
     setStatus(e.target.value);
+    setPageNum(1);
   };
 
   const activePage = useMemo(() => (allQuotesData && allQuotesData.page ? allQuotesData.page : 1), [
@@ -48,8 +71,7 @@ function QuoteBank() {
   const onClickAddQuote = () => {
     history.replace('/quote');
   };
-  console.log('allQuotesData.total', allQuotesData.total);
-  console.log('allQuotesData.total allQuotesData.limit', allQuotesData.total % allQuotesData.limit);
+
   return (
     <div>
       <div className="action-container">
