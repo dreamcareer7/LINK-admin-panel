@@ -108,6 +108,26 @@
       object-position: center;
     }
   }
+  .vic {
+    background: #f59e13;
+    color: #fff;
+    border-radius: 5px;
+    margin: 5px;
+    width: fit-content;
+    font-size: 10px;
+    margin-bottom: 20px;
+    padding: 2px;
+  }
+  .sub-type {
+    background: $danger-color;
+    color: #fff;
+    border-radius: 5px;
+    margin: 5px;
+    width: fit-content;
+    font-size: 10px;
+    margin-bottom: 20px;
+    padding: 2px;
+  }
 }
 
 .sub-button {

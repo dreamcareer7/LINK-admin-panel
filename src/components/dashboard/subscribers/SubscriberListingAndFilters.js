@@ -87,7 +87,15 @@ function SubscriberListingAndFilters() {
         sorting,
         startDate: moment(fromDate).toISOString(),
         endDate: moment(toDate).toISOString(),
-        subscriptionType: subType,
+        subscriptionType,
+      };
+      dispatch(getAllSubscribers(data));
+    } else {
+      const data = {
+        page: pageNum,
+        sorting,
+        startDate: moment(fromDate).toISOString(),
+        endDate: moment(toDate).toISOString(),
       };
       dispatch(getAllSubscribers(data));
     }
@@ -201,6 +209,10 @@ function SubscriberListingAndFilters() {
                           }
                         />
                         {value.firstName}
+                        {value.vicSub && <span className="vic">VIC</span>}
+                        {value.selectedPlan.status === 'CANCELLED' && (
+                          <span className="sub-type">Cancelled</span>
+                        )}
                       </div>
 
                       <div className="td">{value.email}</div>

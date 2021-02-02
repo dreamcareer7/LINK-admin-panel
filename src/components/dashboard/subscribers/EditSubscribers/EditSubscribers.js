@@ -25,18 +25,19 @@ const AddSubscribers = () => {
     email: '',
     phone: '',
     subscription_date: '',
-    lifetime_payment: '',
+    totalReceivedAmount: '',
     gender: '',
     location: '',
     sub_type: '',
     ave_dealvalue: '',
     industry: '',
-    company_size: '',
+    companySize: '',
     vicSub: 'true',
-    status: '',
+    isActive: '',
   });
 
   const updateField = e => {
+    console.log(e.target.name, e.target.value);
     setFormValue({
       ...form,
       [e.target.name]: e.target.value,
@@ -57,15 +58,15 @@ const AddSubscribers = () => {
         subscription_date: moment(data.client.createdAt && data.client.createdAt).format(
           'yyyy-MM-DD'
         ),
-        lifetime_payment: data.client.lifetime_payment && data.client.lifetime_payment,
+        totalReceivedAmount: data.client.totalReceivedAmount && data.client.totalReceivedAmount,
         gender: data.client.gender ? data.client.gender : 'none',
         location: data.client.companyLocation && data.client.companyLocation,
         sub_type: data.client.selectedPlan && data.client.selectedPlan.status,
         ave_dealvalue: data.client.ave_dealvalue && data.client.ave_dealvalue,
         industry: data.client.industry && data.client.industry,
-        company_size: data.client.company_size && data.client.company_size,
+        companySize: data.client.companySize && data.client.companySize,
         vicSub: data.client.vicSub && data.client.vicSub,
-        status: data.client.status && data.client.status,
+        isActive: data.client.isActive && data.client.isActive,
       });
     }
   }, [
@@ -73,15 +74,15 @@ const AddSubscribers = () => {
     data && data.client && data.client.email,
     data && data.client && data.client.phone,
     data && data.client && data.client.subscription_date,
-    data && data.client && data.client.lifetime_payment,
+    data && data.client && data.client.totalReceivedAmount,
     data && data.client && data.client.gender,
     data && data.client && data.client.companyLocation,
     data && data.client && data.client.selectedPlan && data.client.selectedPlan.status,
     data && data.client && data.client.ave_dealvalue,
     data && data.client && data.client.industry,
-    data && data.client && data.client.company_size,
+    data && data.client && data.client.companySize,
     data && data.client && data.client.vicSub,
-    data && data.client && data.client.status,
+    data && data.client && data.client.isActive,
   ]);
 
   const onSubmitSub = e => {
@@ -109,6 +110,8 @@ const AddSubscribers = () => {
         gender: form.gender,
         companyLocation: form.location.trim() || '',
         vicSub: form.vicSub,
+        totalReceivedAmount: form.totalReceivedAmount,
+        companySize: form.companySize && form.companySize !== 'none' ? form.companySize : undefined,
         selectedPlan: {
           currentPlan: form.sub_type,
         },
@@ -143,9 +146,9 @@ const AddSubscribers = () => {
 
           <div className="edit-subscribers-right-container">
             <div className="sub-tag d-flex mt-30">
-              <span className="monthly">MONTHLY</span>
-              <span className="act">ACTIVE</span>
-              <span className="vic">VIC</span>
+              <span className="monthly">{form.sub_type}</span>
+              {form.isActive && <span className="act">ACTIVE</span>}
+              {form.vicSub && <span className="vic">VIC</span>}
             </div>
             <form>
               <div className="admin-detail mt-20">
@@ -158,6 +161,7 @@ const AddSubscribers = () => {
                     className="common-input"
                     placeholder="Michelle Obama"
                     type="text"
+                    disabled
                   />
                 </div>
                 <div id="email" className="mr-20">
@@ -192,17 +196,18 @@ const AddSubscribers = () => {
                     onChange={updateField}
                     className="common-input"
                     type="date"
+                    disabled
                   />
                 </div>
                 <div className="mr-20">
                   <div className="common-title mar-bott-5">Lifetime Payments</div>
                   <input
-                    value={form.lifetime_payment}
+                    value={form.totalReceivedAmount}
                     name="lifetime_payment"
                     onChange={updateField}
                     className="common-input"
                     type="text"
-                    placeholder="michelle@abcmedia.com"
+                    placeholder="-"
                   />
                 </div>
               </div>
@@ -276,12 +281,14 @@ const AddSubscribers = () => {
                 </div>
                 <div className="mr-20">
                   <div className="common-title mar-bott-5">Company Size</div>
+
                   <select
                     className="common-input"
-                    value={form.company_size}
+                    value={form.companySize}
                     onChange={updateField}
-                    name="company_size"
+                    name="companySize"
                   >
+                    <option value="none">None</option>
                     {company &&
                       company.data &&
                       company.data.map(value => <option key={value}>{value}</option>)}
@@ -303,9 +310,15 @@ const AddSubscribers = () => {
                 </div>
                 <div className="mr-20">
                   <div className="common-title mar-bott-5">Status</div>
-                  <select className="common-input" onChange={updateField} name="status">
-                    <option>Active</option>
-                    <option>In Active</option>
+                  <select
+                    className="common-input"
+                    onChange={updateField}
+                    name="status"
+                    disabled
+                    value={form.isActive}
+                  >
+                    <option value="true">Active</option>
+                    <option value="false">In Active</option>
                   </select>
                 </div>
               </div>

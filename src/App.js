@@ -24,11 +24,12 @@ import LinkLoader from './components/commonComponents/Loader/LinkLoader';
 const PrivateRoute = ({ component, ...options }) => {
   const isLoggedIn =
     localStorage.getItem('userToken') !== null && localStorage.getItem('userToken').length !== 0;
+  // const userDetail = useSelector(state => state.loggedUser);
+  //  const isLoggedIn = userDetail ? userDetail.token : false;
   const finalComponent = isLoggedIn ? component : LoginPage;
   if (options.path === '/' && isLoggedIn) {
     return (
       <Route {...options}>
-        {' '}
         <Redirect to="/dashboard" />
       </Route>
     );
