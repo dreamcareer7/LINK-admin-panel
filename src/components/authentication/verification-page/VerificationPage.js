@@ -16,7 +16,6 @@ function VerificationPage() {
         if (response.data.status === 'SUCCESS') {
           successNotification('Code is verified');
           localStorage.setItem('userToken', response.data.data.token);
-          localStorage.setItem('userName', response.data.data.firstName);
           localStorage.setItem('userEmail', response.data.data.email);
           // eslint-disable-next-line no-underscore-dangle
           localStorage.setItem('userId', response.data.data._id);
