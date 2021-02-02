@@ -175,8 +175,10 @@ function SubscriberListingAndFilters() {
         {subScribers.length > 0 && (
           <div className="no-of-results-in-display">
             Showing {(allSubscribers.data.page - 1) * allSubscribers.data.limit + 1} to{' '}
-            {allSubscribers.data.page * allSubscribers.limit || allSubscribers.data.total} of{' '}
-            {allSubscribers.data.total} results{' '}
+            {allSubscribers.data.total < allSubscribers.data.page * allSubscribers.data.limit
+              ? allSubscribers.data.total
+              : allSubscribers.data.page * allSubscribers.data.limit}{' '}
+            of {allSubscribers.data.total} results{' '}
             {subType !== 'all' && <span className="font-600 ml-10">Subscription Type: </span>}
             {getLabelFromValues(subType, subTypeObject)}{' '}
             <span className="font-600 ml-10">Sorting: </span>
