@@ -108,25 +108,17 @@
       object-position: center;
     }
   }
-  .vic {
-    background: #f59e13;
+  .sub-type-admin {
+    background: #FF3334;
     color: #fff;
-    border-radius: 5px;
-    margin: 5px;
-    width: fit-content;
+    border-radius: 100px;
+    width: -moz-fit-content;
     font-size: 10px;
-    margin-bottom: 20px;
-    padding: 2px;
+    padding: 1px 7px;
+    align-self:end;
   }
-  .sub-type {
-    background: $danger-color;
-    color: #fff;
-    border-radius: 5px;
-    margin: 5px;
-    width: fit-content;
-    font-size: 10px;
-    margin-bottom: 20px;
-    padding: 2px;
+  .sub-type-vic{
+    background: #f59e13;
   }
 }
 

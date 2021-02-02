@@ -20,6 +20,7 @@ import AddInvited from './components/dashboard/subscribers/AddInvited/AddInvited
 import AddSubscribers from './components/dashboard/subscribers/EditSubscribers/EditSubscribers';
 import SubscribersControllerRootComponent from './components/dashboard/subscribers/SubscribersControllerRootComponent';
 import LinkLoader from './components/commonComponents/Loader/LinkLoader';
+import SetPassword from './components/authentication/set-password/SetPassword';
 
 const PrivateRoute = ({ component, ...options }) => {
   const isLoggedIn =
@@ -57,6 +58,7 @@ function App() {
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/forgot" component={ForgotPasswordPage} />
           <Route exact path="/authAdmin/reset-password/:token" component={SetNewPassword} />
+          <Route exact path="/authAdmin/set-password/:token" component={SetPassword} />
           <PrivateRoute exact path="/verificationPage" component={VerificationPage} />
           <Layout>
             <PrivateRoute exact path="/" />

@@ -106,7 +106,7 @@ const AddSubscribers = () => {
             ? undefined
             : form.location.trim() || '',
         vicSub: form.vicSub,
-        totalReceivedAmount: parseInt(form.lifetime_payment, 10),
+        // totalReceivedAmount: parseInt(form.lifetime_payment, 10),
         companySize: form.companySize && form.companySize !== 'none' ? form.companySize : undefined,
         selectedPlan: {
           currentPlan: form.sub_type,
@@ -205,6 +205,7 @@ const AddSubscribers = () => {
                     className="common-input"
                     type="text"
                     placeholder="-"
+                    disabled
                   />
                 </div>
               </div>

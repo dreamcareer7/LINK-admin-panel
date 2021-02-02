@@ -19,6 +19,7 @@ export const AUTH_URLS = {
   USER_LOGOUT: `${BASE_URL}authAdmin/logout`,
   GET_USER_DETAILS: `${BASE_URL}admin/get-admin`,
   CONFIGURE_2FA: `${BASE_URL}authAdmin/configure-2fa`,
+  SET_PASSWORD_URL: `${BASE_URL}authAdmin/set-password/`,
 };
 
 export const SETTING_URLS = {
