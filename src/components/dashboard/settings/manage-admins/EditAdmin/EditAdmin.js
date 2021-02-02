@@ -19,7 +19,6 @@ import {
   checkForEmail,
   errorNotification,
   successNotification,
-  warningNotification,
 } from '../../../../../constants/Toast';
 import { configure2FA } from '../../../../../redux/actions/authActions/AuthActions';
 import ManageAdminService from '../../../../../services/manage-admin/ManageAdminServices';
@@ -116,17 +115,20 @@ function EditAdmin() {
     } else if (currentPass === newPass) {
       errorNotification('Please enter different password');
     } else if (newPass !== confirmPass) {
-      warningNotification('Password does not match');
+      errorNotification('Password does not match');
     } else {
       const data = {
         oldPassword: currentPass,
         newPassword: confirmPass,
       };
-      dispatch(changeAdminPass(data));
+      dispatch(
+        changeAdminPass(data, () => {
+          setConfirmPass('');
+          setCurrentPass('');
+          setNewPass('');
+        })
+      );
     }
-    setConfirmPass('');
-    setCurrentPass('');
-    setNewPass('');
   };
 
   const onCancel = () => {

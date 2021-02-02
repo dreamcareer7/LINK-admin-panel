@@ -104,7 +104,7 @@ export const deleteUser = id => {
   };
 };
 
-export const changeAdminPass = data => {
+export const changeAdminPass = (data, cb) => {
   return dispatch => {
     ManageAdminService.changeAdminPass(data)
       .then(response => {
@@ -114,6 +114,9 @@ export const changeAdminPass = data => {
             data: response.data.data,
           });
           successNotification('Password successfully changed');
+          if (cb) {
+            cb();
+          }
         }
       })
       .catch(() => errorNotification('Please check your current password'));
