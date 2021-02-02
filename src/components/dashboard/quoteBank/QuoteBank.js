@@ -107,7 +107,7 @@ function QuoteBank() {
       {quotes.length !== 0 && (
         <div className="no-of-results-in-display">
           Showing {(allQuotesData.page - 1) * allQuotesData.limit + 1} to{' '}
-          {allQuotesData.total % allQuotesData.limit < allQuotesData.limit
+          {allQuotesData.total < allQuotesData.page * allQuotesData.limit
             ? allQuotesData.total
             : allQuotesData.page * allQuotesData.limit}{' '}
           of {allQuotesData.total} results
