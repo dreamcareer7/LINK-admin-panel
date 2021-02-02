@@ -11,7 +11,7 @@ import {
   updateSubscribers,
 } from '../../../../redux/actions/subscribersAction/SubscribersAction';
 import './Editsubscribers.scss';
-import { errorNotification } from '../../../../constants/Toast';
+import { checkForEmail, errorNotification } from '../../../../constants/Toast';
 
 const AddSubscribers = () => {
   const { subId } = useParams();
@@ -25,7 +25,7 @@ const AddSubscribers = () => {
     email: '',
     phone: '',
     subscription_date: '',
-    totalReceivedAmount: '',
+    lifetime_payment: '',
     gender: '',
     location: '',
     sub_type: '',
@@ -58,14 +58,14 @@ const AddSubscribers = () => {
         subscription_date: moment(data.client.createdAt && data.client.createdAt).format(
           'yyyy-MM-DD'
         ),
-        totalReceivedAmount: data.client.totalReceivedAmount && data.client.totalReceivedAmount,
+        lifetime_payment: data.client.totalReceivedAmount && data.client.totalReceivedAmount,
         gender: data.client.gender ? data.client.gender : 'none',
         location: data.client.companyLocation && data.client.companyLocation,
         sub_type: data.client.selectedPlan && data.client.selectedPlan.status,
         ave_dealvalue: data.client.ave_dealvalue && data.client.ave_dealvalue,
         industry: data.client.industry && data.client.industry,
         companySize: data.client.companySize && data.client.companySize,
-        vicSub: data.client.vicSub && data.client.vicSub,
+        vicSub: data.client.vicSub && data.client.vicSub.toString(),
         isActive: data.client.isActive && data.client.isActive,
       });
     }
@@ -89,33 +89,30 @@ const AddSubscribers = () => {
     e.preventDefault();
     const userName = form.username.split(' ');
 
-    console.log('form', form);
-    if (!form.username || (form.username && form.username.trim().length === 0)) {
-      errorNotification('Please enter name');
-    } else if (!form.email || (form.email && form.email.trim().length === 0)) {
-      errorNotification('Please enter phone number');
-    } else if (!form.gender || (form.gender && form.gender === 'none')) {
-      errorNotification('Please select gender');
-    } else if (!form.location || (form.location && form.location.trim().length === 0)) {
-      errorNotification('Please enter location');
-    } else if (!form.industry || (form.industry && form.industry === 'none')) {
-      errorNotification('Please select industry');
+    if (!form.email || (form.email && form.email.trim().length === 0)) {
+      errorNotification('Please enter email');
+    } else if (!checkForEmail(form.email)) {
+      errorNotification('Please enter valid email');
     } else {
       const formData = {
         firstName: (userName[0] && userName[0].trim()) || '',
         lastName: (userName[1] && userName[1].trim()) || '',
         email: form.email.trim() || '',
         phone: (form.phone && form.phone.trim()) || '',
-        industry: form.industry,
-        gender: form.gender,
-        companyLocation: form.location.trim() || '',
+        industry: form.industry && form.industry !== 'none' ? form.industry : undefined,
+        gender: form.gender && form.gender !== 'none' ? form.gender : undefined,
+        companyLocation:
+          form.location && form.location.trim().length === 0
+            ? undefined
+            : form.location.trim() || '',
         vicSub: form.vicSub,
-        totalReceivedAmount: form.totalReceivedAmount,
+        totalReceivedAmount: parseInt(form.lifetime_payment, 10),
         companySize: form.companySize && form.companySize !== 'none' ? form.companySize : undefined,
         selectedPlan: {
           currentPlan: form.sub_type,
         },
       };
+
       dispatch(updateSubscribers(subId, formData));
       history.replace('/subscribers/subscribed');
     }
@@ -143,12 +140,12 @@ const AddSubscribers = () => {
               data && data.client && data.client.profilePicUrl ? data.client.profilePicUrl : User
             }
           />
-
+          {console.log(form.vicSub)}
           <div className="edit-subscribers-right-container">
             <div className="sub-tag d-flex mt-30">
               <span className="monthly">{form.sub_type}</span>
               {form.isActive && <span className="act">ACTIVE</span>}
-              {form.vicSub && <span className="vic">VIC</span>}
+              {form.vicSub === 'true' && <span className="vic">VIC</span>}
             </div>
             <form>
               <div className="admin-detail mt-20">
@@ -202,7 +199,7 @@ const AddSubscribers = () => {
                 <div className="mr-20">
                   <div className="common-title mar-bott-5">Lifetime Payments</div>
                   <input
-                    value={form.totalReceivedAmount}
+                    value={form.lifetime_payment}
                     name="lifetime_payment"
                     onChange={updateField}
                     className="common-input"
