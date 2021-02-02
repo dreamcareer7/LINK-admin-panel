@@ -25,7 +25,7 @@ function SideBar() {
             <img alt="subscribers" src={group} /> <span>Subscribers</span>
           </NavLink>
 
-          <NavLink className="menu-item" to="/quoteBank" replace>
+          <NavLink className="menu-item" to="/quoteBank?sort=RECENT&status=all&page=1" replace>
             <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
           </NavLink>
 

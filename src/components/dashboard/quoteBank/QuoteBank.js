@@ -104,6 +104,7 @@ function QuoteBank() {
           </div>
         </div>
       </div>
+      {console.log(allQuotesData)}
       {quotes.length !== 0 && (
         <div className="no-of-results-in-display">
           Showing {(allQuotesData.page - 1) * allQuotesData.limit + 1} to{' '}
