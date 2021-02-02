@@ -192,7 +192,7 @@ function SubscriberListingAndFilters() {
               <div>EMAIL</div>
               <div>PHONE</div>
               <div>SUBSCRIPTION</div>
-              <div>DATE SUBSCRIPTION</div>
+              <div>DATE SUBSCRIBED</div>
               <div>TOTAL PAYMENTS</div>
               <div className="action-cell" />
             </div>
