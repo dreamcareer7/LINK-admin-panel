@@ -95,7 +95,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .add-quot-btn{
+    padding: 15px 45px;
+    border-radius: 25px;
+    width: 160px;
+    text-align: center;
+  }
 }
+
 .pagination > a
 {
   color: $primary-font-color !Important;

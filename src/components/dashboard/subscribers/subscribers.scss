@@ -134,10 +134,18 @@
   background-color: $secondary-variant-color;
   border-radius: 25px;
   cursor: pointer;
+  text-align: center;
+  width: 170px;
 }
 .download-btn{
   padding: 15px 45px;
   border-radius: 25px;
+  width: 160px;
+}
+.add-invited-btn{
+  padding: 15px 45px;
+  border-radius: 25px;
+  width: 160px;
 }
 
 .active-menu {

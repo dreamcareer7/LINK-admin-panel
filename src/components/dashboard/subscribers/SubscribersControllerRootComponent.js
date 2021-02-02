@@ -57,7 +57,7 @@ const SubscribersControllerRootComponent = () => {
           {activeComponent !== 'subscribed' && (
             <button
               type="button"
-              className="button success-button mr-10"
+              className="button success-button add-invited-btn mr-10"
               onClick={() => onAddInvite()}
             >
               ADD
