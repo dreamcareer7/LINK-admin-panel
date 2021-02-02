@@ -99,7 +99,7 @@ function QuoteBank() {
           </div>
         </div>
         <div className="action-buttons">
-          <div className="button success-button add-quot-btn" onClick={onClickAddQuote}>
+          <div className="button success-button add-quote-btn" onClick={onClickAddQuote}>
             ADD QUOTE
           </div>
         </div>
