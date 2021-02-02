@@ -191,6 +191,7 @@ function SubscriberListingAndFilters() {
               <div>PHONE</div>
               <div>SUBSCRIPTION</div>
               <div>DATE SUBSCRIPTION</div>
+              <div>TOTAL PAYMENTS</div>
               <div className="action-cell" />
             </div>
           </div>
@@ -220,6 +221,7 @@ function SubscriberListingAndFilters() {
                       <div className="td">{value.phone}</div>
                       <div className="td">Yearly</div>
                       <div className="td">{moment(value.createdAt).format('L')}</div>
+                      <div className="td">{`$${value.totalReceivedAmount}`}</div>
                       <div className="action-cell">
                         <img
                           className="edit-image mr-5"

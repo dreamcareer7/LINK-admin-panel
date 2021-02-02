@@ -63,12 +63,18 @@ const SubscribersControllerRootComponent = () => {
               ADD
             </button>
           )}
-          <button type="button" className="button primary-button" onClick={onDownloadClick}>
+          <button
+            type="button"
+            className="button primary-button download-btn"
+            onClick={onDownloadClick}
+          >
             DOWNLOAD
           </button>
         </div>
       </div>
-      <div className="">{activeComponent === 'subscribed' ? <SubscriberListingAndFilters /> : <Invited />}</div>
+      <div className="">
+        {activeComponent === 'subscribed' ? <SubscriberListingAndFilters /> : <Invited />}
+      </div>
     </>
   );
 };

@@ -63,7 +63,8 @@
 
   .subscribe-table-details {
     display: grid;
-    grid-template-columns: calc(25% - 85px) calc(30% - 15px) calc(15% - 15px) calc(15% - 5px) calc(15% - 25px) 70px;
+   // grid-template-columns: calc(25% - 85px) calc(30% - 15px) calc(15% - 15px) calc(15% - 5px) calc(15% - 25px) 70px;
+    grid-template-columns: calc(25% - 80px) calc(28% - 10px) calc(12% - 15px) calc(12% - 5px) calc(12% - 25px) calc(10% - 25px) 70px;
     align-items: center;
     gap: 15px;
   }
@@ -125,7 +126,7 @@
 .sub-button {
   max-width: 185px;
   margin-right: 10px;
-  padding: 12px 40px;
+  padding: 15px 45px;
   font-size: 14px;
   font-weight: 600;
   color: #000000;
@@ -133,6 +134,10 @@
   background-color: $secondary-variant-color;
   border-radius: 25px;
   cursor: pointer;
+}
+.download-btn{
+  padding: 15px 45px;
+  border-radius: 25px;
 }
 
 .active-menu {
