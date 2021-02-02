@@ -9,8 +9,8 @@ const DoughnutChart = props => {
     datasets: [
       {
         label: 'Rainfall',
-        backgroundColor: ['#B21F00', '#C9DE00', '#2FDE00', '#00A6B4', '#6800B4'],
-        hoverBackgroundColor: ['#501800', '#4B5000', '#175000', '#003350', '#35014F'],
+        backgroundColor: ['#FCAB4F', '#1E205D', '#39C3BB', '#FD696A', '#4282FE', '#D53711'],
+        hoverBackgroundColor: ['#FEE1C0', '#9699DD', '#DADBF3', '#FEC9C9', '#BCD2FF', '#F7B3A2'],
         data: chartData && chartData.data.map(e => e.total),
       },
     ],

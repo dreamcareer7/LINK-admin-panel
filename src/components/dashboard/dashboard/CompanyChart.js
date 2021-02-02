@@ -9,8 +9,26 @@ const CompanyChart = props => {
     datasets: [
       {
         label: 'Rainfall',
-        backgroundColor: ['#B21F00', '#C9DE00', '#2FDE00', '#00A6B4', '#6800B4'],
-        hoverBackgroundColor: ['#501800', '#4B5000', '#175000', '#003350', '#35014F'],
+        backgroundColor: [
+          '#d53711',
+          '#F89400',
+          '#2FDE00',
+          '#00A6B4',
+          '#6800B4',
+          '#950c94',
+          '#d64374',
+          '#3364C8',
+        ],
+        hoverBackgroundColor: [
+          '#F6A490',
+          '#FFDAA2',
+          '#AFFF99',
+          '#89F5FF',
+          '#CE89FF',
+          '#EED5FF',
+          '#F0BCCD',
+          '#B5C7EC',
+        ],
         data: chartData && chartData.data.map(e => e.total),
       },
     ],
