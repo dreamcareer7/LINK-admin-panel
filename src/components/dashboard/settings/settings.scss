@@ -5,6 +5,13 @@
   justify-content: space-between;
   align-items: center;
   margin: 20px 0 30px 0;
+
+  .add-admin-btn{
+    padding: 15px 45px;
+    border-radius: 25px;
+    width: 160px;
+    text-align: center;
+  }
 }
 
 .settings-button {
@@ -20,6 +27,8 @@
   border-radius: 25px;
   cursor: pointer;
   text-align: center;
+
+
 }
 
 // .settings-button:active,
@@ -35,3 +44,5 @@
 .settings-common-area {
   margin-top: 20px;
 }
+
+

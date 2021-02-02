@@ -41,8 +41,7 @@ function Settings() {
         </div>
         {activeComponent !== 'errorMessage' ? (
           <div
-            style={{ float: 'right' }}
-            className="button success-button"
+            className="button success-button add-admin-btn"
             onClick={() => history.push('/settings/manageAdmin/addAdmin')}
           >
             ADD ADMIN
