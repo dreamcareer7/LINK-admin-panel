@@ -51,8 +51,8 @@
   }
 
   img {
-    height: 30px;
-    max-height: 30px;
+    height: 38px;
+    max-height: 38px;
   }
 
   .row-container {
@@ -64,7 +64,7 @@
   .subscribe-table-details {
     display: grid;
    // grid-template-columns: calc(25% - 85px) calc(30% - 15px) calc(15% - 15px) calc(15% - 5px) calc(15% - 25px) 70px;
-    grid-template-columns: calc(25% - 80px) calc(28% - 10px) calc(12% - 15px) calc(12% - 5px) calc(12% - 25px) calc(10% - 25px) 70px;
+    grid-template-columns: calc(25% - 80px) calc(28% - 10px) calc(12% - 15px) calc(12% - 5px) calc(12% - 25px) calc(10% - 25px) 100px;
     align-items: center;
     gap: 15px;
   }

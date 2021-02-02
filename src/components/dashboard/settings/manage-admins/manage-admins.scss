@@ -21,8 +21,8 @@
   }
 
   img {
-    height: 30px;
-    max-height: 30px;
+    height: 38px;
+    max-height: 38px;
   }
 
   .row-container {
@@ -32,7 +32,8 @@
 
   .admin-table-details {
     display: grid;
-    grid-template-columns: calc(40% - 85px) calc(35% - 15px) calc(25% - 15px) 70px;
+   // grid-template-columns: calc(40% - 85px) calc(35% - 15px) calc(25% - 15px) 70px;
+    grid-template-columns: calc(40% - 85px) calc(30% - 15px) calc(28% - 15px) 100px;
     align-items: flex-end;
     gap: 15px;
   }
