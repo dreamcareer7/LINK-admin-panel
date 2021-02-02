@@ -143,7 +143,9 @@ function SubscriberListingAndFilters() {
             </div>
           </div>
           <div className="filter">
-            <div className="filter-label">Subscription Type:</div>
+            <div className="filter-label" style={{ paddingTop: '3px' }}>
+              Subscription Type:
+            </div>
             <div className="filter-action">
               <select value={subType} onChange={onChangeSubType}>
                 <option value="all">All</option>
@@ -156,7 +158,9 @@ function SubscriberListingAndFilters() {
           </div>
 
           <div className="filter">
-            <div className="filter-label">Sorting</div>
+            <div className="filter-label" style={{ paddingTop: '3px' }}>
+              Sorting
+            </div>
             <div className="filter-action">
               <select onChange={e => handleSortChange(e)} value={sorting}>
                 <option value="ASC">Ascending</option>
