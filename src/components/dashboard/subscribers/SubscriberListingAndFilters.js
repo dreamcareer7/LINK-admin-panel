@@ -173,7 +173,7 @@ function SubscriberListingAndFilters() {
       </div>
       <div>
         {subScribers.length > 0 && (
-          <div className="no-of-results-in-display">
+          <div className="no-of-results-in-display mt-30">
             Showing {(allSubscribers.data.page - 1) * allSubscribers.data.limit + 1} to{' '}
             {allSubscribers.data.total < allSubscribers.data.page * allSubscribers.data.limit
               ? allSubscribers.data.total
@@ -185,7 +185,7 @@ function SubscriberListingAndFilters() {
             {sorting === 'DESC' ? 'Descending' : 'Ascending'}
           </div>
         )}
-        <div className="admin-table mt-40 fix-size">
+        <div className="admin-table mt-30 fix-size">
           <div className="tr heading">
             <div className="subscribe-table-details">
               <div>NAME</div>
