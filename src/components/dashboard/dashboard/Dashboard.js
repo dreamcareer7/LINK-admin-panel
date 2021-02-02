@@ -13,14 +13,13 @@ import {
   opportunityChartData,
   subscriptionChartData,
 } from '../../../redux/actions/dashboardAction/DashboardAction';
+import { errorNotification } from '../../../constants/Toast';
 
 const Dashboard = () => {
   const chartData = useSelector(state => state.dashboardReducer);
   const [subscription, setSubscrptionType] = useState('MONTHLY');
-  const [today, setToday] = useState(moment().format('yyyy-MM-DD'));
-  const [previousDate, setPreviusDate] = useState(
-    moment().subtract(30, 'days').format('yyyy-MM-DD')
-  );
+  const [fromDate, setFromDate] = useState(moment().subtract(30, 'days').format('yyyy-MM-DD'));
+  const [endDate, setEndDate] = useState(moment().format('yyyy-MM-DD'));
   const dispatch = useDispatch();
 
   const onChange = e => {
@@ -28,25 +27,35 @@ const Dashboard = () => {
   };
 
   const onChangeFromInput = e => {
-    setPreviusDate(e.target.value);
+    const date = e.target.value;
+    if (moment(date).isAfter(endDate)) {
+      errorNotification('From date should be less than to date');
+    } else {
+      setFromDate(date);
+    }
   };
 
   const onChangeToInput = e => {
-    setToday(e.target.value);
+    const date = e.target.value;
+    if (moment(date).isBefore(fromDate)) {
+      errorNotification('To date should be greater than from date');
+    } else {
+      setEndDate(date);
+    }
   };
 
   useEffect(() => {
     // setPreviusDate();
     // setToday();
     const data = {
-      startDate: previousDate,
-      endDate: today,
+      startDate: fromDate,
+      endDate,
     };
 
     const companyData = {
       selectedPlan: subscription,
-      startDate: previousDate,
-      endDate: today,
+      startDate: fromDate,
+      endDate,
     };
     if (data.endDate && data.startDate && companyData.selectedPlan) {
       dispatch(dealChartData(data));
@@ -56,7 +65,7 @@ const Dashboard = () => {
       dispatch(subscriptionChartData(data));
       dispatch(industriesChartData(companyData));
     }
-  }, [subscription, today, previousDate]);
+  }, [subscription, endDate, fromDate]);
 
   return (
     <>
@@ -70,14 +79,14 @@ const Dashboard = () => {
               <input
                 name="from"
                 onChange={e => onChangeFromInput(e)}
-                value={previousDate}
+                value={fromDate}
                 type="date"
                 placeholder="From"
               />
               <input
                 name="to"
                 onChange={e => onChangeToInput(e)}
-                value={today}
+                value={endDate}
                 type="date"
                 placeholder="To"
               />
