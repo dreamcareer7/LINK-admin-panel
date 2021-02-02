@@ -20,14 +20,19 @@ instance.interceptors.request.use(
   },
   error => {
     // Do something with request error
-    if (error.response.status === 401) {
-      clearAuthToken();
-      window.location.href = '/login';
-      return false;
-    }
     return Promise.reject(error);
   }
 );
+
+// Add a response interceptor
+instance.interceptors.response.use(null, error => {
+  if (error.response.status === 401) {
+    clearAuthToken();
+    window.location.href = '/login';
+    return false;
+  }
+  return Promise.reject(error);
+});
 
 const ApiService = {
   getData(url) {
