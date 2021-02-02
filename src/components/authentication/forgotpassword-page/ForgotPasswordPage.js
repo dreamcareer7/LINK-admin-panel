@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import linkFluencer from '../../../assets/images/linkfluencer.png';
-import user from '../../../assets/images/user.jpg';
+import user from '../../../assets/images/login-user.svg';
 import AuthTextInput from '../common/text-input/AuthTextInput';
 import '../authStyle.scss';
 
@@ -14,6 +15,7 @@ import AuthService from '../../../services/auth-services/AuthSevices';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
+  const history = useHistory();
 
   const sendResetLink = () => {
     if (email.toString().trim().length === 0) errorNotification('Please enter username');
@@ -37,6 +39,9 @@ export default function ForgotPasswordPage() {
         });
     }
   };
+  const backToLogin = () => {
+    history.goBack();
+  };
   return (
     <div>
       <div className="content-container">
@@ -50,12 +55,16 @@ export default function ForgotPasswordPage() {
             onChange={e => setEmail(e.target.value.toString().trim())}
           />
         </div>
+
         <button
           type="button"
           className="button success-button authButtonStyle"
           onClick={sendResetLink}
         >
-          SEND RESET LINK
+          Send Reset Link
+        </button>
+        <button type="button" className="button primary-button" onClick={backToLogin}>
+          Back To Login
         </button>
       </div>
     </div>
