@@ -150,7 +150,7 @@ const AddSubscribers = () => {
             <form>
               <div className="admin-detail mt-20">
                 <div id="name" className="mr-20">
-                  <div className="common-title mar-bott-5">Name</div>
+                  <div className="common-title-black mar-bott-5">Name</div>
                   <input
                     value={form.username}
                     name="username"
@@ -162,7 +162,7 @@ const AddSubscribers = () => {
                   />
                 </div>
                 <div id="email" className="mr-20">
-                  <div className="common-title mar-bott-5">Email</div>
+                  <div className="common-title-black mar-bott-5">Email</div>
                   <input
                     name="email"
                     value={form.email}
@@ -173,7 +173,7 @@ const AddSubscribers = () => {
                   />
                 </div>
                 <div id="phone">
-                  <div className="common-title mar-bott-5">Phone</div>
+                  <div className="common-title-black mar-bott-5">Phone</div>
                   <input
                     name="phone"
                     value={form.phone}
@@ -186,7 +186,7 @@ const AddSubscribers = () => {
               </div>
               <div className="admin-detail mt-30">
                 <div className="mr-20">
-                  <div className="common-title mar-bott-5">Subscription Date</div>
+                  <div className="common-title-black mar-bott-5">Subscription Date</div>
                   <input
                     name="subscription_date"
                     value={form.subscription_date}
@@ -197,7 +197,7 @@ const AddSubscribers = () => {
                   />
                 </div>
                 <div className="mr-20">
-                  <div className="common-title mar-bott-5">Lifetime Payments</div>
+                  <div className="common-title-black mar-bott-5">Lifetime Payments</div>
                   <input
                     value={form.lifetime_payment}
                     name="lifetime_payment"
@@ -211,7 +211,7 @@ const AddSubscribers = () => {
               </div>
               <div className="admin-detail mt-40">
                 <div className="mr-20">
-                  <div className="common-title mar-bott-5">Gender</div>
+                  <div className="common-title-black mar-bott-5">Gender</div>
                   <select
                     name="gender"
                     value={form.gender}
@@ -225,7 +225,7 @@ const AddSubscribers = () => {
                   </select>
                 </div>
                 <div className="mr-20">
-                  <div className="common-title mar-bott-5">Location</div>
+                  <div className="common-title-black mar-bott-5">Location</div>
                   <input
                     type="text"
                     name="location"
@@ -235,7 +235,7 @@ const AddSubscribers = () => {
                   />
                 </div>
                 <div className="mr-20">
-                  <div className="common-title mar-bott-5">Subscription Type</div>
+                  <div className="common-title-black mar-bott-5">Subscription Type</div>
                   <select
                     name="sub_type"
                     value={form.sub_type}
@@ -253,7 +253,7 @@ const AddSubscribers = () => {
               </div>
               <div className="admin-detail mt-40">
                 <div className="mr-20">
-                  <div className="common-title mar-bott-5">Average Deal Value</div>
+                  <div className="common-title-black mar-bott-5">Average Deal Value</div>
                   <input
                     type="text"
                     name="ave_dealvalue"
@@ -264,7 +264,7 @@ const AddSubscribers = () => {
                   />
                 </div>
                 <div className="mr-20">
-                  <div className="common-title mar-bott-5">Industry</div>
+                  <div className="common-title-black mar-bott-5">Industry</div>
                   <select
                     className="common-input"
                     value={form.industry}
@@ -278,7 +278,7 @@ const AddSubscribers = () => {
                   </select>
                 </div>
                 <div className="mr-20">
-                  <div className="common-title mar-bott-5">Company Size</div>
+                  <div className="common-title-black mar-bott-5">Company Size</div>
 
                   <select
                     className="common-input"
@@ -295,7 +295,7 @@ const AddSubscribers = () => {
               </div>
               <div className="admin-detail mt-40">
                 <div className="mr-20" onChange={updateField}>
-                  <div className="common-title mar-bott-5">VIC Subscriber?</div>
+                  <div className="common-title-black mar-bott-5">VIC Subscriber?</div>
                   <select
                     className="common-input"
                     onChange={updateField}
@@ -307,7 +307,7 @@ const AddSubscribers = () => {
                   </select>
                 </div>
                 <div className="mr-20">
-                  <div className="common-title mar-bott-5">Status</div>
+                  <div className="common-title-black mar-bott-5">Status</div>
                   <select
                     className="common-input"
                     onChange={updateField}
