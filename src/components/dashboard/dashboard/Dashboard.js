@@ -131,7 +131,7 @@ const Dashboard = () => {
         <div className="row">
           <div className="column" style={{ width: '33.33%' }}>
             <div className="card">
-              <div className="common-title">Subscription</div>
+              <div className="common-title chart-title">Subscription</div>
               <DoughnutChart
                 chartData={chartData && chartData.subscriptionValue && chartData.subscriptionValue}
               />
@@ -140,7 +140,7 @@ const Dashboard = () => {
 
           <div className="column" style={{ width: '33.33%' }}>
             <div className="card">
-              <div className="common-title">Company Size</div>
+              <div className="common-title chart-title">Company Size</div>
               <CompanyChart
                 chartData={chartData && chartData.companyValue && chartData.companyValue}
               />
@@ -149,7 +149,7 @@ const Dashboard = () => {
 
           <div className="column" style={{ width: '33.33%' }}>
             <div className="card">
-              <div className="common-title">Gender</div>
+              <div className="common-title chart-title">Gender</div>
               <DoughnutChart
                 chartData={chartData && chartData.genderValue && chartData.genderValue}
               />

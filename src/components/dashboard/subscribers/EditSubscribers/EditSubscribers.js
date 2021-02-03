@@ -142,7 +142,7 @@ const AddSubscribers = () => {
               data && data.client && data.client.profilePicUrl ? data.client.profilePicUrl : User
             }
           />
-          {console.log(form.vicSub)}
+
           <div className="edit-subscribers-right-container">
             <div className="sub-tag d-flex mt-30">
               <span className="monthly">{getLabelFromValues(form.sub_type, subTypeObject)}</span>
