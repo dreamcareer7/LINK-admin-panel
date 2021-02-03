@@ -93,7 +93,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="filter">
-            <div className="filter-label">Subscription Type:</div>
+            <div className="filter-label ml-8">Subscription Type:</div>
             <div className="filter-action mt-10" onChange={e => onChange(e)}>
               <input
                 type="radio"
