@@ -163,8 +163,8 @@ function SubscriberListingAndFilters() {
             </div>
             <div className="filter-action">
               <select onChange={e => handleSortChange(e)} value={sorting}>
-                <option value="ASC">Ascending</option>
-                <option value="DESC">Descending</option>
+                <option value="ASC">Old</option>
+                <option value="DESC">Recent</option>
               </select>
             </div>
           </div>
@@ -186,7 +186,7 @@ function SubscriberListingAndFilters() {
             {subType !== 'all' && <span className="font-600 ml-10">Subscription Type: </span>}
             {getLabelFromValues(subType, subTypeObject)}{' '}
             <span className="font-600 ml-10">Sorting: </span>
-            {sorting === 'DESC' ? 'Descending' : 'Ascending'}
+            {sorting === 'DESC' ? 'Recent' : 'Old'}
           </div>
         )}
         <div className="admin-table mt-30 fix-size">
