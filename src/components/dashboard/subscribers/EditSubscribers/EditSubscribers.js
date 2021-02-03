@@ -131,7 +131,7 @@ const AddSubscribers = () => {
   return (
     <>
       <div className="edit-sub-container">
-        <div className="breadcrumb common-subtitle">
+        <div className="breadcrumb-custom common-subtitle">
           <span>SUBSCRIBERS&nbsp;</span>
           <span>/ EDIT SUBSCRIBERS</span>
         </div>

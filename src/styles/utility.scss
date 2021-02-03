@@ -117,13 +117,14 @@ button:focus {
   outline: none;
 }
 
-.breadcrumb {
+.breadcrumb-custom {
   color: $primary-font-color;
   text-transform: uppercase;
   cursor: pointer;
+  margin-bottom: 3rem;
 }
 
-.breadcrumb span:last-child {
+.breadcrumb-custom span:last-child {
   color: $placeholder-color;
   cursor: text;
 }
