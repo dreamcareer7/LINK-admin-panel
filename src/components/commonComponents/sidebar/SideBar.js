@@ -17,19 +17,23 @@ function SideBar() {
       </div>
       <div className="menu-bar">
         <div className="menu">
-          <NavLink className="menu-item" to="/dashboard" replace>
+          <NavLink className="menu-item menu-link" to="/dashboard" replace>
             <img alt="home" src={home} /> <span>Dashboard</span>
           </NavLink>
 
-          <NavLink className="menu-item" to="/subscribers/subscribed" replace>
+          <NavLink className="menu-item menu-link" to="/subscribers" replace>
             <img alt="subscribers" src={group} /> <span>Subscribers</span>
           </NavLink>
 
-          <NavLink className="menu-item" to="/quoteBank?sort=RECENT&status=all&page=1" replace>
+          <NavLink
+            className="menu-item menu-link"
+            to="/quoteBank?sort=RECENT&status=all&page=1"
+            replace
+          >
             <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
           </NavLink>
 
-          <NavLink className="menu-item" to="/settings/errorMessage" replace>
+          <NavLink className="menu-item menu-link" to="/settings/errorMessage" replace>
             <img alt="settings" src={gear} /> <span>Settings</span>
           </NavLink>
         </div>

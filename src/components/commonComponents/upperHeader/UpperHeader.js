@@ -82,7 +82,7 @@ function UpperHeader() {
               <div className="user-dropdown" ref={ref}>
                 <div className="dropdown-option" onClick={onLogOut}>
                   <img src={logout} />
-                  <span>Logout</span>
+                  <span className="menu-text">Logout</span>
                 </div>
               </div>
             )}
