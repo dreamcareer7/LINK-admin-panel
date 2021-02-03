@@ -88,6 +88,10 @@ const dealOptions = {
         ticks: {
           fontColor: '#212152', // this here
           fontWeight: '600',
+          callback: value => {
+            const [first, second] = value.split('-');
+            return `$${first} - $${second}`;
+          },
         },
         scaleLabel: {
           display: true,
