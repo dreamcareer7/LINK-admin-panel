@@ -12,6 +12,8 @@ import {
 } from '../../../../redux/actions/subscribersAction/SubscribersAction';
 import './Editsubscribers.scss';
 import { checkForEmail, errorNotification } from '../../../../constants/Toast';
+import { getLabelFromValues } from '../../../../helpers/mappingHelper';
+import subTypeObject from '../../../../helpers/Mapper';
 
 const AddSubscribers = () => {
   const { subId } = useParams();
@@ -143,7 +145,7 @@ const AddSubscribers = () => {
           {console.log(form.vicSub)}
           <div className="edit-subscribers-right-container">
             <div className="sub-tag d-flex mt-30">
-              <span className="monthly">{form.sub_type}</span>
+              <span className="monthly">{getLabelFromValues(form.sub_type, subTypeObject)}</span>
               {form.isActive && <span className="act">ACTIVE</span>}
               {form.vicSub === 'true' && <span className="vic">VIC</span>}
             </div>
