@@ -217,7 +217,7 @@ function SubscriberListingAndFilters() {
                         />
                         {value.firstName}
                         {value.selectedPlan.status === 'CANCELLED' ? (
-                          <span className="sub-type-admin">Cancelled</span>
+                          <span className="sub-type-admin">CANCELLED</span>
                         ) : (
                           value.vicSub && <span className="sub-type-admin sub-type-vic">VIC</span>
                         )}
