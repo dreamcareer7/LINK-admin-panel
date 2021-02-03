@@ -15,6 +15,146 @@ import {
 } from '../../../redux/actions/dashboardAction/DashboardAction';
 import { errorNotification } from '../../../constants/Toast';
 
+const indusryOptions = {
+  plugins: {
+    labels: {
+      render: 'value',
+    },
+  },
+  tooltips: { enabled: false },
+  hover: { mode: null, animationDuration: 0 },
+  maintainAspectRatio: false,
+  responsive: true,
+  title: {
+    display: true,
+    text: '',
+  },
+  legend: {
+    display: false,
+    labels: {
+      fontColor: 'black',
+    },
+  },
+  gridLines: { zeroLineColor: 'transparent' },
+  scales: {
+    xAxes: [
+      {
+        barThickness: 80,
+        barPercentage: 0.35,
+        gridLines: {
+          drawOnChartArea: false,
+          zeroLineColor: 'transparent',
+        },
+        ticks: {
+          fontColor: '#212152', // this here
+          fontWeight: '600',
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Industries',
+        },
+      },
+    ],
+    yAxes: [
+      {
+        gridLines: {
+          drawOnChartArea: false,
+          zeroLineColor: 'transparent',
+        },
+        ticks: {
+          fontColor: '#212152', // this here
+          fontWeight: '600',
+          beginAtZero: true,
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Users',
+        },
+      },
+    ],
+  },
+};
+const dealOptions = {
+  ...indusryOptions,
+  scales: {
+    xAxes: [
+      {
+        barThickness: 80,
+        barPercentage: 0.35,
+        gridLines: {
+          drawOnChartArea: false,
+          zeroLineColor: 'transparent',
+        },
+        ticks: {
+          fontColor: '#212152', // this here
+          fontWeight: '600',
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Deal values',
+        },
+      },
+    ],
+    yAxes: [
+      {
+        gridLines: {
+          drawOnChartArea: false,
+          zeroLineColor: 'transparent',
+        },
+        ticks: {
+          fontColor: '#212152', // this here
+          fontWeight: '600',
+          beginAtZero: true,
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Opportunities',
+        },
+      },
+    ],
+  },
+};
+const opportunityOptions = {
+  ...indusryOptions,
+  scales: {
+    xAxes: [
+      {
+        barThickness: 80,
+        barPercentage: 0.35,
+        gridLines: {
+          drawOnChartArea: false,
+          zeroLineColor: 'transparent',
+        },
+        ticks: {
+          fontColor: '#212152', // this here
+          fontWeight: '600',
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Stages',
+        },
+      },
+    ],
+    yAxes: [
+      {
+        gridLines: {
+          drawOnChartArea: false,
+          zeroLineColor: 'transparent',
+        },
+        ticks: {
+          fontColor: '#212152', // this here
+          fontWeight: '600',
+          beginAtZero: true,
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Opportunities',
+        },
+      },
+    ],
+  },
+};
+
 const Dashboard = () => {
   const chartData = useSelector(state => state.dashboardReducer);
   const [subscription, setSubscrptionType] = useState('MONTHLY');
@@ -163,6 +303,7 @@ const Dashboard = () => {
             <div className="card bar">
               <div className="common-bar-chart-title">Top 10 Industries</div>
               <BarChart
+                options={indusryOptions}
                 temp="indus"
                 chartData={chartData && chartData.industriesValue && chartData.industriesValue}
               />
@@ -176,6 +317,7 @@ const Dashboard = () => {
             <div className="card bar">
               <div className="common-bar-chart-title">Deal Values</div>
               <BarChart
+                options={dealOptions}
                 temp="deal"
                 chartData={chartData && chartData.dealValue && chartData.dealValue}
               />
@@ -189,6 +331,7 @@ const Dashboard = () => {
             <div className="card bar">
               <div className="common-bar-chart-title">Opportunity Stages</div>
               <BarChart
+                options={opportunityOptions}
                 temp="opportunity"
                 chartData={chartData && chartData.dealValue && chartData.opportunityValue}
               />

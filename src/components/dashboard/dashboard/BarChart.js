@@ -4,7 +4,7 @@ import { Bar, Chart } from 'react-chartjs-2';
 // import ChartDataLabels from 'chartjs-plugin-labels';
 
 const BarChart = props => {
-  const { chartData, temp } = props;
+  const { chartData, temp, options } = props;
   const state = {
     labels: chartData && chartData.data.map(e => e._id),
     datasets: [
@@ -27,26 +27,6 @@ const BarChart = props => {
         <Bar
           data={state}
           options={{
-            plugins: {
-              labels: {
-                render: 'value',
-              },
-            },
-            tooltips: { enabled: false },
-            hover: { mode: null, animationDuration: 0 },
-            maintainAspectRatio: false,
-            responsive: true,
-            title: {
-              display: true,
-              text: '',
-            },
-            legend: {
-              display: false,
-              labels: {
-                fontColor: 'black',
-              },
-            },
-            gridLines: { zeroLineColor: 'transparent' },
             animation: {
               onComplete: e => {
                 const chartInstance = e.chart;
@@ -84,7 +64,8 @@ const BarChart = props => {
                     zeroLineColor: 'transparent',
                   },
                   ticks: {
-                    fontColor: 'black', // this here
+                    fontColor: '#212152', // this here
+                    fontWeight: '600',
                   },
                 },
               ],
@@ -95,12 +76,18 @@ const BarChart = props => {
                     zeroLineColor: 'transparent',
                   },
                   ticks: {
-                    fontColor: 'black', // this here
+                    fontColor: '#212152', // this here
+                    fontWeight: '600',
                     beginAtZero: true,
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'users',
                   },
                 },
               ],
             },
+            ...options,
           }}
         />
       )}
@@ -112,5 +99,7 @@ BarChart.propTypes = {
   temp: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   chartData: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  options: PropTypes.object.isRequired,
 };
 export default BarChart;
