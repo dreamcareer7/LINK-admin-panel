@@ -46,6 +46,7 @@ const BarChart = props => {
                 fontColor: 'black',
               },
             },
+            gridLines: { zeroLineColor: 'transparent' },
             animation: {
               onComplete: e => {
                 const chartInstance = e.chart;
@@ -80,6 +81,7 @@ const BarChart = props => {
                   barPercentage: 0.35,
                   gridLines: {
                     drawOnChartArea: false,
+                    zeroLineColor: 'transparent',
                   },
                   ticks: {
                     fontColor: 'black', // this here
@@ -90,6 +92,7 @@ const BarChart = props => {
                 {
                   gridLines: {
                     drawOnChartArea: false,
+                    zeroLineColor: 'transparent',
                   },
                   ticks: {
                     fontColor: 'black', // this here
