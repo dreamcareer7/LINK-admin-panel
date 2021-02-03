@@ -12,9 +12,17 @@
   margin-top: 40px;
 }
 
-.filter-action input {
-  min-width: 30px !important;
-  cursor: pointer;
+.action-container{
+
+      .filter-dashboard-action input{
+        min-width: 30px !important;
+        cursor: pointer;
+        color: #999999;
+      }
+  .filter-dashboard-action span{
+    cursor: pointer;
+    color: #999999;
+  }
 }
 
 .column {
