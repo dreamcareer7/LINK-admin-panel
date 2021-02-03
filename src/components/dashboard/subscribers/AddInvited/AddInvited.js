@@ -40,7 +40,7 @@ function AddInvited() {
   return (
     <div className="add-invited-container">
       <div className="breadcrumb common-subtitle">
-        <span>MANAGE INVITED </span>
+        <span>MANAGE INVITED &nbsp; </span>
         <span>/ Add Invited</span>
       </div>
 

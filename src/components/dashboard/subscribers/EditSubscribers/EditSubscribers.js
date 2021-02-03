@@ -132,8 +132,8 @@ const AddSubscribers = () => {
     <>
       <div className="edit-sub-container">
         <div className="breadcrumb common-subtitle">
-          <span>SUBSCRIBERS </span>
-          <span>/ EDIT / EDIT SUBSCRIBERS</span>
+          <span>SUBSCRIBERS&nbsp;</span>
+          <span>/ EDIT SUBSCRIBERS</span>
         </div>
         <div className="d-flex">
           <img

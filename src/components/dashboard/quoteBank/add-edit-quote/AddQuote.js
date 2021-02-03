@@ -43,11 +43,11 @@ function AddQuote() {
     setQuote('');
     setQuoteBy('');
     setTags([]);
-    history.push('/quoteBank');
+    history.goBack();
   };
   const onClickDeleteQuote = () => {
     dispatch(deleteQuote(id));
-    history.push('/quoteBank');
+    history.goBack();
   };
 
   const onClickSaveQuote = async () => {
@@ -80,7 +80,7 @@ function AddQuote() {
         dispatch(addQuote(data));
       }
       discardQuoteChanges();
-      history.push('/quoteBank');
+      history.goBack();
     }
   };
   const onChangeStatus = e => {
@@ -89,8 +89,8 @@ function AddQuote() {
   return (
     <div>
       <div className="breadcrumb common-title">
-        <span>quotes </span>
-        <span> {!id ? '/add quote' : '/edit quote'}</span>
+        <span>quotes&nbsp;</span>
+        <span>{!id ? '/ add quote' : '/ edit quote'}</span>
       </div>
       <div className="add-quote-block">
         <div className="common-title mar-bott-5">Quote</div>
@@ -106,7 +106,7 @@ function AddQuote() {
           Tags
           <span className="placeholder-font font-600"> (Separated by commas) </span>
         </div>
-        <textarea
+        <input
           rows="1"
           className="common-input"
           value={tags}
