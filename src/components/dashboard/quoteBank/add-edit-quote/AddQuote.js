@@ -104,7 +104,7 @@ function AddQuote() {
       <div className="add-edit-quote-block">
         <div className="common-title-black mar-bott-5">
           Tags
-          <span className="common-input"> (Separated by commas) </span>
+          <span className="common-content"> (Separated by commas) </span>
         </div>
         <input
           rows="1"
@@ -142,7 +142,7 @@ function AddQuote() {
           className="button success-button add-edit-quote-button"
           onClick={onClickSaveQuote}
         >
-          SAVE CHANGES
+          {id ? 'SAVE CHANGES' : 'SAVE QUOTE'}
         </button>
         <button
           type="button"
