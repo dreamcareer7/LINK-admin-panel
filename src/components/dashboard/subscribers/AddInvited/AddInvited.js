@@ -1,17 +1,39 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addInvitee } from '../../../../redux/actions/subscribersAction/SubscribersAction';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addInvitee,
+  editInvitee,
+  updateInvitee,
+} from '../../../../redux/actions/subscribersAction/SubscribersAction';
 import { checkForEmail, errorNotification } from '../../../../constants/Toast';
 
 function AddInvited() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-
+  const editInvited = useSelector(state => state.selectedInvitee);
   const history = useHistory();
   const dispatch = useDispatch();
+  const { userId } = useParams();
+
+  useEffect(() => {
+    if (userId !== 'addInvited') {
+      dispatch(editInvitee(userId));
+    }
+  }, []);
+  useEffect(() => {
+    if (userId !== 'addInvited') {
+      setName(editInvited && editInvited.firstName && editInvited.firstName);
+      setEmail(editInvited && editInvited.email && editInvited.email);
+      setPhone(editInvited && editInvited.phone && editInvited.phone);
+    }
+  }, [
+    editInvited && editInvited.firstName && editInvited.firstName,
+    editInvited && editInvited.phone && editInvited.isTwoFAEnabled,
+    editInvited && editInvited.profilePic && editInvited.profilePic,
+  ]);
   const onCancelInvited = () => {
     history.goBack();
   };
@@ -32,8 +54,14 @@ function AddInvited() {
         email,
         phone,
       };
-      dispatch(addInvitee(data));
-      history.goBack();
+      const callback = () => {
+        history.goBack();
+      };
+      if (userId === 'addInvited') {
+        dispatch(addInvitee(data, callback));
+      } else {
+        dispatch(updateInvitee(userId, data, callback));
+      }
     }
   };
 
@@ -41,7 +69,7 @@ function AddInvited() {
     <div className="add-invited-container">
       <div className="breadcrumb-custom common-subtitle">
         <span>MANAGE INVITED &nbsp; </span>
-        <span>/ Add Invited</span>
+        {userId !== 'addInvited' ? <span>/ Edit Invited</span> : <span>/ Add Invited</span>}
       </div>
 
       <div className="admin-detail">
@@ -81,9 +109,15 @@ function AddInvited() {
       </div>
 
       <div className="buttons-row">
-        <button type="button" className="button success-button mr-10" onClick={addInvited}>
-          ADD INVITED
-        </button>
+        {userId !== 'addInvited' ? (
+          <button type="button" className="button success-button mr-10" onClick={addInvited}>
+            EDIT INVITED
+          </button>
+        ) : (
+          <button type="button" className="button success-button mr-10" onClick={addInvited}>
+            ADD INVITED
+          </button>
+        )}
         <button type="button" className="button primary-button mr-10" onClick={onCancelInvited}>
           CANCEL
         </button>

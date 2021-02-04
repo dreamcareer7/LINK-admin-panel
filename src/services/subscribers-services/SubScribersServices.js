@@ -33,6 +33,8 @@ const SubscriberService = {
   downloadInvitees: () => ApiService.getData(SUBSCRIBERS_URLS.DOWNLOAD_INVITEES),
   searchSubscriber: name => ApiService.putData(SUBSCRIBERS_URLS.SEARCH_SUBSCRIBERS, name),
   deleteInvitee: id => ApiService.deleteData(SUBSCRIBERS_URLS.DELETE_INVITEE + id),
+  editInvitee: id => ApiService.getData(`${SUBSCRIBERS_URLS.EDIT_INVITEE}${id}`),
+  updateInvitee: (id, data) => ApiService.putData(`${SUBSCRIBERS_URLS.UPDATE_INVITEE}${id}`, data),
 };
 
 export default SubscriberService;

@@ -40,6 +40,8 @@ export const SUBSCRIBERS_URLS = {
   DOWNLOAD_INVITEES: `${BASE_URL}client-invitation/get-invitations/download`,
   SEARCH_SUBSCRIBERS: `${BASE_URL}subscribers/search-subscriber`,
   DELETE_INVITEE: `${BASE_URL}client-invitation/delete-invitation/`,
+  EDIT_INVITEE: `${BASE_URL}client-invitation/get-invitations/`,
+  UPDATE_INVITEE: `${BASE_URL}client-invitation/update-invitations/`,
 };
 
 export const DASHBOARD_URLS = {

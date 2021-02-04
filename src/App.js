@@ -69,7 +69,7 @@ function App() {
               component={SubscribersControllerRootComponent}
             />
             <PrivateRoute exact path="/subscribers/subscribed/:subId" component={AddSubscribers} />
-            <PrivateRoute exact path="/subscribers/invited/addInvited" component={AddInvited} />
+            <PrivateRoute exact path="/subscribers/invited/:userId" component={AddInvited} />
             <PrivateRoute exact path="/settings/:type" component={Settings} />
             <PrivateRoute exact path="/settings/manageAdmin/:userId" component={EditAdmin} />
             <PrivateRoute exact path="/integrations" component={Integrations} />

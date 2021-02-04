@@ -117,3 +117,11 @@ export const subscrberReducer = (state = initialValue, action) => {
       return state;
   }
 };
+export const selectedInvitee = (state = null, action) => {
+  switch (action.type) {
+    case SUBSCRIBERS_REDUX_CONSTANTS.EDIT_INVITEE_BY_ID:
+      return action.data;
+    default:
+      return state;
+  }
+};

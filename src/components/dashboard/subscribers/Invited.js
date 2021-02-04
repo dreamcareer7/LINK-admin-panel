@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import './Invited.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Pagination from 'react-js-pagination';
 import moment from 'moment';
 import User from '../../../assets/images/user.jpg';
@@ -25,6 +26,7 @@ const Invited = () => {
   const activePage = useMemo(() => (allInvitee && allInvitee.page ? allInvitee.page : 1), [
     allInvitee,
   ]);
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getInviteeSubscribers(1));
@@ -44,6 +46,9 @@ const Invited = () => {
     };
     dispatch(deleteInvitee(id));
     dispatch(getInviteeSubscribers(data));
+  };
+  const onEditInvitee = id => {
+    history.push(`/subscribers/invited/${id}`);
   };
   const onSearch = e => {
     const text = e.target.value;
@@ -139,6 +144,7 @@ const Invited = () => {
               <input
                 type="text"
                 className="common-input"
+                style={{ color: '#999999' }}
                 placeholder="Enter Name or Email"
                 value={searchText}
                 onChange={onSearch}
@@ -193,7 +199,12 @@ const Invited = () => {
                         <div className="td">{value.phone}</div>
                         <div className="td">{moment(value.createdAt).format('DD/MM/YYYY')}</div>
                         <div className="action-cell">
-                          <img className="edit-image mr-5" src={edit} alt="" />
+                          <img
+                            className="edit-image mr-5"
+                            src={edit}
+                            alt=""
+                            onClick={() => onEditInvitee(value._id)}
+                          />
                           <img src={bin} alt="" onClick={() => onDeleteInvitee(value._id)} />
                         </div>
                       </div>

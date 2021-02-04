@@ -1,16 +1,16 @@
 /* eslint-disable no-param-reassign */
-import {combineReducers} from 'redux';
-import {loggedUser} from './AuthReducer';
-import {errorMessage} from './settingReducer';
+import { combineReducers } from 'redux';
+import { loggedUser } from './AuthReducer';
+import { errorMessage } from './settingReducer';
 import manageAdmin from './manageAdminReducer';
-import {allQuotes, selectedQuote} from './QuoteReducer';
-import {editAdminReducer} from './AdminEditReducer';
-import {subscrberReducer} from './SubScribersReducer';
-import {Admin2FAReducer} from './2FaReducerReducer';
-import {dashboardReducer} from './dashboardReducer';
+import { allQuotes, selectedQuote } from './QuoteReducer';
+import { editAdminReducer } from './AdminEditReducer';
+import { selectedInvitee, subscrberReducer } from './SubScribersReducer';
+import { Admin2FAReducer } from './2FaReducerReducer';
+import { dashboardReducer } from './dashboardReducer';
 
 import AUTH_REDUX_CONSTANTS from '../constants/AuthReduxConstant';
-import {LoaderReducer} from "./LoaderReducer";
+import { LoaderReducer } from './LoaderReducer';
 
 const appReducer = combineReducers({
   loggedUser,
@@ -21,6 +21,7 @@ const appReducer = combineReducers({
   editAdminReducer,
   selectedQuote,
   subscrberReducer,
+  selectedInvitee,
   Admin2FAReducer,
   dashboardReducer,
 });

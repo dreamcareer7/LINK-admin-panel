@@ -65,7 +65,7 @@ export const getInviteeSubscribers = data => {
       });
   };
 };
-export const addInvitee = data => {
+export const addInvitee = (data, cb) => {
   return dispatch => {
     SubscriberService.addInvitee(data)
       .then(response => {
@@ -75,6 +75,7 @@ export const addInvitee = data => {
             data: response.data.data,
           });
           successNotification('Invitee added successfully');
+          cb();
         }
       })
       .catch(e => {
@@ -96,6 +97,45 @@ export const deleteInvitee = id => {
             data: response.data.data,
           });
           successNotification('Invitee deleted successfully');
+        }
+      })
+      .catch(e => {
+        if (e.response && e.response.data.status === undefined) {
+          errorNotification('It seems like server is down, Please try after sometime.');
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+          errorNotification('Internal server error');
+        }
+      });
+  };
+};
+export const editInvitee = id => {
+  return dispatch => {
+    SubscriberService.editInvitee(id)
+      .then(response => {
+        if (response.data.status === 'SUCCESS') {
+          dispatch({
+            type: SUBSCRIBERS_REDUX_CONSTANTS.EDIT_INVITEE_BY_ID,
+            data: response.data.data,
+          });
+        }
+      })
+      .catch(e => {
+        if (e.response && e.response.data.status === undefined) {
+          errorNotification('It seems like server is down, Please try after sometime.');
+        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+          errorNotification('Internal server error');
+        }
+      });
+  };
+};
+export const updateInvitee = (id, data, cb) => {
+  return () => {
+    SubscriberService.updateInvitee(id, data)
+      .then(response => {
+        if (response.data.status === 'SUCCESS') {
+          if (cb) {
+            cb();
+          }
         }
       })
       .catch(e => {
