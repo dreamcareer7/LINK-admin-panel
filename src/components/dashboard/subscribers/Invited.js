@@ -3,13 +3,14 @@ import './Invited.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from 'react-js-pagination';
 import moment from 'moment';
-import User from '../../../assets/images/avatar.jpg';
+import User from '../../../assets/images/user.jpg';
 import {
   deleteInvitee,
   getInviteeSubscribers,
 } from '../../../redux/actions/subscribersAction/SubscribersAction';
 import bin from '../../../assets/images/delete.png';
 import { errorNotification } from '../../../constants/Toast';
+import edit from '../../../assets/images/pencil.png';
 
 const Invited = () => {
   const dispatch = useDispatch();
@@ -167,6 +168,7 @@ const Invited = () => {
                 <div className="td">NAME</div>
                 <div className="td">EMAIL</div>
                 <div className="td">PHONE</div>
+                <div className="td">DATE INVITED</div>
                 <div />
               </div>
             </div>
@@ -189,7 +191,9 @@ const Invited = () => {
 
                         <div className="td">{value.email}</div>
                         <div className="td">{value.phone}</div>
+                        <div className="td">{moment(value.createdAt).format('DD/MM/YYYY')}</div>
                         <div className="action-cell">
+                          <img className="edit-image mr-5" src={edit} alt="" />
                           <img src={bin} alt="" onClick={() => onDeleteInvitee(value._id)} />
                         </div>
                       </div>
