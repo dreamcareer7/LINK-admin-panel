@@ -128,7 +128,7 @@ const AddSubscribers = () => {
   return (
     <>
       <div className="edit-sub-container">
-        <div className="breadcrumb-custom common-subtitle">
+        <div className="breadcrumb-custom common-subtitle" style={{ marginBottom: '1rem' }}>
           <span>SUBSCRIBERS&nbsp;</span>
           <span>/ EDIT SUBSCRIBERS</span>
         </div>
@@ -147,7 +147,7 @@ const AddSubscribers = () => {
               {form.vicSub === 'true' && <span className="vic">VIC</span>}
             </div>
             <form>
-              <div className="admin-detail mt-20">
+              <div className="admin-detail">
                 <div id="name" className="mr-20">
                   <div className="common-title-black mar-bott-5">Name</div>
                   <input
