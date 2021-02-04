@@ -68,6 +68,9 @@
     outline: none;
     border-radius: 5px;
   }
+  input:focus{
+    outline: none;
+  }
 
   input[type = "date"]:nth-child(1) {
     margin-right: 10px;

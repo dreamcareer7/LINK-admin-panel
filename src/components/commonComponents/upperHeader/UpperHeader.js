@@ -75,7 +75,7 @@ function UpperHeader() {
       <div className="logout-area" onClick={onDropDownClick}>
         <div className="upper-header--rounded-block" style={{ cursor: 'pointer' }}>
           <img className="user-dp" src={(userDetails && userDetails.profilePic) || user} />
-          <label style={{ cursor: 'pointer' }}>{userDetails.firstName}</label>
+          <label style={{ cursor: 'pointer' }}>{userDetails && userDetails.firstName}</label>
           <div className="down-arrow">
             <img src={downArrow} onClick={onDropDownClick} />
             {dropDown && (

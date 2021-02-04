@@ -18,8 +18,12 @@ const SubscriberService = {
       }`
     ),
   getIndustry: () => ApiService.getData(SUBSCRIBERS_URLS.GET_INDUSTRY),
-  getInvitee: (page, limit) =>
-    ApiService.getData(`${SUBSCRIBERS_URLS.INVITEE_SUBSCRIBERS}?page=${page}&limit=${limit}`),
+  getInvitee: ({ page = 1, limit = 10, sorting = 'DESC', startDate, endDate, searchText }) =>
+    ApiService.getData(
+      `${SUBSCRIBERS_URLS.INVITEE_SUBSCRIBERS}?page=${page}&limit=${limit}&sortOrder=${sorting}${
+        startDate ? `&startDate=${startDate}` : ''
+      }${endDate ? `&endDate=${endDate}` : ''}${searchText ? `&searchText=${searchText}` : ''}`
+    ),
   addInvitee: data => ApiService.postData(`${SUBSCRIBERS_URLS.ADD_INVITED_SUBSCRIBERS}`, data),
   getCompany: () => ApiService.getData(SUBSCRIBERS_URLS.GET_COMPANY_SIZE),
   getSubById: id => ApiService.getData(SUBSCRIBERS_URLS.GET_SUBSCRIPTION_BYID + id),

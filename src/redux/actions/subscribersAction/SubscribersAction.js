@@ -45,9 +45,9 @@ export const getIndutries = data => {
   };
 };
 
-export const getInviteeSubscribers = page => {
+export const getInviteeSubscribers = data => {
   return dispatch => {
-    SubscriberService.getInvitee(page, 10)
+    SubscriberService.getInvitee(data)
       .then(response => {
         if (response.data.status === 'SUCCESS') {
           dispatch({

@@ -2,17 +2,23 @@ import React, { useEffect, useMemo, useState } from 'react';
 import './Invited.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from 'react-js-pagination';
+import moment from 'moment';
 import User from '../../../assets/images/avatar.jpg';
 import {
   deleteInvitee,
   getInviteeSubscribers,
 } from '../../../redux/actions/subscribersAction/SubscribersAction';
 import bin from '../../../assets/images/delete.png';
+import { errorNotification } from '../../../constants/Toast';
 
 const Invited = () => {
   const dispatch = useDispatch();
   const allInvitee = useSelector(state => state.subscrberReducer.invite);
   const [pageNum, setPageNum] = useState(1);
+  const [fromDate, setFromDate] = useState(moment().subtract(30, 'days').toDate());
+  const [toDate, setToDate] = useState(moment().toDate());
+  const [sorting, setSorting] = useState('DESC');
+  const [searchText, setSearchText] = useState('');
   const docs = useMemo(() => (allInvitee && allInvitee.data ? allInvitee.data : []), [allInvitee]);
   const invitee = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
   const activePage = useMemo(() => (allInvitee && allInvitee.page ? allInvitee.page : 1), [
@@ -30,9 +36,113 @@ const Invited = () => {
     dispatch(deleteInvitee(id));
     dispatch(getInviteeSubscribers(pageNum));
   };
+  const onSearch = e => {
+    const text = e.target.value;
+    setSearchText(text);
+    const data = {
+      page: pageNum,
+      sorting,
+      searchText: text,
+    };
+    dispatch(getInviteeSubscribers(data));
+  };
+
+  const handleSortChange = e => {
+    const sort = e.target.value;
+    setSorting(sort);
+    const data = {
+      page: pageNum,
+      sorting: sort,
+    };
+    dispatch(getInviteeSubscribers(data));
+  };
+  const handleFromDateChange = e => {
+    const date = e.target.value;
+    if (moment(date).isAfter(toDate)) {
+      errorNotification('From date should be less than to date');
+    } else {
+      setFromDate(date);
+      const data = {
+        page: pageNum,
+        sorting,
+        startDate: moment(date).toISOString(),
+        endDate: moment(toDate).toISOString(),
+      };
+      dispatch(getInviteeSubscribers(data));
+    }
+  };
+  const handleToDateChange = e => {
+    const date = e.target.value;
+    if (moment(date).isBefore(fromDate)) {
+      errorNotification('To date should be greater than from date');
+    } else {
+      setToDate(date);
+      const data = {
+        page: pageNum,
+        sorting,
+        startDate: moment(fromDate).toISOString(),
+        endDate: moment(date).toISOString(),
+      };
+      dispatch(getInviteeSubscribers(data));
+    }
+  };
   return (
     <>
       <div>
+        <div className="action-container">
+          <div className="filters">
+            <div className="filter">
+              <label htmlFor="from" className="filter-label">
+                Date Range
+              </label>
+              <div className="filter-action">
+                <input
+                  name="from"
+                  type="date"
+                  placeholder="From"
+                  value={moment(fromDate).format('YYYY-MM-DD')}
+                  onChange={handleFromDateChange}
+                />
+                <input
+                  name="to"
+                  type="date"
+                  placeholder="To"
+                  value={moment(toDate).format('YYYY-MM-DD')}
+                  onChange={handleToDateChange}
+                />
+              </div>
+            </div>
+            <div className="filter">
+              <div className="filter-label" style={{ paddingTop: '3px' }}>
+                Sorting
+              </div>
+              <div className="filter-action">
+                <select onChange={e => handleSortChange(e)} value={sorting}>
+                  <option value="ASC">Old</option>
+                  <option value="DESC">Recent</option>
+                </select>
+              </div>
+            </div>
+            <div className="filter">
+              <div className="filter-label" style={{ paddingTop: '3px' }}>
+                SEARCH INVITED
+              </div>
+              <input
+                type="text"
+                className="common-input"
+                placeholder="Enter Name or Email"
+                value={searchText}
+                onChange={onSearch}
+              />
+            </div>
+          </div>
+
+          <div className="action-buttons">
+            {/* <button type="button" className="button success-button" onClick={() => history.push('/add-subscribers')}>
+            ADD SUBSCRIBER
+          </button> */}
+          </div>
+        </div>
         <div>
           {invitee && invitee.length > 0 && (
             <div className="no-of-results-in-display">
