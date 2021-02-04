@@ -29,12 +29,20 @@ const Invited = () => {
     dispatch(getInviteeSubscribers(1));
   }, []);
   const handlePageChange = page => {
-    dispatch(getInviteeSubscribers(page));
+    const data = {
+      page,
+      sorting,
+    };
+    dispatch(getInviteeSubscribers(data));
     setPageNum(page);
   };
   const onDeleteInvitee = id => {
+    const data = {
+      page: pageNum,
+      sorting,
+    };
     dispatch(deleteInvitee(id));
-    dispatch(getInviteeSubscribers(pageNum));
+    dispatch(getInviteeSubscribers(data));
   };
   const onSearch = e => {
     const text = e.target.value;
