@@ -89,24 +89,21 @@ const AddSubscribers = () => {
 
   const onSubmitSub = e => {
     e.preventDefault();
-    const userName = form.username.split(' ');
 
+    const userName = form.username ? form.username.split(' ') : '';
     if (!form.email || (form.email && form.email.trim().length === 0)) {
       errorNotification('Please enter email');
     } else if (!checkForEmail(form.email)) {
       errorNotification('Please enter valid email');
     } else {
       const formData = {
-        firstName: (userName[0] && userName[0].trim()) || '',
-        lastName: (userName[1] && userName[1].trim()) || '',
-        email: form.email.trim() || '',
+        firstName: (userName && userName[0] && userName[0].trim()) || '',
+        lastName: (userName && userName[1] && userName[1].trim()) || '',
+        email: (form.email && form.email.trim()) || '',
         phone: (form.phone && form.phone.trim()) || '',
         industry: form.industry && form.industry !== 'none' ? form.industry : undefined,
         gender: form.gender && form.gender !== 'none' ? form.gender : undefined,
-        companyLocation:
-          form.location && form.location.trim().length === 0
-            ? undefined
-            : form.location.trim() || '',
+        companyLocation: form.location && form.location.length === 0 ? '' : form.location,
         vicSub: form.vicSub,
         // totalReceivedAmount: parseInt(form.lifetime_payment, 10),
         companySize: form.companySize && form.companySize !== 'none' ? form.companySize : undefined,
