@@ -38,8 +38,14 @@ function AddInvited() {
   const onCancelInvited = () => {
     history.goBack();
   };
+  const fName = name.split(' ').shift();
+  console.log(fName);
+  const user = name.split(' ').shift();
+  console.log('user->', user);
+  console.log(name.split(' '));
   const addInvited = () => {
     const userName = name.split(' ');
+
     if ((!name && !userName) || (userName && userName.toString().trim().length === 0)) {
       errorNotification('Please enter invitee name');
     } else if (!email || (email && email.toString().trim().length === 0)) {
@@ -51,7 +57,7 @@ function AddInvited() {
     } else {
       const data = {
         firstName: userName[0],
-        lastName: userName[1] || '',
+        lastName: userName[2] ? `${userName[1]}  ${userName[2]}` : userName[1] || '',
         email,
         phone,
       };
