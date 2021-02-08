@@ -56,6 +56,8 @@ const Invited = () => {
     const data = {
       page: pageNum,
       sorting,
+      startDate: moment(fromDate).toISOString(),
+      endDate: moment(toDate).toISOString(),
       searchText: text,
     };
     dispatch(getInviteeSubscribers(data));
@@ -67,6 +69,8 @@ const Invited = () => {
     const data = {
       page: pageNum,
       sorting: sort,
+      startDate: moment(fromDate).toISOString(),
+      endDate: moment(toDate).toISOString(),
     };
     dispatch(getInviteeSubscribers(data));
   };
