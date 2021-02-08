@@ -20,10 +20,11 @@ const BarChart = props => {
   };
 
   return (
-    <div className="container">
+    <>
       {chartData !== null && chartData.data.length === 0 ? (
-        'No Data Available'
+        <div className="no-data-available-container">No Data Available</div>
       ) : (
+          <div className="container">
         <Bar
           data={state}
           options={{
@@ -90,8 +91,9 @@ const BarChart = props => {
             ...options,
           }}
         />
+          </div>
       )}
-    </div>
+    </>
   );
 };
 
