@@ -32,7 +32,7 @@ function EditAdmin() {
   const [adminName, setAdminName] = useState('');
   const [adminEmail, setAdminEmail] = useState('');
   const [adminPhone, setAdminPhone] = useState('');
-  const [show2Fa, set2FaShow] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
   const [selected, setSelected] = useState(false);
 
   const [adminLoggedIn, setAdminLoggedIn] = useState();
@@ -59,6 +59,7 @@ function EditAdmin() {
       setAddImage(editAdmin && editAdmin.profilePic ? editAdmin.profilePic : upload);
       if (editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled !== null)
         setSelected(editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled);
+      setIsVerified(editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled);
     }
   }, [
     editAdmin && editAdmin.firstName && editAdmin.firstName,
@@ -156,11 +157,11 @@ function EditAdmin() {
   };
 
   const onChangeSwitch = async e => {
-    set2FaShow(e);
     setSelected(e);
     if (e) {
       dispatch(generate2FA());
     } else {
+      setIsVerified(false);
       dispatch(configure2FA({ twoFAStatus: false }));
     }
   };
@@ -174,6 +175,7 @@ function EditAdmin() {
       AuthService.configure2faLogin(selected, twoFaCode)
         .then(response => {
           if (response.data.status === 'SUCCESS') {
+            setIsVerified(true);
             successNotification('2FA Code is verified');
           }
         })
@@ -362,55 +364,44 @@ function EditAdmin() {
                   className="react-switch"
                   id="material-switch"
                 />{' '}
-                {selected && <p className="text-2fa">2FA is enabled</p>}
+                {isVerified && <p className="text-2fa">2FA is enabled</p>}
               </div>
-              {show2Fa ? (
+              {console.log('slected=>', selected)}
+              {selected && !isVerified && (
                 <>
-                  {editAdmin && !editAdmin.isTwoFAEnabled && (
-                    <>
-                      <div className="step-container">
-                        <div className="common-title step-title">STEP 1</div>
-                        <div className="common-subtitle">
-                          Scan this Barcode in Authenticator App
-                        </div>
-                        <img className="barcode" src={admin && admin.qrCode} />
-                        <div className="common-title mar-bott-5 info-text-color">OR</div>
-                        <div className="common-subtitle">Enter this Key Authenticator App</div>
-                        <div className="key-container common-text-background">
-                          <label>{admin && admin.twoFASecretKey}</label>
-                          <img src={copy} onClick={e => copyToClipboard(e)} title="Copy Key" />
-                        </div>
-                      </div>
+                  <div className="step-container">
+                    <div className="common-title step-title">STEP 1</div>
+                    <div className="common-subtitle">Scan this Barcode in Authenticator App</div>
+                    <img className="barcode" src={admin && admin.qrCode} />
+                    <div className="common-title mar-bott-5 info-text-color">OR</div>
+                    <div className="common-subtitle">Enter this Key Authenticator App</div>
+                    <div className="key-container common-text-background">
+                      <label>{admin && admin.twoFASecretKey}</label>
+                      <img src={copy} onClick={e => copyToClipboard(e)} title="Copy Key" />
+                    </div>
+                  </div>
 
-                      <div className="step-container">
-                        <div className="common-title step-title">STEP 2</div>
-                        <div className="common-subtitle">
-                          <div>Enter the 6 digit Code you see in your Authenticator App</div>
-                          <div className="code-container">
-                            <OtpInput
-                              value={twoFaCode}
-                              isInputNum
-                              onChange={handleChange}
-                              className=""
-                              numInputs={6}
-                              separator={<span className="mr-5"> </span>}
-                            />
+                  <div className="step-container">
+                    <div className="common-title step-title">STEP 2</div>
+                    <div className="common-subtitle">
+                      <div>Enter the 6 digit Code you see in your Authenticator App</div>
+                      <div className="code-container">
+                        <OtpInput
+                          value={twoFaCode}
+                          isInputNum
+                          onChange={handleChange}
+                          className=""
+                          numInputs={6}
+                          separator={<span className="mr-5"> </span>}
+                        />
 
-                            <button
-                              type="button"
-                              className="button"
-                              onClick={() => onClickVerify()}
-                            >
-                              VERIFY CODE
-                            </button>
-                          </div>
-                        </div>
+                        <button type="button" className="button" onClick={() => onClickVerify()}>
+                          VERIFY CODE
+                        </button>
                       </div>
-                    </>
-                  )}
+                    </div>
+                  </div>
                 </>
-              ) : (
-                ''
               )}
             </>
           )}
