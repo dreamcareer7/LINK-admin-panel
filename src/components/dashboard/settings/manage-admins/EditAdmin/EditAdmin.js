@@ -68,7 +68,6 @@ function EditAdmin() {
   ]);
 
   const onClickUploadImg = () => {
-    console.log('upload image');
     document.getElementById('imageDropBox').click();
   };
 
@@ -78,7 +77,6 @@ function EditAdmin() {
     ManageAdminService.uploadProfilePic(formData)
       .then(response => {
         if (response) {
-          console.log('response of add image', response);
           successNotification('Image uploaded successfully');
           setAddImage(response.data.data.profilePicUrl);
         } else {
@@ -106,7 +104,6 @@ function EditAdmin() {
   };
 
   const onClickChangePass = () => {
-    console.log({ currentPass, newPass, confirmPass });
     if (!currentPass || currentPass.trim().length === 0) {
       errorNotification('Please enter current password');
     } else if (!newPass || newPass.trim().length === 0) {
@@ -366,7 +363,7 @@ function EditAdmin() {
                 />{' '}
                 {isVerified && <p className="text-2fa">2FA is enabled</p>}
               </div>
-              {console.log('slected=>', selected)}
+
               {selected && !isVerified && (
                 <>
                   <div className="step-container">
