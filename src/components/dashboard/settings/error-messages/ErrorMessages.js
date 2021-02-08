@@ -42,7 +42,6 @@ function ErrorMessages() {
         errorMessages: error,
       };
 
-      console.log(JSON.stringify(data, null, 2));
       dispatch(updateErrorMessage(data));
     } else {
       errorNotification('You have not changed anything');
