@@ -26,8 +26,8 @@ function SubscriberListingAndFilters() {
 
   const [sorting, setSorting] = useState('DESC');
   const [pageNum, setPageNum] = useState(1);
-  const [fromDate, setFromDate] = useState(moment().subtract(30, 'days').toDate());
-  const [toDate, setToDate] = useState(moment().toDate());
+  const [fromDate, setFromDate] = useState('');
+  const [toDate, setToDate] = useState('');
   const [subType, setSubType] = useState('all');
 
   const handleSortChange = e => {

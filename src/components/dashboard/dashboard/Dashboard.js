@@ -162,8 +162,8 @@ const opportunityOptions = {
 const Dashboard = () => {
   const chartData = useSelector(state => state.dashboardReducer);
   const [subscription, setSubscrptionType] = useState('MONTHLY');
-  const [fromDate, setFromDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [fromDate, setFromDate] = useState(moment().subtract(30, 'days').format('yyyy-MM-DD'));
+  const [endDate, setEndDate] = useState(moment().format('yyyy-MM-DD'));
   const dispatch = useDispatch();
 
   const onChange = e => {
