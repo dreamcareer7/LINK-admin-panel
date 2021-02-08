@@ -38,11 +38,7 @@ function AddInvited() {
   const onCancelInvited = () => {
     history.goBack();
   };
-  const fName = name.split(' ').shift();
-  console.log(fName);
-  const user = name.split(' ').shift();
-  console.log('user->', user);
-  console.log(name.split(' '));
+
   const addInvited = () => {
     const userName = name.split(' ');
 

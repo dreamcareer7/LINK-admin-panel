@@ -217,7 +217,7 @@ function SubscriberListingAndFilters() {
                               : User
                           }
                         />
-                        {value.firstName}
+                        {value.firstName} {value.lastName}
                         {value.selectedPlan.status === 'CANCELLED' ? (
                           <span className="sub-type-admin">CANCELLED</span>
                         ) : (
