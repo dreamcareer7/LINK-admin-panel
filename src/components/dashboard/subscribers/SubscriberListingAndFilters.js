@@ -36,6 +36,8 @@ function SubscriberListingAndFilters() {
     const data = {
       page: pageNum,
       sorting: sort,
+      startDate: moment(fromDate).toISOString(),
+      endDate: moment(toDate).toISOString(),
     };
     dispatch(getAllSubscribers(data));
   };
