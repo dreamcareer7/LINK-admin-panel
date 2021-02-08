@@ -10,30 +10,41 @@ import { errorNotification } from '../../../../constants/Toast';
 function ErrorMessages() {
   const dispatch = useDispatch();
   const errorData = useSelector(state => state.errorMessage);
-  const [error, setError] = useState({
-    title: '',
-    text: '',
-  });
-  // const [title, setTitle] = useState();
-  const [userId, setUserId] = useState();
+  const [error, setError] = useState([]);
+  const [isChanged, setIsChanged] = useState(false);
+
   useEffect(() => {
     dispatch(getAllErrorMessage());
   }, []);
 
-  const onErrorChange = id => {
-    // console.log('onErrorChange', e.currentTarget.textContent, id);
-    const titles = document.getElementById('title').textContent;
-    const errorText = document.getElementById('text').textContent;
-    setUserId(id);
-    setError({
-      title: titles,
-      text: errorText,
-    });
+  useEffect(() => {
+    if (errorData && errorData.length > 0) {
+      setError(errorData);
+    }
+  }, [errorData]);
+
+  const onErrorChange = _id => {
+    setIsChanged(true);
+    const text = document.getElementById(_id.toString()).textContent;
+    const newData = {
+      _id,
+      text,
+    };
+
+    const temp = error.map(e => (e._id === _id ? newData : e));
+
+    setError(temp);
   };
 
   const saveChangeError = () => {
-    if (userId) dispatch(updateErrorMessage(userId, error));
-    else {
+    if (isChanged) {
+      const data = {
+        errorMessages: error,
+      };
+
+      console.log(JSON.stringify(data, null, 2));
+      dispatch(updateErrorMessage(data));
+    } else {
       errorNotification('You have not changed anything');
     }
   };
@@ -50,7 +61,7 @@ function ErrorMessages() {
                     {value && value.description && value.description}
                   </div>
                   <div
-                    id="text"
+                    id={value._id.toString()}
                     className="common-content"
                     contentEditable="true"
                     suppressContentEditableWarning="true"

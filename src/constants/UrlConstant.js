@@ -24,7 +24,7 @@ export const AUTH_URLS = {
 
 export const SETTING_URLS = {
   GET_ERROR_MESSAGE: `${BASE_URL}error-message/get-messages`,
-  UPDATE_ERROR_MESSAGE: `${BASE_URL}error-message/update-message/`,
+  UPDATE_ERROR_MESSAGE: `${BASE_URL}error-message/update-messages`,
 };
 
 export const SUBSCRIBERS_URLS = {
