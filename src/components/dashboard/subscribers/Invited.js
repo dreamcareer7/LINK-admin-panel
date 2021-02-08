@@ -147,11 +147,11 @@ const Invited = () => {
               </div>
               <div className="filter-action">
                 <input
-                    type="text"
-                    className="common-input"
-                    placeholder="Enter Name or Email"
-                    value={searchText}
-                    onChange={onSearch}
+                  type="text"
+                  className="common-input"
+                  placeholder="Enter Name or Email"
+                  value={searchText}
+                  onChange={onSearch}
                 />
               </div>
             </div>
@@ -202,7 +202,9 @@ const Invited = () => {
 
                         <div className="td email">{value.email}</div>
                         <div className="td phone">{value.phone}</div>
-                        <div className="td date">{moment(value.createdAt).format('DD/MM/YYYY')}</div>
+                        <div className="td date">
+                          {moment(value.createdAt).format('DD/MM/YYYY')}
+                        </div>
                         <div className="action-cell">
                           <img
                             className="edit-image mr-5"

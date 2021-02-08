@@ -85,7 +85,7 @@ const ManageAdmins = () => {
                   <div className="admin-table-details tr">
                     <div className="name">
                       <img src={(val && val.profilePic) || User} />
-                      {val && val.firstName}
+                      {val && val.firstName} {val && val.lastName}
                     </div>
                     <div className="td email">{val && val.email}</div>
                     <div className="td phone">{val && val.phone}</div>

@@ -183,6 +183,7 @@ function EditAdmin() {
   };
 
   const onClickSaveAdmin = async () => {
+    const fName = adminName.split(' ');
     if (adminName.toString().trim().length === 0) {
       errorNotification('Please enter name');
     } else if (adminEmail.length === 0) {
@@ -193,7 +194,8 @@ function EditAdmin() {
       errorNotification('Please enter phone no');
     } else if (adminName && adminEmail && adminPhone) {
       const data = {
-        firstName: adminName,
+        firstName: fName[0] || '',
+        lastName: fName[1] || '',
         email: adminEmail,
         phone: adminPhone,
         profilePicUrl: addImage,
