@@ -60,11 +60,13 @@ function Quote({ quote }) {
           <div className="tag-container">
             {quote &&
               quote.tags &&
-              quote.tags.map(tag => (
-                <span key={tag._id} className="tag">
-                  {tag.tag}
-                </span>
-              ))}
+              quote.tags.map((tag, index) =>
+                index < 4 ? (
+                  <span key={tag._id} className="tag">
+                    {tag.tag}
+                  </span>
+                ) : null
+              )}
           </div>
         </div>
         <div className="td status">

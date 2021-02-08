@@ -44,7 +44,9 @@
 
   .td.quote {
     width: 40%;
-    word-break: break-all;
+    word-break: normal;
+    overflow: hidden;
+    text-overflow: ellipsis
   }
 
   .td.author {
