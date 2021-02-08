@@ -162,8 +162,8 @@ const opportunityOptions = {
 const Dashboard = () => {
   const chartData = useSelector(state => state.dashboardReducer);
   const [subscription, setSubscrptionType] = useState('MONTHLY');
-  const [fromDate, setFromDate] = useState(moment().subtract(30, 'days').format('yyyy-MM-DD'));
-  const [endDate, setEndDate] = useState(moment().format('yyyy-MM-DD'));
+  const [fromDate, setFromDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const dispatch = useDispatch();
 
   const onChange = e => {
@@ -194,6 +194,7 @@ const Dashboard = () => {
     const data = {
       startDate: fromDate,
       endDate,
+      selectedPlan: subscription,
     };
 
     const companyData = {
@@ -263,13 +264,6 @@ const Dashboard = () => {
                 value="YEARLY"
               />
               <span>Yearly</span>
-              <input
-                type="radio"
-                name="subscription"
-                defaultChecked={subscription === 'PAUSED'}
-                value="PAUSED"
-              />
-              <span>Paused</span>
             </div>
           </div>
         </div>
