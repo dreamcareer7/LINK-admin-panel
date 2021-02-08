@@ -104,12 +104,6 @@ button:focus {
   resize: none;
 }
 
-.common-input::placeholder {
-  font-size: 12px;
-  font-weight: 500;
-  color: $secondary-font-color;
-}
-
 .common-content {
   font-size: 14px;
   font-weight: 500;
@@ -152,11 +146,6 @@ button:focus {
   font-size: 15px;
   font-weight: 700;
   color: $primary-font-color;
-}
-
-input::placeholder {
-  font-size: 12px !important;
-  font-weight: 500 !important;
 }
 
 .placeholder-font {

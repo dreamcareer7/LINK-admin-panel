@@ -145,13 +145,15 @@ const Invited = () => {
               <div className="filter-label" style={{ paddingTop: '3px' }}>
                 SEARCH INVITED
               </div>
-              <input
-                type="text"
-                className="common-input"
-                placeholder="Enter Name or Email"
-                value={searchText}
-                onChange={onSearch}
-              />
+              <div className="filter-action">
+                <input
+                    type="text"
+                    className="common-input"
+                    placeholder="Enter Name or Email"
+                    value={searchText}
+                    onChange={onSearch}
+                />
+              </div>
             </div>
           </div>
 
