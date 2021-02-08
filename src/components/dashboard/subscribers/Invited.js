@@ -144,7 +144,6 @@ const Invited = () => {
               <input
                 type="text"
                 className="common-input"
-                style={{ color: '#999999' }}
                 placeholder="Enter Name or Email"
                 value={searchText}
                 onChange={onSearch}
