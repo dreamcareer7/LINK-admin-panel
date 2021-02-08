@@ -14,7 +14,7 @@ function VerificationPage() {
     AuthService.verify2faLogin(token, verificationCode)
       .then(response => {
         if (response.data.status === 'SUCCESS') {
-          successNotification('Code is verified');
+          successNotification('Logged in successfully');
           localStorage.setItem('userToken', response.data.data.token);
           localStorage.setItem('userEmail', response.data.data.email);
           // eslint-disable-next-line no-underscore-dangle

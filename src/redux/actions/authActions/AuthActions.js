@@ -15,7 +15,9 @@ export const loginUser = (emailAddress, password) => {
             data: response.data.data,
           });
           localStorage.setItem('userToken', response.data.data.token);
-          successNotification('Login successfully');
+          if (!response.data.data.isTwoFAEnabled) {
+            successNotification('Logged in successfully');
+          }
           dispatch(toggleLoader(false));
         }
       })
