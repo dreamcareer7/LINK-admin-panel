@@ -48,8 +48,8 @@ const ManageAdmins = () => {
                         ? value.firstName
                         : 'No Name Available'}
                     </div>
-                    <div>{value && value.email}</div>
-                    <div>{value && value.phone}</div>
+                    <div className="td email">{value && value.email}</div>
+                    <div className="td phone">{value && value.phone}</div>
                     <div>
                       <img
                         className="edit-image ml-35"
@@ -87,8 +87,8 @@ const ManageAdmins = () => {
                       <img src={(val && val.profilePic) || User} />
                       {val && val.firstName}
                     </div>
-                    <div>{val && val.email}</div>
-                    <div>{val && val.phone}</div>
+                    <div className="td email">{val && val.email}</div>
+                    <div className="td phone">{val && val.phone}</div>
                     <div className="action-cell">
                       <img
                         className="edit-image mr-5"

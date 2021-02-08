@@ -225,13 +225,13 @@ function SubscriberListingAndFilters() {
                         )}
                       </div>
 
-                      <div className="td">{value.email}</div>
-                      <div className="td">{value.phone}</div>
-                      <div className="td">
+                      <div className="td email">{value.email}</div>
+                      <div className="td phone">{value.phone}</div>
+                      <div className="td subscribe">
                         {getLabelFromValues(value.selectedPlan.status, subTypeObject)}
                       </div>
-                      <div className="td">{moment(value.createdAt).format('L')}</div>
-                      <div className="td">{`$${value.totalReceivedAmount}`}</div>
+                      <div className="td date">{moment(value.createdAt).format('L')}</div>
+                      <div className="td total-payment">{`$${value.totalReceivedAmount}`}</div>
                       <div className="action-cell">
                         <img
                           className="edit-image mr-5"

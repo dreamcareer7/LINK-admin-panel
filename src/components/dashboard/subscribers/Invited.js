@@ -198,9 +198,9 @@ const Invited = () => {
                           {value.firstName} {value.lastName}
                         </div>
 
-                        <div className="td">{value.email}</div>
-                        <div className="td">{value.phone}</div>
-                        <div className="td">{moment(value.createdAt).format('DD/MM/YYYY')}</div>
+                        <div className="td email">{value.email}</div>
+                        <div className="td phone">{value.phone}</div>
+                        <div className="td date">{moment(value.createdAt).format('DD/MM/YYYY')}</div>
                         <div className="action-cell">
                           <img
                             className="edit-image mr-5"

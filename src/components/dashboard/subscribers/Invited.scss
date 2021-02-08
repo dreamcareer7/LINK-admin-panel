@@ -4,5 +4,5 @@
   display: grid;
   grid-template-columns: calc(30% - 45px) calc(38% - 45px) calc(15% - 15px)calc(15% - 15px) 100px;
   gap: 15px;
-
+  overflow: hidden;
 }
