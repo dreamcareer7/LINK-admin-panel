@@ -195,7 +195,7 @@ const Invited = () => {
                                 : User
                             }
                           />
-                          {value.firstName}
+                          {value.firstName} {value.lastName}
                         </div>
 
                         <div className="td">{value.email}</div>

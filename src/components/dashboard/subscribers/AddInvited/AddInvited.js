@@ -25,12 +25,13 @@ function AddInvited() {
   }, []);
   useEffect(() => {
     if (userId !== 'addInvited') {
-      setName(editInvited && editInvited.firstName && editInvited.firstName);
+      setName(editInvited.firstName && `${editInvited.firstName} ${editInvited.lastName}`);
       setEmail(editInvited && editInvited.email && editInvited.email);
       setPhone(editInvited && editInvited.phone && editInvited.phone);
     }
   }, [
     editInvited && editInvited.firstName && editInvited.firstName,
+    editInvited && editInvited.lastName && editInvited.lastName,
     editInvited && editInvited.phone && editInvited.isTwoFAEnabled,
     editInvited && editInvited.profilePic && editInvited.profilePic,
   ]);
