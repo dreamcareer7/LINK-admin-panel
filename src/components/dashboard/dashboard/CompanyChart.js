@@ -12,7 +12,7 @@ const CompanyChart = props => {
         backgroundColor: [
           '#d53711',
           '#F89400',
-          '#2FDE00',
+          '#62A600',
           '#00A6B4',
           '#6800B4',
           '#950c94',
