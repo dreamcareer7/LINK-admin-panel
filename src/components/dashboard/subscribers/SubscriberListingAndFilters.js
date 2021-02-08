@@ -227,7 +227,9 @@ function SubscriberListingAndFilters() {
 
                       <div className="td">{value.email}</div>
                       <div className="td">{value.phone}</div>
-                      <div className="td">Yearly</div>
+                      <div className="td">
+                        {getLabelFromValues(value.selectedPlan.status, subTypeObject)}
+                      </div>
                       <div className="td">{moment(value.createdAt).format('L')}</div>
                       <div className="td">{`$${value.totalReceivedAmount}`}</div>
                       <div className="action-cell">
