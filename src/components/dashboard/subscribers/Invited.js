@@ -17,8 +17,8 @@ const Invited = () => {
   const dispatch = useDispatch();
   const allInvitee = useSelector(state => state.subscrberReducer.invite);
   const [pageNum, setPageNum] = useState(1);
-  const [fromDate, setFromDate] = useState(moment().subtract(30, 'days').toDate());
-  const [toDate, setToDate] = useState(moment().toDate());
+  const [fromDate, setFromDate] = useState('');
+  const [toDate, setToDate] = useState('');
   const [sorting, setSorting] = useState('DESC');
   const [searchText, setSearchText] = useState('');
   const docs = useMemo(() => (allInvitee && allInvitee.data ? allInvitee.data : []), [allInvitee]);
