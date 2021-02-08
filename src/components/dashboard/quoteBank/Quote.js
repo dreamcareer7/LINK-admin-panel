@@ -55,7 +55,7 @@ function Quote({ quote }) {
     <div className="tr-container">
       <div className="tr">
         <div className="td quote">{quote.quote}</div>
-        <div className="td author">{quote.quoteBy}</div>
+        <div className="td author font-400">{quote.quoteBy}</div>
         <div className="td tags">
           <div className="tag-container">
             {quote &&

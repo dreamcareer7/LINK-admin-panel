@@ -61,7 +61,7 @@ textarea {
   }
 }
 ::placeholder {
-  font-size: 12px;
+  font-size: 12px!important;
   font-weight: 400;
   color: $placeholder-color;
 }

@@ -52,7 +52,7 @@ function AddInvited() {
       errorNotification('Please enter invitee phone');
     } else {
       const data = {
-        firstName: userName[0],
+        firstName: userName[0] || '',
         lastName: userName[2] ? `${userName[1]}  ${userName[2]}` : userName[1] || '',
         email,
         phone,
