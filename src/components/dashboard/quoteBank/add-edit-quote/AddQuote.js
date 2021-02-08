@@ -88,7 +88,7 @@ function AddQuote() {
   };
   return (
     <div>
-      <div className="breadcrumb-custom common-title">
+      <div className="breadcrumb-custom common-title" onClick={() => history.goBack()}>
         <span>quotes&nbsp;</span>
         <span>{!id ? '/ add quote' : '/ edit quote'}</span>
       </div>

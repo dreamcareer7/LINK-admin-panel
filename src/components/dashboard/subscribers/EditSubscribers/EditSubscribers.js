@@ -128,7 +128,11 @@ const AddSubscribers = () => {
   return (
     <>
       <div className="edit-sub-container">
-        <div className="breadcrumb-custom common-subtitle" style={{ marginBottom: '1rem' }}>
+        <div
+          className="breadcrumb-custom common-subtitle"
+          style={{ marginBottom: '1rem' }}
+          onClick={() => history.goBack()}
+        >
           <span>SUBSCRIBERS&nbsp;</span>
           <span>/ EDIT SUBSCRIBERS</span>
         </div>

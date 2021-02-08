@@ -215,7 +215,7 @@ function EditAdmin() {
   const handleChange = userOtp => setTwoFaCode(userOtp);
   return (
     <div className="edit-admin-container">
-      <div className="breadcrumb-custom common-subtitle">
+      <div className="breadcrumb-custom common-subtitle" onClick={() => history.goBack()}>
         <span>MANAGE ADMINS </span>
         {userId === 'addAdmin' && <span>/ Add Admin</span>}
         {userId !== 'addAdmin' && <span>/ EDIT / UPDATE PROFILE</span>}
