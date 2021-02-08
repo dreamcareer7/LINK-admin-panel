@@ -28,7 +28,7 @@ const ManageAdmins = () => {
 
   return (
     <>
-      <div className="admin-title mt-10">Logged in Admins</div>
+      <div className="admin-title font-400 mt-10">Logged in Admins</div>
       <div className="admin-table">
         <div className="admin-table-details heading">
           <div className="td">NAME</div>
@@ -67,7 +67,7 @@ const ManageAdmins = () => {
           ))}
       </div>
 
-      <div className="admin-title mt-10">All Admins</div>
+      <div className="admin-title font-400 mt-10">All Admins</div>
       <div className="admin-table">
         <div className="heading">
           <div className="admin-table-details">

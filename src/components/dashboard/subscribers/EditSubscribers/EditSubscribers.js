@@ -323,7 +323,7 @@ const AddSubscribers = () => {
                   </select>
                 </div>
               </div>
-              <div className="buttons-row mt-40">
+              <div className="buttons-row edit-subscriber-buttons-row mt-40">
                 <button type="submit" className="button success-button mr-10" onClick={onSubmitSub}>
                   SAVE CHANGES
                 </button>
