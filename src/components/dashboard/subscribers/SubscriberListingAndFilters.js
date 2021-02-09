@@ -165,8 +165,8 @@ function SubscriberListingAndFilters() {
             </div>
             <div className="filter-action">
               <select onChange={e => handleSortChange(e)} value={sorting}>
-                <option value="ASC">Old</option>
-                <option value="DESC">Recent</option>
+                <option value="ASC">Oldest</option>
+                <option value="DESC">Latest</option>
               </select>
             </div>
           </div>

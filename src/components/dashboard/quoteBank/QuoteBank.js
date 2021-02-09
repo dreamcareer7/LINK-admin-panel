@@ -91,8 +91,8 @@ function QuoteBank() {
               <div className="filter-label">Sorting</div>
               <div className="filter-action">
                 <select onChange={e => handleSortChange(e)} value={sorting}>
-                  <option value="OLD">Old</option>
-                  <option value="RECENT">Recent</option>
+                  <option value="OLD">Oldest</option>
+                  <option value="RECENT">Latest</option>
                 </select>
               </div>
             </div>
