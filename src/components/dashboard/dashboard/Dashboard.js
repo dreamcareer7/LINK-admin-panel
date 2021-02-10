@@ -272,8 +272,9 @@ const Dashboard = () => {
         <div className="row">
           <div className="column" style={{ width: '33.33%' }}>
             <div className="card">
-              <div className="common-title chart-title">Subscription</div>
+              <div className="common-title chart-title">Subscriptions</div>
               <DoughnutChart
+                  type="subscriptions"
                 chartData={chartData && chartData.subscriptionValue && chartData.subscriptionValue}
               />
             </div>
@@ -292,6 +293,7 @@ const Dashboard = () => {
             <div className="card">
               <div className="common-title chart-title">Gender</div>
               <DoughnutChart
+                  type="gender"
                 chartData={chartData && chartData.genderValue && chartData.genderValue}
               />
             </div>

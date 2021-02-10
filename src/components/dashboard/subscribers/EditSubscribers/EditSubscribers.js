@@ -198,6 +198,7 @@ const AddSubscribers = () => {
                     type="date"
                     disabled
                   />
+                  <div className="edit-subscription-duration">3 Years of 6 Months</div>
                 </div>
                 <div className="mr-20">
                   <div className="common-title-black mar-bott-5">Lifetime Payments</div>

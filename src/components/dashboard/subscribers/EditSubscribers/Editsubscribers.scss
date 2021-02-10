@@ -76,3 +76,14 @@
 .edit-subscriber-buttons-row button {
   padding: 10px 30px;
 }
+
+.edit-subscription-date {
+  position: relative;
+}
+
+.edit-subscription-duration {
+  margin: 5px 0 0 5px ;
+  font-size: 14px;
+  font-weight: 400;
+  color: $placeholder-color;
+}
