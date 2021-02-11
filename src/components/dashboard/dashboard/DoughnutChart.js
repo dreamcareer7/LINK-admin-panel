@@ -11,7 +11,7 @@ const DoughnutChart = props => {
         label: 'Rainfall',
         backgroundColor: ['#FCAB4F', '#4282FE', '#39C3BB', '#FD696A', '#4282FE', '#D53711'],
         hoverBackgroundColor: ['#FEE1C0', '#81ABFE', '#DADBF3', '#FEC9C9', '#BCD2FF', '#F7B3A2'],
-        data: chartData && chartData.data.map(e => e.total),
+        data: chartData && chartData.data.map(e => (e.total ? e.total : '')),
       },
     ],
   };
@@ -32,7 +32,7 @@ const DoughnutChart = props => {
         'No Data Available'
       ) : (
         <Doughnut
-            data={type === 'subscriptions' ? subscriptionsState : genderState}
+          data={type === 'subscriptions' ? subscriptionsState : genderState}
           options={{
             plugins: {
               labels: {
@@ -77,6 +77,6 @@ const DoughnutChart = props => {
 DoughnutChart.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   chartData: PropTypes.object.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
 };
 export default DoughnutChart;
