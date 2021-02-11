@@ -277,7 +277,7 @@ const Dashboard = () => {
             <div className="card">
               <div className="common-title chart-title">Subscriptions</div>
               <DoughnutChart
-                  type="subscriptions"
+                type="subscriptions"
                 chartData={chartData && chartData.subscriptionValue && chartData.subscriptionValue}
               />
             </div>
@@ -296,7 +296,7 @@ const Dashboard = () => {
             <div className="card">
               <div className="common-title chart-title">Gender</div>
               <DoughnutChart
-                  type="gender"
+                type="gender"
                 chartData={chartData && chartData.genderValue && chartData.genderValue}
               />
             </div>

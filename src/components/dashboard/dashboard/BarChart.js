@@ -23,20 +23,22 @@ const BarChart = props => {
       {chartData !== null && chartData.data.length === 0 ? (
         <div className="no-data-available-container">No Data Available</div>
       ) : (
-          <div className="container">
-        <Bar
-          data={state}
-          options={{
-            animation: {
-              onComplete: e => {
-                const chartInstance = e.chart;
-                const { ctx } = chartInstance;
-                ctx.font = Chart.helpers.fontString(
-                  Chart.defaults.global.defaultFontSize,
-                  Chart.defaults.global.defaultFontFamily,
-                );
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'bottom';
+        <div className="container">
+          <Bar
+            data={state}
+            options={{
+              animation: {
+                onComplete: e => {
+                  const chartInstance = e.chart;
+                  const { ctx } = chartInstance;
+                  ctx.fontColor = '#212152';
+                  ctx.font = Chart.helpers.fontString(
+                    Chart.defaults.global.defaultFontSize,
+                    Chart.defaults.global.defaultFontFamily
+                  );
+                  ctx.textAlign = 'center';
+                  ctx.textBaseline = 'bottom';
+                  ctx.fontColor = '#212152';
 
                 state.datasets.forEach((dataset, i) => {
                   const meta = chartInstance.controller.getDatasetMeta(i);
