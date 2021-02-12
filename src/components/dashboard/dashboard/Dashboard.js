@@ -245,25 +245,28 @@ const Dashboard = () => {
             >
               <input
                 type="radio"
+                id="free-trial"
                 name="subscription"
                 defaultChecked={subscription === 'FREE_TRIAL'}
                 value="FREE_TRIAL"
               />
-              <span>Free Trial</span>
+              <label htmlFor="free-trial" className="radio-button mr-20">Free Trial</label>
               <input
                 type="radio"
+                id="monthly"
                 name="subscription"
                 defaultChecked={subscription === 'MONTHLY'}
                 value="MONTHLY"
               />
-              <span>Monthly</span>
+              <label htmlFor="monthly" className="radio-button mr-20">Monthly</label>
               <input
                 type="radio"
+                id="yearly"
                 name="subscription"
                 defaultChecked={subscription === 'YEARLY'}
                 value="YEARLY"
               />
-              <span>Yearly</span>
+              <label htmlFor="yearly" className="radio-button">Yearly</label>
             </div>
           </div>
         </div>

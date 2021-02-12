@@ -173,7 +173,7 @@ const Invited = () => {
               of {allInvitee.data.total} results{' '}
             </div>
           )}
-          <div className="admin-table mt-40">
+          <div className="admin-table">
             <div className="tr heading">
               <div className="invited-table-details">
                 <div className="td">NAME</div>
@@ -185,7 +185,7 @@ const Invited = () => {
             </div>
             {invitee && invitee.length > 0 ? (
               <>
-                <div style={{ minHeight: '69vh' }}>
+                <div style={{ minHeight: 'calc(100vh - 370px)' }}>
                   {invitee.map(value => (
                     <div className="row-container" key={value._id}>
                       <div className="tr invited-table-details">

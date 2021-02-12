@@ -31,15 +31,12 @@ const BarChart = props => {
               onComplete: e => {
                 const chartInstance = e.chart;
                 const { ctx } = chartInstance;
-                ctx.fontColor = '#212152';
                 ctx.font = Chart.helpers.fontString(
                   Chart.defaults.global.defaultFontSize,
-                  Chart.defaults.global.defaultFontStyle('red'),
                   Chart.defaults.global.defaultFontFamily,
                 );
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'bottom';
-                ctx.fontColor = '#212152'
 
                 state.datasets.forEach((dataset, i) => {
                   const meta = chartInstance.controller.getDatasetMeta(i);
