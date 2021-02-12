@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -26,8 +28,8 @@ function SubscriberListingAndFilters() {
 
   const [sorting, setSorting] = useState('DESC');
   const [pageNum, setPageNum] = useState(1);
-  const [fromDate, setFromDate] = useState('');
-  const [toDate, setToDate] = useState('');
+  const [fromDate, setFromDate] = useState(null);
+  const [toDate, setToDate] = useState(null);
   const [subType, setSubType] = useState('all');
 
   const handleSortChange = e => {
@@ -49,8 +51,8 @@ function SubscriberListingAndFilters() {
     dispatch(getAllSubscribers(data));
   }, []);
 
-  const handleFromDateChange = e => {
-    const date = e.target.value;
+  const handleFromDateChange = datePass => {
+    const date = datePass;
     if (moment(date).isAfter(toDate)) {
       errorNotification('From date should be less than to date');
     } else {
@@ -58,14 +60,14 @@ function SubscriberListingAndFilters() {
       const data = {
         page: pageNum,
         sorting,
-        startDate: moment(date).toISOString(),
-        endDate: moment(toDate).toISOString(),
+        startDate: date ? date.toISOString() : undefined,
+        endDate: toDate ? toDate.toISOString() : undefined,
       };
       dispatch(getAllSubscribers(data));
     }
   };
-  const handleToDateChange = e => {
-    const date = e.target.value;
+  const handleToDateChange = datePass => {
+    const date = datePass;
     if (moment(date).isBefore(fromDate)) {
       errorNotification('To date should be greater than from date');
     } else {
@@ -73,8 +75,8 @@ function SubscriberListingAndFilters() {
       const data = {
         page: pageNum,
         sorting,
-        startDate: moment(fromDate).toISOString(),
-        endDate: moment(date).toISOString(),
+        startDate: fromDate ? fromDate.toISOString() : undefined,
+        endDate: date ? date.toISOString() : undefined,
       };
       dispatch(getAllSubscribers(data));
     }
@@ -87,7 +89,7 @@ function SubscriberListingAndFilters() {
       const data = {
         page: pageNum,
         sorting,
-        startDate: moment(fromDate).toISOString(),
+        startDate: fromDate.toISOString(),
         endDate: moment(toDate).toISOString(),
         subscriptionType,
       };
@@ -128,19 +130,16 @@ function SubscriberListingAndFilters() {
               Date Range
             </label>
             <div className="filter-action">
-              <input
-                name="from"
-                type="date"
-                placeholder="From"
-                value={moment(fromDate).format('YYYY-MM-DD')}
-                onChange={handleFromDateChange}
+              <DatePicker
+                className="mr-10"
+                placeholderText="From"
+                selected={fromDate}
+                onChange={datePass => handleFromDateChange(datePass)}
               />
-              <input
-                name="to"
-                type="date"
-                placeholder="To"
-                value={moment(toDate).format('YYYY-MM-DD')}
-                onChange={handleToDateChange}
+              <DatePicker
+                placeholderText="To"
+                selected={toDate}
+                onChange={datePass => handleToDateChange(datePass)}
               />
             </div>
           </div>
