@@ -216,7 +216,7 @@ function SubscriberListingAndFilters() {
                               : User
                           }
                         />
-                        {value.firstName} {value.lastName}
+                        {value.firstName} {value.lastName ? value.lastName : ''}
                         {value.selectedPlan.status === 'CANCELLED' ? (
                           <span className="sub-type-admin">CANCELLED</span>
                         ) : (
@@ -225,7 +225,7 @@ function SubscriberListingAndFilters() {
                       </div>
 
                       <div className="td email">{value.email}</div>
-                      <div className="td phone">{value.phone}</div>
+                      <div className="td phone">{value.phone ? value.phone : ''}</div>
                       <div className="td subscribe">
                         {getLabelFromValues(value.selectedPlan.status, subTypeObject)}
                       </div>

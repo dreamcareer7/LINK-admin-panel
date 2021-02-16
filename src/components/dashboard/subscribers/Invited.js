@@ -201,7 +201,7 @@ const Invited = () => {
                         </div>
 
                         <div className="td email">{value.email}</div>
-                        <div className="td phone">{value.phone}</div>
+                        <div className="td phone">{value.phone ? value.phone : ''}</div>
                         <div className="td date">
                           {moment(value.createdAt).format('DD/MM/YYYY')}
                         </div>
