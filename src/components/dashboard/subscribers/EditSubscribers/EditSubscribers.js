@@ -17,7 +17,7 @@ import subTypeObject from '../../../../helpers/Mapper';
 
 const AddSubscribers = () => {
   const { subId } = useParams();
-  console.log('subId', subId);
+
   const history = useHistory();
   const dispatch = useDispatch();
   const { data } = useSelector(state => state.subscrberReducer.getById);
@@ -52,6 +52,9 @@ const AddSubscribers = () => {
     if (subId) {
       dispatch(getSubscribersById(subId));
     }
+  }, [subId]);
+
+  useEffect(() => {
     if (data && data.client) {
       setFormValue({
         username: data.client.firstName && `${data.client.firstName} ${data.client.lastName}`,
@@ -66,26 +69,12 @@ const AddSubscribers = () => {
         sub_type: data.client.selectedPlan && data.client.selectedPlan.status,
         ave_dealvalue: data.client.ave_dealvalue && data.client.ave_dealvalue,
         industry: data.client.industry && data.client.industry,
-        companySize: data.client.companySize && data.client.companySize,
+        companySize: (data.client.companySize && data.client.companySize) || 'none',
         vicSub: data.client.vicSub && data.client.vicSub.toString(),
         isActive: data.client.isActive && data.client.isActive,
       });
     }
-  }, [
-    data && data.client && data.client.firstName,
-    data && data.client && data.client.email,
-    data && data.client && data.client.phone,
-    data && data.client && data.client.subscription_date,
-    data && data.client && data.client.totalReceivedAmount,
-    data && data.client && data.client.gender,
-    data && data.client && data.client.companyLocation,
-    data && data.client && data.client.selectedPlan && data.client.selectedPlan.status,
-    data && data.client && data.client.ave_dealvalue,
-    data && data.client && data.client.industry,
-    data && data.client && data.client.companySize,
-    data && data.client && data.client.vicSub,
-    data && data.client && data.client.isActive,
-  ]);
+  }, [data]);
 
   const onSubmitSub = e => {
     e.preventDefault();
@@ -125,6 +114,14 @@ const AddSubscribers = () => {
     dispatch(deleteSubscribers(subId));
     history.push('/subscribers/subscribed');
   };
+
+  const a = moment();
+  const b = moment(`${form.subscription_date}`, 'MM-YYYY');
+  const age = moment.duration(a.diff(b));
+  console.log(age);
+  const years = age.years();
+  const months = age.months();
+
   return (
     <>
       <div className="edit-sub-container">
@@ -161,7 +158,6 @@ const AddSubscribers = () => {
                     className="common-input"
                     placeholder="Michelle Obama"
                     type="text"
-                    disabled
                   />
                 </div>
                 <div id="email" className="mr-20">
@@ -198,7 +194,8 @@ const AddSubscribers = () => {
                     type="date"
                     disabled
                   />
-                  <div className="edit-subscription-duration">3 Years of 6 Months</div>
+
+                  <div className="edit-subscription-duration">{years + months}</div>
                 </div>
                 <div className="mr-20">
                   <div className="common-title-black mar-bott-5">Lifetime Payments</div>
