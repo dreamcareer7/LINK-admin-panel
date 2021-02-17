@@ -51,10 +51,11 @@ function UpperHeader() {
   const onLogOut = () => {
     dispatch(
       logOutUser(() => {
-        history.push('/login');
+        history.replace('/login');
       })
     );
   };
+  console.log('userDetails->', userDetails);
   return (
     <div className="upper-header-block">
       <div className="upper-header--rounded-block search-block">
@@ -75,7 +76,11 @@ function UpperHeader() {
       <div className="logout-area" onClick={onDropDownClick}>
         <div className="upper-header--rounded-block" style={{ cursor: 'pointer' }}>
           <img className="user-dp" src={(userDetails && userDetails.profilePic) || user} />
-          <label style={{ cursor: 'pointer' }}>{userDetails && userDetails.firstName}</label>
+          <label style={{ cursor: 'pointer' }}>
+            {userDetails && userDetails.isTwoFAEnabled
+              ? localStorage.getItem('userName')
+              : userDetails.firstName}
+          </label>
           <div className="down-arrow">
             <img src={downArrow} onClick={onDropDownClick} />
             {dropDown && (

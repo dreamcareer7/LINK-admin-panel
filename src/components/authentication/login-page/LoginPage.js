@@ -84,6 +84,7 @@ function LoginPage() {
           type="button"
           className="button success-button login-button"
           onClick={() => onClickLoginButton(userName, password)}
+          onKeyPress={() => onClickLoginButton(userName, password)}
         >
           LOGIN
         </button>

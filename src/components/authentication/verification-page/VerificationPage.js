@@ -17,6 +17,7 @@ function VerificationPage() {
           successNotification('Logged in successfully');
           localStorage.setItem('userToken', response.data.data.token);
           localStorage.setItem('userEmail', response.data.data.email);
+          localStorage.setItem('userName', response.data.data.firstName);
           // eslint-disable-next-line no-underscore-dangle
           localStorage.setItem('userId', response.data.data._id);
           history.push('/dashboard');
@@ -45,8 +46,12 @@ function VerificationPage() {
             type="text"
             placeholder="Enter verification code"
             value={verificationCode}
-            onFocus={(e) => {e.target.placeholder = ""}}
-            onBlur={(e) => {e.target.placeholder = "Enter verification code"}}
+            onFocus={e => {
+              e.target.placeholder = '';
+            }}
+            onBlur={e => {
+              e.target.placeholder = 'Enter verification code';
+            }}
             onChange={e => setVerificationCode(e.target.value.toString().trim())}
           />
         </div>

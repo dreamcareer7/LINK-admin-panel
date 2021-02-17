@@ -22,6 +22,7 @@ import {
 } from '../../../../../constants/Toast';
 import { configure2FA } from '../../../../../redux/actions/authActions/AuthActions';
 import ManageAdminService from '../../../../../services/manage-admin/ManageAdminServices';
+import AUTH_REDUX_CONSTANTS from '../../../../../redux/constants/AuthReduxConstant';
 
 function EditAdmin() {
   const { userId } = useParams();
@@ -79,6 +80,10 @@ function EditAdmin() {
         if (response) {
           successNotification('Image uploaded successfully');
           setAddImage(response.data.data.profilePicUrl);
+          dispatch({
+            type: AUTH_REDUX_CONSTANTS.CHANGE_USER_PROFILE_IMAGE,
+            data: response.data.data.profilePicUrl,
+          });
         } else {
           errorNotification('It seems like server is down, Please try after sometime.');
         }
