@@ -45,6 +45,8 @@ function VerificationPage() {
             type="text"
             placeholder="Enter verification code"
             value={verificationCode}
+            onFocus={(e) => {e.target.placeholder = ""}}
+            onBlur={(e) => {e.target.placeholder = "Enter verification code"}}
             onChange={e => setVerificationCode(e.target.value.toString().trim())}
           />
         </div>
