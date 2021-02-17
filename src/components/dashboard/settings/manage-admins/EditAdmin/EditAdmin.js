@@ -81,8 +81,8 @@ function EditAdmin() {
           successNotification('Image uploaded successfully');
           setAddImage(response.data.data.profilePicUrl);
           dispatch({
-            type: AUTH_REDUX_CONSTANTS.CHANGE_USER_PROFILE_IMAGE,
-            data: response.data.data.profilePicUrl,
+            type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
+            data: { profilePic: response.data.data.profilePicUrl },
           });
         } else {
           errorNotification('It seems like server is down, Please try after sometime.');
@@ -219,6 +219,7 @@ function EditAdmin() {
   };
 
   const handleChange = userOtp => setTwoFaCode(userOtp);
+
   return (
     <div className="edit-admin-container">
       <div className="breadcrumb-custom common-subtitle" onClick={() => history.goBack()}>
@@ -256,7 +257,13 @@ function EditAdmin() {
             placeholder="Michelle Obama"
             value={adminName ?? ''}
             type="text"
-            onChange={e => setAdminName(e.target.value)}
+            onChange={e => {
+              setAdminName(e.target.value);
+              dispatch({
+                type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
+                data: { firstName: e.target.value },
+              });
+            }}
           />
         </div>
         <div id="email" className="mr-20">

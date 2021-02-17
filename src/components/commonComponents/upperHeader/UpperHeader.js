@@ -77,9 +77,9 @@ function UpperHeader() {
         <div className="upper-header--rounded-block" style={{ cursor: 'pointer' }}>
           <img className="user-dp" src={(userDetails && userDetails.profilePic) || user} />
           <label style={{ cursor: 'pointer' }}>
-            {userDetails && userDetails.isTwoFAEnabled
-              ? localStorage.getItem('userName')
-              : userDetails.firstName}
+            {userDetails && userDetails.firstName
+              ? userDetails.firstName
+              : localStorage.getItem('userName')}
           </label>
           <div className="down-arrow">
             <img src={downArrow} onClick={onDropDownClick} />
