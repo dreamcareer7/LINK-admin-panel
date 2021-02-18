@@ -65,6 +65,10 @@ select, .react-datepicker__input-container input {
   cursor: pointer!important;
 }
 
+select:disabled, input:disabled {
+  cursor: not-allowed!important;
+}
+
 ::placeholder {
   font-size: 12px!important;
   font-weight: 400;
