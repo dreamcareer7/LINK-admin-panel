@@ -36,6 +36,12 @@ function VerificationPage() {
       });
   };
 
+  const onEnterKeyPress = (e) => {
+    if(e.keyCode === 13) {
+      onClickVerify()
+    }
+  }
+
   return (
     <div className="content-container">
       <img alt="linkfluencer" src={linkFluencer} className="logo" />
@@ -53,6 +59,7 @@ function VerificationPage() {
               e.target.placeholder = 'Enter verification code';
             }}
             onChange={e => setVerificationCode(e.target.value.toString().trim())}
+            onKeyDown={onEnterKeyPress}
           />
         </div>
         <button
