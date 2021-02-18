@@ -143,7 +143,7 @@ const AddSubscribers = () => {
           />
 
           <div className="edit-subscribers-right-container">
-            <div className="sub-tag d-flex mt-30">
+            <div className="sub-tag d-flex mt-30 mb-3">
               <span className="monthly">{getLabelFromValues(form.sub_type, subTypeObject)}</span>
               {form.isActive && <span className="act">ACTIVE</span>}
               {form.vicSub === 'true' && <span className="vic">VIC</span>}
