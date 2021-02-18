@@ -76,7 +76,7 @@ function UpperHeader() {
                     <div className="search-icon">
                         <img src={search}/>
                         <div className="search-area">
-                            {searchStart && filtered.length===0 &&
+                            {searchStart && filtered.length === 0 &&
                             <div className="open-search-area">No such subscriber found.</div>}
                             {filtered.map(e => (
                                     <div className="open-search-area" onClick={() => onClickSearchedVal(e._id)}>
