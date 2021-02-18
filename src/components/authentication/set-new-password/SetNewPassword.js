@@ -41,6 +41,13 @@ function SetNewPassword() {
     }
   };
 
+  const onEnterKeyPress = (e) => {
+    if(e.keyCode === 13) {
+      checkPasswordMatch()
+    }
+  }
+
+
   return (
     <div className="content-container">
       <img alt="linkfluencer" src={linkFluencer} className="logo" />
@@ -54,6 +61,9 @@ function SetNewPassword() {
             placeholder="Enter New Password"
             value={password}
             onChange={e => setPassword(e.target.value.toString().trim())}
+            onFocus={(e) => {e.target.placeholder = ""}}
+            onBlur={(e) => {e.target.placeholder = "Enter New Password"}}
+            onKeyDown={onEnterKeyPress}
           />
           <button
             className="show-hide-eye-btn"
@@ -76,6 +86,9 @@ function SetNewPassword() {
             placeholder="Confirm New Password"
             value={confirmPassword}
             onChange={e => setConfirmPassword(e.target.value.toString().trim())}
+            onFocus={(e) => {e.target.placeholder = ""}}
+            onBlur={(e) => {e.target.placeholder = "Confirm New Password"}}
+            onKeyDown={onEnterKeyPress}
           />
           <button
             className="show-hide-eye-btn"
