@@ -27,9 +27,12 @@
 
 .column {
   float: left;
-  width: 33.33%;
+  width: 33.33% !important;
   padding: 0 10px;
   flex: 1;
+}
+.card-height{
+  min-height: 320px;
 }
 
 .column-100 {
@@ -60,6 +63,7 @@
   padding: 16px;
   text-align: center;
   background-color: #f1f1f1;
+
   .chart-title{
     font-size: 20px;
     text-transform: uppercase;

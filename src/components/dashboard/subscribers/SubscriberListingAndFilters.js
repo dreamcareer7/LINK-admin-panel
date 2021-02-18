@@ -56,7 +56,6 @@ function SubscriberListingAndFilters() {
     if (moment(date).isAfter(toDate)) {
       errorNotification('From date should be less than to date');
     } else {
-      toDate.setHours(23, 59, 59);
       setFromDate(date);
       const data = {
         page: pageNum,
@@ -64,7 +63,8 @@ function SubscriberListingAndFilters() {
         startDate: date ? date.toISOString() : undefined,
         endDate: toDate ? toDate.toISOString() : undefined,
       };
-      dispatch(getAllSubscribers(data));
+      if(data.startDate && data.endDate)
+        dispatch(getAllSubscribers(data));
     }
   };
   const handleToDateChange = datePass => {
@@ -80,7 +80,8 @@ function SubscriberListingAndFilters() {
         startDate: fromDate ? fromDate.toISOString() : undefined,
         endDate: date ? date.toISOString() : undefined,
       };
-      dispatch(getAllSubscribers(data));
+      if(data.startDate && data.endDate)
+        dispatch(getAllSubscribers(data));
     }
   };
 

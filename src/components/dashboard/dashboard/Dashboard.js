@@ -88,10 +88,10 @@ const dealOptions = {
         ticks: {
           fontColor: '#212152', // this here
           fontWeight: '600',
-          callback: value => {
+        /*  callback: value => {
             const [first, second] = value.split('-');
             return `$${first} - $${second}`;
-          },
+          }, */
         },
         scaleLabel: {
           display: true,
@@ -279,8 +279,8 @@ const Dashboard = () => {
       </div>
       <div className="mt-40 ">
         <div className="row">
-          <div className="column" style={{ width: '33.33%' }}>
-            <div className="card">
+          <div className="column">
+            <div className="card card-height">
               <div className="common-title chart-title">Subscriptions</div>
               <DoughnutChart
                 type="subscriptions"
@@ -289,8 +289,8 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="column" style={{ width: '33.33%' }}>
-            <div className="card">
+          <div className="column" >
+            <div className="card card-height">
               <div className="common-title chart-title">Company Size</div>
               <CompanyChart
                 chartData={chartData && chartData.companyValue && chartData.companyValue}
@@ -298,8 +298,8 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="column" style={{ width: '33.33%' }}>
-            <div className="card">
+          <div className="column " >
+            <div className="card card-height">
               <div className="common-title chart-title">Gender</div>
               <DoughnutChart
                 type="gender"
