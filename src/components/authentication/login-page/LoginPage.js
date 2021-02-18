@@ -46,6 +46,12 @@ function LoginPage() {
     }
   };
 
+  const onEnterKeyPress = (e) => {
+    if(e.keyCode === 13) {
+      onClickLoginButton(userName, password)
+    }
+  }
+
   return (
     <div className="login-content-container">
       <img alt="linkfluencer" src={linkFluencer} className="logo" />
@@ -69,7 +75,7 @@ function LoginPage() {
             onFocus={(e) => {e.target.placeholder = ""}}
             onBlur={(e) => {e.target.placeholder = "Enter Password"}}
             onChange={e => setPassword(e.target.value.toString().trim())}
-            onKeyDown={() => onClickLoginButton(userName, password)}
+            onKeyDown={onEnterKeyPress}
           />
           <button
             className="show-hide-eye-btn"

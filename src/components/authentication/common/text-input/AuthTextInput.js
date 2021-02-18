@@ -4,11 +4,9 @@ import PropTypes from 'prop-types';
 function AuthTextInput(props) {
     const {onChange, value, onKeyPress, placeholder, type, src} = props;
     const onEnterKey = (e) => {
-        console.log(e);
-            if(e.keyCode === 13) {
-                console.log(e);
-                onKeyPress()
-            }
+          if(e.keyCode === 13) {
+              onKeyPress()
+          }
     }
     return (
             <div className="form--detail-container">
