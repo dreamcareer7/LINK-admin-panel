@@ -69,6 +69,12 @@ button:focus {
   background-color: $danger-color;
 }
 
+.white-button {
+  color: $primary-color;
+  border: 1px solid $primary-color!important;
+  background-color: #FFFFFF;
+}
+
 .slim-button {
   padding: 5px 20px;
 }
