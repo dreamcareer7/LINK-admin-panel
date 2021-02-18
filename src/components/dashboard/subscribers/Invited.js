@@ -122,8 +122,7 @@ const Invited = () => {
                   onChange={datePass => handleFromDateChange(datePass)}
                 />
                 <DatePicker
-                  className="mr-10"
-                  placeholderText="From"
+                  placeholderText="To"
                   selected={toDate}
                   onChange={datePass => handleToDateChange(datePass)}
                 />
