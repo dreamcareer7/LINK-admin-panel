@@ -101,8 +101,9 @@ const AddSubscribers = () => {
         },
       };
 
-      dispatch(updateSubscribers(subId, formData));
-      history.replace('/subscribers/subscribed');
+      dispatch(
+        updateSubscribers(subId, formData, () => history.replace('/subscribers/subscribed'))
+      );
     }
   };
 

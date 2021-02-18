@@ -190,7 +190,7 @@ export const getSubscribersById = id => {
   };
 };
 
-export const updateSubscribers = (id, data) => {
+export const updateSubscribers = (id, data, cb) => {
   return dispatch => {
     SubscriberService.updateSub(id, data)
       .then(res => {
@@ -200,6 +200,7 @@ export const updateSubscribers = (id, data) => {
             data: res.data,
           });
           successNotification('Subscribers updated successfully');
+          cb();
         }
       })
       .catch(() => {
