@@ -52,6 +52,7 @@ export default function ForgotPasswordPage() {
             type="text"
             placeholder="Enter Username"
             value={email}
+            onKeyPress={sendResetLink}
             onChange={e => setEmail(e.target.value.toString().trim())}
           />
         </div>
