@@ -55,6 +55,7 @@ function LoginPage() {
           type="text"
           placeholder="Enter Username"
           value={userName}
+          onKeyPress={() => onClickLoginButton(userName, password)}
           onChange={e => setUserName(e.target.value.toString().trim())}
         />
         <div className="form--detail-container">
@@ -65,7 +66,10 @@ function LoginPage() {
             type={showPassword ? 'text' : 'password'}
             placeholder="Enter Password"
             value={password}
+            onFocus={(e) => {e.target.placeholder = ""}}
+            onBlur={(e) => {e.target.placeholder = "Enter Password"}}
             onChange={e => setPassword(e.target.value.toString().trim())}
+            onKeyDown={() => onClickLoginButton(userName, password)}
           />
           <button
             className="show-hide-eye-btn"
@@ -84,7 +88,6 @@ function LoginPage() {
           type="button"
           className="button success-button login-button"
           onClick={() => onClickLoginButton(userName, password)}
-          onKeyPress={() => onClickLoginButton(userName, password)}
         >
           LOGIN
         </button>
