@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
@@ -116,12 +116,15 @@ const AddSubscribers = () => {
     history.push('/subscribers/subscribed');
   };
 
-  const a = moment();
-  const b = moment(`${form.subscription_date}`, 'MM-YYYY');
-  const age = moment.duration(a.diff(b));
-  console.log(age);
-  const years = age.years();
-  const months = age.months();
+  const subscriptionDifference = useMemo(() => {
+    const current = moment();
+    const subDate = moment(`${form.subscription_date}`, 'YYYY-MM-DD');
+
+    return `${current.diff(subDate, 'years')} Years ${current.diff(
+      subDate,
+      'months'
+    )} Months  ${current.diff(subDate, 'days')} Days`;
+  }, [form.subscription_date]);
 
   return (
     <>
@@ -195,8 +198,9 @@ const AddSubscribers = () => {
                     type="date"
                     disabled
                   />
-
-                  <div className="edit-subscription-duration">{years + months}</div>
+                  {form.subscription_date && (
+                    <div className="edit-subscription-duration">{subscriptionDifference}</div>
+                  )}
                 </div>
                 <div className="mr-20">
                   <div className="common-title-black mar-bott-5">Lifetime Payments</div>
