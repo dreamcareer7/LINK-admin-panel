@@ -60,6 +60,11 @@ textarea {
     transform: rotate(360deg);
   }
 }
+
+select, .react-datepicker__input-container input {
+  cursor: pointer!important;
+}
+
 ::placeholder {
   font-size: 12px!important;
   font-weight: 400;
