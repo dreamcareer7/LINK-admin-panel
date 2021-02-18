@@ -21,7 +21,6 @@
   font-weight: 500;
   background-color: $background-primary-color;
   border-radius: 20px;
-  cursor: pointer;
 
   label {
     width: calc(100% - 80px);
@@ -30,6 +29,7 @@
 }
 
 .search-block {
+  position: relative;
   margin-right: 20px;
 
   input {
@@ -40,7 +40,7 @@
     outline: none;
   }
 
-  button {
+  .search-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,7 +50,6 @@
     outline: none;
     border: none;
     border-radius: 50%;
-    cursor: pointer;
 
     img {
       height: 16px;
@@ -71,7 +70,6 @@
 
   img {
     width: 16px;
-    cursor: pointer;
   }
 }
 
@@ -134,8 +132,8 @@
 .search-area{
   display: block;
   position: absolute;
-  top: 30px;
-  right: -23px;
+  top: 45px;
+  right: 10px;
   min-width: 190px;
   background-color: #ffffff;
   border-radius: 5px;
