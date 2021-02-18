@@ -55,21 +55,29 @@ function UpperHeader() {
                 })
         );
     };
+    const [searchStart, setSearchStart] = useState(false);
+    const searchBlurEvent = (e) => {
+        e.target.value = '';
+        e.target.placeholder = "Search Subscriber";
+        setSearchStart(!e);
+    }
+
     console.log('userDetails->', userDetails);
     return (
             <div className="upper-header-block">
                 <div className="upper-header--rounded-block search-block">
                     <input placeholder="Search Subscriber" value={searchText} onChange={onSearch}
+                           onKeyDown={setSearchStart}
                            onFocus={(e) => {
                                e.target.placeholder = ""
                            }}
-                           onBlur={(e) => {
-                               e.target.placeholder = "Search Subscriber"
-                           }}
+                           onBlur={searchBlurEvent}
                     />
                     <div className="search-icon">
                         <img src={search}/>
                         <div className="search-area">
+                            {searchStart && filtered.length===0 &&
+                            <div className="open-search-area">No such subscriber found.</div>}
                             {filtered.map(e => (
                                     <div className="open-search-area" onClick={() => onClickSearchedVal(e._id)}>
                                         {e.firstName} {e.lastName}
