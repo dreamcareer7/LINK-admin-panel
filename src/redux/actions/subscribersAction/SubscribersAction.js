@@ -200,7 +200,9 @@ export const updateSubscribers = (id, data, cb) => {
             data: res.data,
           });
           successNotification('Subscribers updated successfully');
-          cb();
+          if (cb) {
+            cb();
+          }
         }
       })
       .catch(() => {
