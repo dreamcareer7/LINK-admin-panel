@@ -56,6 +56,7 @@ function SubscriberListingAndFilters() {
     if (moment(date).isAfter(toDate)) {
       errorNotification('From date should be less than to date');
     } else {
+      toDate.setHours(23, 59, 59);
       setFromDate(date);
       const data = {
         page: pageNum,
@@ -68,6 +69,7 @@ function SubscriberListingAndFilters() {
   };
   const handleToDateChange = datePass => {
     const date = datePass;
+    date.setHours(23, 59, 59);
     if (moment(date).isBefore(fromDate)) {
       errorNotification('To date should be greater than from date');
     } else {
