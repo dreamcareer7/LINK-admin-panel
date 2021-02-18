@@ -54,6 +54,8 @@ export default function ForgotPasswordPage() {
             value={email}
             onKeyPress={sendResetLink}
             onChange={e => setEmail(e.target.value.toString().trim())}
+            onFocus={(e) => {e.target.placeholder = ""}}
+            onBlur={(e) => {e.target.placeholder = "Enter Username"}}
           />
         </div>
 
