@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Pagination from 'react-js-pagination';
 import moment from 'moment';
+import DatePicker from 'react-datepicker';
 import User from '../../../assets/images/user.jpg';
 import {
   deleteInvitee,
@@ -74,8 +75,8 @@ const Invited = () => {
     };
     dispatch(getInviteeSubscribers(data));
   };
-  const handleFromDateChange = e => {
-    const date = e.target.value;
+  const handleFromDateChange = datePass => {
+    const date = datePass;
     if (moment(date).isAfter(toDate)) {
       errorNotification('From date should be less than to date');
     } else {
@@ -89,8 +90,8 @@ const Invited = () => {
       dispatch(getInviteeSubscribers(data));
     }
   };
-  const handleToDateChange = e => {
-    const date = e.target.value;
+  const handleToDateChange = datePass => {
+    const date = datePass;
     if (moment(date).isBefore(fromDate)) {
       errorNotification('To date should be greater than from date');
     } else {
@@ -114,19 +115,17 @@ const Invited = () => {
                 Date Range
               </label>
               <div className="filter-action">
-                <input
-                  name="from"
-                  type="date"
-                  placeholder="From"
-                  value={moment(fromDate).format('YYYY-MM-DD')}
-                  onChange={handleFromDateChange}
+                <DatePicker
+                  className="mr-10"
+                  placeholderText="From"
+                  selected={fromDate}
+                  onChange={datePass => handleFromDateChange(datePass)}
                 />
-                <input
-                  name="to"
-                  type="date"
-                  placeholder="To"
-                  value={moment(toDate).format('YYYY-MM-DD')}
-                  onChange={handleToDateChange}
+                <DatePicker
+                  className="mr-10"
+                  placeholderText="From"
+                  selected={toDate}
+                  onChange={datePass => handleToDateChange(datePass)}
                 />
               </div>
             </div>
