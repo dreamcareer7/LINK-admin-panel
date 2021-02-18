@@ -57,7 +57,7 @@ function UpperHeader() {
     };
     const [searchStart, setSearchStart] = useState(false);
     const searchBlurEvent = (e) => {
-        e.target.value = '';
+        setSearchText('');
         e.target.placeholder = "Search Subscriber";
         setSearchStart(!e);
     }
