@@ -12,7 +12,7 @@ function SideBar() {
     <div>
       <div className="">
         <NavLink className="dashboard-logo" to="/dashboard" replace>
-          <img alt="Linkfluencer" src={linkfluencer} style={{ width: '70%' }} />
+          <img alt="Linkfluencer" src={linkfluencer} />
         </NavLink>
       </div>
       <div className="menu-bar">
