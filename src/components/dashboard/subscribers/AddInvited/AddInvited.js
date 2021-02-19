@@ -47,7 +47,7 @@ function AddInvited() {
     } else if (!email || (email && email.toString().trim().length === 0)) {
       errorNotification('Please enter invitee email');
     } else if (!checkForEmail(email)) {
-      errorNotification('Please valid email');
+      errorNotification('Please add a valid email address');
     } else if (!phone || (phone && phone.toString().trim().length === 0)) {
       errorNotification('Please enter invitee phone');
     } else {
