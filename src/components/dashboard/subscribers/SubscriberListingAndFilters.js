@@ -139,7 +139,7 @@ function SubscriberListingAndFilters() {
       {isModelOpen && (
         <Modal
           description="Are you sure you want to delete subscriber?"
-          title="Delete subscriber"
+          title="Delete Subscriber"
           deleteData={onDeleteData}
           onClosePopup={onClosePopup}
         />

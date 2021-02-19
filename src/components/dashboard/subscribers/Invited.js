@@ -124,7 +124,7 @@ const Invited = () => {
       {isModelOpen && (
         <Modal
           description="Are you sure you want to delete invitee?"
-          title="Delete invitee"
+          title="Delete Invitee"
           deleteData={onDeleteData}
           onClosePopup={onClosePopup}
         />
