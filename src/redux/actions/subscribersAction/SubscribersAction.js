@@ -74,7 +74,7 @@ export const addInvitee = (data, cb) => {
             type: SUBSCRIBERS_REDUX_CONSTANTS.ADD_INVITEE_SUBSCRIBER,
             data: response.data.data,
           });
-          successNotification('Invitee added successfully');
+          successNotification('Invite sent successfully');
           cb();
         }
       })
