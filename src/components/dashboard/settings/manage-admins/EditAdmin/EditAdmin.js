@@ -42,7 +42,6 @@ function EditAdmin() {
   const [currentPass, setCurrentPass] = useState('');
   const [newPass, setNewPass] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
-
   const [addImage, setAddImage] = useState(upload);
 
   const dispatch = useDispatch();
