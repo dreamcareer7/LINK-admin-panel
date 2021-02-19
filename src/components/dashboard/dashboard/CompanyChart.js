@@ -1,4 +1,5 @@
 import React from 'react';
+import './dashboard.scss';
 import { Pie } from 'react-chartjs-2';
 import PropTypes from 'prop-types';
 
@@ -35,9 +36,9 @@ const CompanyChart = props => {
   };
 
   return (
-    <div style={{ padding: '80px' }}>
+    <>
       {chartData !== null && chartData.data.length === 0 ? (
-        'No Data Available'
+        <div className="no-data-style">No Data Available</div>
       ) : (
         <Pie
           data={state}
@@ -49,7 +50,7 @@ const CompanyChart = props => {
           }}
         />
       )}
-    </div>
+    </>
   );
 };
 

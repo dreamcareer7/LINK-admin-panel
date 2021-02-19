@@ -1,4 +1,5 @@
 import React from 'react';
+import './dashboard.scss';
 import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
 
@@ -27,9 +28,9 @@ const DoughnutChart = props => {
     ],
   };
   return (
-    <div style={{ padding: '80px' }}>
+    <>
       {chartData !== null && chartData.data.length === 0 ? (
-        'No Data Available'
+        <div className="no-data-style">No Data Available</div>
       ) : (
         <Doughnut
           data={type === 'subscriptions' ? subscriptionsState : genderState}
@@ -70,7 +71,7 @@ const DoughnutChart = props => {
           }}
         />
       )}
-    </div>
+    </>
   );
 };
 
