@@ -54,7 +54,11 @@ function EditAdmin() {
 
   useEffect(() => {
     if (userId !== 'addAdmin') {
-      setAdminName(editAdmin && editAdmin.firstName && editAdmin.firstName);
+      setAdminName(
+        editAdmin &&
+          editAdmin.firstName &&
+          `${editAdmin.firstName}${editAdmin.lastName && ` ${editAdmin.lastName}`}`
+      );
       setAdminEmail(editAdmin && editAdmin.email && editAdmin.email);
       setAdminPhone(editAdmin && editAdmin.phone && editAdmin.phone);
       setAdminLoggedIn(editAdmin && editAdmin.isLoggedIn && editAdmin.isLoggedIn);
