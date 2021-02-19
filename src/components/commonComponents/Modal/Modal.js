@@ -1,39 +1,28 @@
-import React  from 'react';
-import { useDispatch } from 'react-redux';
-import './PopUp.scss';
-//import { popUpData } from '../../../redux/actions/popUpAction/PopUpAction';
-import { useOnClickOutside } from '../../../helpers/UseClickOutsideHook';
-
-const errorTitles = ['cookie_expired', 'extension_not_installed'];
+import React from 'react';
+import './Modal.scss';
+import { useOnClickOutside } from '../../../helpers/UserClickOutsideHook';
 
 // eslint-disable-next-line react/prop-types
-const Modal = ({ title, description, onClosePopup = () => {} }) => {
-  const dispatch = useDispatch();
+const Modal = ({ title, description, deleteData = () => {}, onClosePopup = () => {} }) => {
   const popupRef = React.useRef();
-
- // const errorData = useSelector(state => state.clientErrorReducer);
- // const findError = useMemo(() => errorData.find(e => e.title === data), [errorData, data]);
-
   useOnClickOutside(popupRef, onClosePopup);
-
   const onDeleteClick = () => {
-
-  }
-
-  if (!data) {
-    return null;
-  }
+    deleteData();
+  };
+  const onCloseButtonPress = () => {
+    onClosePopup();
+  };
 
   return (
     <div className="modal-main-container">
       <div id="pop-up" ref={popupRef} className="modal-container">
-        <div className="modal-main-title">
-          {title}
-        </div>
+        <div className="modal-main-title">{title}</div>
         <div className="modal-description">{description}</div>
         <div className="buttons-row">
-          <button className="button white-button">Close</button>
-          <button className="button danger-button" onClick={onDeleteClick}>
+          <button type="button" className="button white-button" onClick={onCloseButtonPress}>
+            Close
+          </button>
+          <button type="button" className="button danger-button" onClick={onDeleteClick}>
             Delete
           </button>
         </div>

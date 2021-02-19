@@ -16,6 +16,7 @@ import './subscribers.scss';
 import { errorNotification } from '../../../constants/Toast';
 import { getLabelFromValues } from '../../../helpers/mappingHelper';
 import subTypeObject from '../../../helpers/Mapper';
+import Modal from '../../commonComponents/Modal/Modal';
 
 function SubscriberListingAndFilters() {
   const dispatch = useDispatch();
@@ -31,6 +32,8 @@ function SubscriberListingAndFilters() {
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const [subType, setSubType] = useState('all');
+  const [isModelOpen, setIsModelOpen] = useState(false);
+  const [subscriberId, setSubscriberId] = useState('');
 
   const handleSortChange = e => {
     const sort = e.target.value;
@@ -115,9 +118,16 @@ function SubscriberListingAndFilters() {
   const onEditSub = subId => {
     history.push(`/subscribers/subscribed/${subId}`);
   };
-
+  const onClosePopup = () => {
+    setIsModelOpen(false);
+  };
   const onDeleteSub = subId => {
-    dispatch(deleteSubscribers(subId));
+    setSubscriberId(subId);
+    setIsModelOpen(true);
+  };
+  const onDeleteData = () => {
+    setIsModelOpen(false);
+    dispatch(deleteSubscribers(subscriberId));
   };
   const handlePageChange = page => {
     setPageNum(page);
@@ -126,6 +136,14 @@ function SubscriberListingAndFilters() {
 
   return (
     <div>
+      {isModelOpen && (
+        <Modal
+          description="Are you sure you want to delete subscriber?"
+          title="Delete subscriber"
+          deleteData={onDeleteData}
+          onClosePopup={onClosePopup}
+        />
+      )}
       <div className="action-container">
         <div className="filters">
           <div className="filter">
