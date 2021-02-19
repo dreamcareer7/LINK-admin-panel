@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -9,17 +9,28 @@ import User from '../../../../assets/images/user.jpg';
 import edit from '../../../../assets/images/pencil.png';
 import bin from '../../../../assets/images/delete.png';
 import './manage-admins.scss';
+import Modal from '../../../commonComponents/Modal/Modal';
 
 const ManageAdmins = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const manageAdminData = useSelector(state => state.manageAdmin);
+  const [isModelOpen, setIsModelOpen] = useState(false);
+  const [adminId, setAdminId] = useState('');
   useEffect(() => {
     dispatch(getAllAdmins());
   }, []);
 
   const onDelete = userId => {
-    dispatch(deleteUser(userId));
+    setAdminId(userId);
+    setIsModelOpen(true);
+  };
+  const onClosePopup = () => {
+    setIsModelOpen(false);
+  };
+  const onDeleteData = () => {
+    setIsModelOpen(false);
+    dispatch(deleteUser(adminId));
   };
 
   const onEditAdmin = userId => {
@@ -28,6 +39,14 @@ const ManageAdmins = () => {
 
   return (
     <>
+      {isModelOpen && (
+        <Modal
+          description="Are you sure you want to delete admin?"
+          title="Delete admin"
+          deleteData={onDeleteData}
+          onClosePopup={onClosePopup}
+        />
+      )}
       <div className="admin-title font-400 mt-10">Logged in Admins</div>
       <div className="admin-table">
         <div className="admin-table-details heading">
