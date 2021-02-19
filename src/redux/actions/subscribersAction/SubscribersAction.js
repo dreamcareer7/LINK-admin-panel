@@ -74,7 +74,7 @@ export const addInvitee = (data, cb) => {
             type: SUBSCRIBERS_REDUX_CONSTANTS.ADD_INVITEE_SUBSCRIBER,
             data: response.data.data,
           });
-          successNotification('Invitee added successfully');
+          successNotification('Invite sent successfully');
           cb();
         }
       })
@@ -199,7 +199,7 @@ export const updateSubscribers = (id, data, cb) => {
             type: SUBSCRIBERS_REDUX_CONSTANTS.UPDATE_SUBSCRIBERS,
             data: res.data,
           });
-          successNotification('Subscribers updated successfully');
+          successNotification('Subscriber updated successfully');
           if (cb) {
             cb();
           }

@@ -181,14 +181,14 @@ const Invited = () => {
                 <input
                   type="text"
                   className="common-input"
-                  placeholder="Enter Name or Email"
+                  placeholder="Enter name or email"
                   value={searchText}
                   onChange={onSearch}
                   onFocus={e => {
                     e.target.placeholder = '';
                   }}
                   onBlur={e => {
-                    e.target.placeholder = 'Enter Name or Email';
+                    e.target.placeholder = 'Enter name or email';
                   }}
                 />
               </div>

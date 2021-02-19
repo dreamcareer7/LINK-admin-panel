@@ -135,7 +135,7 @@ const AddSubscribers = () => {
           onClick={() => history.goBack()}
         >
           <span>SUBSCRIBERS&nbsp;</span>
-          <span>/ EDIT SUBSCRIBERS</span>
+          <span>/ EDIT SUBSCRIBER</span>
         </div>
         <div className="d-flex">
           <img

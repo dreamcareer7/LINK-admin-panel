@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import OtpInput from 'react-otp-input';
 import './EditAdmin.scss';
 import Switch from 'react-switch';
-import upload from '../../../../../assets/images/upload.jpg';
+import upload from '../../../../../assets/images/upload.png';
 import user from '../../../../../assets/images/user.jpg';
 import copy from '../../../../../assets/images/copy.svg';
 import {
