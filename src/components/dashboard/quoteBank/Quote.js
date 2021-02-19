@@ -14,11 +14,13 @@ import {
 } from '../../../redux/actions/authActions/QuoteActions';
 import QUOTE_REDUX_CONSTANTS from '../../../redux/constants/QuoteReduxConstant';
 import { useQuery } from '../../../helpers/GetQueryParamHook';
+import Modal from '../../commonComponents/Modal/Modal';
 
 function Quote({ quote }) {
   const [isSelected, setIsSelected] = useState(
     quote && quote.isPublished ? quote.isPublished.toString() : 'false'
   );
+  const [isModelOpen, setIsModelOpen] = useState(false);
   const history = useHistory();
   const query = useQuery();
   const status = query.get('status');
@@ -48,11 +50,26 @@ function Quote({ quote }) {
     }
   };
   const onClickDeleteQuote = () => {
+    setIsModelOpen(true);
+  };
+  const onClosePopup = () => {
+    setIsModelOpen(false);
+  };
+  const onDeleteData = () => {
+    setIsModelOpen(false);
     dispatch(deleteQuote(quote._id));
   };
 
   return (
     <div className="tr-container">
+      {isModelOpen && (
+        <Modal
+          description="Are you sure you want to delete quote?"
+          title="Delete Quote"
+          deleteData={onDeleteData}
+          onClosePopup={onClosePopup}
+        />
+      )}
       <div className="tr">
         <div className="td quote">{quote.quote}</div>
         <div className="td author font-400">{quote.quoteBy}</div>
