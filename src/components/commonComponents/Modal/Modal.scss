@@ -20,7 +20,7 @@
   flex-direction: column;
   width: 350px;
   margin: auto;
-  background-color: #201F5F;
+  background-color: white;
   border-radius: 10px;
 }
 
@@ -31,13 +31,13 @@
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 500;
-  color: #ffffff;
+  color: $secondary-font-color;
   border-bottom: 1px solid $placeholder-color;
 }
 
 .modal-description {
   padding: 20px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   color: $secondary-font-color;
 }
@@ -46,6 +46,10 @@
 .modal-container .buttons-row {
   text-align: right;
   button {
-    padding: 5px 20px;
+    margin-right: 10px;
+    padding: 10px 20px;
+  }
+  button:last-child {
+    margin-right: 0;
   }
 }
