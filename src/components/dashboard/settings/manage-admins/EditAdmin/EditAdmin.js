@@ -466,7 +466,7 @@ function EditAdmin() {
               className="button success-button mr-10"
               onClick={() => onUpdateAdminEvent()}
             >
-              SUBMIT
+              SAVE
             </button>
             <button
               type="button"
