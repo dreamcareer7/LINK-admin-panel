@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
+import DatePicker from 'react-datepicker';
 import BarChart from './BarChart';
 import './dashboard.scss';
 import DoughnutChart from './DoughnutChart';
@@ -221,7 +222,7 @@ const Dashboard = () => {
               Date Range:
             </div>
             <div className="filter-action filter-dashboard-action">
-              <input
+              {/* <input
                 name="from"
                 onChange={e => onChangeFromInput(e)}
                 value={fromDate}
@@ -234,6 +235,17 @@ const Dashboard = () => {
                 value={endDate}
                 type="date"
                 placeholder="To"
+              /> */}
+              <DatePicker
+                className="mr-10"
+                placeholderText="From"
+                selected={fromDate}
+                onChange={datePass => onChangeFromInput(datePass)}
+              />
+              <DatePicker
+                placeholderText="To"
+                selected={endDate}
+                onChange={datePass => onChangeToInput(datePass)}
               />
             </div>
           </div>

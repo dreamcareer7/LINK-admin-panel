@@ -13,6 +13,7 @@ import {
 import bin from '../../../assets/images/delete.png';
 import { errorNotification } from '../../../constants/Toast';
 import edit from '../../../assets/images/pencil.png';
+import Modal from '../../commonComponents/Modal/Modal';
 
 const Invited = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,13 @@ const Invited = () => {
   ]);
   const history = useHistory();
 
+  const [isModelOpen, setIsModelOpen] = useState(false);
+  const [inviteeId, setInviteeId] = useState('');
+
+  const onClosePopup = () => {
+    setIsModelOpen(false);
+  };
+
   useEffect(() => {
     dispatch(getInviteeSubscribers(1));
   }, []);
@@ -41,11 +49,17 @@ const Invited = () => {
     setPageNum(page);
   };
   const onDeleteInvitee = id => {
+    setInviteeId(id);
+    setIsModelOpen(true);
+  };
+
+  const onDeleteData = () => {
+    setIsModelOpen(false);
     const data = {
       page: pageNum,
       sorting,
     };
-    dispatch(deleteInvitee(id));
+    dispatch(deleteInvitee(inviteeId));
     dispatch(getInviteeSubscribers(data));
   };
   const onEditInvitee = id => {
@@ -107,6 +121,14 @@ const Invited = () => {
   };
   return (
     <>
+      {isModelOpen && (
+        <Modal
+          description="Are you sure you want to delete invitee?"
+          title="Delete invitee"
+          deleteData={onDeleteData}
+          onClosePopup={onClosePopup}
+        />
+      )}
       <div>
         <div className="action-container">
           <div className="filters">
@@ -119,16 +141,24 @@ const Invited = () => {
                   className="mr-10"
                   placeholderText="From"
                   selected={fromDate}
-                  onFocus={(e) => {e.target.placeholder = ""}}
-                  onBlur={(e) => {e.target.placeholder = "From"}}
+                  onFocus={e => {
+                    e.target.placeholder = '';
+                  }}
+                  onBlur={e => {
+                    e.target.placeholder = 'From';
+                  }}
                   onChange={datePass => handleFromDateChange(datePass)}
                 />
                 <DatePicker
                   placeholderText="To"
                   selected={toDate}
                   onChange={datePass => handleToDateChange(datePass)}
-                  onFocus={(e) => {e.target.placeholder = ""}}
-                  onBlur={(e) => {e.target.placeholder = "To"}}
+                  onFocus={e => {
+                    e.target.placeholder = '';
+                  }}
+                  onBlur={e => {
+                    e.target.placeholder = 'To';
+                  }}
                 />
               </div>
             </div>
@@ -154,8 +184,12 @@ const Invited = () => {
                   placeholder="Enter Name or Email"
                   value={searchText}
                   onChange={onSearch}
-                  onFocus={(e) => {e.target.placeholder = ""}}
-                  onBlur={(e) => {e.target.placeholder = "Enter Name or Email"}}
+                  onFocus={e => {
+                    e.target.placeholder = '';
+                  }}
+                  onBlur={e => {
+                    e.target.placeholder = 'Enter Name or Email';
+                  }}
                 />
               </div>
             </div>
@@ -216,7 +250,12 @@ const Invited = () => {
                             alt=""
                             onClick={() => onEditInvitee(value._id)}
                           />
-                          <img src={bin} alt="" onClick={() => onDeleteInvitee(value._id)} />
+                          <img
+                            src={bin}
+                            alt=""
+                            onClick={() => onDeleteInvitee(value._id)}
+                            className="delete-image"
+                          />
                         </div>
                       </div>
                     </div>
