@@ -100,6 +100,10 @@ function EditAdmin() {
       .then(r => {
         if (r.data.status === 'SUCCESS') {
           successNotification('Image deleted successfully');
+          dispatch({
+            type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
+            data: { profilePic: null },
+          });
         }
       })
       .catch(e => {
@@ -257,8 +261,12 @@ function EditAdmin() {
             placeholder="John Smith"
             value={adminName ?? ''}
             type="text"
-            onFocus={(e) => {e.target.placeholder = ""}}
-            onBlur={(e) => {e.target.placeholder = "John Smith"}}
+            onFocus={e => {
+              e.target.placeholder = '';
+            }}
+            onBlur={e => {
+              e.target.placeholder = 'John Smith';
+            }}
             onChange={e => {
               setAdminName(e.target.value);
               dispatch({
@@ -277,8 +285,12 @@ function EditAdmin() {
             type="text"
             onChange={e => setAdminEmail(e.target.value)}
             placeholder="john@abcmedia.com"
-            onFocus={(e) => {e.target.placeholder = ""}}
-            onBlur={(e) => {e.target.placeholder = "john@abcmedia.com"}}
+            onFocus={e => {
+              e.target.placeholder = '';
+            }}
+            onBlur={e => {
+              e.target.placeholder = 'john@abcmedia.com';
+            }}
           />
         </div>
         <div id="phone">
@@ -290,8 +302,12 @@ function EditAdmin() {
             name="phone"
             onChange={e => setAdminPhone(e.target.value)}
             placeholder="(+61)545-589-9977"
-            onFocus={(e) => {e.target.placeholder = ""}}
-            onBlur={(e) => {e.target.placeholder = "(+61)545-589-9977"}}
+            onFocus={e => {
+              e.target.placeholder = '';
+            }}
+            onBlur={e => {
+              e.target.placeholder = '(+61)545-589-9977';
+            }}
           />
         </div>
       </div>
@@ -307,8 +323,12 @@ function EditAdmin() {
                 value={currentPass}
                 placeholder="Enter Current Password"
                 onChange={e => setCurrentPass(e.target.value)}
-                onFocus={(e) => {e.target.placeholder = ""}}
-                onBlur={(e) => {e.target.placeholder = "Enter Current Password"}}
+                onFocus={e => {
+                  e.target.placeholder = '';
+                }}
+                onBlur={e => {
+                  e.target.placeholder = 'Enter Current Password';
+                }}
               />
             </div>
 
@@ -321,8 +341,12 @@ function EditAdmin() {
                 value={newPass}
                 placeholder="Enter New Password"
                 onChange={e => setNewPass(e.target.value)}
-                onFocus={(e) => {e.target.placeholder = ""}}
-                onBlur={(e) => {e.target.placeholder = "Enter New Password"}}
+                onFocus={e => {
+                  e.target.placeholder = '';
+                }}
+                onBlur={e => {
+                  e.target.placeholder = 'Enter New Password';
+                }}
               />
             </div>
             <div id="confirmPass" className="mr-20">
@@ -334,8 +358,12 @@ function EditAdmin() {
                 value={confirmPass}
                 placeholder="Confirm Password"
                 onChange={e => setConfirmPass(e.target.value)}
-                onFocus={(e) => {e.target.placeholder = ""}}
-                onBlur={(e) => {e.target.placeholder = "Confirm Password"}}
+                onFocus={e => {
+                  e.target.placeholder = '';
+                }}
+                onBlur={e => {
+                  e.target.placeholder = 'Confirm Password';
+                }}
               />
             </div>
           </div>
