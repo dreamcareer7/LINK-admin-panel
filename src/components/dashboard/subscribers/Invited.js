@@ -119,12 +119,16 @@ const Invited = () => {
                   className="mr-10"
                   placeholderText="From"
                   selected={fromDate}
+                  onFocus={(e) => {e.target.placeholder = ""}}
+                  onBlur={(e) => {e.target.placeholder = "From"}}
                   onChange={datePass => handleFromDateChange(datePass)}
                 />
                 <DatePicker
                   placeholderText="To"
                   selected={toDate}
                   onChange={datePass => handleToDateChange(datePass)}
+                  onFocus={(e) => {e.target.placeholder = ""}}
+                  onBlur={(e) => {e.target.placeholder = "To"}}
                 />
               </div>
             </div>
@@ -150,6 +154,8 @@ const Invited = () => {
                   placeholder="Enter Name or Email"
                   value={searchText}
                   onChange={onSearch}
+                  onFocus={(e) => {e.target.placeholder = ""}}
+                  onBlur={(e) => {e.target.placeholder = "Enter Name or Email"}}
                 />
               </div>
             </div>

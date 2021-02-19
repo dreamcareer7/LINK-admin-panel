@@ -82,9 +82,11 @@ function AddInvited() {
             className="common-input"
             value={name}
             name="name"
-            placeholder="Michelle Obama"
+            placeholder="John Smith"
             type="text"
             onChange={e => setName(e.target.value)}
+            onFocus={(e) => {e.target.placeholder = ""}}
+            onBlur={(e) => {e.target.placeholder = "John Smith"}}
           />
         </div>
         <div id="email" className="mr-20">
@@ -94,8 +96,10 @@ function AddInvited() {
             value={email}
             name="email"
             type="text"
-            placeholder="michelle@abcmedia.com"
+            placeholder="john@abcmedia.com"
             onChange={e => setEmail(e.target.value)}
+            onFocus={(e) => {e.target.placeholder = ""}}
+            onBlur={(e) => {e.target.placeholder = "john@abcmedia.com"}}
           />
         </div>
         <div id="phone">
@@ -107,6 +111,8 @@ function AddInvited() {
             name="phone"
             placeholder="(+61)545-589-9977"
             onChange={e => setPhone(e.target.value)}
+            onFocus={(e) => {e.target.placeholder = ""}}
+            onBlur={(e) => {e.target.placeholder = "(+61)545-589-9977"}}
           />
         </div>
       </div>

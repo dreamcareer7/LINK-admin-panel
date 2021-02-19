@@ -120,6 +120,8 @@ function AddQuote() {
             className="common-input"
             placeholder="Enter name"
             value={quoteBy}
+            onFocus={(e) => {e.target.placeholder = ""}}
+            onBlur={(e) => {e.target.placeholder = "Enter name"}}
             onChange={e => setQuoteBy(e.target.value)}
           />
         </div>

@@ -160,8 +160,10 @@ const AddSubscribers = () => {
                     name="username"
                     onChange={updateField}
                     className="common-input"
-                    placeholder="Michelle Obama"
+                    placeholder="John Smith"
                     type="text"
+                    onFocus={(e) => {e.target.placeholder = ""}}
+                    onBlur={(e) => {e.target.placeholder = "John Smith"}}
                   />
                 </div>
                 <div id="email" className="mr-20">
@@ -172,7 +174,9 @@ const AddSubscribers = () => {
                     onChange={updateField}
                     className="common-input"
                     type="text"
-                    placeholder="michelle@abcmedia.com"
+                    placeholder="john@abcmedia.com"
+                    onFocus={(e) => {e.target.placeholder = ""}}
+                    onBlur={(e) => {e.target.placeholder = "john@abcmedia.com"}}
                   />
                 </div>
                 <div id="phone">
@@ -184,6 +188,8 @@ const AddSubscribers = () => {
                     className="common-input"
                     type="text"
                     placeholder="(+61)545-589-9977"
+                    onFocus={(e) => {e.target.placeholder = ""}}
+                    onBlur={(e) => {e.target.placeholder = "(+61)545-589-9977"}}
                   />
                 </div>
               </div>

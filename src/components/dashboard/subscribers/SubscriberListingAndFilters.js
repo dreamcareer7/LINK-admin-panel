@@ -156,11 +156,15 @@ function SubscriberListingAndFilters() {
                 placeholderText="From"
                 selected={fromDate}
                 onChange={datePass => handleFromDateChange(datePass)}
+                onFocus={(e) => {e.target.placeholder = ""}}
+                onBlur={(e) => {e.target.placeholder = "From"}}
               />
               <DatePicker
                 placeholderText="To"
                 selected={toDate}
                 onChange={datePass => handleToDateChange(datePass)}
+                onFocus={(e) => {e.target.placeholder = ""}}
+                onBlur={(e) => {e.target.placeholder = "To"}}
               />
             </div>
           </div>

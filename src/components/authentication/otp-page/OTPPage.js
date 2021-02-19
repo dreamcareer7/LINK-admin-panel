@@ -16,6 +16,8 @@ function OTPPage() {
             type="text"
             placeholder="Enter verification code"
             value={verifyOtp}
+            onFocus={(e) => {e.target.placeholder = ""}}
+            onBlur={(e) => {e.target.placeholder = "Enter verification code"}}
             onChange={e => setVeifyOtp(e.target.value.toString().trim())}
           />
         </div>
