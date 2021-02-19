@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
-import DatePicker from 'react-datepicker';
 import BarChart from './BarChart';
 import './dashboard.scss';
 import DoughnutChart from './DoughnutChart';
@@ -89,7 +88,7 @@ const dealOptions = {
         ticks: {
           fontColor: '#212152', // this here
           fontWeight: '600',
-        /*  callback: value => {
+          /*  callback: value => {
             const [first, second] = value.split('-');
             return `$${first} - $${second}`;
           }, */
@@ -222,7 +221,7 @@ const Dashboard = () => {
               Date Range:
             </div>
             <div className="filter-action filter-dashboard-action">
-              {/* <input
+              <input
                 name="from"
                 onChange={e => onChangeFromInput(e)}
                 value={fromDate}
@@ -235,8 +234,8 @@ const Dashboard = () => {
                 value={endDate}
                 type="date"
                 placeholder="To"
-              /> */}
-              <DatePicker
+              />
+              {/*  <DatePicker
                 className="mr-10"
                 placeholderText="From"
                 selected={fromDate}
@@ -246,7 +245,7 @@ const Dashboard = () => {
                 placeholderText="To"
                 selected={endDate}
                 onChange={datePass => onChangeToInput(datePass)}
-              />
+              /> */}
             </div>
           </div>
           <div className="filter">
@@ -301,7 +300,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="column" >
+          <div className="column">
             <div className="card card-height">
               <div className="common-title chart-title">Company Size</div>
               <CompanyChart
@@ -310,7 +309,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="column " >
+          <div className="column ">
             <div className="card card-height">
               <div className="common-title chart-title">Gender</div>
               <DoughnutChart

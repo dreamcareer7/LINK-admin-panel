@@ -27,7 +27,7 @@ const DoughnutChart = props => {
     ],
   };
   return (
-    <div>
+    <div style={{ padding: '80px' }}>
       {chartData !== null && chartData.data.length === 0 ? (
         'No Data Available'
       ) : (
