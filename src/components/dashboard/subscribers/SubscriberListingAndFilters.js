@@ -72,7 +72,7 @@ function SubscriberListingAndFilters() {
   };
   const handleToDateChange = datePass => {
     const date = datePass;
-    date.setHours(23, 59, 59);
+    if(date) {date.setHours(23, 59, 59)}
     if (moment(date).isBefore(fromDate)) {
       errorNotification('To date should be greater than from date');
     } else {
