@@ -69,7 +69,7 @@ export const addAdmin = data => {
           successNotification('Admin added successfully');
         }
       })
-      .catch(() => errorNotification('Error during adding Admin'));
+      .catch(() => errorNotification('Failed adding Admin'));
   };
 };
 
