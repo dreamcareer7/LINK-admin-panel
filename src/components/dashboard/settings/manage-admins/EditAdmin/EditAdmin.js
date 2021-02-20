@@ -150,9 +150,9 @@ function EditAdmin() {
     if (adminName.toString().trim().length === 0) {
       errorNotification('Please enter name');
     } else if (adminEmail.length === 0) {
-      errorNotification('Please enter email');
+      errorNotification('Please enter email address');
     } else if (!checkForEmail(adminEmail)) {
-      errorNotification('Please enter valid email');
+      errorNotification('Please add a valid email address');
     } else if (adminPhone.length === 0) {
       errorNotification('Please enter phone no');
     } else {
