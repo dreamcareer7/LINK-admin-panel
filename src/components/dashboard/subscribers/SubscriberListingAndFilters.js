@@ -66,13 +66,14 @@ function SubscriberListingAndFilters() {
         startDate: date ? date.toISOString() : undefined,
         endDate: toDate ? toDate.toISOString() : undefined,
       };
-      if(data.startDate && data.endDate)
-        dispatch(getAllSubscribers(data));
+      if (data.startDate && data.endDate) dispatch(getAllSubscribers(data));
     }
   };
   const handleToDateChange = datePass => {
     const date = datePass;
-    if(date) {date.setHours(23, 59, 59)}
+    if (date) {
+      date.setHours(23, 59, 59);
+    }
     if (moment(date).isBefore(fromDate)) {
       errorNotification('To date should be greater than from date');
     } else {
@@ -83,8 +84,7 @@ function SubscriberListingAndFilters() {
         startDate: fromDate ? fromDate.toISOString() : undefined,
         endDate: date ? date.toISOString() : undefined,
       };
-      if(data.startDate && data.endDate)
-        dispatch(getAllSubscribers(data));
+      if (data.startDate && data.endDate) dispatch(getAllSubscribers(data));
     }
   };
 
@@ -156,15 +156,23 @@ function SubscriberListingAndFilters() {
                 placeholderText="From"
                 selected={fromDate}
                 onChange={datePass => handleFromDateChange(datePass)}
-                onFocus={(e) => {e.target.placeholder = ""}}
-                onBlur={(e) => {e.target.placeholder = "From"}}
+                onFocus={e => {
+                  e.target.placeholder = '';
+                }}
+                onBlur={e => {
+                  e.target.placeholder = 'From';
+                }}
               />
               <DatePicker
                 placeholderText="To"
                 selected={toDate}
                 onChange={datePass => handleToDateChange(datePass)}
-                onFocus={(e) => {e.target.placeholder = ""}}
-                onBlur={(e) => {e.target.placeholder = "To"}}
+                onFocus={e => {
+                  e.target.placeholder = '';
+                }}
+                onBlur={e => {
+                  e.target.placeholder = 'To';
+                }}
               />
             </div>
           </div>

@@ -101,11 +101,14 @@ const Invited = () => {
         startDate: moment(date).toISOString(),
         endDate: moment(toDate).toISOString(),
       };
-      dispatch(getInviteeSubscribers(data));
+      if (data.startDate && data.endDate) dispatch(getInviteeSubscribers(data));
     }
   };
   const handleToDateChange = datePass => {
     const date = datePass;
+    if (date) {
+      date.setHours(23, 59, 59);
+    }
     if (moment(date).isBefore(fromDate)) {
       errorNotification('To date should be greater than from date');
     } else {
@@ -116,7 +119,7 @@ const Invited = () => {
         startDate: moment(fromDate).toISOString(),
         endDate: moment(date).toISOString(),
       };
-      dispatch(getInviteeSubscribers(data));
+      if (data.startDate && data.endDate) dispatch(getInviteeSubscribers(data));
     }
   };
   return (
