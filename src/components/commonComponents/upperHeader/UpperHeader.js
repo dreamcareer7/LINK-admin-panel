@@ -55,6 +55,9 @@ function UpperHeader() {
       })
     );
   };
+  const goToManageProfile = () => {
+    console.log('go to profile');
+  };
   const [searchStart, setSearchStart] = useState(false);
   const searchBlurEvent = e => {
     setSearchText('');
@@ -94,13 +97,17 @@ function UpperHeader() {
           <img className="user-dp" src={(userDetails && userDetails.profilePic) || user} />
           <label style={{ cursor: 'pointer' }}>
             {userDetails && userDetails.firstName
-              ? userDetails.firstName
+              ? `${userDetails.firstName} ${userDetails.lastName ? userDetails.lastName : ''}`
               : localStorage.getItem('userName')}
           </label>
           <div className="down-arrow">
             <img src={downArrow} onClick={onDropDownClick} />
             {dropDown && (
               <div className="user-dropdown" ref={ref}>
+                <div className="dropdown-option" onClick={goToManageProfile}>
+                  <img src={logout} />
+                  <span className="menu-text">Update Profile</span>
+                </div>
                 <div className="dropdown-option" onClick={onLogOut}>
                   <img src={logout} />
                   <span className="menu-text">Logout</span>
