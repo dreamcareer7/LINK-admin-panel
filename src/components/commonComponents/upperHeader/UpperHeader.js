@@ -10,8 +10,6 @@ import { logOutUser } from '../../../redux/actions/authActions/AuthActions';
 import SubscriberService from '../../../services/subscribers-services/SubScribersServices';
 import { useOnClickOutside } from '../../../helpers/UserClickOutsideHook';
 
-/* const array = ['apple', 'banana', 'bapple', 'orange']; */
-
 function UpperHeader() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -56,7 +54,7 @@ function UpperHeader() {
     );
   };
   const goToManageProfile = () => {
-    console.log('go to profile');
+    history.replace(`/settings/manageAdmin/${userDetails._id}`);
   };
   const [searchStart, setSearchStart] = useState(false);
   const searchBlurEvent = e => {
