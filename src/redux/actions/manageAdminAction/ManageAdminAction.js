@@ -100,7 +100,7 @@ export const deleteUser = id => {
           successNotification('Admin deleted successfully');
         }
       })
-      .catch(() => errorNotification('Error during deleting Admin'));
+      .catch(() => errorNotification('Failed deleting Admin'));
   };
 };
 
