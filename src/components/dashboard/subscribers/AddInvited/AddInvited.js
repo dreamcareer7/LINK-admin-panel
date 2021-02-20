@@ -72,7 +72,7 @@ function AddInvited() {
     <div className="add-invited-container">
       <div className="breadcrumb-custom common-subtitle" onClick={() => history.goBack()}>
         <span>MANAGE INVITED &nbsp; </span>
-        {userId !== 'addInvited' ? <span>/ Edit Invited</span> : <span>/ Add Invited</span>}
+        {userId !== 'addInvited' ? <span>/ Edit Invited</span> : <span>/ Add </span>}
       </div>
 
       <div className="admin-detail">
@@ -85,8 +85,12 @@ function AddInvited() {
             placeholder="John Smith"
             type="text"
             onChange={e => setName(e.target.value)}
-            onFocus={(e) => {e.target.placeholder = ""}}
-            onBlur={(e) => {e.target.placeholder = "John Smith"}}
+            onFocus={e => {
+              e.target.placeholder = '';
+            }}
+            onBlur={e => {
+              e.target.placeholder = 'John Smith';
+            }}
           />
         </div>
         <div id="email" className="mr-20">
@@ -98,8 +102,12 @@ function AddInvited() {
             type="text"
             placeholder="john@abcmedia.com"
             onChange={e => setEmail(e.target.value)}
-            onFocus={(e) => {e.target.placeholder = ""}}
-            onBlur={(e) => {e.target.placeholder = "john@abcmedia.com"}}
+            onFocus={e => {
+              e.target.placeholder = '';
+            }}
+            onBlur={e => {
+              e.target.placeholder = 'john@abcmedia.com';
+            }}
           />
         </div>
         <div id="phone">
@@ -111,8 +119,12 @@ function AddInvited() {
             name="phone"
             placeholder="(+61)545-589-9977"
             onChange={e => setPhone(e.target.value)}
-            onFocus={(e) => {e.target.placeholder = ""}}
-            onBlur={(e) => {e.target.placeholder = "(+61)545-589-9977"}}
+            onFocus={e => {
+              e.target.placeholder = '';
+            }}
+            onBlur={e => {
+              e.target.placeholder = '(+61)545-589-9977';
+            }}
           />
         </div>
       </div>
@@ -124,7 +136,7 @@ function AddInvited() {
           </button>
         ) : (
           <button type="button" className="button success-button mr-10" onClick={addInvited}>
-            ADD INVITED
+            ADD
           </button>
         )}
         <button type="button" className="button primary-button mr-10" onClick={onCancelInvited}>
