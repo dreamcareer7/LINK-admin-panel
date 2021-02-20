@@ -45,6 +45,7 @@ function EditAdmin() {
   const [addImage, setAddImage] = useState(upload);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (userId !== 'addAdmin') {
       dispatch(getAdminById(userId));
@@ -54,9 +55,8 @@ function EditAdmin() {
   useEffect(() => {
     if (userId !== 'addAdmin') {
       setAdminName(
-        editAdmin &&
-          editAdmin.firstName &&
-          `${editAdmin.firstName}${editAdmin.lastName && ` ${editAdmin.lastName}`}`
+        editAdmin.firstName &&
+          `${editAdmin.firstName} ${editAdmin.lastName ? editAdmin.lastName : ''}`
       );
       setAdminEmail(editAdmin && editAdmin.email && editAdmin.email);
       setAdminPhone(editAdmin && editAdmin.phone && editAdmin.phone);
@@ -68,6 +68,7 @@ function EditAdmin() {
     }
   }, [
     editAdmin && editAdmin.firstName && editAdmin.firstName,
+    editAdmin && editAdmin.lastName && editAdmin.lastName,
     editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled,
     editAdmin && editAdmin.profilePic && editAdmin.profilePic,
   ]);
@@ -147,6 +148,8 @@ function EditAdmin() {
   };
 
   const onUpdateAdminEvent = () => {
+    const userName = adminName.split(' ');
+
     if (adminName.toString().trim().length === 0) {
       errorNotification('Please enter name');
     } else if (adminEmail.length === 0) {
@@ -157,7 +160,8 @@ function EditAdmin() {
       errorNotification('Please enter phone no');
     } else {
       const data = {
-        firstName: adminName,
+        firstName: userName[0] || '',
+        lastName: userName[2] ? `${userName[1]}  ${userName[2]}` : userName[1] || '',
         email: adminEmail,
         phone: adminPhone,
       };
