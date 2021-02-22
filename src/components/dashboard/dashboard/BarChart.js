@@ -18,6 +18,69 @@ const BarChart = props => {
       },
     ],
   };
+  const barOptions = {
+    animation: {
+      onComplete: e => {
+        const chartInstance = e.chart;
+        const { ctx } = chartInstance;
+        ctx.fillStyle = '#212152';
+        ctx.font = Chart.helpers.fontString(
+                Chart.defaults.global.defaultFontSize,
+                Chart.defaults.global.defaultFontFamily
+        );
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+
+        state.datasets.forEach((dataset, i) => {
+          const meta = chartInstance.controller.getDatasetMeta(i);
+          meta.data.forEach((bar, index) => {
+            if (dataset.data[index] > 0) {
+              const data = dataset.data[index];
+              if (temp === 'indus') {
+                ctx.fillText(`${data} User`, bar._model.x, bar._model.y);
+              } else {
+                ctx.fillText(`${data} Opportunities`, bar._model.x, bar._model.y);
+              }
+            }
+          });
+        });
+      },
+    },
+    scales: {
+      xAxes: [
+        {
+          barThickness: temp === 'indus' ? 50 : 80,
+          barPercentage: 0.35,
+          gridLines: {
+            drawOnChartArea: false,
+            zeroLineColor: 'transparent',
+          },
+          ticks: {
+            fontColor: '#212152', // this here
+            fontWeight: '600',
+          },
+        },
+      ],
+      yAxes: [
+        {
+          gridLines: {
+            drawOnChartArea: false,
+            zeroLineColor: 'transparent',
+          },
+          ticks: {
+            fontColor: '#212152', // this here
+            fontWeight: '600',
+            beginAtZero: true,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'users',
+          },
+        },
+      ],
+    },
+    ...options,
+  }
   return (
     <>
       {chartData !== null && chartData.data.length === 0 ? (
@@ -26,69 +89,7 @@ const BarChart = props => {
         <div className="container">
           <Bar
             data={state}
-            options={{
-              animation: {
-                onComplete: e => {
-                  const chartInstance = e.chart;
-                  const { ctx } = chartInstance;
-                  ctx.fillStyle = '#212152';
-                  ctx.font = Chart.helpers.fontString(
-                    Chart.defaults.global.defaultFontSize,
-                    Chart.defaults.global.defaultFontFamily
-                  );
-                  ctx.textAlign = 'center';
-                  ctx.textBaseline = 'bottom';
-
-                state.datasets.forEach((dataset, i) => {
-                  const meta = chartInstance.controller.getDatasetMeta(i);
-                  meta.data.forEach((bar, index) => {
-                    if (dataset.data[index] > 0) {
-                      const data = dataset.data[index];
-                      if (temp === 'indus') {
-                        ctx.fillText(`${data} User`, bar._model.x, bar._model.y);
-                      } else {
-                        ctx.fillText(`${data} Opportunities`, bar._model.x, bar._model.y);
-                      }
-                    }
-                  });
-                });
-              },
-            },
-            scales: {
-              xAxes: [
-                {
-                  barThickness: temp === 'indus' ? 50 : 80,
-                  barPercentage: 0.35,
-                  gridLines: {
-                    drawOnChartArea: false,
-                    zeroLineColor: 'transparent',
-                  },
-                  ticks: {
-                    fontColor: '#212152', // this here
-                    fontWeight: '600',
-                  },
-                },
-              ],
-              yAxes: [
-                {
-                  gridLines: {
-                    drawOnChartArea: false,
-                    zeroLineColor: 'transparent',
-                  },
-                  ticks: {
-                    fontColor: '#212152', // this here
-                    fontWeight: '600',
-                    beginAtZero: true,
-                  },
-                  scaleLabel: {
-                    display: true,
-                    labelString: 'users',
-                  },
-                },
-              ],
-            },
-            ...options,
-          }}
+            options={barOptions}
         />
           </div>
       )}
