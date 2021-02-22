@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import BarChart from './BarChart';
@@ -162,16 +163,16 @@ const opportunityOptions = {
 const Dashboard = () => {
   const chartData = useSelector(state => state.dashboardReducer);
   const [subscription, setSubscrptionType] = useState('MONTHLY');
-  const [fromDate, setFromDate] = useState(moment().subtract(30, 'days').format('yyyy-MM-DD'));
-  const [endDate, setEndDate] = useState(moment().format('yyyy-MM-DD'));
+  const [fromDate, setFromDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const dispatch = useDispatch();
 
   const onChange = e => {
     setSubscrptionType(e.target.value);
   };
 
-  const onChangeFromInput = e => {
-    const date = e.target.value;
+  const onChangeFromInput = datePass => {
+    const date = datePass;
     if (moment(date).isAfter(endDate)) {
       errorNotification('From date should be less than to date');
     } else {
@@ -179,14 +180,19 @@ const Dashboard = () => {
     }
   };
 
-  const onChangeToInput = e => {
-    const date = e.target.value;
+  const onChangeToInput = datePass => {
+    const date = datePass;
     if (moment(date).isBefore(fromDate)) {
       errorNotification('To date should be greater than from date');
     } else {
       setEndDate(date);
     }
   };
+
+  useEffect(() => {
+    setFromDate(moment().subtract(30, 'days').toDate());
+    setEndDate(moment().toDate());
+  }, []);
 
   useEffect(() => {
     // setPreviusDate();
@@ -217,11 +223,9 @@ const Dashboard = () => {
       <div className="action-container">
         <div className="filters">
           <div className="filter">
-            <div htmlFor="from" className="filter-label">
-              Date Range:
-            </div>
+            <div className="filter-label">Date Range:</div>
             <div className="filter-action filter-dashboard-action">
-              <input
+              {/* <input
                 name="from"
                 onChange={e => onChangeFromInput(e)}
                 value={fromDate}
@@ -234,18 +238,14 @@ const Dashboard = () => {
                 value={endDate}
                 type="date"
                 placeholder="To"
-              />
-              {/*  <DatePicker
+              /> */}
+              <DatePicker
                 className="mr-10"
                 placeholderText="From"
                 selected={fromDate}
-                onChange={datePass => onChangeFromInput(datePass)}
+                onChange={onChangeFromInput}
               />
-              <DatePicker
-                placeholderText="To"
-                selected={endDate}
-                onChange={datePass => onChangeToInput(datePass)}
-              /> */}
+              <DatePicker placeholderText="To" selected={endDate} onChange={onChangeToInput} />
             </div>
           </div>
           <div className="filter">
