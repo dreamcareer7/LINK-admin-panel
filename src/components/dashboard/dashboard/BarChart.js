@@ -37,9 +37,9 @@ const BarChart = props => {
             if (dataset.data[index] > 0) {
               const data = dataset.data[index];
               if (temp === 'indus') {
-                ctx.fillText(`${data} User`, bar._model.x, bar._model.y);
+                ctx.fillText(`${data} ${data === 1 ? 'User' : 'Users'}`, bar._model.x, bar._model.y);
               } else {
-                ctx.fillText(`${data} Opportunities`, bar._model.x, bar._model.y);
+                ctx.fillText(`${data} ${data === 1 ? 'Opportunity' : 'Opportunities'}`, bar._model.x, bar._model.y);
               }
             }
           });
