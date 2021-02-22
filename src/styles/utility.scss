@@ -258,7 +258,10 @@ button:focus {
   box-shadow: none!important;
 }
 
+.page-item.disabled {
+  cursor: not-allowed!important;
+}
+
 .page-item.disabled .page-link {
   color: $placeholder-color!important;
-  cursor: not-allowed!important;
 }
