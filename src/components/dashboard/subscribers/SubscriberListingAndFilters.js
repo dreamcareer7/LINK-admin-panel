@@ -299,6 +299,9 @@ function SubscriberListingAndFilters() {
             onChange={handlePageChange}
             itemClass="page-item"
             linkClass="page-link"
+            prevPageText="Prev"
+            nextPageText="Next"
+            hideFirstLastPages="true"
           />
         ) : (
           <></>
