@@ -240,8 +240,8 @@ function EditAdmin() {
 
   return (
     <div className="edit-admin-container">
-      <div className="breadcrumb-custom common-subtitle" onClick={() => history.goBack()}>
-        <span>MANAGE ADMINS </span>
+      <div className="breadcrumb-custom common-subtitle">
+        <span onClick={() => history.goBack()}>MANAGE ADMINS </span>
         {userId === 'addAdmin' && <span>/ Add Admin</span>}
         {userId !== 'addAdmin' && <span>/ EDIT / UPDATE PROFILE</span>}
       </div>

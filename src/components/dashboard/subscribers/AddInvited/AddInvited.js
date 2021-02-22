@@ -70,8 +70,8 @@ function AddInvited() {
 
   return (
     <div className="add-invited-container">
-      <div className="breadcrumb-custom common-subtitle" onClick={() => history.goBack()}>
-        <span>MANAGE INVITED &nbsp; </span>
+      <div className="breadcrumb-custom common-subtitle">
+        <span onClick={() => history.goBack()}>MANAGE INVITED &nbsp; </span>
         {userId !== 'addInvited' ? <span>/ Edit Invited</span> : <span>/ Add </span>}
       </div>
 

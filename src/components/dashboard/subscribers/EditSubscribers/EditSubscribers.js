@@ -129,12 +129,8 @@ const AddSubscribers = () => {
   return (
     <>
       <div className="edit-sub-container">
-        <div
-          className="breadcrumb-custom common-subtitle"
-          style={{ marginBottom: '1rem' }}
-          onClick={() => history.goBack()}
-        >
-          <span>SUBSCRIBERS&nbsp;</span>
+        <div className="breadcrumb-custom common-subtitle" style={{ marginBottom: '1rem' }}>
+          <span onClick={() => history.goBack()}>SUBSCRIBERS&nbsp;</span>
           <span>/ EDIT SUBSCRIBER</span>
         </div>
         <div className="d-flex">
@@ -162,8 +158,12 @@ const AddSubscribers = () => {
                     className="common-input"
                     placeholder="John Smith"
                     type="text"
-                    onFocus={(e) => {e.target.placeholder = ""}}
-                    onBlur={(e) => {e.target.placeholder = "John Smith"}}
+                    onFocus={e => {
+                      e.target.placeholder = '';
+                    }}
+                    onBlur={e => {
+                      e.target.placeholder = 'John Smith';
+                    }}
                   />
                 </div>
                 <div id="email" className="mr-20">
@@ -175,8 +175,12 @@ const AddSubscribers = () => {
                     className="common-input"
                     type="text"
                     placeholder="john@abcmedia.com"
-                    onFocus={(e) => {e.target.placeholder = ""}}
-                    onBlur={(e) => {e.target.placeholder = "john@abcmedia.com"}}
+                    onFocus={e => {
+                      e.target.placeholder = '';
+                    }}
+                    onBlur={e => {
+                      e.target.placeholder = 'john@abcmedia.com';
+                    }}
                   />
                 </div>
                 <div id="phone">
@@ -188,8 +192,12 @@ const AddSubscribers = () => {
                     className="common-input"
                     type="text"
                     placeholder="(+61)545-589-9977"
-                    onFocus={(e) => {e.target.placeholder = ""}}
-                    onBlur={(e) => {e.target.placeholder = "(+61)545-589-9977"}}
+                    onFocus={e => {
+                      e.target.placeholder = '';
+                    }}
+                    onBlur={e => {
+                      e.target.placeholder = '(+61)545-589-9977';
+                    }}
                   />
                 </div>
               </div>
