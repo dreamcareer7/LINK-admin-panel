@@ -88,8 +88,8 @@ function AddQuote() {
   };
   return (
     <div>
-      <div className="breadcrumb-custom common-title" onClick={() => history.goBack()}>
-        <span>quotes&nbsp;</span>
+      <div className="breadcrumb-custom common-title">
+        <span onClick={() => history.goBack()}>quotes&nbsp;</span>
         <span>{!id ? '/ add quote' : '/ edit quote'}</span>
       </div>
       <div className="add-quote-block">
@@ -120,8 +120,12 @@ function AddQuote() {
             className="common-input"
             placeholder="Enter name"
             value={quoteBy}
-            onFocus={(e) => {e.target.placeholder = ""}}
-            onBlur={(e) => {e.target.placeholder = "Enter name"}}
+            onFocus={e => {
+              e.target.placeholder = '';
+            }}
+            onBlur={e => {
+              e.target.placeholder = 'Enter name';
+            }}
             onChange={e => setQuoteBy(e.target.value)}
           />
         </div>
