@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import './upperHeader.scss';
 import search from '../../../assets/images/search.png';
 import user from '../../../assets/images/user.jpg';
+import updateProfile from '../../../assets/images/gray-user.svg';
 import downArrow from '../../../assets/images/arrow_down.png';
 import logout from '../../../assets/images/logout.svg';
 import { logOutUser } from '../../../redux/actions/authActions/AuthActions';
@@ -90,28 +91,30 @@ function UpperHeader() {
           </div>
         </div>
       </div>
-      <div className="logout-area" onClick={onDropDownClick}>
-        <div className="upper-header--rounded-block" style={{ cursor: 'pointer' }}>
-          <img className="user-dp" src={(userDetails && userDetails.profilePic) || user} />
-          <label style={{ cursor: 'pointer' }}>
-            {userDetails && userDetails.firstName
-              ? `${userDetails.firstName} ${userDetails.lastName ? userDetails.lastName : ''}`
-              : localStorage.getItem('userName')}
-          </label>
-          <div className="down-arrow">
-            <img src={downArrow} onClick={onDropDownClick} />
-            {dropDown && (
-              <div className="user-dropdown" ref={ref}>
-                <div className="dropdown-option" onClick={goToManageProfile}>
-                  <img src={logout} />
-                  <span className="menu-text">Update Profile</span>
-                </div>
-                <div className="dropdown-option" onClick={onLogOut}>
-                  <img src={logout} />
-                  <span className="menu-text">Logout</span>
-                </div>
-              </div>
-            )}
+      <div className={`logout-area ${dropDown && 'user-settings-container'}`} onClick={onDropDownClick}>
+        <div className={dropDown && 'user-settings-container'}>
+          <div className="upper-header--rounded-block user-settings">
+            <img className="user-dp" src={(userDetails && userDetails.profilePic) || user} />
+            <label className="user-name">
+              {userDetails && userDetails.firstName
+                      ? `${userDetails.firstName} ${userDetails.lastName ? userDetails.lastName : ''}`
+                      : localStorage.getItem('userName')}
+            </label>
+            <div className="down-arrow">
+              <img src={downArrow} onClick={onDropDownClick} />
+              {dropDown && (
+                      <div className="user-dropdown" ref={ref}>
+                        <div className="dropdown-option" onClick={goToManageProfile}>
+                          <img src={updateProfile} />
+                          <span className="menu-text">Update Profile</span>
+                        </div>
+                        <div className="dropdown-option" onClick={onLogOut}>
+                          <img src={logout} />
+                          <span className="menu-text">Logout</span>
+                        </div>
+                      </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
