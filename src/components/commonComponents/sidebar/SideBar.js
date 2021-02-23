@@ -37,7 +37,7 @@ function SideBar() {
             <img alt="settings" src={gear} /> <span>Settings</span>
           </NavLink>
         </div>
-        <div className="copyright">Copyright 2021 linkfluencer Pty Ltd</div>
+        <div className="copyright">Copyright 2021. linkfluencer Pty Ltd</div>
       </div>
     </div>
   );

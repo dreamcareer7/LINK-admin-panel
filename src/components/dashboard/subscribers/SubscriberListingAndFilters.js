@@ -178,7 +178,7 @@ function SubscriberListingAndFilters() {
           </div>
           <div className="filter">
             <div className="filter-label" style={{ paddingTop: '3px' }}>
-              Subscription Type:
+              Subscription Type
             </div>
             <div className="filter-action">
               <select value={subType} onChange={onChangeSubType}>

@@ -223,7 +223,7 @@ const Dashboard = () => {
       <div className="action-container">
         <div className="filters">
           <div className="filter">
-            <div className="filter-label">Date Range:</div>
+            <div className="filter-label">Date Range</div>
             <div className="filter-action filter-dashboard-action">
               {/* <input
                 name="from"
@@ -259,7 +259,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="filter">
-            <div className="filter-label ml-8">Subscription Type:</div>
+            <div className="filter-label ml-8">Subscription Type</div>
             <div
               className="filter-action filter-dashboard-action mt-10"
               onChange={e => onChange(e)}
