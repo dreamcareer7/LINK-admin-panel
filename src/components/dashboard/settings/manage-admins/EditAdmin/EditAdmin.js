@@ -43,6 +43,7 @@ function EditAdmin() {
   const [newPass, setNewPass] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
   const [addImage, setAddImage] = useState(upload);
+  const [deleteImageClick, setDeleteImageClick] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -85,10 +86,10 @@ function EditAdmin() {
         if (response) {
           successNotification('Image uploaded successfully');
           setAddImage(response.data.data.profilePicUrl);
-          dispatch({
+          /* dispatch({
             type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
             data: { profilePic: response.data.data.profilePicUrl },
-          });
+          }); */
         } else {
           errorNotification('It seems like server is down, Please try after sometime.');
         }
@@ -105,10 +106,11 @@ function EditAdmin() {
       .then(r => {
         if (r.data.status === 'SUCCESS') {
           successNotification('Image deleted successfully');
-          dispatch({
+          setDeleteImageClick(true);
+          /* dispatch({
             type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
             data: { profilePic: null },
-          });
+          }); */
         }
       })
       .catch(e => {
@@ -172,6 +174,16 @@ function EditAdmin() {
           type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
           data: { firstName: fname },
         });
+        dispatch({
+          type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
+          data: { profilePic: addImage },
+        });
+        if (deleteImageClick) {
+          dispatch({
+            type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
+            data: { profilePic: null },
+          });
+        }
       }
     }
   };
