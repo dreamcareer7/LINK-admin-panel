@@ -95,8 +95,8 @@ function SubscriberListingAndFilters() {
       const data = {
         page: pageNum,
         sorting,
-        startDate: fromDate.toISOString(),
-        endDate: moment(toDate).toISOString(),
+        startDate: fromDate ? fromDate.toISOString() : '',
+        endDate: toDate ? moment(toDate).toISOString() : '',
         subscriptionType,
       };
       dispatch(getAllSubscribers(data));
