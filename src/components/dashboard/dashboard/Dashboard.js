@@ -244,8 +244,24 @@ const Dashboard = () => {
                 placeholderText="From"
                 selected={fromDate}
                 onChange={onChangeFromInput}
+                onFocus={e => {
+                  e.target.placeholder = '';
+                }}
+                onBlur={e => {
+                  e.target.placeholder = 'From';
+                }}
               />
-              <DatePicker placeholderText="To" selected={endDate} onChange={onChangeToInput} />
+              <DatePicker
+                placeholderText="To"
+                selected={endDate}
+                onChange={onChangeToInput}
+                onFocus={e => {
+                  e.target.placeholder = '';
+                }}
+                onBlur={e => {
+                  e.target.placeholder = 'To';
+                }}
+              />
             </div>
           </div>
           <div className="filter">

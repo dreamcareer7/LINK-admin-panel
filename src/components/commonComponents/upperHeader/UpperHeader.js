@@ -91,28 +91,31 @@ function UpperHeader() {
           </div>
         </div>
       </div>
-      <div className={`logout-area ${dropDown && 'user-settings-container'}`} onClick={onDropDownClick}>
+      <div
+        className={`logout-area ${dropDown && 'user-settings-container'}`}
+        onClick={onDropDownClick}
+      >
         <div className={dropDown && 'user-settings-container'}>
           <div className="upper-header--rounded-block user-settings">
             <img className="user-dp" src={(userDetails && userDetails.profilePic) || user} />
             <label className="user-name">
               {userDetails && userDetails.firstName
-                      ? `${userDetails.firstName} ${userDetails.lastName ? userDetails.lastName : ''}`
-                      : localStorage.getItem('userName')}
+                ? `${userDetails.firstName} ${userDetails.lastName ? userDetails.lastName : ''}`
+                : localStorage.getItem('userName')}
             </label>
             <div className="down-arrow">
               <img src={downArrow} onClick={onDropDownClick} />
               {dropDown && (
-                      <div className="user-dropdown" ref={ref}>
-                        <div className="dropdown-option" onClick={goToManageProfile}>
-                          <img src={updateProfile} />
-                          <span className="menu-text">Update Profile</span>
-                        </div>
-                        <div className="dropdown-option" onClick={onLogOut}>
-                          <img src={logout} />
-                          <span className="menu-text">Logout</span>
-                        </div>
-                      </div>
+                <div className="user-dropdown" ref={ref}>
+                  <div className="dropdown-option" onClick={goToManageProfile}>
+                    <img src={updateProfile} />
+                    <span className="menu-text">Update Profile</span>
+                  </div>
+                  <div className="dropdown-option" onClick={onLogOut}>
+                    <img src={logout} />
+                    <span className="menu-text">Logout</span>
+                  </div>
+                </div>
               )}
             </div>
           </div>
