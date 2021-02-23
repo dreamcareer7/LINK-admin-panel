@@ -88,24 +88,24 @@ export const addInvitee = (data, cb) => {
   };
 };
 export const deleteInvitee = id => {
-  return dispatch => {
-    SubscriberService.deleteInvitee(id)
-      .then(response => {
-        if (response.data.status === 'SUCCESS') {
-          dispatch({
-            type: SUBSCRIBERS_REDUX_CONSTANTS.DELETE_INVITEE_SUBSCRIBER,
-            data: response.data.data,
-          });
-          successNotification('Invitee deleted successfully');
-        }
-      })
-      .catch(e => {
-        if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
-        } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
-          errorNotification('Internal server error');
-        }
-      });
+  return async dispatch => {
+    try {
+      const response = await SubscriberService.deleteInvitee(id);
+
+      if (response.data.status === 'SUCCESS') {
+        dispatch({
+          type: SUBSCRIBERS_REDUX_CONSTANTS.DELETE_INVITEE_SUBSCRIBER,
+          data: response.data.data,
+        });
+        successNotification('Invitee deleted successfully');
+      }
+    } catch (e) {
+      if (e.response && e.response.data.status === undefined) {
+        errorNotification('It seems like server is down, Please try after sometime.');
+      } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        errorNotification('Internal server error');
+      }
+    }
   };
 };
 export const editInvitee = id => {

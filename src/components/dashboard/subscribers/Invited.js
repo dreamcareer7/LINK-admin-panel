@@ -53,14 +53,20 @@ const Invited = () => {
     setIsModelOpen(true);
   };
 
-  const onDeleteData = () => {
-    setIsModelOpen(false);
-    const data = {
-      page: pageNum,
-      sorting,
-    };
-    dispatch(deleteInvitee(inviteeId));
-    dispatch(getInviteeSubscribers(data));
+  const onDeleteData = async () => {
+    try {
+      setIsModelOpen(false);
+
+      const data = {
+        page: pageNum,
+        sorting,
+      };
+
+      await dispatch(deleteInvitee(inviteeId));
+      await dispatch(getInviteeSubscribers(data));
+    } catch (e) {
+      /**/
+    }
   };
   const onEditInvitee = id => {
     history.push(`/subscribers/invited/${id}`);
