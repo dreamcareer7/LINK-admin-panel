@@ -63,7 +63,7 @@ function UpperHeader() {
     e.target.placeholder = 'Search Subscriber';
     setSearchStart(!e);
   };
-
+  console.log(userDetails);
   return (
     <div className="upper-header-block">
       <div className="upper-header--rounded-block search-block">
@@ -99,9 +99,7 @@ function UpperHeader() {
           <div className="upper-header--rounded-block user-settings">
             <img className="user-dp" src={(userDetails && userDetails.profilePic) || user} />
             <label className="user-name">
-              {userDetails && userDetails.firstName
-                ? `${userDetails.firstName} ${userDetails.lastName ? userDetails.lastName : ''}`
-                : localStorage.getItem('userName')}
+              {userDetails && `${userDetails?.firstName} ${userDetails?.lastName}`}
             </label>
             <div className="down-arrow">
               <img src={downArrow} onClick={onDropDownClick} />

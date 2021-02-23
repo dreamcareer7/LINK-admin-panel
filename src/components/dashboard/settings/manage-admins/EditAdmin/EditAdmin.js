@@ -35,7 +35,6 @@ function EditAdmin() {
   const [adminPhone, setAdminPhone] = useState('');
   const [isVerified, setIsVerified] = useState(false);
   const [selected, setSelected] = useState(false);
-  const [fname, setFname] = useState('');
 
   const [adminLoggedIn, setAdminLoggedIn] = useState();
 
@@ -172,7 +171,10 @@ function EditAdmin() {
       if (userId !== 'addAdmin' && editAdmin.isLoggedIn) {
         dispatch({
           type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
-          data: { firstName: fname },
+          data: {
+            firstName: userName[0] || '',
+            lastName: userName[2] ? `${userName[1]}  ${userName[2]}` : userName[1] || '',
+          },
         });
         dispatch({
           type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
@@ -292,9 +294,10 @@ function EditAdmin() {
             }}
             onBlur={e => {
               e.target.placeholder = 'John Smith';
-              setFname(e.target.value);
             }}
-            onChange={e => setAdminName(e.target.value)}
+            onChange={e => {
+              setAdminName(e.target.value);
+            }}
           />
         </div>
         <div id="email" className="mr-20">
