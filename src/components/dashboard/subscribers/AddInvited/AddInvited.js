@@ -72,7 +72,7 @@ function AddInvited() {
     <div className="add-invited-container">
       <div className="breadcrumb-custom common-subtitle">
         <span onClick={() => history.goBack()}>MANAGE INVITED &nbsp; </span>
-        {userId !== 'addInvited' ? <span>/ Edit Invited</span> : <span>/ Add </span>}
+        {userId !== 'addInvited' ? <span>/ Edit Invited</span> : <span>/ Add INVITED</span>}
       </div>
 
       <div className="admin-detail">
@@ -136,7 +136,7 @@ function AddInvited() {
           </button>
         ) : (
           <button type="button" className="button success-button mr-10" onClick={addInvited}>
-            ADD
+            ADD INVITED
           </button>
         )}
         <button type="button" className="button primary-button mr-10" onClick={onCancelInvited}>
