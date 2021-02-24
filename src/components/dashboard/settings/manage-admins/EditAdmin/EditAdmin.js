@@ -240,11 +240,11 @@ function EditAdmin() {
         phone: adminPhone,
       };
       if (userId !== 'addAdmin') {
-        dispatch(editAdminById((userId, data)));
+        dispatch(editAdminById(userId, data, () => history.push('/settings/manageAdmin/')));
       } else {
-        dispatch(addAdmin(data));
+        dispatch(addAdmin(data, () => history.push('/settings/manageAdmin/')));
       }
-      history.push('/settings/manageAdmin/');
+      // history.push('/settings/manageAdmin/');
     }
   };
 

@@ -39,7 +39,7 @@ export const getAdminById = id => {
   };
 };
 
-export const editAdminById = (id, data) => {
+export const editAdminById = (id, data, cb) => {
   return async dispatch => {
     await ManageAdminService.editAdmin(id, data)
       .then(response => {
@@ -49,6 +49,9 @@ export const editAdminById = (id, data) => {
             data: response.data.data,
           });
           successNotification('Admin updated successfully');
+          if (cb) {
+            cb();
+          }
         }
       })
       .catch(e => {
@@ -57,7 +60,7 @@ export const editAdminById = (id, data) => {
   };
 };
 
-export const addAdmin = data => {
+export const addAdmin = (data, cb) => {
   return dispatch => {
     ManageAdminService.addAdmin(data)
       .then(res => {
@@ -67,9 +70,18 @@ export const addAdmin = data => {
             data: res.data.data,
           });
           successNotification('Admin added successfully');
+          if (cb) {
+            console.log('cb');
+            cb();
+          }
         }
       })
-      .catch(() => errorNotification('Failed adding Admin'));
+      .catch(e => {
+        console.log(e);
+        if (e.response.data.status === 'ADMIN_WITH_EMAIL_EXISTS') {
+          errorNotification('Admin with this email already exist in the system');
+        }
+      });
   };
 };
 
