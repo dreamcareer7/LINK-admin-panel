@@ -55,7 +55,8 @@ function EditAdmin() {
   useEffect(() => {
     if (userId !== 'addAdmin') {
       setAdminName(
-        editAdmin.firstName &&
+        editAdmin &&
+          editAdmin.firstName &&
           `${editAdmin.firstName} ${editAdmin.lastName ? editAdmin.lastName : ''}`
       );
       setAdminEmail(editAdmin && editAdmin.email && editAdmin.email);
@@ -236,7 +237,7 @@ function EditAdmin() {
       const data = {
         firstName: userName[0] || '',
         lastName: userName[2] ? `${userName[1]}  ${userName[2]}` : userName[1] || '',
-        email: adminEmail,
+        email: adminEmail && adminEmail.trim().toString(),
         phone: adminPhone,
       };
       if (userId !== 'addAdmin') {
