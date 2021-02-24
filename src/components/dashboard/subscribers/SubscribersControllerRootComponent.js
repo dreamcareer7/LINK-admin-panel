@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Invited from './Invited';
 import SubscriberListingAndFilters from './SubscriberListingAndFilters';
@@ -36,6 +36,9 @@ const SubscribersControllerRootComponent = () => {
         .catch(e => console.log(e));
     }
   };
+  useEffect(() => {
+    document.title = 'Subscribers';
+  }, []);
   return (
     <>
       <div className="subscribed-buttons-row">

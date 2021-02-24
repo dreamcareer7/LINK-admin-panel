@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import './settings.scss';
 import ErrorMessages from './error-messages/ErrorMessages';
@@ -14,6 +14,9 @@ function Settings() {
     setActiveComponent(component);
     history.push(`/settings/${component}`);
   };
+  useEffect(() => {
+    document.title = 'Settings';
+  }, []);
   return (
     <div>
       <div className="settings-buttons-row">

@@ -23,6 +23,9 @@ function QuoteBank() {
   const query = useQuery();
 
   useEffect(() => {
+    document.title = 'Quote Bank';
+  }, []);
+  useEffect(() => {
     const statusParam = query.get('status');
     const sort = query.get('sort');
     const page = query.get('page');

@@ -188,7 +188,9 @@ const Dashboard = () => {
       setEndDate(date);
     }
   };
-
+  useEffect(() => {
+    document.title = 'Dashboard';
+  }, []);
   useEffect(() => {
     setFromDate(moment().subtract(30, 'days').toDate());
     setEndDate(moment().toDate());
