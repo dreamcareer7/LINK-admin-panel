@@ -68,7 +68,7 @@ const AddSubscribers = () => {
         location: data.client.companyLocation && data.client.companyLocation,
         sub_type: data.client.selectedPlan && data.client.selectedPlan.status,
         ave_dealvalue: data.client.ave_dealvalue && data.client.ave_dealvalue,
-        industry: data.client.industry && data.client.industry,
+        industry: data.client.industry ? data.client.industry : 'none',
         companySize: (data.client.companySize && data.client.companySize) || 'none',
         vicSub: data.client.vicSub && data.client.vicSub.toString(),
         isActive: data.client.isActive && data.client.isActive,
