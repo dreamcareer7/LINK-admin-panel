@@ -81,6 +81,8 @@ export const addInvitee = (data, cb) => {
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime.');
+        } else if (e.response.data.status === 'ALREADY_SENT') {
+          errorNotification('Subscriber or invitee already exist with this email');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
