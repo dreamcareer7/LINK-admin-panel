@@ -21,7 +21,7 @@ function SideBar() {
             <img alt="home" src={home} /> <span>Dashboard</span>
           </NavLink>
 
-          <NavLink className="menu-item menu-link" to="/subscribers/subscribed" replace>
+          <NavLink className="menu-item menu-link" to="/subscribers" replace>
             <img alt="subscribers" src={group} /> <span>Subscribers</span>
           </NavLink>
 
@@ -33,7 +33,7 @@ function SideBar() {
             <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
           </NavLink>
 
-          <NavLink className="menu-item menu-link" to="/settings/errorMessage" replace>
+          <NavLink className="menu-item menu-link" to="/settings" replace>
             <img alt="settings" src={gear} /> <span>Settings</span>
           </NavLink>
         </div>

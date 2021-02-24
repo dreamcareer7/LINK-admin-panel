@@ -63,6 +63,9 @@ function App() {
           <Layout>
             <PrivateRoute exact path="/" />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/subscribers">
+              <Redirect to="/subscribers/subscribed" />
+            </PrivateRoute>
             <PrivateRoute
               exact
               path="/subscribers/:type"
@@ -70,6 +73,9 @@ function App() {
             />
             <PrivateRoute exact path="/subscribers/subscribed/:subId" component={AddSubscribers} />
             <PrivateRoute exact path="/subscribers/invited/:userId" component={AddInvited} />
+            <PrivateRoute exact path="/settings">
+              <Redirect to="/settings/errorMessage" />
+            </PrivateRoute>
             <PrivateRoute exact path="/settings/:type" component={Settings} />
             <PrivateRoute exact path="/settings/manageAdmin/:userId" component={EditAdmin} />
             <PrivateRoute exact path="/integrations" component={Integrations} />
