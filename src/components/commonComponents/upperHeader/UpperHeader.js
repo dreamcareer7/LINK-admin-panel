@@ -99,7 +99,8 @@ function UpperHeader() {
           <div className="upper-header--rounded-block user-settings">
             <img className="user-dp" src={(userDetails && userDetails.profilePic) || user} />
             <label className="user-name">
-              {userDetails && `${userDetails?.firstName} ${userDetails?.lastName}`}
+              {userDetails &&
+                `${userDetails?.firstName} ${userDetails.lastName ? userDetails.lastName : ''}`}
             </label>
             <div className="down-arrow">
               <img src={downArrow} onClick={onDropDownClick} />
