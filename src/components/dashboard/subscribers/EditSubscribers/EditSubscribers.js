@@ -181,6 +181,7 @@ const AddSubscribers = () => {
                     onBlur={e => {
                       e.target.placeholder = 'john@abcmedia.com';
                     }}
+                    disabled
                   />
                 </div>
                 <div id="phone">

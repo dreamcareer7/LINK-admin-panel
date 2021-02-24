@@ -317,6 +317,7 @@ function EditAdmin() {
             onBlur={e => {
               e.target.placeholder = 'john@abcmedia.com';
             }}
+            disabled={userId !== 'addAdmin'}
           />
         </div>
         <div id="phone">

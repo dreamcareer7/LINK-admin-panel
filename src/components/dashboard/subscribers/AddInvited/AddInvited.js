@@ -108,6 +108,7 @@ function AddInvited() {
             onBlur={e => {
               e.target.placeholder = 'john@abcmedia.com';
             }}
+            disabled={userId !== 'addInvited'}
           />
         </div>
         <div id="phone">
