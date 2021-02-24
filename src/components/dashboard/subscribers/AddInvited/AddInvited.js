@@ -25,8 +25,10 @@ function AddInvited() {
   }, []);
   useEffect(() => {
     if (userId !== 'addInvited') {
-      setName(editInvited.firstName && `${editInvited.firstName} ${editInvited.lastName}`);
-      setEmail(editInvited && editInvited.email && editInvited.email);
+      setName(
+        editInvited && editInvited.firstName && `${editInvited.firstName} ${editInvited.lastName}`
+      );
+      setEmail(editInvited && editInvited && editInvited.email && editInvited.email);
       setPhone(editInvited && editInvited.phone && editInvited.phone);
     }
   }, [
@@ -54,7 +56,7 @@ function AddInvited() {
       const data = {
         firstName: userName[0] || '',
         lastName: userName[2] ? `${userName[1]}  ${userName[2]}` : userName[1] || '',
-        email,
+        email: email && email.trim().toString(),
         phone,
       };
       const callback = () => {
