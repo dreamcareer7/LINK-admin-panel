@@ -65,11 +65,13 @@
 
 .user-name {
   text-transform: capitalize;
+  cursor: pointer;
 }
 
 .down-arrow {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 
   img {
     width: 16px;
