@@ -98,7 +98,9 @@ function EditAdmin() {
 
   const showUploadBtn = () => {
     setAddImage(upload);
-    const img = addImage.split('/');
+    setDeleteImageClick(true);
+
+    /*  const img = addImage.split('/');
     const imgLength = img.length;
     const addPic = img[imgLength - 1];
     ManageAdminService.deleteProfilePic(addPic)
@@ -106,16 +108,16 @@ function EditAdmin() {
         if (r.data.status === 'SUCCESS') {
           successNotification('Image deleted successfully');
           setDeleteImageClick(true);
-          /* dispatch({
+          /!* dispatch({
             type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
             data: { profilePic: null },
-          }); */
+          }); *!/
         }
       })
       .catch(e => {
         console.log(e);
         errorNotification('Error in deleting image');
-      });
+      }); */
   };
 
   const onClickChangePass = () => {
@@ -165,6 +167,7 @@ function EditAdmin() {
         lastName: userName[2] ? `${userName[1]}  ${userName[2]}` : userName[1] || '',
         email: adminEmail,
         phone: adminPhone,
+        profilePic: addImage !== upload ? addImage : null,
       };
       dispatch(editAdminById(userId, data));
       history.push('/settings/manageAdmin');
@@ -178,7 +181,7 @@ function EditAdmin() {
         });
         dispatch({
           type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
-          data: { profilePic: addImage },
+          data: { profilePic: addImage !== upload ? addImage : null },
         });
         if (deleteImageClick) {
           dispatch({
@@ -235,7 +238,6 @@ function EditAdmin() {
         lastName: userName[2] ? `${userName[1]}  ${userName[2]}` : userName[1] || '',
         email: adminEmail,
         phone: adminPhone,
-        profilePicUrl: addImage,
       };
       if (userId !== 'addAdmin') {
         dispatch(editAdminById((userId, data)));
