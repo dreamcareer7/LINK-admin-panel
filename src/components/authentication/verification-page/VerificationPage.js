@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import linkFluencer from '../../../assets/images/linkfluencer.png';
 import './verification.scss';
 import AuthService from '../../../services/auth-services/AuthSevices';
 import { errorNotification, successNotification } from '../../../constants/Toast';
+import AUTH_REDUX_CONSTANTS from '../../../redux/constants/AuthReduxConstant';
 
 function VerificationPage() {
   const [verificationCode, setVerificationCode] = useState('');
   const history = useHistory();
-
+  const dispatch = useDispatch();
   const onClickVerify = () => {
     const token = localStorage.getItem('userToken');
     AuthService.verify2faLogin(token, verificationCode)
       .then(response => {
         if (response.data.status === 'SUCCESS') {
           successNotification('Logged in successfully');
+          dispatch({
+            type: AUTH_REDUX_CONSTANTS.LOGIN_USER,
+            data: response.data.data,
+          });
           localStorage.setItem('userToken', response.data.data.token);
-          localStorage.setItem('userEmail', response.data.data.email);
-          localStorage.setItem('userName', response.data.data.firstName);
-          // eslint-disable-next-line no-underscore-dangle
-          localStorage.setItem('userId', response.data.data._id);
           history.push('/dashboard');
         }
       })
@@ -36,11 +38,11 @@ function VerificationPage() {
       });
   };
 
-  const onEnterKeyPress = (e) => {
-    if(e.keyCode === 13) {
-      onClickVerify()
+  const onEnterKeyPress = e => {
+    if (e.keyCode === 13) {
+      onClickVerify();
     }
-  }
+  };
 
   return (
     <div className="content-container">
