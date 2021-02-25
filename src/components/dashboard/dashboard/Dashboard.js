@@ -227,23 +227,10 @@ const Dashboard = () => {
           <div className="filter">
             <div className="filter-label">Date Range</div>
             <div className="filter-action filter-dashboard-action">
-              {/* <input
-                name="from"
-                onChange={e => onChangeFromInput(e)}
-                value={fromDate}
-                type="date"
-                placeholder="From"
-              />
-              <input
-                name="to"
-                onChange={e => onChangeToInput(e)}
-                value={endDate}
-                type="date"
-                placeholder="To"
-              /> */}
               <DatePicker
                 className="mr-10"
-                placeholderText="From"
+                placeholderText="dd/mm/yyyy"
+                dateFormat="dd/MM/yyyy"
                 selected={fromDate}
                 onChange={onChangeFromInput}
                 onFocus={() => {
@@ -251,7 +238,8 @@ const Dashboard = () => {
                 }}
               />
               <DatePicker
-                placeholderText="To"
+                placeholderText="dd/mm/yyyy"
+                dateFormat="dd/MM/yyyy"
                 selected={endDate}
                 onChange={onChangeToInput}
                 onFocus={() => {
