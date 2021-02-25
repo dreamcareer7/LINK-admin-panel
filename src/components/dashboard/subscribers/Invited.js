@@ -128,6 +128,7 @@ const Invited = () => {
       if (data.startDate && data.endDate) dispatch(getInviteeSubscribers(data));
     }
   };
+  console.log('allInvitee', allInvitee);
   return (
     <>
       {isModelOpen && (
@@ -275,7 +276,7 @@ const Invited = () => {
                 <Pagination
                   activePage={activePage}
                   itemsCountPerPage={10}
-                  totalItemsCount={allInvitee.total || 1}
+                  totalItemsCount={allInvitee.data.total || 1}
                   pageRangeDisplayed={3}
                   onChange={handlePageChange}
                   itemClass="page-item"

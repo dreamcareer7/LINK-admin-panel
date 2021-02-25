@@ -164,9 +164,8 @@ function SubscriberListingAndFilters() {
   };
   const handlePageChange = page => {
     setPageNum(page);
-    dispatch(getAllSubscribers(page, sorting));
+    dispatch(getAllSubscribers({ page, sorting }));
   };
-
   return (
     <div>
       {isModelOpen && (
@@ -330,7 +329,8 @@ function SubscriberListingAndFilters() {
           <Pagination
             activePage={activePage}
             itemsCountPerPage={10}
-            totalItemsCount={allSubscribers.total || 1}
+            totalItemsCount={allSubscribers.data.total || 1}
+            pageRangeDisplayed={3}
             onChange={handlePageChange}
             itemClass="page-item"
             linkClass="page-link"
