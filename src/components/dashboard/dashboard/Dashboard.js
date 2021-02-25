@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
@@ -163,8 +163,10 @@ const opportunityOptions = {
 const Dashboard = () => {
   const chartData = useSelector(state => state.dashboardReducer);
   const [subscription, setSubscrptionType] = useState('MONTHLY');
-  const [fromDate, setFromDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [fromDate, setFromDate] = useState(moment().subtract(30, 'days').toDate());
+  const [endDate, setEndDate] = useState(moment().toDate());
+  const prevStartDate = useRef(null);
+  const prevEndDate = useRef(null);
   const dispatch = useDispatch();
 
   const onChange = e => {
@@ -234,7 +236,11 @@ const Dashboard = () => {
                 selected={fromDate}
                 onChange={onChangeFromInput}
                 onFocus={() => {
+                  prevStartDate.current = fromDate;
                   setFromDate('');
+                }}
+                onBlur={() => {
+                  setFromDate(prevStartDate.current);
                 }}
               />
               <DatePicker
@@ -243,7 +249,11 @@ const Dashboard = () => {
                 selected={endDate}
                 onChange={onChangeToInput}
                 onFocus={() => {
+                  prevEndDate.current = endDate;
                   setEndDate('');
+                }}
+                onBlur={() => {
+                  setEndDate(prevEndDate.current);
                 }}
               />
             </div>
