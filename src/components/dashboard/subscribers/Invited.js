@@ -6,10 +6,7 @@ import Pagination from 'react-js-pagination';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import User from '../../../assets/images/user.jpg';
-import {
-  deleteInvitee,
-  getInviteeSubscribers,
-} from '../../../redux/actions/subscribersAction/SubscribersAction';
+import { deleteInvitee, getInviteeSubscribers } from '../../../redux/actions/subscribersAction/SubscribersAction';
 import bin from '../../../assets/images/delete.png';
 import { errorNotification } from '../../../constants/Toast';
 import edit from '../../../assets/images/pencil.png';
@@ -25,9 +22,7 @@ const Invited = () => {
   const [searchText, setSearchText] = useState('');
   const docs = useMemo(() => (allInvitee && allInvitee.data ? allInvitee.data : []), [allInvitee]);
   const invitee = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
-  const activePage = useMemo(() => (allInvitee && allInvitee.page ? allInvitee.page : 1), [
-    allInvitee,
-  ]);
+  const activePage = useMemo(() => (allInvitee && allInvitee.page ? allInvitee.page : 1), [allInvitee]);
   const history = useHistory();
 
   const [isModelOpen, setIsModelOpen] = useState(false);
@@ -240,34 +235,16 @@ const Invited = () => {
                     <div className="row-container" key={value._id}>
                       <div className="tr invited-table-details">
                         <div className="td name">
-                          <img
-                            src={
-                              value && value.profilePicUrl && value.profilePicUrl
-                                ? value.profilePicUrl
-                                : User
-                            }
-                          />
+                          <img src={value && value.profilePicUrl && value.profilePicUrl ? value.profilePicUrl : User} />
                           {value.firstName} {value.lastName}
                         </div>
 
                         <div className="td email">{value.email}</div>
                         <div className="td phone">{value.phone ? value.phone : ''}</div>
-                        <div className="td date">
-                          {moment(value.createdAt).format('DD/MM/YYYY')}
-                        </div>
+                        <div className="td date">{moment(value.createdAt).format('DD/MM/YYYY')}</div>
                         <div className="action-cell">
-                          <img
-                            className="edit-image mr-5"
-                            src={edit}
-                            alt=""
-                            onClick={() => onEditInvitee(value._id)}
-                          />
-                          <img
-                            src={bin}
-                            alt=""
-                            onClick={() => onDeleteInvitee(value._id)}
-                            className="delete-image"
-                          />
+                          <img className="edit-image mr-5" src={edit} alt="" onClick={() => onEditInvitee(value._id)} />
+                          <img src={bin} alt="" onClick={() => onDeleteInvitee(value._id)} className="delete-image" />
                         </div>
                       </div>
                     </div>
@@ -287,11 +264,9 @@ const Invited = () => {
                 />
               </>
             ) : (
-              <>
-                <div className="row-container">
-                  <div style={{ textAlign: 'center', marginTop: '5vh' }}>Empty Data</div>
-                </div>
-              </>
+              <div className="row-container">
+                <div style={{ textAlign: 'center', marginTop: '5vh' }}>Empty Data</div>
+              </div>
             )}
           </div>
         </div>

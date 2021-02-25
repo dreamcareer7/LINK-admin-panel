@@ -325,7 +325,7 @@ function SubscriberListingAndFilters() {
             </>
           )}
         </div>
-        {subScribers && subScribers.length > 0 ? (
+        {subScribers && subScribers.length > 0 && (
           <Pagination
             activePage={activePage}
             itemsCountPerPage={10}
@@ -338,8 +338,6 @@ function SubscriberListingAndFilters() {
             nextPageText="Next"
             hideFirstLastPages="true"
           />
-        ) : (
-          <></>
         )}
       </div>
     </div>
