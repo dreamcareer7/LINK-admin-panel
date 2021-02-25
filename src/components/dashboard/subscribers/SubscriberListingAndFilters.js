@@ -38,12 +38,23 @@ function SubscriberListingAndFilters() {
   const handleSortChange = e => {
     const sort = e.target.value;
     setSorting(sort);
-    const data = {
-      page: pageNum,
-      sorting: sort,
-      startDate: moment(fromDate).toISOString(),
-      endDate: moment(toDate).toISOString(),
-    };
+    let data = null;
+    if (subType !== 'all') {
+      data = {
+        page: pageNum,
+        sorting: sort,
+        subscriptionType: subType,
+        startDate: moment(fromDate).toISOString(),
+        endDate: moment(toDate).toISOString(),
+      };
+    } else {
+      data = {
+        page: pageNum,
+        sorting: sort,
+        startDate: moment(fromDate).toISOString(),
+        endDate: moment(toDate).toISOString(),
+      };
+    }
     dispatch(getAllSubscribers(data));
   };
   useEffect(() => {
@@ -60,13 +71,24 @@ function SubscriberListingAndFilters() {
       errorNotification('From date should be less than to date');
     } else {
       setFromDate(date);
-      const data = {
-        page: pageNum,
-        sorting,
-        startDate: date ? date.toISOString() : undefined,
-        endDate: toDate ? toDate.toISOString() : undefined,
-      };
-      if (data.startDate && data.endDate) dispatch(getAllSubscribers(data));
+      if (subType !== 'all') {
+        const data = {
+          page: pageNum,
+          sorting,
+          subscriptionType: subType,
+          startDate: date ? date.toISOString() : undefined,
+          endDate: toDate ? toDate.toISOString() : undefined,
+        };
+        if (data.startDate && data.endDate) dispatch(getAllSubscribers(data));
+      } else {
+        const data = {
+          page: pageNum,
+          sorting,
+          startDate: date ? date.toISOString() : undefined,
+          endDate: toDate ? toDate.toISOString() : undefined,
+        };
+        if (data.startDate && data.endDate) dispatch(getAllSubscribers(data));
+      }
     }
   };
   const handleToDateChange = datePass => {
@@ -78,13 +100,24 @@ function SubscriberListingAndFilters() {
       errorNotification('To date should be greater than from date');
     } else {
       setToDate(date);
-      const data = {
-        page: pageNum,
-        sorting,
-        startDate: fromDate ? fromDate.toISOString() : undefined,
-        endDate: date ? date.toISOString() : undefined,
-      };
-      if (data.startDate && data.endDate) dispatch(getAllSubscribers(data));
+      if (subType !== 'all') {
+        const data = {
+          page: pageNum,
+          sorting,
+          subscriptionType: subType,
+          startDate: fromDate ? fromDate.toISOString() : undefined,
+          endDate: date ? date.toISOString() : undefined,
+        };
+        if (data.startDate && data.endDate) dispatch(getAllSubscribers(data));
+      } else {
+        const data = {
+          page: pageNum,
+          sorting,
+          startDate: fromDate ? fromDate.toISOString() : undefined,
+          endDate: date ? date.toISOString() : undefined,
+        };
+        if (data.startDate && data.endDate) dispatch(getAllSubscribers(data));
+      }
     }
   };
 
