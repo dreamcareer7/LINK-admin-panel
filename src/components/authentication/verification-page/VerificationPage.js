@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import linkFluencer from '../../../assets/images/linkfluencer.png';
@@ -43,6 +43,9 @@ function VerificationPage() {
       onClickVerify();
     }
   };
+  useEffect(() => {
+    document.title = 'Verification Page';
+  }, []);
 
   return (
     <div className="content-container">

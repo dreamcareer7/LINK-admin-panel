@@ -33,7 +33,9 @@ function LoginPage() {
       }
     }
   }, [loggedUser]);
-
+  useEffect(() => {
+    document.title = 'Login';
+  }, []);
   const onClickLoginButton = (inputUserName, inputPassword) => {
     if (inputUserName.toString().trim().length === 0) errorNotification('Please enter username');
     else if (!checkForEmail(replaceHiddenCharacters(inputUserName)))
@@ -46,11 +48,11 @@ function LoginPage() {
     }
   };
 
-  const onEnterKeyPress = (e) => {
-    if(e.keyCode === 13) {
-      onClickLoginButton(userName, password)
+  const onEnterKeyPress = e => {
+    if (e.keyCode === 13) {
+      onClickLoginButton(userName, password);
     }
-  }
+  };
 
   return (
     <div className="login-content-container">
@@ -72,8 +74,12 @@ function LoginPage() {
             type={showPassword ? 'text' : 'password'}
             placeholder="Enter Password"
             value={password}
-            onFocus={(e) => {e.target.placeholder = ""}}
-            onBlur={(e) => {e.target.placeholder = "Enter Password"}}
+            onFocus={e => {
+              e.target.placeholder = '';
+            }}
+            onBlur={e => {
+              e.target.placeholder = 'Enter Password';
+            }}
             onChange={e => setPassword(e.target.value.toString().trim())}
             onKeyDown={onEnterKeyPress}
           />
