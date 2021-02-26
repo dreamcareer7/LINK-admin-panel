@@ -79,7 +79,7 @@ export const addAdmin = (data, cb) => {
       .catch(e => {
         console.log(e);
         if (e.response.data.status === 'ADMIN_WITH_EMAIL_EXISTS') {
-          errorNotification('Admin with this email already exist in the system');
+          errorNotification('Admin with this email already exists in the system');
         }
       });
   };
