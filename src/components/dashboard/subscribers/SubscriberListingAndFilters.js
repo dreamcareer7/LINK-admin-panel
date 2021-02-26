@@ -66,6 +66,7 @@ function SubscriberListingAndFilters() {
   }, []);
 
   const handleFromDateChange = datePass => {
+    setPageNum(1);
     const date = datePass;
     if (moment(date).isAfter(toDate)) {
       errorNotification('From date should be less than to date');
@@ -93,6 +94,7 @@ function SubscriberListingAndFilters() {
   };
   const handleToDateChange = datePass => {
     const date = datePass;
+    setPageNum(1);
     if (date) {
       date.setHours(23, 59, 59);
     }
@@ -124,6 +126,7 @@ function SubscriberListingAndFilters() {
   const onChangeSubType = e => {
     const subscriptionType = e.target.value;
     setSubType(subscriptionType);
+    setPageNum(1);
     if (subscriptionType !== 'all') {
       const data = {
         page: pageNum,
@@ -318,11 +321,9 @@ function SubscriberListingAndFilters() {
               ))}
             </>
           ) : (
-            <>
-              <div className="row-container">
+              <div className="no-subscriber-container">
                 <div style={{ textAlign: 'center', marginTop: '5vh' }}>Empty Data</div>
               </div>
-            </>
           )}
         </div>
         {subScribers && subScribers.length > 0 && (
