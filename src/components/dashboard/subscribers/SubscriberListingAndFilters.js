@@ -145,7 +145,7 @@ function SubscriberListingAndFilters() {
   };
 
   const activePage = useMemo(
-    () => (allSubscribers && allSubscribers.page ? allSubscribers.page : 1),
+    () => (allSubscribers && allSubscribers.data.page ? allSubscribers.data.page : 1),
     [allSubscribers]
   );
   const onEditSub = subId => {
