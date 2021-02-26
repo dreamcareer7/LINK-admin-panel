@@ -63,7 +63,7 @@ const SubscribersControllerRootComponent = () => {
               className="button success-button add-invited-btn mr-10"
               onClick={() => onAddInvite()}
             >
-              ADD
+              ADD INVITED
             </button>
           )}
           <button
