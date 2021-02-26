@@ -25,9 +25,10 @@ const Invited = () => {
   const [searchText, setSearchText] = useState('');
   const docs = useMemo(() => (allInvitee && allInvitee.data ? allInvitee.data : []), [allInvitee]);
   const invitee = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
-  const activePage = useMemo(() => (allInvitee && allInvitee.page ? allInvitee.page : 1), [
-    allInvitee,
-  ]);
+  const activePage = useMemo(
+    () => (allInvitee && allInvitee.data.page ? allInvitee.data.page : 1),
+    [allInvitee]
+  );
   const history = useHistory();
 
   const [isModelOpen, setIsModelOpen] = useState(false);
