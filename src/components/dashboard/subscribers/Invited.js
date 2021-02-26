@@ -156,7 +156,7 @@ const Invited = () => {
                     e.target.placeholder = '';
                   }}
                   onBlur={e => {
-                    e.target.placeholder = 'From';
+                    e.target.placeholder = 'dd/mm/yyyy';
                   }}
                   onChange={datePass => handleFromDateChange(datePass)}
                 />
@@ -169,7 +169,7 @@ const Invited = () => {
                     e.target.placeholder = '';
                   }}
                   onBlur={e => {
-                    e.target.placeholder = 'To';
+                    e.target.placeholder = 'dd/mm/yyyy';
                   }}
                 />
               </div>

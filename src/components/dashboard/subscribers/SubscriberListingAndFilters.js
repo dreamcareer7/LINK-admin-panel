@@ -193,7 +193,7 @@ function SubscriberListingAndFilters() {
                   e.target.placeholder = '';
                 }}
                 onBlur={e => {
-                  e.target.placeholder = 'From';
+                  e.target.placeholder = 'dd/mm/yyyy';
                 }}
               />
               <DatePicker
@@ -205,7 +205,7 @@ function SubscriberListingAndFilters() {
                   e.target.placeholder = '';
                 }}
                 onBlur={e => {
-                  e.target.placeholder = 'To';
+                  e.target.placeholder = 'dd/mm/yyyy';
                 }}
               />
             </div>
