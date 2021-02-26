@@ -41,8 +41,7 @@ function EditAdmin() {
   const [currentPass, setCurrentPass] = useState('');
   const [newPass, setNewPass] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
-  const [addImage, setAddImage] = useState(upload);
-  const [deleteImageClick, setDeleteImageClick] = useState(false);
+  const [addImage, setAddImage] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -62,7 +61,7 @@ function EditAdmin() {
       setAdminEmail(editAdmin && editAdmin.email && editAdmin.email);
       setAdminPhone(editAdmin && editAdmin.phone && editAdmin.phone);
       setAdminLoggedIn(editAdmin && editAdmin.isLoggedIn && editAdmin.isLoggedIn);
-      setAddImage(editAdmin && editAdmin.profilePic ? editAdmin.profilePic : upload);
+      setAddImage(editAdmin && editAdmin.profilePic ? editAdmin.profilePic : null);
       if (editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled !== null)
         setSelected(editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled);
       setIsVerified(editAdmin && editAdmin.phone && editAdmin.isTwoFAEnabled);
@@ -77,8 +76,9 @@ function EditAdmin() {
   const onClickUploadImg = () => {
     document.getElementById('imageDropBox').click();
   };
-
+  console.log('addImage', addImage);
   const addProfilePic = event => {
+    console.log('add profile pic');
     const formData = new FormData();
     formData.append('profile-pic', event.target.files[0]);
     ManageAdminService.uploadProfilePic(formData)
@@ -98,9 +98,11 @@ function EditAdmin() {
   };
 
   const showUploadBtn = () => {
-    setAddImage(upload);
-    setDeleteImageClick(true);
-
+    setAddImage(null);
+    dispatch({
+      type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
+      data: { profilePic: null },
+    });
     /*  const img = addImage.split('/');
     const imgLength = img.length;
     const addPic = img[imgLength - 1];
@@ -168,7 +170,7 @@ function EditAdmin() {
         lastName: userName[2] ? `${userName[1]}  ${userName[2]}` : userName[1] || '',
         email: adminEmail,
         phone: adminPhone,
-        profilePic: addImage !== upload ? addImage : null,
+        profilePic: addImage !== null ? addImage : null,
       };
       dispatch(editAdminById(userId, data));
       history.push('/settings/manageAdmin');
@@ -182,14 +184,8 @@ function EditAdmin() {
         });
         dispatch({
           type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
-          data: { profilePic: addImage !== upload ? addImage : null },
+          data: { profilePic: addImage !== null ? addImage : null },
         });
-        if (deleteImageClick) {
-          dispatch({
-            type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
-            data: { profilePic: null },
-          });
-        }
       }
     }
   };
@@ -265,12 +261,16 @@ function EditAdmin() {
 
       {userId !== 'addAdmin' && adminLoggedIn ? (
         <div className="profile-image-container">
-          {addImage !== upload && (
+          {addImage !== null && (
             <button type="button" className="close-btn" onClick={showUploadBtn}>
               X
             </button>
           )}
-          <img className="DP-image-edit add-image" src={addImage} onClick={onClickUploadImg} />
+          <img
+            className="DP-image-edit add-image"
+            src={addImage || upload}
+            onClick={onClickUploadImg}
+          />
           <input
             id="imageDropBox"
             style={{ display: 'none' }}
