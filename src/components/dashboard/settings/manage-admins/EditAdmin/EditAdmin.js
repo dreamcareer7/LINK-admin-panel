@@ -259,7 +259,7 @@ function EditAdmin() {
     <div className="edit-admin-container">
       <div className="breadcrumb-custom common-subtitle">
         <span onClick={() => history.goBack()}>MANAGE ADMINS </span>
-        {userId === 'addAdmin' && <span>/ Add Admin</span>}
+        {userId === 'addAdmin' && <span>/ Add</span>}
         {userId !== 'addAdmin' && <span>/ EDIT / UPDATE PROFILE</span>}
       </div>
 
@@ -417,7 +417,7 @@ function EditAdmin() {
             className="button success-button mr-10"
             onClick={() => onClickSaveAdmin()}
           >
-            ADD ADMIN
+            ADD
           </button>
           <button type="button" className="button primary-button mr-10" onClick={() => onCancel()}>
             CANCEL

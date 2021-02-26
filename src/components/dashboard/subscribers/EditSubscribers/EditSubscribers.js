@@ -131,7 +131,7 @@ const AddSubscribers = () => {
       <div className="edit-sub-container">
         <div className="breadcrumb-custom common-subtitle" style={{ marginBottom: '1rem' }}>
           <span onClick={() => history.goBack()}>SUBSCRIBERS&nbsp;</span>
-          <span>/ EDIT SUBSCRIBER</span>
+          <span>/ EDIT</span>
         </div>
         <div className="d-flex">
           <img
@@ -357,7 +357,7 @@ const AddSubscribers = () => {
                   onClick={onDeleteSubscribers}
                   className="button danger-button mr-10"
                 >
-                  DELETE SUBSCRIBER
+                  DELETE
                 </button>
               </div>
             </form>

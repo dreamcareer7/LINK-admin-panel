@@ -90,7 +90,7 @@ function AddQuote() {
     <div>
       <div className="breadcrumb-custom common-title">
         <span onClick={() => history.goBack()}>quotes&nbsp;</span>
-        <span>{!id ? '/ add quote' : '/ edit quote'}</span>
+        <span>{!id ? '/ add' : '/ edit'}</span>
       </div>
       <div className="add-quote-block">
         <div className="common-title-black mar-bott-5">Quote</div>
@@ -104,7 +104,7 @@ function AddQuote() {
       <div className="add-edit-quote-block">
         <div className="common-title-black mar-bott-5">
           Tags
-          <span className="common-content"> (Separated by commas) </span>
+          <span className="common-content"> (Separate by comma) </span>
         </div>
         <input
           rows="1"
@@ -148,7 +148,7 @@ function AddQuote() {
           className="button success-button add-edit-quote-button"
           onClick={onClickSaveQuote}
         >
-          {id ? 'SAVE CHANGES' : 'SAVE QUOTE'}
+          {id ? 'SAVE CHANGES' : 'SAVE'}
         </button>
         <button
           type="button"
@@ -163,7 +163,7 @@ function AddQuote() {
             className="button danger-button add-edit-quote-button"
             onClick={onClickDeleteQuote}
           >
-            DELETE QUOTE
+            DELETE
           </button>
         )}
       </div>
