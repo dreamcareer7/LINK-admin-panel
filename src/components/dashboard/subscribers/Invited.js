@@ -235,62 +235,63 @@ const Invited = () => {
               </div>
             </div>
             {invitee && invitee.length > 0 ? (
-              <>
-                <div style={{ minHeight: 'calc(100vh - 370px)' }}>
-                  {invitee.map(value => (
-                    <div className="row-container" key={value._id}>
-                      <div className="tr invited-table-details">
-                        <div className="td name">
-                          <img
-                            src={
-                              value && value.profilePicUrl && value.profilePicUrl
-                                ? value.profilePicUrl
-                                : User
-                            }
-                          />
-                          {value.firstName} {value.lastName}
-                        </div>
-
-                        <div className="td email">{value.email}</div>
-                        <div className="td phone">{value.phone ? value.phone : ''}</div>
-                        <div className="td date">
-                          {moment(value.createdAt).format('DD/MM/YYYY')}
-                        </div>
-                        <div className="action-cell">
-                          <img
-                            className="edit-image mr-5"
-                            src={edit}
-                            alt=""
-                            onClick={() => onEditInvitee(value._id)}
-                          />
-                          <img
-                            src={bin}
-                            alt=""
-                            onClick={() => onDeleteInvitee(value._id)}
-                            className="delete-image"
-                          />
-                        </div>
-                      </div>
+                    <div className="no-invited-container">
+                      <div style={{ textAlign: 'center', marginTop: '5vh' }}>Empty Data</div>
                     </div>
-                  ))}
-                </div>
-                <Pagination
-                  activePage={activePage}
-                  itemsCountPerPage={10}
-                  totalItemsCount={allInvitee.data.total || 1}
-                  pageRangeDisplayed={3}
-                  onChange={handlePageChange}
-                  itemClass="page-item"
-                  linkClass="page-link"
-                  prevPageText="Prev"
-                  nextPageText="Next"
-                  hideFirstLastPages="true"
-                />
-              </>
             ) : (
-              <div className="row-container">
-                <div style={{ textAlign: 'center', marginTop: '5vh' }}>Empty Data</div>
-              </div>
+                    <>
+                      <div style={{ minHeight: 'calc(100vh - 370px)' }}>
+                        {invitee.map(value => (
+                                <div className="row-container" key={value._id}>
+                                  <div className="tr invited-table-details">
+                                    <div className="td name">
+                                      <img
+                                              src={
+                                                value && value.profilePicUrl && value.profilePicUrl
+                                                        ? value.profilePicUrl
+                                                        : User
+                                              }
+                                      />
+                                      {value.firstName} {value.lastName}
+                                    </div>
+
+                                    <div className="td email">{value.email}</div>
+                                    <div className="td phone">{value.phone ? value.phone : ''}</div>
+                                    <div className="td date">
+                                      {moment(value.createdAt).format('DD/MM/YYYY')}
+                                    </div>
+                                    <div className="action-cell">
+                                      <img
+                                              className="edit-image mr-5"
+                                              src={edit}
+                                              alt=""
+                                              onClick={() => onEditInvitee(value._id)}
+                                      />
+                                      <img
+                                              src={bin}
+                                              alt=""
+                                              onClick={() => onDeleteInvitee(value._id)}
+                                              className="delete-image"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                        ))}
+                      </div>
+                      <Pagination
+                              activePage={activePage}
+                              itemsCountPerPage={10}
+                              totalItemsCount={allInvitee.data.total || 1}
+                              pageRangeDisplayed={3}
+                              onChange={handlePageChange}
+                              itemClass="page-item"
+                              linkClass="page-link"
+                              prevPageText="Prev"
+                              nextPageText="Next"
+                              hideFirstLastPages="true"
+                      />
+                    </>
+
             )}
           </div>
         </div>

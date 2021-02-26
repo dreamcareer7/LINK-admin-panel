@@ -107,3 +107,10 @@
   width: 160px;
   text-align: center;
 }}
+
+.no-quote-container, .no-invited-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 400px);
+}
