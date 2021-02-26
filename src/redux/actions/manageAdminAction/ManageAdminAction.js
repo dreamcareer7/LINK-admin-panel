@@ -76,6 +76,7 @@ export const addAdmin = (data, cb) => {
           }
         }
       })
+
       .catch(e => {
         console.log(e);
         if (e.response.data.status === 'ADMIN_WITH_EMAIL_EXISTS') {
