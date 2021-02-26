@@ -65,7 +65,7 @@ const ManageAdmins = () => {
                       <img src={(value && value.profilePic) || User} />
                       {value
                         ? `${value.firstName && value.firstName}  ${
-                            value.lastName && value.lastName
+                            value.lastName ? value.lastName : ''
                           }`
                         : 'No Name Available'}
                     </div>
@@ -106,7 +106,7 @@ const ManageAdmins = () => {
                   <div className="admin-table-details tr">
                     <div className="name">
                       <img src={(val && val.profilePic) || User} />
-                      {val && val.firstName} {val && val.lastName && val.lastName}
+                      {val && val.firstName} {val.lastName ? val.lastName : ''}
                     </div>
                     <div className="td email">{val && val.email}</div>
                     <div className="td phone">{val && val.phone}</div>
