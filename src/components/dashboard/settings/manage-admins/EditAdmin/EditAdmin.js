@@ -76,9 +76,7 @@ function EditAdmin() {
   const onClickUploadImg = () => {
     document.getElementById('imageDropBox').click();
   };
-  console.log('addImage', addImage);
   const addProfilePic = event => {
-    console.log('add profile pic');
     const formData = new FormData();
     formData.append('profile-pic', event.target.files[0]);
     ManageAdminService.uploadProfilePic(formData)
@@ -99,10 +97,10 @@ function EditAdmin() {
 
   const showUploadBtn = () => {
     setAddImage(null);
-    dispatch({
+    /* dispatch({
       type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
       data: { profilePic: null },
-    });
+    }); */
     /*  const img = addImage.split('/');
     const imgLength = img.length;
     const addPic = img[imgLength - 1];

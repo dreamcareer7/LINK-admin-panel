@@ -118,35 +118,35 @@ function QuoteBank() {
         </div>
       )}
       {quotes.length !== 0 ? (
-              <>
-                <div className="quote-table">
-                  <div className="tr heading">
-                    <div className="td quote">Quote</div>
-                    <div className="td author">Author</div>
-                    <div className="td tags">Tags</div>
-                    <div className="td status">Status</div>
-                    <div className="td action" />
-                  </div>
-                  {data && data.map(quote => <Quote key={quote._id} quote={quote} />)}
-                </div>
-                <Pagination
-                        activePage={activePage}
-                        itemsCountPerPage={10}
-                        totalItemsCount={allQuotesData.total || 1}
-                        pageRangeDisplayed={3}
-                        onChange={handlePageChange}
-                        itemClass="page-item"
-                        linkClass="page-link"
-                        prevPageText="Prev"
-                        nextPageText="Next"
-                        hideFirstLastPages="true"
-                />
-              </>
+        <>
+          <div className="quote-table">
+            <div className="tr heading">
+              <div className="td quote">Quote</div>
+              <div className="td author">Author</div>
+              <div className="td tags">Tags</div>
+              <div className="td status">Status</div>
+              <div className="td action" />
+            </div>
+            {data && data.map(quote => <Quote key={quote._id} quote={quote} />)}
+          </div>
+          <Pagination
+            activePage={activePage}
+            itemsCountPerPage={10}
+            totalItemsCount={allQuotesData.total || 1}
+            pageRangeDisplayed={3}
+            onChange={handlePageChange}
+            itemClass="page-item"
+            linkClass="page-link"
+            prevPageText="Prev"
+            nextPageText="Next"
+            hideFirstLastPages="true"
+          />
+        </>
       ) : (
-              <div className="no-quote-container">
-                <div style={{ textAlign: 'center', marginTop: '5vh' }}>Empty Data</div>
-              </div>
-                  )}
+        <div className="no-quote-container">
+          <div style={{ textAlign: 'center', marginTop: '5vh' }}>Empty Data</div>
+        </div>
+      )}
     </div>
   );
 }
