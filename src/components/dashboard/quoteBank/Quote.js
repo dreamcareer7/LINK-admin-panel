@@ -64,8 +64,8 @@ function Quote({ quote }) {
     <div className="tr-container">
       {isModelOpen && (
         <Modal
-          description="Are you sure you want to delete Opportunity?"
-          title="Delete Opportunity"
+          description="Are you sure you want to delete quote?"
+          title="Delete Quote"
           deleteData={onDeleteData}
           onClosePopup={onClosePopup}
         />
