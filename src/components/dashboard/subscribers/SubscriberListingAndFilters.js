@@ -34,7 +34,7 @@ function SubscriberListingAndFilters() {
   const [subType, setSubType] = useState('all');
   const [isModelOpen, setIsModelOpen] = useState(false);
   const [subscriberId, setSubscriberId] = useState('');
-
+console.log('allSubscribers->',allSubscribers.data.total)
   const handleSortChange = e => {
     const sort = e.target.value;
     setSorting(sort);
@@ -66,7 +66,6 @@ function SubscriberListingAndFilters() {
   }, []);
 
   const handleFromDateChange = datePass => {
-    setPageNum(1);
     const date = datePass;
     if (moment(date).isAfter(toDate)) {
       errorNotification('From date should be less than to date');
@@ -74,7 +73,7 @@ function SubscriberListingAndFilters() {
       setFromDate(date);
       if (subType !== 'all') {
         const data = {
-          page: pageNum,
+          page: 1,
           sorting,
           subscriptionType: subType,
           startDate: date ? date.toISOString() : undefined,
@@ -83,7 +82,7 @@ function SubscriberListingAndFilters() {
         if (data.startDate && data.endDate) dispatch(getAllSubscribers(data));
       } else {
         const data = {
-          page: pageNum,
+          page: 1,
           sorting,
           startDate: date ? date.toISOString() : undefined,
           endDate: toDate ? toDate.toISOString() : undefined,
@@ -94,7 +93,6 @@ function SubscriberListingAndFilters() {
   };
   const handleToDateChange = datePass => {
     const date = datePass;
-    setPageNum(1);
     if (date) {
       date.setHours(23, 59, 59);
     }
@@ -104,7 +102,7 @@ function SubscriberListingAndFilters() {
       setToDate(date);
       if (subType !== 'all') {
         const data = {
-          page: pageNum,
+          page: 1,
           sorting,
           subscriptionType: subType,
           startDate: fromDate ? fromDate.toISOString() : undefined,
@@ -113,7 +111,7 @@ function SubscriberListingAndFilters() {
         if (data.startDate && data.endDate) dispatch(getAllSubscribers(data));
       } else {
         const data = {
-          page: pageNum,
+          page: 1,
           sorting,
           startDate: fromDate ? fromDate.toISOString() : undefined,
           endDate: date ? date.toISOString() : undefined,
@@ -126,10 +124,9 @@ function SubscriberListingAndFilters() {
   const onChangeSubType = e => {
     const subscriptionType = e.target.value;
     setSubType(subscriptionType);
-    setPageNum(1);
     if (subscriptionType !== 'all') {
       const data = {
-        page: pageNum,
+        page: 1,
         sorting,
         startDate: fromDate ? fromDate.toISOString() : '',
         endDate: toDate ? moment(toDate).toISOString() : '',
@@ -138,7 +135,7 @@ function SubscriberListingAndFilters() {
       dispatch(getAllSubscribers(data));
     } else {
       const data = {
-        page: pageNum,
+        page: 1,
         sorting,
         startDate: fromDate ? moment(fromDate).toISOString() : '',
         endDate: toDate ? moment(toDate).toISOString() : '',
