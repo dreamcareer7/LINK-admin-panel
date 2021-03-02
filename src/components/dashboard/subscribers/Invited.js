@@ -150,19 +150,19 @@ const Invited = () => {
               <div className="filter-action">
                 <DatePicker
                   className="mr-10"
-                  placeholderText="dd/mm/yyyy"
+                  placeholderText="From"
                   dateFormat="dd/MM/yyyy"
                   selected={fromDate}
                   onFocus={e => {
                     e.target.placeholder = '';
                   }}
                   onBlur={e => {
-                    e.target.placeholder = 'dd/mm/yyyy';
+                    e.target.placeholder = 'From';
                   }}
                   onChange={datePass => handleFromDateChange(datePass)}
                 />
                 <DatePicker
-                  placeholderText="dd/mm/yyyy"
+                  placeholderText="To"
                   dateFormat="dd/MM/yyyy"
                   selected={toDate}
                   onChange={datePass => handleToDateChange(datePass)}
@@ -170,7 +170,7 @@ const Invited = () => {
                     e.target.placeholder = '';
                   }}
                   onBlur={e => {
-                    e.target.placeholder = 'dd/mm/yyyy';
+                    e.target.placeholder = 'To';
                   }}
                 />
               </div>
