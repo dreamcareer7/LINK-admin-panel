@@ -63,7 +63,7 @@ const CompanyChart = props => {
             <>
                 {chartData && chartData.data.length > 0 ? (
                         <div className="graph-container">
-                            <div id="pie-legends" className="d-flex align-items-center"/>
+                            <div id="pie-legends"/>
                             <div className="graph">
                                 <Pie
                                         height={null}

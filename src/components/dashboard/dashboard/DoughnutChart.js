@@ -81,8 +81,8 @@ const DoughnutChart = props => {
         <div className="no-data-style">No Data Available</div>
       ) : (
               <div className="graph-container">
-                {type === 'subscriptions' && <div id="subscription-legends" className="d-flex align-items-center"/>}
-                {type !== 'subscriptions' && <div id="gender-legends" className="d-flex align-items-center"/>}
+                {type === 'subscriptions' && <div id="subscription-legends"/>}
+                {type !== 'subscriptions' && <div id="gender-legends"/>}
                 <div className="graph">
         <Doughnut
                 height={null}
