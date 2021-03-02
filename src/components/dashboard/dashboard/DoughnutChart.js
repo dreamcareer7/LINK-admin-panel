@@ -89,7 +89,7 @@ const DoughnutChart = props => {
           data={type === 'subscriptions' ? subscriptionsState : genderState}
           options={{
             cutoutPercentage: 65,
-            elements: {
+           /* elements: {
               center: {
                 text: 1,
                 color: '#07084B', // Default is #000000
@@ -97,7 +97,7 @@ const DoughnutChart = props => {
                 fontSize: 10, // Default is 20 (in px), set to false and text will not wrap.
                 lineHeight: 1, // Default is 25 (in px), used for when text wraps
               },
-            },
+            }, */
             aspectRatio: 1,
             plugins: {
               datalabels: {
