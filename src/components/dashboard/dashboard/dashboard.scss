@@ -19,10 +19,6 @@
   flex: 1;
 }
 
-.card-height {
-  min-height: 350px;
-}
-
 .column-100 {
   width: 100%;
   padding: 10px 10px;
@@ -47,6 +43,7 @@
 }
 
 .card {
+  height: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   text-align: center;

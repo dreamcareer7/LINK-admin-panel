@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Bar, Chart } from 'react-chartjs-2';
+import 'chartjs-plugin-datalabels';
 // import ChartDataLabels from 'chartjs-plugin-labels';
 
 const BarChart = props => {

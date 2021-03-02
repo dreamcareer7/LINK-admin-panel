@@ -18,6 +18,10 @@ import { errorNotification } from '../../../constants/Toast';
 
 const indusryOptions = {
   plugins: {
+    datalabels: {
+      display: false,
+      color: 'white'
+    },
     labels: {
       render: 'value',
     },
@@ -301,7 +305,7 @@ const Dashboard = () => {
       <div className="mt-40 ">
         <div className="row">
           <div className="column">
-            <div className="card card-height">
+            <div className="card">
               <div className="common-title chart-title">Subscriptions</div>
               <DoughnutChart
                 type="subscriptions"
@@ -311,7 +315,7 @@ const Dashboard = () => {
           </div>
 
           <div className="column">
-            <div className="card card-height">
+            <div className="card">
               <div className="common-title chart-title">Company Size</div>
               <CompanyChart
                 chartData={chartData && chartData.companyValue && chartData.companyValue}
@@ -320,7 +324,7 @@ const Dashboard = () => {
           </div>
 
           <div className="column ">
-            <div className="card card-height">
+            <div className="card">
               <div className="common-title chart-title">Gender</div>
               <DoughnutChart
                 type="gender"

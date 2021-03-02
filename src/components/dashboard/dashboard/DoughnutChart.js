@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './dashboard.scss';
 import PropTypes from 'prop-types';
-import { Doughnut } from 'react-chartjs-2';
+import {Doughnut} from 'react-chartjs-2';
 
 const DoughnutChart = props => {
   const { chartData, type } = props;
@@ -23,19 +23,89 @@ const DoughnutChart = props => {
         label: 'Rainfall',
         backgroundColor: ['#FCAB4F', '#1E205D', '#39C3BB'],
         hoverBackgroundColor: ['#FEE1C0', '#696A93', '#DADBF3'],
-        data: chartData && chartData.data.map(e => e.total),
+        data: chartData && chartData.data.map(e => (e.total ? e.total : '')),
       },
     ],
   };
+  const legendFunction = () => {
+    const legendHtml = [];
+    const state = type === 'subscriptions' ? subscriptionsState : genderState;
+    legendHtml.push('<ul>');
+    if(chartData) {
+      chartData.data.forEach((record, index) => {
+        legendHtml.push('<li>');
+        legendHtml.push(`<div className="chart-legend" style="background-color: ${state.datasets[0].backgroundColor[index]}">${record.total}</div>`)
+        legendHtml.push(`<label className="chart-legend-label-text">${record._id}</label>`);
+        legendHtml.push('<li>')
+      })
+    }
+    legendHtml.push('</ul>');
+    return legendHtml.join("");
+  }
+
+  useEffect(() => {
+    if (chartData && chartData.data && chartData.data.length > 0 && type === 'subscriptions') {
+      const element = document.getElementById("subscription-legends");
+      if (element) {
+        element.innerHTML = legendFunction()
+        console.log(element.innerHTML);
+      }
+    }
+  }, [chartData])
+
+  useEffect(() => {
+    if (chartData && chartData.data && chartData.data.length > 0 && type !== 'subscriptions') {
+      const element = document.getElementById("gender-legends");
+      if (element) {
+        element.innerHTML = legendFunction()
+        console.log(element.innerHTML);
+      }
+    }
+  }, [chartData])
+/*
+  const centerTotal = () => {
+    const total = [];
+    if(chartData && chartData.data) {
+      chartData.data.map((e => {
+        total.push(e.total);
+        console.log(total);
+        return total
+      }))
+    }
+  }
+*/
+
   return (
     <>
       {chartData !== null && chartData.data.length === 0 ? (
         <div className="no-data-style">No Data Available</div>
       ) : (
+              <div className="graph-container">
+                {type === 'subscriptions' && <div id="subscription-legends" className="d-flex align-items-center"/>}
+                {type !== 'subscriptions' && <div id="gender-legends" className="d-flex align-items-center"/>}
+                <div className="graph">
         <Doughnut
+                height={null}
+                width={null}
+                id="doughnut-chart"
           data={type === 'subscriptions' ? subscriptionsState : genderState}
           options={{
+            cutoutPercentage: 65,
+            elements: {
+              center: {
+                text: 1,
+                color: '#07084B', // Default is #000000
+                fontStyle: 'roboto', // Default is Arial
+                fontSize: 10, // Default is 20 (in px), set to false and text will not wrap.
+                lineHeight: 1, // Default is 25 (in px), used for when text wraps
+              },
+            },
+            aspectRatio: 1,
             plugins: {
+              datalabels: {
+                display: true,
+                color: 'white'
+              },
               labels: {
                 render: 'value',
               },
@@ -64,12 +134,11 @@ const DoughnutChart = props => {
             //     });
             //   },
             // },
-            legend: {
-              display: true,
-              position: 'left',
-            },
+            legend: false
           }}
         />
+                </div>
+              </div>
       )}
     </>
   );
