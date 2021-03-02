@@ -63,12 +63,16 @@
     min-width: 150px;
     height: 30px;
     padding: 0px 15px;
-    color: $placeholder-color;
     background-color: $secondary-variant-color;
     border: none;
     outline: none;
     border-radius: 5px;
   }
+
+  .react-datepicker__input-container input {
+    font-weight: 400!important;
+  }
+
   input:focus{
     outline: none;
   }

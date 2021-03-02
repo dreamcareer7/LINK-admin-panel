@@ -12,26 +12,14 @@
   margin-top: 40px;
 }
 
-.action-container{
-
-      .filter-dashboard-action input{
-        min-width: 30px !important;
-        cursor: pointer;
-        color: #999999;
-      }
-  .filter-dashboard-action span{
-    cursor: pointer;
-    color: #999999;
-  }
-}
-
 .column {
   float: left;
   width: 33.33% !important;
   padding: 0 10px;
   flex: 1;
 }
-.card-height{
+
+.card-height {
   min-height: 350px;
 }
 
@@ -62,9 +50,12 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   text-align: center;
-  background-color: #f1f1f1;
+  background-color: #F9F9F9 !important;
+  border-radius: 10px !important;
+  border: none !important;
+  box-shadow: none !important;
 
-  .chart-title{
+  .chart-title {
     font-size: 20px;
     text-transform: uppercase;
     font-weight: 800;
@@ -96,8 +87,8 @@
   height: 110px;
 }
 
-.no-data-style{
- display: flex;
+.no-data-style {
+  display: flex;
   flex: 1;
   align-items: center;
   justify-content: center
