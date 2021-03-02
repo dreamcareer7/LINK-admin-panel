@@ -48,7 +48,6 @@ const DoughnutChart = props => {
       const element = document.getElementById("subscription-legends");
       if (element) {
         element.innerHTML = legendFunction()
-        console.log(element.innerHTML);
       }
     }
   }, [chartData])
@@ -58,7 +57,6 @@ const DoughnutChart = props => {
       const element = document.getElementById("gender-legends");
       if (element) {
         element.innerHTML = legendFunction()
-        console.log(element.innerHTML);
       }
     }
   }, [chartData])

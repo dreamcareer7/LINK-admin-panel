@@ -55,7 +55,6 @@ const CompanyChart = props => {
             const element = document.getElementById("pie-legends");
             if (element) {
                 element.innerHTML = legendFunction()
-                console.log(element.innerHTML);
             }
         }
     }, [chartData])
