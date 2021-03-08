@@ -278,7 +278,7 @@ function EditAdmin() {
           />
         </div>
       ) : (
-        <img className="DP-image-edit" src={editAdmin ? editAdmin.profilePic : user} />
+        <img className="DP-image-edit" src={editAdmin.profilePic || user} />
       )}
 
       <div className="admin-detail">
