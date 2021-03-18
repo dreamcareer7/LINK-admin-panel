@@ -129,7 +129,7 @@ const Invited = () => {
       if (data.startDate && data.endDate) dispatch(getInviteeSubscribers(data));
     }
   };
-  console.log('allInvitee', allInvitee);
+
   return (
     <>
       {isModelOpen && (
@@ -234,7 +234,7 @@ const Invited = () => {
                 <div />
               </div>
             </div>
-            {invitee && invitee.length > 0 ? (
+            {invitee && invitee.length < 0 ? (
                     <div className="no-invited-container">
                       <div style={{ textAlign: 'center', marginTop: '5vh' }}>Empty Data</div>
                     </div>
