@@ -14,6 +14,7 @@ import './Editsubscribers.scss';
 import { checkForEmail, errorNotification } from '../../../../constants/Toast';
 import { getLabelFromValues } from '../../../../helpers/mappingHelper';
 import subTypeObject from '../../../../helpers/Mapper';
+import Modal from "../../../commonComponents/Modal/Modal";
 
 const AddSubscribers = () => {
   const { subId } = useParams();
@@ -22,6 +23,7 @@ const AddSubscribers = () => {
   const dispatch = useDispatch();
   const { data } = useSelector(state => state.subscrberReducer.getById);
   const { company, industries } = useSelector(state => state.subscrberReducer);
+  const [isModelOpen, setIsModelOpen] = useState(false);
   const [form, setFormValue] = useState({
     username: '',
     email: '',
@@ -111,7 +113,14 @@ const AddSubscribers = () => {
     history.replace('/subscribers/subscribed');
   };
 
+  const onClosePopup = () => {
+    setIsModelOpen(false);
+  };
   const onDeleteSubscribers = () => {
+    setIsModelOpen(true);
+  };
+  const onDeleteData = () => {
+    setIsModelOpen(false);
     dispatch(deleteSubscribers(subId));
     history.push('/subscribers/subscribed');
   };
@@ -128,6 +137,14 @@ const AddSubscribers = () => {
 
   return (
     <>
+      {isModelOpen && (
+              <Modal
+                      description="Are you sure you want to delete subscriber?"
+                      title="Delete Subscriber"
+                      deleteData={onDeleteData}
+                      onClosePopup={onClosePopup}
+              />
+      )}
       <div className="edit-sub-container">
         <div className="breadcrumb-custom common-subtitle" style={{ marginBottom: '1rem' }}>
           <span onClick={() => history.goBack()}>SUBSCRIBERS&nbsp;</span>
