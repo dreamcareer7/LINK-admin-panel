@@ -296,7 +296,7 @@ console.log('allSubscribers->',allSubscribers.data.total)
                       <div className="td subscribe">
                         {getLabelFromValues(value.selectedPlan.status, subTypeObject)}
                       </div>
-                      <div className="td date">{moment(value.createdAt).format('L')}</div>
+                      <div className="td date">{moment(value.createdAt).format('DD/MM/YYYY')}</div>
                       <div className="td total-payment">{`$${value.totalReceivedAmount}`}</div>
                       <div className="action-cell">
                         <img
