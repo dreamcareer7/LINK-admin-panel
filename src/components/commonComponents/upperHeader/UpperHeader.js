@@ -86,12 +86,12 @@ function UpperHeader() {
         <div className="search-icon">
           <img src={search} />
           {searchDropDown &&
-          <div className="search-area" >
+          <div className="search-area" ref={searchRef}>
             {searchStart && filtered.length===0 && (
-                    <div className="open-search-area" ref={searchRef}>No subscriber found</div>
+                    <div className="open-search-area">No subscriber found</div>
             )}
             {filtered.map(e => (
-                    <div className="open-search-area" ref={searchRef} onClick={() => onClickSearchedVal(e._id)}>
+                    <div className="open-search-area" onClick={() => onClickSearchedVal(e._id)}>
                       {e.firstName} {e.lastName}
                     </div>
             ))}
