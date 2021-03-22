@@ -19,6 +19,8 @@ function UpperHeader() {
 
   const [dropDown, setDropDown] = useState(false);
   const ref = useRef();
+  const searchRef = useRef();
+  const [searchDropDown,setSearchDropDown] = useState(false);
   const [filtered, setFiltered] = useState([]);
 
   const onSearch = e => {
@@ -36,11 +38,15 @@ function UpperHeader() {
     } else {
       setFiltered([]);
     }
+    setSearchDropDown(!searchDropDown)
   };
   const onDropDownClick = () => {
     setDropDown(!dropDown);
   };
+
+
   useOnClickOutside(ref, () => setDropDown(false));
+  useOnClickOutside(searchRef, ()=>setSearchDropDown(false));
 
   const onClickSearchedVal = val => {
     history.push(`/subscribers/subscribed/${val}`);
@@ -79,16 +85,18 @@ function UpperHeader() {
         />
         <div className="search-icon">
           <img src={search} />
-          <div className="search-area">
-            {searchStart && filtered.length === 0 && (
-              <div className="open-search-area">No subscriber found</div>
+          {searchDropDown &&
+          <div className="search-area" ref={searchRef}>
+            {searchStart && filtered.length===0 && (
+                    <div className="open-search-area">No subscriber found</div>
             )}
             {filtered.map(e => (
-              <div className="open-search-area" onClick={() => onClickSearchedVal(e._id)}>
-                {e.firstName} {e.lastName}
-              </div>
+                    <div className="open-search-area" onClick={() => onClickSearchedVal(e._id)}>
+                      {e.firstName} {e.lastName}
+                    </div>
             ))}
           </div>
+          }
         </div>
       </div>
       <div
