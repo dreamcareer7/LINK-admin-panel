@@ -45,7 +45,7 @@ function AddInvited() {
     const userName = name.split(' ');
 
     if ((!name && !userName) || (userName && userName.toString().trim().length === 0)) {
-      errorNotification('Please enter invitee name');
+      errorNotification('Please enter their name');
     } else if (!email || (email && email.toString().trim().length === 0)) {
       errorNotification('Please enter invitee email');
     } else if (!checkForEmail(email)) {
