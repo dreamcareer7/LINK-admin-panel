@@ -69,7 +69,7 @@ function UpperHeader() {
     e.target.placeholder = 'Search Subscriber';
     setSearchStart(!e);
   };
-  console.log(userDetails);
+
   return (
     <div className="upper-header-block">
       <div className="upper-header--rounded-block search-block">
