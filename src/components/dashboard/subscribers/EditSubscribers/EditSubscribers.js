@@ -11,7 +11,6 @@ import {
   updateSubscribers,
 } from '../../../../redux/actions/subscribersAction/SubscribersAction';
 import './Editsubscribers.scss';
-import { checkForEmail, errorNotification } from '../../../../constants/Toast';
 import { getLabelFromValues } from '../../../../helpers/mappingHelper';
 import subTypeObject from '../../../../helpers/Mapper';
 import Modal from "../../../commonComponents/Modal/Modal";
@@ -41,7 +40,6 @@ const AddSubscribers = () => {
   });
 
   const updateField = e => {
-    console.log(e.target.name, e.target.value);
     setFormValue({
       ...form,
       [e.target.name]: e.target.value,
@@ -82,11 +80,11 @@ const AddSubscribers = () => {
     e.preventDefault();
 
     const userName = form.username ? form.username.split(' ') : '';
-    if (!form.email || (form.email && form.email.trim().length === 0)) {
+  /*  if (!form.email || (form.email && form.email.trim().length === 0)) {
       errorNotification('Please enter email');
     } else if (!checkForEmail(form.email)) {
-      errorNotification('Please enter valid email');
-    } else {
+      errorNotification('Please enter valid email'); */
+
       const formData = {
         firstName: (userName && userName[0] && userName[0].trim()) || '',
         lastName: (userName && userName[1] && userName[1].trim()) || '',
@@ -106,7 +104,7 @@ const AddSubscribers = () => {
       dispatch(
         updateSubscribers(subId, formData, () => history.replace('/subscribers/subscribed'))
       );
-    }
+
   };
 
   const onDiscardChanges = () => {
