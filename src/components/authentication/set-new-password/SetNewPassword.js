@@ -26,7 +26,7 @@ function SetNewPassword() {
     } else if (replaceHiddenCharacters(confirmPassword.toString()).trim().length === 0) {
       errorNotification('Confirm password can not be empty');
     } else if (password !== confirmPassword) {
-      errorNotification("Password doesn't match");
+      errorNotification("Passwords do not match");
     } else {
       AuthService.setNewPassword(token, password)
         .then(response => {
