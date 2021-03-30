@@ -99,7 +99,7 @@ const Invited = () => {
   const handleFromDateChange = datePass => {
     const date = datePass;
     if (moment(date).isAfter(toDate)) {
-      errorNotification('From date should be less than to date');
+      errorNotification('Please enter a date in the future');
     } else {
       setFromDate(date);
       const data = {
@@ -117,7 +117,7 @@ const Invited = () => {
       date.setHours(23, 59, 59);
     }
     if (moment(date).isBefore(fromDate)) {
-      errorNotification('To date should be greater than from date');
+      errorNotification('Please enter a date in the future');
     } else {
       setToDate(date);
       const data = {
