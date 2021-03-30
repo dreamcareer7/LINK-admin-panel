@@ -51,9 +51,9 @@ function AddQuote() {
   };
 
   const onClickSaveQuote = async () => {
-    if (quote.toString().trim().length === 0) errorNotification('Please enter quote');
+    if (quote.toString().trim().length === 0) errorNotification('Please enter a quote');
     else if (tags.length === 0) {
-      errorNotification('Please enter tags');
+      errorNotification('Please enter a relevant tag');
     } else if (
       tags
         .split(',')
@@ -65,7 +65,7 @@ function AddQuote() {
     ) {
       errorNotification('Could not accept comma before and after tag');
     } else if (quoteBy.toString().trim().length === 0) {
-      errorNotification('Please enter author');
+      errorNotification('Please enter an author');
     } else {
       const data = {
         quote: quote.trim(),
@@ -96,6 +96,13 @@ function AddQuote() {
         <div className="common-title-black mar-bott-5">Quote</div>
         <textarea
           rows="3"
+          placeholder="Enter the text here"
+          onFocus={e => {
+            e.target.placeholder = '';
+          }}
+          onBlur={e => {
+            e.target.placeholder = 'Enter the text here';
+          }}
           className="common-input"
           value={quote}
           onChange={e => setQuote(e.target.value)}
@@ -109,6 +116,13 @@ function AddQuote() {
         <input
           rows="1"
           className="common-input"
+          placeholder="Enter the tag here"
+          onFocus={e => {
+            e.target.placeholder = '';
+          }}
+          onBlur={e => {
+            e.target.placeholder = 'Enter the tag here';
+          }}
           value={tags}
           onChange={e => setTags(e.target.value)}
         />
@@ -118,13 +132,13 @@ function AddQuote() {
           <div className="common-title-black mar-bott-5">Author</div>
           <input
             className="common-input"
-            placeholder="Enter name"
+            placeholder="Enter their full name"
             value={quoteBy}
             onFocus={e => {
               e.target.placeholder = '';
             }}
             onBlur={e => {
-              e.target.placeholder = 'Enter name';
+              e.target.placeholder = 'Enter their full name';
             }}
             onChange={e => setQuoteBy(e.target.value)}
           />

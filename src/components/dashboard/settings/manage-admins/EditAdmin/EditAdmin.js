@@ -82,7 +82,7 @@ function EditAdmin() {
     ManageAdminService.uploadProfilePic(formData)
       .then(response => {
         if (response) {
-          successNotification('Image uploaded successfully');
+          successNotification('Profile image uploaded successfully');
           setAddImage(response.data.data.profilePicUrl);
           /* dispatch({
             type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
@@ -123,15 +123,15 @@ function EditAdmin() {
 
   const onClickChangePass = () => {
     if (!currentPass || currentPass.trim().length === 0) {
-      errorNotification('Please enter current password');
+      errorNotification('Please enter your current password');
     } else if (!newPass || newPass.trim().length === 0) {
-      errorNotification('Please enter new password');
+      errorNotification('Please enter a new password');
     } else if (!confirmPass || confirmPass.trim().length === 0) {
       errorNotification('Please confirm different password');
     } else if (currentPass === newPass) {
-      errorNotification('Please enter different password');
+      errorNotification('Please enter a different password');
     } else if (newPass !== confirmPass) {
-      errorNotification('Password does not match');
+      errorNotification('Passwords do not match');
     } else {
       const data = {
         oldPassword: currentPass,
@@ -153,15 +153,14 @@ function EditAdmin() {
 
   const onUpdateAdminEvent = () => {
     const userName = adminName.split(' ');
-
     if (adminName.toString().trim().length === 0) {
-      errorNotification('Please enter name');
+      errorNotification(editAdmin.isLoggedIn ? 'Please enter name' : 'Please enter their name');
     } else if (adminEmail.length === 0) {
-      errorNotification('Please enter email address');
+      errorNotification(editAdmin.isLoggedIn ? 'Please enter email address' : 'Please enter their email address');
     } else if (!checkForEmail(adminEmail)) {
       errorNotification('Please add a valid email address');
     } else if (adminPhone.length === 0) {
-      errorNotification('Please enter phone no');
+      errorNotification(editAdmin.isLoggedIn ? 'Please enter phone number' : 'Please enter their phone number');
     } else {
       const data = {
         firstName: userName[0] || '',
@@ -200,9 +199,9 @@ function EditAdmin() {
 
   const onClickVerify = () => {
     if (!twoFaCode || (twoFaCode && twoFaCode.trim().length === 0)) {
-      errorNotification('Please enter 2fa code.');
+      errorNotification('Please enter a 2FA code');
     } else if (twoFaCode && twoFaCode.trim().length !== 6) {
-      errorNotification('Please enter valid 2fa code.');
+      errorNotification('Please enter valid 2FA code.');
     } else {
       AuthService.configure2faLogin(selected, twoFaCode)
         .then(response => {
@@ -212,7 +211,7 @@ function EditAdmin() {
           }
         })
         .catch(() => {
-          errorNotification('2fa Verification is failed, Please try again.');
+          errorNotification('2FA Verification is failed, Please try again.');
         });
     }
   };
@@ -220,13 +219,13 @@ function EditAdmin() {
   const onClickSaveAdmin = async () => {
     const userName = adminName.split(' ');
     if (adminName.toString().trim().length === 0) {
-      errorNotification('Please enter name');
+        errorNotification('Please enter their name');
     } else if (adminEmail.length === 0) {
-      errorNotification('Please enter email');
+      errorNotification('Please add their email address');
     } else if (!checkForEmail(adminEmail)) {
       errorNotification('Please enter valid email');
     } else if (adminPhone.length === 0) {
-      errorNotification('Please enter phone no');
+      errorNotification('Please add their phone number');
     } else if (adminName && adminEmail && adminPhone) {
       const data = {
         firstName: userName[0] || '',
@@ -287,14 +286,14 @@ function EditAdmin() {
           <input
             className="common-input"
             name="name"
-            placeholder="John Smith"
+            placeholder="Enter their name"
             value={adminName ?? ''}
             type="text"
             onFocus={e => {
               e.target.placeholder = '';
             }}
             onBlur={e => {
-              e.target.placeholder = 'John Smith';
+              e.target.placeholder = 'Enter their name';
             }}
             onChange={e => {
               setAdminName(e.target.value);
@@ -309,12 +308,12 @@ function EditAdmin() {
             name="email"
             type="text"
             onChange={e => setAdminEmail(e.target.value)}
-            placeholder="john@abcmedia.com"
+            placeholder="Enter their email"
             onFocus={e => {
               e.target.placeholder = '';
             }}
             onBlur={e => {
-              e.target.placeholder = 'john@abcmedia.com';
+              e.target.placeholder = 'Enter their email';
             }}
             disabled={userId !== 'addAdmin'}
           />
@@ -327,12 +326,12 @@ function EditAdmin() {
             type="text"
             name="phone"
             onChange={e => setAdminPhone(e.target.value)}
-            placeholder="(+61)545-589-9977"
+            placeholder="Enter their phone number"
             onFocus={e => {
               e.target.placeholder = '';
             }}
             onBlur={e => {
-              e.target.placeholder = '(+61)545-589-9977';
+              e.target.placeholder = 'Enter their phone number';
             }}
           />
         </div>
@@ -347,13 +346,13 @@ function EditAdmin() {
                 name="currentPass"
                 type="password"
                 value={currentPass}
-                placeholder="Enter Current Password"
+                placeholder="Enter current password"
                 onChange={e => setCurrentPass(e.target.value)}
                 onFocus={e => {
                   e.target.placeholder = '';
                 }}
                 onBlur={e => {
-                  e.target.placeholder = 'Enter Current Password';
+                  e.target.placeholder = 'Enter current password';
                 }}
               />
             </div>
@@ -365,13 +364,13 @@ function EditAdmin() {
                 type="password"
                 name="newPass"
                 value={newPass}
-                placeholder="Enter New Password"
+                placeholder="Enter new password"
                 onChange={e => setNewPass(e.target.value)}
                 onFocus={e => {
                   e.target.placeholder = '';
                 }}
                 onBlur={e => {
-                  e.target.placeholder = 'Enter New Password';
+                  e.target.placeholder = 'Enter new password';
                 }}
               />
             </div>
@@ -382,13 +381,13 @@ function EditAdmin() {
                 type="password"
                 name="confirmPass"
                 value={confirmPass}
-                placeholder="Confirm Password"
+                placeholder="Confirm password"
                 onChange={e => setConfirmPass(e.target.value)}
                 onFocus={e => {
                   e.target.placeholder = '';
                 }}
                 onBlur={e => {
-                  e.target.placeholder = 'Confirm Password';
+                  e.target.placeholder = 'Confirm password';
                 }}
               />
             </div>

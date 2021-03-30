@@ -6,6 +6,7 @@ import SubscriberListingAndFilters from './SubscriberListingAndFilters';
 import './subscribers.scss';
 import { downloadFile } from '../../../helpers/DownloadHelper';
 import SubscriberService from '../../../services/subscribers-services/SubScribersServices';
+import {successNotification} from "../../../constants/Toast";
 
 const SubscribersControllerRootComponent = () => {
   const { type } = useParams();
@@ -25,6 +26,7 @@ const SubscribersControllerRootComponent = () => {
         .then(r => {
           const subscribersData = r.data;
           downloadFile(subscribersData, 'subscribers.csv');
+          successNotification('Subscriber list downloaded successfully')
         })
         .catch(e => console.log(e));
     } else if (type === 'invited') {
@@ -32,6 +34,7 @@ const SubscribersControllerRootComponent = () => {
         .then(r => {
           const inviteeData = r.data;
           downloadFile(inviteeData, 'invitees.csv');
+          successNotification('Invitee list downloaded successfully')
         })
         .catch(e => console.log(e));
     }

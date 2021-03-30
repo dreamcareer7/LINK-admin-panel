@@ -41,7 +41,7 @@ const ManageAdmins = () => {
     <>
       {isModelOpen && (
         <Modal
-          description="Are you sure you want to delete admin?"
+          description="Are you sure you want to delete this admin user?"
           title="Delete Admin"
           deleteData={onDeleteData}
           onClosePopup={onClosePopup}

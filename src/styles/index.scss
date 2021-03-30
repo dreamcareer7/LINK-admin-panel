@@ -96,6 +96,7 @@ input[type="radio"] + label:before {
   border: 1px solid #bbbbbb;
   background-color: #e7e6e7;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 /* appearance of checked radiobutton */

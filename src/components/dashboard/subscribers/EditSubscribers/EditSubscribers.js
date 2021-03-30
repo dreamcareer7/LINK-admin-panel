@@ -137,7 +137,7 @@ const AddSubscribers = () => {
     <>
       {isModelOpen && (
               <Modal
-                      description="Are you sure you want to delete subscriber?"
+                      description="Are you sure you want to delete this subscriber?"
                       title="Delete Subscriber"
                       deleteData={onDeleteData}
                       onClosePopup={onClosePopup}
@@ -171,13 +171,13 @@ const AddSubscribers = () => {
                     name="username"
                     onChange={updateField}
                     className="common-input"
-                    placeholder="John Smith"
+                    placeholder="Enter their name"
                     type="text"
                     onFocus={e => {
                       e.target.placeholder = '';
                     }}
                     onBlur={e => {
-                      e.target.placeholder = 'John Smith';
+                      e.target.placeholder = 'Enter their name';
                     }}
                   />
                 </div>
@@ -189,12 +189,12 @@ const AddSubscribers = () => {
                     onChange={updateField}
                     className="common-input"
                     type="text"
-                    placeholder="john@abcmedia.com"
+                    placeholder="Enter their email"
                     onFocus={e => {
                       e.target.placeholder = '';
                     }}
                     onBlur={e => {
-                      e.target.placeholder = 'john@abcmedia.com';
+                      e.target.placeholder = 'Enter their email';
                     }}
                     disabled
                   />
@@ -207,12 +207,12 @@ const AddSubscribers = () => {
                     onChange={updateField}
                     className="common-input"
                     type="text"
-                    placeholder="(+61)545-589-9977"
+                    placeholder="Enter their phone number"
                     onFocus={e => {
                       e.target.placeholder = '';
                     }}
                     onBlur={e => {
-                      e.target.placeholder = '(+61)545-589-9977';
+                      e.target.placeholder = 'Enter their phone number';
                     }}
                   />
                 </div>
@@ -265,6 +265,13 @@ const AddSubscribers = () => {
                   <input
                     type="text"
                     name="location"
+                    placeholder="Enter their location"
+                    onFocus={e => {
+                      e.target.placeholder = '';
+                    }}
+                    onBlur={e => {
+                      e.target.placeholder = 'Enter their location';
+                    }}
                     onChange={updateField}
                     className="common-input"
                     value={form.location}

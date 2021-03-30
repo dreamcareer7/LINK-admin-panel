@@ -134,7 +134,7 @@ const Invited = () => {
     <>
       {isModelOpen && (
         <Modal
-          description="Are you sure you want to delete invitee?"
+          description="Are you sure you want to delete this invitee?"
           title="Delete Invitee"
           deleteData={onDeleteData}
           onClosePopup={onClosePopup}
@@ -194,14 +194,14 @@ const Invited = () => {
                 <input
                   type="text"
                   className="common-input"
-                  placeholder="Enter name or email"
+                  placeholder="Enter their name or email"
                   value={searchText}
                   onChange={onSearch}
                   onFocus={e => {
                     e.target.placeholder = '';
                   }}
                   onBlur={e => {
-                    e.target.placeholder = 'Enter name or email';
+                    e.target.placeholder = 'Enter their name or email';
                   }}
                 />
               </div>

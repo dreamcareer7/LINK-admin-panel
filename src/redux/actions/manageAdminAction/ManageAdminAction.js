@@ -48,7 +48,7 @@ export const editAdminById = (id, data, cb) => {
             type: ADMIN_REDUX_CONSTANTS.UPDATE_ADMIN,
             data: response.data.data,
           });
-          successNotification('Admin updated successfully');
+          successNotification('Admin details updated successfully');
           if (cb) {
             cb();
           }
@@ -69,7 +69,7 @@ export const addAdmin = (data, cb) => {
             type: ADMIN_REDUX_CONSTANTS.ADD_NEW_ADMIN,
             data: res.data.data,
           });
-          successNotification('Admin added successfully');
+          successNotification('Admin user added successfully');
           if (cb) {
             console.log('cb');
             cb();
@@ -110,7 +110,7 @@ export const deleteUser = id => {
             type: ADMIN_REDUX_CONSTANTS.DELETE_ADMIN,
             id,
           });
-          successNotification('Admin deleted successfully');
+          successNotification('Admin user deleted successfully');
         }
       })
       .catch(() => errorNotification('Failed deleting Admin'));
@@ -132,6 +132,6 @@ export const changeAdminPass = (data, cb) => {
           }
         }
       })
-      .catch(() => errorNotification('Please check your current password'));
+      .catch(() => errorNotification('Your current password is incorrect'));
   };
 };

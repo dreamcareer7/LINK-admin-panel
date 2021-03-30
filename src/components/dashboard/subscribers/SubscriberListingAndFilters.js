@@ -170,7 +170,7 @@ console.log('allSubscribers->',allSubscribers.data.total)
     <div>
       {isModelOpen && (
         <Modal
-          description="Are you sure you want to delete subscriber?"
+          description="Are you sure you want to delete this subscriber?"
           title="Delete Subscriber"
           deleteData={onDeleteData}
           onClosePopup={onClosePopup}

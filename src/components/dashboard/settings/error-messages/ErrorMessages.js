@@ -44,7 +44,7 @@ function ErrorMessages() {
 
       dispatch(updateErrorMessage(data));
     } else {
-      errorNotification('You have not changed anything');
+      errorNotification('You have not made any changes');
     }
   };
 

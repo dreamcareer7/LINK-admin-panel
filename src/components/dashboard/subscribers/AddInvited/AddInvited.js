@@ -7,7 +7,7 @@ import {
   editInvitee,
   updateInvitee,
 } from '../../../../redux/actions/subscribersAction/SubscribersAction';
-import { checkForEmail, errorNotification } from '../../../../constants/Toast';
+import {checkForEmail, errorNotification} from '../../../../constants/Toast';
 
 function AddInvited() {
   const [name, setName] = useState('');
@@ -47,11 +47,11 @@ function AddInvited() {
     if ((!name && !userName) || (userName && userName.toString().trim().length === 0)) {
       errorNotification('Please enter their name');
     } else if (!email || (email && email.toString().trim().length === 0)) {
-      errorNotification('Please add an email address.');
+      errorNotification('Please enter their email address.');
     } else if (!checkForEmail(email)) {
-      errorNotification('Please add a valid email address');
+      errorNotification('Please enter a valid email address');
     } else if (!phone || (phone && phone.toString().trim().length === 0)) {
-      errorNotification('Please add a phone number.');
+      errorNotification('Please enter their phone number.');
     } else {
       const data = {
         firstName: userName[0] || '',
@@ -84,14 +84,14 @@ function AddInvited() {
             className="common-input"
             value={name}
             name="name"
-            placeholder="John Smith"
+            placeholder="Enter their name"
             type="text"
             onChange={e => setName(e.target.value)}
             onFocus={e => {
               e.target.placeholder = '';
             }}
             onBlur={e => {
-              e.target.placeholder = 'John Smith';
+              e.target.placeholder = 'Enter their name';
             }}
           />
         </div>
@@ -102,13 +102,13 @@ function AddInvited() {
             value={email}
             name="email"
             type="text"
-            placeholder="john@abcmedia.com"
+            placeholder="Enter their email"
             onChange={e => setEmail(e.target.value)}
             onFocus={e => {
               e.target.placeholder = '';
             }}
             onBlur={e => {
-              e.target.placeholder = 'john@abcmedia.com';
+              e.target.placeholder = 'Enter their email';
             }}
             disabled={userId !== 'addInvited'}
           />
@@ -120,13 +120,13 @@ function AddInvited() {
             value={phone}
             type="text"
             name="phone"
-            placeholder="(+61)545-589-9977"
+            placeholder="Enter their phone number"
             onChange={e => setPhone(e.target.value)}
             onFocus={e => {
               e.target.placeholder = '';
             }}
             onBlur={e => {
-              e.target.placeholder = '(+61)545-589-9977';
+              e.target.placeholder = 'Enter their phone number';
             }}
           />
         </div>

@@ -66,7 +66,7 @@ function UpperHeader() {
   const [searchStart, setSearchStart] = useState(false);
   const searchBlurEvent = e => {
     setSearchText('');
-    e.target.placeholder = 'Search Subscriber';
+    e.target.placeholder = 'Search subscriber';
     setSearchStart(!e);
   };
 
@@ -74,7 +74,7 @@ function UpperHeader() {
     <div className="upper-header-block">
       <div className="upper-header--rounded-block search-block">
         <input
-          placeholder="Search Subscriber"
+          placeholder="Search subscriber"
           value={searchText}
           onChange={onSearch}
           onKeyDown={setSearchStart}

@@ -137,6 +137,7 @@ export const updateInvitee = (id, data, cb) => {
         if (response.data.status === 'SUCCESS') {
           if (cb) {
             cb();
+            successNotification('Invitee details updated successfully')
           }
         }
       })
@@ -221,7 +222,7 @@ export const deleteSubscribers = subId => {
             type: SUBSCRIBERS_REDUX_CONSTANTS.DELETE_SUBSCRIBERS,
             subId,
           });
-          successNotification('Subscribers deleted successfully');
+          successNotification('Subscriber deleted successfully');
         }
       })
       .catch(() => {
