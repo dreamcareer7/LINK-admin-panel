@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import OtpInput from 'react-otp-input';
 import './EditAdmin.scss';
 import Switch from 'react-switch';
+import {CopyToClipboard} from "react-copy-to-clipboard/lib/Component";
 import upload from '../../../../../assets/images/upload.png';
 import user from '../../../../../assets/images/user.jpg';
 import copy from '../../../../../assets/images/copy.svg';
@@ -23,6 +24,7 @@ import {
 import { configure2FA } from '../../../../../redux/actions/authActions/AuthActions';
 import ManageAdminService from '../../../../../services/manage-admin/ManageAdminServices';
 import AUTH_REDUX_CONSTANTS from '../../../../../redux/constants/AuthReduxConstant';
+
 
 function EditAdmin() {
   const { userId } = useParams();
@@ -242,8 +244,8 @@ function EditAdmin() {
     }
   };
 
-  const copyToClipboard = e => {
-    console.log(e);
+  const copyToClipboard = () => {
+    successNotification('Copied to clipboard')
   };
 
   const handleChange = userOtp => setTwoFaCode(userOtp);
@@ -455,8 +457,10 @@ function EditAdmin() {
                     <div className="common-title mar-bott-5 info-text-color">OR</div>
                     <div className="common-subtitle">Enter this Key Authenticator App</div>
                     <div className="key-container common-text-background">
-                      <label>{admin && admin.twoFASecretKey}</label>
-                      <img src={copy} onClick={e => copyToClipboard(e)} title="Copy Key" />
+                      <label id="copyKey">{admin && admin.twoFASecretKey}</label>
+                      <CopyToClipboard text={admin && admin.twoFASecretKey}>
+                        <img src={copy} onClick={() => copyToClipboard()} title="Copy Key" />
+                      </CopyToClipboard>
                     </div>
                   </div>
 
