@@ -97,6 +97,10 @@ button:focus {
   color: $secondary-font-color;
 }
 
+canvas {
+  width: 100%;
+}
+
 .common-input, .common-text-background {
   width: 100%;
   padding: 5px 10px;
