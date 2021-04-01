@@ -180,7 +180,7 @@ const Dashboard = () => {
   const onChangeFromInput = datePass => {
     const date = datePass;
     if (moment(date).isAfter(endDate)) {
-      errorNotification('Please enter a date in the future');
+      errorNotification('Please enter a valid date range');
     } else {
       setFromDate(date);
     }
@@ -189,7 +189,7 @@ const Dashboard = () => {
   const onChangeToInput = datePass => {
     const date = datePass;
     if (moment(date).isBefore(fromDate)) {
-      errorNotification('Please enter a date in the future');
+      errorNotification('Please enter a valid date range');
     } else {
       setEndDate(date);
     }

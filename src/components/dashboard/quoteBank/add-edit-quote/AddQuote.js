@@ -9,6 +9,7 @@ import {
   updateQuote,
 } from '../../../../redux/actions/authActions/QuoteActions';
 import { errorNotification } from '../../../../constants/Toast';
+import Modal from "../../../commonComponents/Modal/Modal";
 
 function AddQuote() {
   const dispatch = useDispatch();
@@ -43,10 +44,6 @@ function AddQuote() {
     setQuote('');
     setQuoteBy('');
     setTags([]);
-    history.goBack();
-  };
-  const onClickDeleteQuote = () => {
-    dispatch(deleteQuote(id));
     history.goBack();
   };
 
@@ -85,6 +82,18 @@ function AddQuote() {
   };
   const onChangeStatus = e => {
     setIsPublished(e.target.value);
+  };
+  const [isModelOpen, setIsModelOpen] = useState(false);
+  const onClickDeleteQuote = () => {
+    setIsModelOpen(true);
+  };
+  const onClosePopup = () => {
+    setIsModelOpen(false);
+  };
+  const onDeleteData = () => {
+    setIsModelOpen(false);
+    dispatch(deleteQuote(id));
+    history.goBack();
   };
   return (
     <div>
@@ -179,6 +188,14 @@ function AddQuote() {
           >
             DELETE
           </button>
+        )}
+        {isModelOpen && (
+                <Modal
+                        description="Are you sure you want to delete this quote?"
+                        title="Delete Quote"
+                        deleteData={onDeleteData}
+                        onClosePopup={onClosePopup}
+                />
         )}
       </div>
     </div>

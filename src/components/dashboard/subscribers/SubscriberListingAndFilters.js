@@ -68,7 +68,7 @@ console.log('allSubscribers->',allSubscribers.data.total)
   const handleFromDateChange = datePass => {
     const date = datePass;
     if (moment(date).isAfter(toDate)) {
-      errorNotification('Please enter a date in the future');
+      errorNotification('Please enter a valid date range');
     } else {
       setFromDate(date);
       if (subType !== 'all') {
@@ -97,7 +97,7 @@ console.log('allSubscribers->',allSubscribers.data.total)
       date.setHours(23, 59, 59);
     }
     if (moment(date).isBefore(fromDate)) {
-      errorNotification('Please enter a date in the future');
+      errorNotification('Please enter a valid date range');
     } else {
       setToDate(date);
       if (subType !== 'all') {
