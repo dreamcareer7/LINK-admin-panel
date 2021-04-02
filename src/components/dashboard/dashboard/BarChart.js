@@ -105,4 +105,4 @@ BarChart.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   options: PropTypes.object.isRequired,
 };
-export default BarChart;
+export default React.memo(BarChart);
