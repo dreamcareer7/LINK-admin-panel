@@ -51,7 +51,7 @@ function AddInvited() {
     } else if (!checkForEmail(email)) {
       errorNotification('Please enter a valid email address');
     } else if (!phone || (phone && phone.toString().trim().length === 0)) {
-      errorNotification('Please enter their phone number.');
+      errorNotification('Please enter their phone number');
     } else {
       const data = {
         firstName: userName[0] || '',
