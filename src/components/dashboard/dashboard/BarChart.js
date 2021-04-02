@@ -21,6 +21,7 @@ const BarChart = props => {
   };
   const barOptions = {
     animation: {
+      duration:10,
       onComplete: e => {
         const chartInstance = e.chart;
         const { ctx } = chartInstance;
