@@ -24,7 +24,7 @@ export const loginUser = (emailAddress, password) => {
       .catch(e => {
         dispatch(toggleLoader(false));
         if (e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         } else if (e.response.data.status === 'INVALID_EMAIL_OR_PASSWORD') {
@@ -49,7 +49,7 @@ export const logOutUser = callBack => {
       })
       .catch(e => {
         if (e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
@@ -70,7 +70,7 @@ export const getLogedInUser = () => {
       })
       .catch(e => {
         if (e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }

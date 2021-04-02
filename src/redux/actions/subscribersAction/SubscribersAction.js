@@ -16,7 +16,7 @@ export const getAllSubscribers = data => {
       })
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
@@ -37,7 +37,7 @@ export const getIndutries = data => {
       })
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
@@ -58,7 +58,7 @@ export const getInviteeSubscribers = data => {
       })
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
@@ -80,7 +80,7 @@ export const addInvitee = (data, cb) => {
       })
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response.data.status === 'ALREADY_SENT') {
           errorNotification('Subscriber or invitee already exists with this email');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
@@ -103,7 +103,7 @@ export const deleteInvitee = id => {
       }
     } catch (e) {
       if (e.response && e.response.data.status === undefined) {
-        errorNotification('It seems like server is down, Please try after sometime.');
+        errorNotification('It seems like server is down, Please try after sometime');
       } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
         errorNotification('Internal server error');
       }
@@ -123,7 +123,7 @@ export const editInvitee = id => {
       })
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
@@ -143,7 +143,7 @@ export const updateInvitee = (id, data, cb) => {
       })
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
@@ -164,7 +164,7 @@ export const getCompanySize = data => {
       })
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
@@ -185,7 +185,7 @@ export const getSubscribersById = id => {
       })
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }

@@ -91,7 +91,7 @@ function EditAdmin() {
             data: { profilePic: response.data.data.profilePicUrl },
           }); */
         } else {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         }
       })
       .catch(e => console.log(e));

@@ -16,7 +16,7 @@ export const subscriptionChartData = data => {
       })
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
@@ -36,7 +36,7 @@ export const companySizeChartData = data => {
         }
       })
       .catch(() => {
-        errorNotification('It seems like server is down, Please try after sometime.');
+        errorNotification('It seems like server is down, Please try after sometime');
       });
   };
 };
@@ -54,7 +54,7 @@ export const genderChartData = data => {
       })
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
@@ -75,7 +75,7 @@ export const industriesChartData = data => {
       })
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
@@ -96,7 +96,7 @@ export const opportunityChartData = data => {
       })
       .catch(e => {
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
@@ -119,7 +119,7 @@ export const dealChartData = data => {
       .catch(e => {
         console.log(e);
         if (e.response && e.response.data.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime.');
+          errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response && e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
