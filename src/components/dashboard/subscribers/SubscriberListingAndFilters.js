@@ -34,7 +34,7 @@ function SubscriberListingAndFilters() {
   const [subType, setSubType] = useState('all');
   const [isModelOpen, setIsModelOpen] = useState(false);
   const [subscriberId, setSubscriberId] = useState('');
-console.log('allSubscribers->',allSubscribers.data.total)
+
   const handleSortChange = e => {
     const sort = e.target.value;
     setSorting(sort);
@@ -258,6 +258,7 @@ console.log('allSubscribers->',allSubscribers.data.total)
           </div>
         )}
         <div className="admin-table mt-30 fix-size">
+          {subScribers && subScribers.length > 0 ?
           <div className="tr heading">
             <div className="subscribe-table-details">
               <div>NAME</div>
@@ -268,7 +269,7 @@ console.log('allSubscribers->',allSubscribers.data.total)
               <div>PAID</div>
               <div className="action-cell" />
             </div>
-          </div>
+          </div> : ''}
           {subScribers && subScribers.length > 0 ? (
             <>
               {subScribers.map(value => (
@@ -319,7 +320,7 @@ console.log('allSubscribers->',allSubscribers.data.total)
             </>
           ) : (
               <div className="no-subscriber-container">
-                <div style={{ textAlign: 'center', marginTop: '5vh' }}>Empty Data</div>
+                <div style={{ textAlign: 'center', marginTop: '5vh' }}>No Data Available</div>
               </div>
           )}
         </div>

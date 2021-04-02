@@ -129,7 +129,6 @@ const Invited = () => {
       if (data.startDate && data.endDate) dispatch(getInviteeSubscribers(data));
     }
   };
-
   return (
     <>
       {isModelOpen && (
@@ -225,21 +224,20 @@ const Invited = () => {
             </div>
           )}
           <div className="admin-table">
-            <div className="tr heading">
-              <div className="invited-table-details">
-                <div className="td">NAME</div>
-                <div className="td">EMAIL</div>
-                <div className="td">PHONE</div>
-                <div className="td">DATE INVITED</div>
-                <div />
-              </div>
-            </div>
-            {invitee && invitee.length < 0 ? (
+            {invitee && invitee.length === 0 ? (
                     <div className="no-invited-container">
-                      <div style={{ textAlign: 'center', marginTop: '5vh' }}>Empty Data</div>
+                      <div style={{ textAlign: 'center', marginTop: '5vh' }}>No Data Available</div>
                     </div>
-            ) : (
-                    <>
+            ):(<>
+                      <div className="tr heading">
+                     <div className="invited-table-details">
+                     <div className="td">NAME</div>
+                     <div className="td">EMAIL</div>
+                     <div className="td">PHONE</div>
+                     <div className="td">DATE INVITED</div>
+                     <div />
+                      </div>
+                      </div>
                       <div style={{ minHeight: 'calc(100vh - 370px)' }}>
                         {invitee.map(value => (
                                 <div className="row-container" key={value._id}>
