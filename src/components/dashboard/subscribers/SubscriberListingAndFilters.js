@@ -285,11 +285,11 @@ function SubscriberListingAndFilters() {
                           }
                         />
                         {value.firstName} {value.lastName ? value.lastName : ''}
-                        {value.selectedPlan.status === 'CANCELLED' ? (
+                       {/* {value.selectedPlan.status === 'CANCELLED' ? (
                           <span className="sub-type-admin">CANCELLED</span>
                         ) : (
                           value.vicSub && <span className="sub-type-admin sub-type-vic">VIC</span>
-                        )}
+                        )} */}
                       </div>
 
                       <div className="td email">{value.email}</div>
