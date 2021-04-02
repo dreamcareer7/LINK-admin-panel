@@ -245,7 +245,7 @@ function EditAdmin() {
   };
 
   const copyToClipboard = () => {
-    successNotification('Copied to clipboard')
+    successNotification('Key copied to your clipboard')
   };
 
   const handleChange = userOtp => setTwoFaCode(userOtp);
