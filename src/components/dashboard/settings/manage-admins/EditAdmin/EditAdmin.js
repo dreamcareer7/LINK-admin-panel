@@ -278,9 +278,9 @@ function EditAdmin() {
             onChange={addProfilePic}
           />
         </div>
-      ) : (
-        <img className="DP-image-edit" src={editAdmin && editAdmin.profilePic && editAdmin.profilePic || user} />
+      ) : (<img className="DP-image-edit" src={ userId === 'addAdmin' ? user : (() => editAdmin && editAdmin.profilePic ? editAdmin.profilePic : user)()} />
       )}
+
 
       <div className="admin-detail">
         <div id="name" className="mr-20">
