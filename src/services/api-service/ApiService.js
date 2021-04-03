@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
 import { clearAuthToken, getAuthTokenLocalStorage } from '../../helpers/LocalStorageHelper';
+import {errorNotification} from "../../constants/Toast";
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -28,6 +29,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(null, error => {
   if (error.response.status === 401) {
     clearAuthToken();
+    errorNotification('For security purposes you need to relog back in');
     window.location.href = '/login';
     return false;
   }
