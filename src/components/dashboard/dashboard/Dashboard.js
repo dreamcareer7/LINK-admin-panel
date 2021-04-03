@@ -235,7 +235,7 @@ const Dashboard = () => {
             <div className="filter-action filter-dashboard-action">
               <DatePicker
                 className="mr-10"
-                placeholderText="From"
+                placeholderText="From Date"
                 dateFormat="dd/MM/yyyy"
                 selected={fromDate}
                 onChange={onChangeFromInput}
@@ -248,7 +248,7 @@ const Dashboard = () => {
                 }}
               />
               <DatePicker
-                placeholderText="To"
+                placeholderText="To Date"
                 dateFormat="dd/MM/yyyy"
                 selected={endDate}
                 onChange={onChangeToInput}
