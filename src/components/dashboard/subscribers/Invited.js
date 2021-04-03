@@ -214,15 +214,14 @@ const Invited = () => {
           </div>
         </div>
         <div>
-          {invitee && invitee.length > 0 && (
+
             <div className="no-of-results-in-display">
-              Showing {(allInvitee.data.page - 1) * allInvitee.data.limit + 1} to{' '}
-              {allInvitee.data.total < allInvitee.data.page * allInvitee.data.limit
+              Showing {allInvitee.data.total < allInvitee.data.page * allInvitee.data.limit
                 ? allInvitee.data.total
                 : allInvitee.data.page * allInvitee.data.limit}{' '}
               of {allInvitee.data.total} results{' '}
             </div>
-          )}
+
           <div className="admin-table">
             {invitee && invitee.length === 0 ? (
                     <div className="no-invited-container">

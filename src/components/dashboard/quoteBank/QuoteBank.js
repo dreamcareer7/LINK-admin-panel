@@ -108,15 +108,14 @@ function QuoteBank() {
         </div>
       </div>
 
-      {quotes.length !== 0 && (
+
         <div className="no-of-results-in-display mt-30 mb-3">
-          Showing {(allQuotesData.page - 1) * allQuotesData.limit + 1} to{' '}
-          {allQuotesData.total < allQuotesData.page * allQuotesData.limit
+          Showing {allQuotesData.total < allQuotesData.page * allQuotesData.limit
             ? allQuotesData.total
             : allQuotesData.page * allQuotesData.limit}{' '}
           of {allQuotesData.total} results
         </div>
-      )}
+
       {quotes.length !== 0 ? (
         <>
           <div className="quote-table">

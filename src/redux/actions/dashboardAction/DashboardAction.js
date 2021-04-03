@@ -108,7 +108,6 @@ export const dealChartData = data => {
   return dispatch => {
     DashBoardService.dealChartData(data)
       .then(response => {
-        console.log(response);
         if (response.data.status === 'SUCCESS') {
           dispatch({
             type: DASHBOARD_REDUX_CONSTANTS.DEAL_VALUES_DATA,
