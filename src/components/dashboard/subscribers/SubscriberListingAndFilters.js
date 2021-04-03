@@ -185,7 +185,7 @@ function SubscriberListingAndFilters() {
             <div className="filter-action">
               <DatePicker
                 className="mr-10"
-                placeholderText="From"
+                placeholderText="From Date"
                 dateFormat="dd/MM/yyyy"
                 selected={fromDate}
                 onChange={datePass => handleFromDateChange(datePass)}
@@ -193,11 +193,11 @@ function SubscriberListingAndFilters() {
                   e.target.placeholder = '';
                 }}
                 onBlur={e => {
-                  e.target.placeholder = 'From';
+                  e.target.placeholder = 'From Date';
                 }}
               />
               <DatePicker
-                placeholderText="To"
+                placeholderText="To Date"
                 dateFormat="dd/MM/yyyy"
                 selected={toDate}
                 onChange={datePass => handleToDateChange(datePass)}
@@ -205,7 +205,7 @@ function SubscriberListingAndFilters() {
                   e.target.placeholder = '';
                 }}
                 onBlur={e => {
-                  e.target.placeholder = 'To';
+                  e.target.placeholder = 'To Date';
                 }}
               />
             </div>
