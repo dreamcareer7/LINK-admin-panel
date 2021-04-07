@@ -452,10 +452,10 @@ function EditAdmin() {
                 <>
                   <div className="step-container">
                     <div className="common-title step-title">STEP 1</div>
-                    <div className="common-subtitle">Scan this Barcode in Authenticator App</div>
+                    <div className="common-subtitle">Scan this barcode in your Authenticator App</div>
                     <img className="barcode" src={admin && admin.qrCode} />
                     <div className="common-title mar-bott-5 info-text-color">OR</div>
-                    <div className="common-subtitle">Enter this Key Authenticator App</div>
+                    <div className="common-subtitle">Enter this key in your Authenticator App</div>
                     <div className="key-container common-text-background">
                       <label id="copyKey">{admin && admin.twoFASecretKey}</label>
                       <CopyToClipboard text={admin && admin.twoFASecretKey}>
