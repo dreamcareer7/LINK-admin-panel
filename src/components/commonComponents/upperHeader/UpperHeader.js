@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './upperHeader.scss';
@@ -23,7 +23,7 @@ function UpperHeader() {
   const [searchDropDown,setSearchDropDown] = useState(false);
   const [filtered, setFiltered] = useState([]);
 
-  const onSearch = e => {
+  const onSearch = useCallback((e) => {
     const text = e.target.value;
     setSearchText(text);
     if (text && text.trim().length > 0) {
@@ -39,7 +39,8 @@ function UpperHeader() {
       setFiltered([]);
     }
     setSearchDropDown(!searchDropDown)
-  };
+  },[setSearchText,setFiltered,setSearchDropDown]);
+
   const onDropDownClick = () => {
     setDropDown(!dropDown);
   };
@@ -87,14 +88,14 @@ function UpperHeader() {
           <img src={search} />
           {searchDropDown &&
           <div className="search-area" ref={searchRef}>
-            {searchStart && filtered.length===0 && (
-                    <div className="open-search-area">No subscriber found</div>
-            )}
             {filtered.map(e => (
                     <div className="open-search-area" onClick={() => onClickSearchedVal(e._id)}>
                       {e.firstName} {e.lastName}
                     </div>
             ))}
+            {searchStart && filtered.length===0 && (
+                    <div className="open-search-area">No subscriber found</div>
+            )}
           </div>
           }
         </div>
