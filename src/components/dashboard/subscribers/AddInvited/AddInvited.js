@@ -47,7 +47,7 @@ function AddInvited() {
     if ((!name && !userName) || (userName && userName.toString().trim().length === 0)) {
       errorNotification('Please enter their name');
     } else if (!email || (email && email.toString().trim().length === 0)) {
-      errorNotification('Please enter their email address.');
+      errorNotification('Please enter their email address');
     } else if (!checkForEmail(email)) {
       errorNotification('Please enter a valid email address');
     } else if (!phone || (phone && phone.toString().trim().length === 0)) {
