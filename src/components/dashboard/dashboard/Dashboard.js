@@ -191,6 +191,7 @@ const Dashboard = () => {
     if (moment(date).isBefore(fromDate)) {
       errorNotification('Please enter a valid date range');
     } else {
+      date.setHours(23, 59, 59);
       setEndDate(date);
     }
   };
