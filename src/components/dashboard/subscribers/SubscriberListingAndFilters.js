@@ -278,12 +278,12 @@ function SubscriberListingAndFilters() {
                       <div className="td name">
                         <img
                           src={
-                            value && value.profilePicUrl && value.profilePicUrl
+                            value  && value.profilePicUrl
                               ? value.profilePicUrl
                               : User
                           }
                         />
-                        {value.firstName} {value.lastName ? value.lastName : ''}
+                        {value.firstName} {value?.lastName ? value?.lastName : ''}
                        {/* {value.selectedPlan.status === 'CANCELLED' ? (
                           <span className="sub-type-admin">CANCELLED</span>
                         ) : (
@@ -291,10 +291,10 @@ function SubscriberListingAndFilters() {
                         )} */}
                       </div>
 
-                      <div className="td email">{value.email}</div>
-                      <div className="td phone">{value.phone ? value.phone : ''}</div>
+                      <div className="td email">{value?.email}</div>
+                      <div className="td phone">{value?.phone ? value.phone : ''}</div>
                       <div className="td subscribe">
-                        {getLabelFromValues(value.selectedPlan.status, subTypeObject)}
+                        {getLabelFromValues(value?.selectedPlan?.status, subTypeObject)}
                       </div>
                       <div className="td date">{moment(value.createdAt).format('DD/MM/YYYY')}</div>
                       <div className="td total-payment">{`$${value.totalReceivedAmount}`}</div>
@@ -327,7 +327,7 @@ function SubscriberListingAndFilters() {
           <Pagination
             activePage={activePage}
             itemsCountPerPage={10}
-            totalItemsCount={allSubscribers.data.total || 1}
+            totalItemsCount={allSubscribers?.data?.total || 1}
             pageRangeDisplayed={3}
             onChange={handlePageChange}
             itemClass="page-item"

@@ -249,13 +249,13 @@ const Invited = () => {
                                                         : User
                                               }
                                       />
-                                      {value.firstName} {value.lastName}
+                                      {value?.firstName} {value?.lastName}
                                     </div>
 
-                                    <div className="td email">{value.email}</div>
+                                    <div className="td email">{value?.email}</div>
                                     <div className="td phone">{value.phone ? value.phone : ''}</div>
                                     <div className="td date">
-                                      {moment(value.createdAt).format('DD/MM/YYYY')}
+                                      {moment(value?.createdAt).format('DD/MM/YYYY')}
                                     </div>
                                     <div className="action-cell">
                                       <img
@@ -278,7 +278,7 @@ const Invited = () => {
                       <Pagination
                               activePage={activePage}
                               itemsCountPerPage={10}
-                              totalItemsCount={allInvitee.data.total || 1}
+                              totalItemsCount={allInvitee?.data?.total || 1}
                               pageRangeDisplayed={3}
                               onChange={handlePageChange}
                               itemClass="page-item"
