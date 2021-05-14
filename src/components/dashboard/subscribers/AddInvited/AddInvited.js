@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addInvitee,
-  editInvitee,
+  editInvitee, resetInvitee,
   updateInvitee,
 } from '../../../../redux/actions/subscribersAction/SubscribersAction';
 import {checkForEmail, errorNotification} from '../../../../constants/Toast';
@@ -22,6 +22,7 @@ function AddInvited() {
     if (userId !== 'addInvited') {
       dispatch(editInvitee(userId));
     }
+    return () => dispatch(resetInvitee())
   }, []);
   useEffect(() => {
     if (userId !== 'addInvited') {

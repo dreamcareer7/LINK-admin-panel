@@ -130,6 +130,15 @@ export const editInvitee = id => {
       });
   };
 };
+
+export const resetInvitee = () => {
+  return dispatch => {
+                dispatch({
+                  type: SUBSCRIBERS_REDUX_CONSTANTS.RESET_SELECTED_INVITEE,
+                });
+  };
+};
+
 export const updateInvitee = (id, data, cb) => {
   return () => {
     SubscriberService.updateInvitee(id, data)

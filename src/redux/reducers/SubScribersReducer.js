@@ -125,7 +125,9 @@ export const subscrberReducer = (state = initialValue, action) => {
 export const selectedInvitee = (state = null, action) => {
   switch (action.type) {
     case SUBSCRIBERS_REDUX_CONSTANTS.EDIT_INVITEE_BY_ID:
-      return action.data;
+      return {...state,...action.data}
+    case SUBSCRIBERS_REDUX_CONSTANTS.RESET_SELECTED_INVITEE:
+      return null
     default:
       return state;
   }
