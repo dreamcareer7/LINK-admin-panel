@@ -13,7 +13,7 @@ function AddInvited() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const editInvited = useSelector(state => state.selectedInvitee);
+  const editInvited = useSelector(({selectedInvitee}) => selectedInvitee ?? {});
   const history = useHistory();
   const dispatch = useDispatch();
   const { userId } = useParams();
