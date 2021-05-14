@@ -21,8 +21,8 @@ import Modal from '../../commonComponents/Modal/Modal';
 function SubscriberListingAndFilters() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const allSubscribers = useSelector(state => state.subscrberReducer.getAllSub);
-  const docs = useMemo(() => (allSubscribers && allSubscribers.data ? allSubscribers.data : []), [
+  const allSubscribers = useSelector(state => state?.subscrberReducer?.getAllSub ?? {});
+  const docs = useMemo(() => (allSubscribers?.data ?? []), [
     allSubscribers,
   ]);
   const subScribers = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
@@ -145,7 +145,7 @@ function SubscriberListingAndFilters() {
   };
 
   const activePage = useMemo(
-    () => (allSubscribers && allSubscribers.data.page ? allSubscribers.data.page : 1),
+    () => (allSubscribers?.data?.page ?? 1),
     [allSubscribers]
   );
   const onEditSub = subId => {
@@ -246,11 +246,11 @@ function SubscriberListingAndFilters() {
       <div>
 
           <div className="no-of-results-in-display mt-30">
-            Showing {allSubscribers.data.total < allSubscribers.data.page * allSubscribers.data.limit
-              ? allSubscribers.data.total
-              : allSubscribers.data.page * allSubscribers.data.limit}{' '}
-            of {allSubscribers.data.total} results{' '}
-            {subScribers.length > 0 && subType !== 'all' && <span className="font-600 ml-10">Subscription Type: </span>}
+            Showing {allSubscribers?.data?.total < allSubscribers?.data?.page * allSubscribers?.data?.limit
+              ? allSubscribers?.data?.total
+              : allSubscribers?.data?.page * allSubscribers?.data?.limit}{' '}
+            of {allSubscribers?.data?.total} results{' '}
+            {subScribers?.length > 0 && subType !== 'all' && <span className="font-600 ml-10">Subscription Type: </span>}
             {getLabelFromValues(subType, subTypeObject)}{' '}
             <span className="font-600 ml-10">Sorting: </span>
             {sorting === 'DESC' ? 'Recent' : 'Old'}
