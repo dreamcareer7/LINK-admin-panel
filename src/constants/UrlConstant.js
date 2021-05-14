@@ -1,7 +1,7 @@
-  export const BASE_URL = 'https://link.dev.gradlesol.com/app/';
+ // export const BASE_URL = 'https://link.dev.gradlesol.com/app/';
 // export const BASE_URL = 'https://link.dev.humanpixel.com.au/app/'; // <-- HP Dev
 // export const BASE_URL = 'https://link.test.humanpixel.com.au/app/'; // <-- HP Staging
-// export const BASE_URL = 'https://jayla.linkfluencer.com/app/'; // <-- Production
+ export const BASE_URL = 'https://jayla.linkfluencer.com/app/'; // <-- Production
 // export const BASE_URL = 'https://7d43b9db8ce0.ngrok.io/';
 export const API_METHODS = {
   GET: 'GET',

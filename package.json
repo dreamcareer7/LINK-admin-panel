@@ -11,6 +11,7 @@
     "chart.js": "^2.9.4",
     "chartjs-plugin-datalabels": "^0.7.0",
     "immer": "^8.0.0",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "prettier": "^2.2.1",
     "prop-types": "^15.7.2",

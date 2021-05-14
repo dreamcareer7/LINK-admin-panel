@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import _ from 'lodash';
 import './Invited.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -22,7 +23,6 @@ const Invited = () => {
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
   const [sorting, setSorting] = useState('DESC');
-  const [searchText, setSearchText] = useState('');
   const docs = useMemo(() => (allInvitee && allInvitee.data ? allInvitee.data : []), [allInvitee]);
   const invitee = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
   const activePage = useMemo(
@@ -30,6 +30,7 @@ const Invited = () => {
     [allInvitee]
   );
   const history = useHistory();
+  const searchInputRef = useRef();
 
   const [isModelOpen, setIsModelOpen] = useState(false);
   const [inviteeId, setInviteeId] = useState('');
@@ -72,9 +73,8 @@ const Invited = () => {
   const onEditInvitee = id => {
     history.push(`/subscribers/invited/${id}`);
   };
-  const onSearch = e => {
-    const text = e.target.value;
-    setSearchText(text);
+  const onSearch = useCallback(() => {
+    const text = searchInputRef?.current?.value;
     const data = {
       page: pageNum,
       sorting,
@@ -83,7 +83,12 @@ const Invited = () => {
       searchText: text,
     };
     dispatch(getInviteeSubscribers(data));
-  };
+  },[
+    searchInputRef?.current?.value,
+    pageNum,
+    fromDate,
+    toDate
+  ]);
 
   const handleSortChange = e => {
     const sort = e.target.value;
@@ -194,8 +199,8 @@ const Invited = () => {
                   type="text"
                   className="common-input"
                   placeholder="Enter their name or email"
-                  value={searchText}
-                  onChange={onSearch}
+                  ref={searchInputRef}
+                  onChange={_.debounce(onSearch,1500)}
                   onFocus={e => {
                     e.target.placeholder = '';
                   }}
