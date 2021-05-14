@@ -156,13 +156,13 @@ function EditAdmin() {
   const onUpdateAdminEvent = () => {
     const userName = adminName.split(' ');
     if (adminName.toString().trim().length === 0) {
-      errorNotification(editAdmin.isLoggedIn ? 'Please enter name' : 'Please enter their name');
+      errorNotification(editAdmin.isLoggedIn ? 'Please enter your name' : 'Please enter their name');
     } else if (adminEmail.length === 0) {
       errorNotification(editAdmin.isLoggedIn ? 'Please enter email address' : 'Please enter their email address');
     } else if (!checkForEmail(adminEmail)) {
       errorNotification('Please add a valid email address');
     } else if (adminPhone.length === 0) {
-      errorNotification(editAdmin.isLoggedIn ? 'Please enter phone number' : 'Please enter their phone number');
+      errorNotification(editAdmin.isLoggedIn ? 'Please enter your phone number' : 'Please enter their phone number');
     } else {
       const data = {
         firstName: userName[0] || '',

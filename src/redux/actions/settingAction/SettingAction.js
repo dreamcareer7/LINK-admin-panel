@@ -34,7 +34,7 @@ export const updateErrorMessage = data => {
             data: res.data,
           });
           dispatch(getAllErrorMessage());
-          successNotification('Error Message updated successfully');
+          successNotification('Error message updated successfully');
         }
       })
       .catch(() => errorNotification('Error during updating Error Message'));
