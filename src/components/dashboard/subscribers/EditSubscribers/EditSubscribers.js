@@ -7,7 +7,7 @@ import {
   deleteSubscribers,
   getCompanySize,
   getIndutries,
-  getSubscribersById,
+  getSubscribersById, resetSubscriberInfo,
   updateSubscribers,
 } from '../../../../redux/actions/subscribersAction/SubscribersAction';
 import './Editsubscribers.scss';
@@ -20,8 +20,8 @@ const AddSubscribers = () => {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const { data } = useSelector(state => state.subscrberReducer.getById);
-  const { company, industries } = useSelector(state => state.subscrberReducer);
+  const { data } = useSelector(state => state?.subscrberReducer?.getById ?? {});
+  const { company, industries } = useSelector(state => state?.subscrberReducer);
   const [isModelOpen, setIsModelOpen] = useState(false);
   const [form, setFormValue] = useState({
     username: '',
@@ -52,6 +52,7 @@ const AddSubscribers = () => {
     if (subId) {
       dispatch(getSubscribersById(subId));
     }
+    return () => dispatch(resetSubscriberInfo());
   }, [subId]);
 
   useEffect(() => {
@@ -316,8 +317,8 @@ const AddSubscribers = () => {
                   >
                     <option value="none">None</option>
                     {industries &&
-                      industries.data &&
-                      industries.data.map(value => <option key={value}>{value}</option>)}
+                      industries?.data &&
+                      industries?.data?.map(value => <option key={value}>{value}</option>)}
                   </select>
                 </div>
                 <div className="mr-20">
@@ -331,8 +332,8 @@ const AddSubscribers = () => {
                   >
                     <option value="none">None</option>
                     {company &&
-                      company.data &&
-                      company.data.map(value => <option key={value}>{value}</option>)}
+                      company?.data &&
+                      company?.data?.map(value => <option key={value}>{value}</option>)}
                   </select>
                 </div>
               </div>

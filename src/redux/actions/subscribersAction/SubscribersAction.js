@@ -230,3 +230,11 @@ export const deleteSubscribers = subId => {
       });
   };
 };
+
+export const resetSubscriberInfo = () => {
+  return dispatch => {
+    dispatch({
+      type: SUBSCRIBERS_REDUX_CONSTANTS.RESET_SUBSCRIBER_INFO
+    })
+  }
+}

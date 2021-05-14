@@ -113,6 +113,11 @@ export const subscrberReducer = (state = initialValue, action) => {
         },
       };
 
+    case SUBSCRIBERS_REDUX_CONSTANTS.RESET_SUBSCRIBER_INFO:
+      return {
+        ...state.initialValue
+      }
+
     default:
       return state;
   }
