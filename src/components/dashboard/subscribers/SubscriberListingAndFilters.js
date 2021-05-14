@@ -250,7 +250,7 @@ function SubscriberListingAndFilters() {
               ? allSubscribers?.data?.total
               : allSubscribers?.data?.page * allSubscribers?.data?.limit}{' '}
             of {allSubscribers?.data?.total} results{' '}
-            {subScribers?.length > 0 && subType !== 'all' && <span className="font-600 ml-10">Subscription Type: </span>}
+            {subType !== 'all' && <span className="font-600 ml-10">Subscription Type: </span>}
             {getLabelFromValues(subType, subTypeObject)}{' '}
             <span className="font-600 ml-10">Sorting: </span>
             {sorting === 'DESC' ? 'Recent' : 'Old'}
