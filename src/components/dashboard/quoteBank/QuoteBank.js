@@ -8,12 +8,12 @@ import Quote from './Quote';
 import { useQuery } from '../../../helpers/GetQueryParamHook';
 
 function QuoteBank() {
-  const allQuotesData = useSelector(({ allQuotes }) => allQuotes);
+  const allQuotesData = useSelector(({ allQuotes }) => allQuotes ?? []);
   const [sorting, setSorting] = useState('RECENT');
   const [status, setStatus] = useState('all');
   const [pageNum, setPageNum] = useState(1);
 
-  const quotes = useMemo(() => (allQuotesData && allQuotesData.docs ? allQuotesData.docs : []), [
+  const quotes = useMemo(() => (allQuotesData && allQuotesData?.docs ? allQuotesData?.docs : []), [
     allQuotesData,
   ]);
 

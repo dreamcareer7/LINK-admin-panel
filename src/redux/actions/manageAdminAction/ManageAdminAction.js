@@ -7,7 +7,7 @@ export const getAllAdmins = () => {
   return dispatch => {
     ManageAdminService.getAllAdmins()
       .then(response => {
-        if (response.data.status === 'SUCCESS') {
+        if (response?.data?.status === 'SUCCESS') {
           dispatch({
             type: ADMIN_REDUX_CONSTANTS.GET_ADMIN_DATA,
             data: response.data.data,
@@ -15,9 +15,9 @@ export const getAllAdmins = () => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e?.response?.data?.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e?.response?.data?.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
@@ -28,7 +28,7 @@ export const getAdminById = id => {
   return dispatch => {
     ManageAdminService.getAdmin(id)
       .then(response => {
-        if (response.data.status === 'SUCCESS') {
+        if (response?.data?.status === 'SUCCESS') {
           dispatch({
             type: ADMIN_REDUX_CONSTANTS.GET_ADMIN_BY_ID,
             data: response.data.data,
@@ -78,8 +78,7 @@ export const addAdmin = (data, cb) => {
       })
 
       .catch(e => {
-        console.log(e);
-        if (e.response.data.status === 'ADMIN_WITH_EMAIL_EXISTS') {
+        if (e?.response?.data?.status === 'ADMIN_WITH_EMAIL_EXISTS') {
           errorNotification('Admin with this email address already exists');
         }
       });

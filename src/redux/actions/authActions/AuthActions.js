@@ -48,9 +48,9 @@ export const logOutUser = callBack => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e?.response?.data?.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e?.response?.data?.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
@@ -61,7 +61,7 @@ export const getLogedInUser = () => {
   return dispatch => {
     AuthService.getLogedInUser()
       .then(response => {
-        if (response.data.status === 'SUCCESS') {
+        if (response?.data?.status === 'SUCCESS') {
           dispatch({
             type: AUTH_REDUX_CONSTANTS.LOGIN_USER,
             data: response.data.data,
@@ -69,7 +69,7 @@ export const getLogedInUser = () => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e.response?.data?.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime');
         } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');

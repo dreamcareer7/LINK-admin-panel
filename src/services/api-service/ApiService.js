@@ -27,7 +27,7 @@ instance.interceptors.request.use(
 
 // Add a response interceptor
 instance.interceptors.response.use(null, error => {
-  if (error.response.status === 401) {
+  if (error?.response?.status === 401) {
     clearAuthToken();
     errorNotification('For security purposes you need to relog back in');
     window.location.href = '/login';

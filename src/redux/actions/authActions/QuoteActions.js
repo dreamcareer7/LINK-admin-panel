@@ -7,7 +7,7 @@ export const getAllQuotes = (page, sorting, status) => {
   return dispatch => {
     QuoteServices.getAllQuotes(page, 10, sorting, status)
       .then(response => {
-        if (response.data.status === 'SUCCESS') {
+        if (response?.data?.status === 'SUCCESS') {
           dispatch({
             type: QUOTE_REDUX_CONSTANTS.ALL_QUOTE,
             data: response.data.data,
@@ -15,9 +15,9 @@ export const getAllQuotes = (page, sorting, status) => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e?.response?.data?.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e?.response?.data?.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });

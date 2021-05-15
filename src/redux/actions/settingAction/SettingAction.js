@@ -7,7 +7,7 @@ export const getAllErrorMessage = () => {
   return dispatch => {
     SettingServices.getAllErrorMessage()
       .then(response => {
-        if (response.data.status === 'SUCCESS') {
+        if (response?.data?.status === 'SUCCESS') {
           dispatch({
             type: SETTING_REDUX_CONSTANTS.GET_ERROR_DATA,
             data: response.data.data,
@@ -15,9 +15,9 @@ export const getAllErrorMessage = () => {
         }
       })
       .catch(e => {
-        if (e.response.data.status === undefined) {
+        if (e?.response?.data?.status === undefined) {
           errorNotification('It seems like server is down, Please try after sometime');
-        } else if (e.response.data.status === 'INTERNAL_SERVER_ERROR') {
+        } else if (e?.response?.data?.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
       });
