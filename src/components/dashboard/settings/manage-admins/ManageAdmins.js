@@ -55,8 +55,8 @@ const ManageAdmins = () => {
           <div className="td">PHONE</div>
           <div className="action-cell" />
         </div>
-        {manageAdminData &&
-          manageAdminData.map(value => (
+        {manageAdminData !== null ?
+          manageAdminData?.map(value => (
             <React.Fragment key={value._id}>
               {value && value.isLoggedIn === true ? (
                 <div key={value._id} className="row-container">
@@ -85,7 +85,7 @@ const ManageAdmins = () => {
                 ''
               )}
             </React.Fragment>
-          ))}
+          )) : <div className="no-admin-container">No data available</div>}
       </div>
 
       <div className="admin-title font-400 mt-10">All Admins</div>
@@ -98,8 +98,8 @@ const ManageAdmins = () => {
           </div>
           <div className="action-cell" />
         </div>
-        {manageAdminData &&
-          manageAdminData.map(val => (
+        {manageAdminData !== null ?
+          manageAdminData?.map(val => (
             <React.Fragment key={val._id}>
               {val && !val.isLoggedIn ? (
                 <div key={val._id} className="row-container">
@@ -124,7 +124,7 @@ const ManageAdmins = () => {
                 ''
               )}
             </React.Fragment>
-          ))}
+          )): <div className="no-admin-container">No data available</div>}
       </div>
     </>
   );

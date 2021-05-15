@@ -166,6 +166,7 @@ function SubscriberListingAndFilters() {
     setPageNum(page);
     dispatch(getAllSubscribers({ page, sorting }));
   };
+  console.log('allSubscribers',allSubscribers)
   return (
     <div>
       {isModelOpen && (
@@ -248,8 +249,8 @@ function SubscriberListingAndFilters() {
           <div className="no-of-results-in-display mt-30">
             Showing {allSubscribers?.data?.total < allSubscribers?.data?.page * allSubscribers?.data?.limit
               ? allSubscribers?.data?.total
-              : allSubscribers?.data?.page * allSubscribers?.data?.limit}{' '}
-            of {allSubscribers?.data?.total} results{' '}
+              : allSubscribers?.data?.page * allSubscribers?.data?.limit || 0}{' '}
+            of {allSubscribers?.data?.total || 0} results{' '}
             {subType !== 'all' && <span className="font-600 ml-10">Subscription Type: </span>}
             {getLabelFromValues(subType, subTypeObject)}{' '}
             <span className="font-600 ml-10">Sorting: </span>

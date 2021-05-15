@@ -223,8 +223,8 @@ const Invited = () => {
             <div className="no-of-results-in-display">
               Showing {allInvitee.data.total < allInvitee.data.page * allInvitee.data.limit
                 ? allInvitee.data.total
-                : allInvitee.data.page * allInvitee.data.limit}{' '}
-              of {allInvitee.data.total} results{' '}
+                : allInvitee.data.page * allInvitee.data.limit || 0}{' '}
+              of {allInvitee.data.total || 0} results{' '}
             </div>
 
           <div className="admin-table">
