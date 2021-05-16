@@ -39,6 +39,7 @@ function UpperHeader() {
       /* setFiltered(array.filter(f => f.match(e.target.value))); */
     } else {
       setFiltered([]);
+      setSearchStart(false)
     }
   },[setFiltered ,searchInputRef?.current?.value]);
 
