@@ -1,4 +1,5 @@
 import React, {useCallback, useRef, useState} from 'react';
+import _ from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './upperHeader.scss';
@@ -15,17 +16,17 @@ function UpperHeader() {
   const dispatch = useDispatch();
   const history = useHistory();
   const userDetails = useSelector(({ loggedUser }) => loggedUser);
-  const [searchText, setSearchText] = useState('');
 
   const [dropDown, setDropDown] = useState(false);
   const ref = useRef();
   const searchRef = useRef();
-  const [searchDropDown,setSearchDropDown] = useState(false);
   const [filtered, setFiltered] = useState([]);
+  const [searchStart, setSearchStart] = useState(false);
+  const searchInputRef = useRef();
 
-  const onSearch = useCallback((e) => {
-    const text = e.target.value;
-    setSearchText(text);
+
+  const onSearch = useCallback(() => {
+    const text = searchInputRef?.current?.value;
     if (text && text.trim().length > 0) {
       const data = {
         name: text,
@@ -33,26 +34,29 @@ function UpperHeader() {
       SubscriberService.searchSubscriber(data).then(r => {
         const searchResult = r.data.data;
         setFiltered(searchResult);
+        setSearchStart(true)
       });
       /* setFiltered(array.filter(f => f.match(e.target.value))); */
     } else {
       setFiltered([]);
     }
-    setSearchDropDown(!searchDropDown)
-  },[setSearchText,setFiltered,setSearchDropDown]);
+  },[setFiltered ,searchInputRef?.current?.value]);
 
   const onDropDownClick = () => {
     setDropDown(!dropDown);
   };
 
+  const clearSearchInput = useCallback(() =>{
+    setFiltered([]);
+    searchInputRef.current.value = '';
+  },[searchInputRef.current]);
 
   useOnClickOutside(ref, () => setDropDown(false));
-  useOnClickOutside(searchRef, ()=>setSearchDropDown(false));
+  useOnClickOutside(searchRef, clearSearchInput);
 
   const onClickSearchedVal = val => {
     history.push(`/subscribers/subscribed/${val}`);
-    setFiltered([]);
-    setSearchText('');
+    clearSearchInput();
   };
   const onLogOut = () => {
     dispatch(
@@ -64,21 +68,18 @@ function UpperHeader() {
   const goToManageProfile = () => {
     history.replace(`/settings/manageAdmin/${userDetails._id}`);
   };
-  const [searchStart, setSearchStart] = useState(false);
+
   const searchBlurEvent = e => {
-    setSearchText('');
     e.target.placeholder = 'Search subscriber';
     setSearchStart(!e);
   };
-
   return (
     <div className="upper-header-block">
       <div className="upper-header--rounded-block search-block">
         <input
           placeholder="Search subscriber"
-          value={searchText}
-          onChange={onSearch}
-          onKeyDown={setSearchStart}
+          ref={searchInputRef}
+          onChange={_.throttle(onSearch,1500)}
           onFocus={e => {
             e.target.placeholder = '';
           }}
@@ -86,18 +87,16 @@ function UpperHeader() {
         />
         <div className="search-icon">
           <img src={search} />
-          {searchDropDown &&
           <div className="search-area" ref={searchRef}>
             {filtered.map(e => (
                     <div className="open-search-area" onClick={() => onClickSearchedVal(e._id)}>
                       {e.firstName} {e.lastName}
                     </div>
             ))}
-            {searchStart && filtered.length===0 && (
+            {searchStart && filtered.length ===0 && (
                     <div className="open-search-area">No subscriber found</div>
             )}
           </div>
-          }
         </div>
       </div>
       <div
