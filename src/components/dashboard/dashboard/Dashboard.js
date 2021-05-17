@@ -197,6 +197,7 @@ const Dashboard = () => {
   };
   useEffect(() => {
     document.title = 'Dashboard';
+    document.getElementsByClassName('common-area')?.[0]?.scrollTo(0, 0);
   }, []);
   useEffect(() => {
     setFromDate(moment().subtract(30, 'days').toDate());

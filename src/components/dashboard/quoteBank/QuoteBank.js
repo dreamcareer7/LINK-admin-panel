@@ -24,6 +24,7 @@ function QuoteBank() {
 
   useEffect(() => {
     document.title = 'Quote Bank';
+    document.getElementsByClassName('common-area')?.[0]?.scrollTo(0, 0);
   }, []);
   useEffect(() => {
     const statusParam = query.get('status');

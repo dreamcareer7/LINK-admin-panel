@@ -16,6 +16,7 @@ function Settings() {
   };
   useEffect(() => {
     document.title = 'Settings';
+    document.getElementsByClassName('common-area')?.[0]?.scrollTo(0, 0);
   }, []);
   return (
     <div>

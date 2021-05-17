@@ -41,6 +41,7 @@ const Invited = () => {
 
   useEffect(() => {
     dispatch(getInviteeSubscribers(1));
+    document.getElementsByClassName('common-area')?.[0]?.scrollTo(0, 0);
   }, []);
   const handlePageChange = page => {
     const data = {

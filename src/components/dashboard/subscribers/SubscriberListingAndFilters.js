@@ -58,6 +58,7 @@ function SubscriberListingAndFilters() {
     dispatch(getAllSubscribers(data));
   };
   useEffect(() => {
+    document.getElementsByClassName('common-area')?.[0]?.scrollTo(0, 0);
     const data = {
       page: 1,
       sorting,
