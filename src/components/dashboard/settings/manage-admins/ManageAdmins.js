@@ -14,7 +14,7 @@ import Modal from '../../../commonComponents/Modal/Modal';
 const ManageAdmins = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const manageAdminData = useSelector(state => state.manageAdmin);
+  const manageAdminData = useSelector(({manageAdmin}) => manageAdmin ?? []);
   const [isModelOpen, setIsModelOpen] = useState(false);
   const [adminId, setAdminId] = useState('');
   useEffect(() => {
@@ -55,7 +55,7 @@ const ManageAdmins = () => {
           <div className="td">PHONE</div>
           <div className="action-cell" />
         </div>
-        {manageAdminData !== null ?
+        {manageAdminData && manageAdminData.length !== 0 ?
           manageAdminData?.map(value => (
             <React.Fragment key={value._id}>
               {value && value.isLoggedIn === true ? (
@@ -85,11 +85,12 @@ const ManageAdmins = () => {
                 ''
               )}
             </React.Fragment>
-          )) : <div className="no-admin-container">No data available</div>}
+          )) : <div className="no-admin-container">No Data Available</div>}
       </div>
 
       <div className="admin-title font-400 mt-10">All Admins</div>
       <div className="admin-table">
+        {manageAdminData && manageAdminData?.length !== 0 &&
         <div className="heading">
           <div className="admin-table-details">
             <div>NAME</div>
@@ -97,9 +98,8 @@ const ManageAdmins = () => {
             <div>PHONE</div>
           </div>
           <div className="action-cell" />
-        </div>
-        {manageAdminData !== null ?
-          manageAdminData?.map(val => (
+        </div>}
+        {manageAdminData && manageAdminData?.length !== 0 ? manageAdminData?.map(val => (
             <React.Fragment key={val._id}>
               {val && !val.isLoggedIn ? (
                 <div key={val._id} className="row-container">
@@ -128,6 +128,6 @@ const ManageAdmins = () => {
       </div>
     </>
   );
-};
+}
 
 export default ManageAdmins;
