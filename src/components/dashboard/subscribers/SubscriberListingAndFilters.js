@@ -166,7 +166,7 @@ function SubscriberListingAndFilters() {
     // setPageNum(page);
     dispatch(getAllSubscribers({ page, sorting }));
   };
-  console.log('allSubscribers',allSubscribers)
+
   return (
     <div>
       {isModelOpen && (

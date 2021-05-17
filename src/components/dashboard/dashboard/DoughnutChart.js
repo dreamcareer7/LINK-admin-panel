@@ -60,18 +60,6 @@ const DoughnutChart = props => {
       }
     }
   }, [chartData])
-/*
-  const centerTotal = () => {
-    const total = [];
-    if(chartData && chartData.data) {
-      chartData.data.map((e => {
-        total.push(e.total);
-        console.log(total);
-        return total
-      }))
-    }
-  }
-*/
 
   return (
     <>
@@ -89,15 +77,6 @@ const DoughnutChart = props => {
           data={type === 'subscriptions' ? subscriptionsState : genderState}
           options={{
             cutoutPercentage: 65,
-           /* elements: {
-              center: {
-                text: 1,
-                color: '#07084B', // Default is #000000
-                fontStyle: 'roboto', // Default is Arial
-                fontSize: 10, // Default is 20 (in px), set to false and text will not wrap.
-                lineHeight: 1, // Default is 25 (in px), used for when text wraps
-              },
-            }, */
             aspectRatio: 1,
             plugins: {
               datalabels: {
@@ -108,30 +87,6 @@ const DoughnutChart = props => {
                 render: 'value',
               },
             },
-            // animation: {
-            //   onComplete: e => {
-            //     const chartInstance = e.chart;
-            //     const { ctx } = chartInstance;
-            //     console.log(e.chart);
-            //     ctx.font = Chart.helpers.fontString(
-            //       Chart.defaults.global.defaultFontSize,
-            //       Chart.defaults.global.defaultFontStyle,
-            //       Chart.defaults.global.defaultFontFamily,
-            //     );
-            //     ctx.textAlign = 'center';
-            //     ctx.textBaseline = 'bottom';
-
-            //     state.datasets.forEach((dataset, i) => {
-            //       const meta = chartInstance.controller.getDatasetMeta(i);
-            //       meta.data.forEach((bar, index) => {
-            //         if (dataset.data[index] > 0) {
-            //           const data = dataset.data[index];
-            //           ctx.fillText(`${data}`, bar._model.x, bar._model.y);
-            //         }
-            //       });
-            //     });
-            //   },
-            // },
             legend: false
           }}
         />
