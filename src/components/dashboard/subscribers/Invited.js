@@ -94,8 +94,9 @@ const Invited = () => {
     const sort = e.target.value;
     setSorting(sort);
     const data = {
-      page: pageNum,
+      page: 1,
       sorting: sort,
+      searchText:searchInputRef?.current?.value ?? '',
       startDate: moment(fromDate).toISOString(),
       endDate: moment(toDate).toISOString(),
     };
@@ -110,6 +111,7 @@ const Invited = () => {
       const data = {
         page: pageNum,
         sorting,
+        searchText:searchInputRef?.current?.value ?? '',
         startDate: moment(date).toISOString(),
         endDate: moment(toDate).toISOString(),
       };
@@ -128,6 +130,7 @@ const Invited = () => {
       const data = {
         page: pageNum,
         sorting,
+        searchText:searchInputRef?.current?.value ?? '',
         startDate: moment(fromDate).toISOString(),
         endDate: moment(date).toISOString(),
       };
@@ -200,7 +203,7 @@ const Invited = () => {
                   className="common-input"
                   placeholder="Enter their name or email"
                   ref={searchInputRef}
-                  onChange={_.debounce(onSearch,1500)}
+                  onChange={_.throttle(onSearch,1000)}
                   onFocus={e => {
                     e.target.placeholder = '';
                   }}
