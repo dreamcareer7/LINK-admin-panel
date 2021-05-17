@@ -28,7 +28,7 @@ function SubscriberListingAndFilters() {
   const subScribers = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
 
   const [sorting, setSorting] = useState('DESC');
-  const [pageNum, setPageNum] = useState(1);
+  // const [pageNum, setPageNum] = useState(1);
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const [subType, setSubType] = useState('all');
@@ -41,7 +41,7 @@ function SubscriberListingAndFilters() {
     let data = null;
     if (subType !== 'all') {
       data = {
-        page: pageNum,
+        page: 1,
         sorting: sort,
         subscriptionType: subType,
         startDate: moment(fromDate).toISOString(),
@@ -49,7 +49,7 @@ function SubscriberListingAndFilters() {
       };
     } else {
       data = {
-        page: pageNum,
+        page: 1 ,
         sorting: sort,
         startDate: moment(fromDate).toISOString(),
         endDate: moment(toDate).toISOString(),
@@ -163,7 +163,7 @@ function SubscriberListingAndFilters() {
     dispatch(deleteSubscribers(subscriberId));
   };
   const handlePageChange = page => {
-    setPageNum(page);
+    // setPageNum(page);
     dispatch(getAllSubscribers({ page, sorting }));
   };
   console.log('allSubscribers',allSubscribers)
