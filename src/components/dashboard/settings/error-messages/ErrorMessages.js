@@ -9,7 +9,7 @@ import { errorNotification } from '../../../../constants/Toast';
 
 function ErrorMessages() {
   const dispatch = useDispatch();
-  const errorData = useSelector(state => state.errorMessage);
+  const errorData = useSelector(({errorMessage}) => errorMessage ?? []);
   const [error, setError] = useState([]);
   const [isChanged, setIsChanged] = useState(false);
 
@@ -50,9 +50,8 @@ function ErrorMessages() {
 
   return (
     <>
+      { errorData?.length !== 0  ? (<>
       <div className="error-message-list">
-        {errorData && errorData.length > 0 ? (
-          <>
             {errorData.map(value => (
               <React.Fragment key={value._id}>
                 <div className="common-input error-message">
@@ -71,12 +70,8 @@ function ErrorMessages() {
                 </div>
               </React.Fragment>
             ))}
-          </>
-        ) : (
-          <div className="common-content">Error Message Empty</div>
-        )}
+
       </div>
-      {errorData && errorData.length > 0 && (
         <div>
           <button
             className="button success-button mt-20"
@@ -86,7 +81,8 @@ function ErrorMessages() {
             Save
           </button>
         </div>
-      )}
+        </>
+      ) : <div className='no-error-container'>No Data Available</div>}
     </>
   );
 }
