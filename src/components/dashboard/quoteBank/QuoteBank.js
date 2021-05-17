@@ -143,7 +143,7 @@ function QuoteBank() {
         </>
       ) : (
         <div className="no-quote-container">
-          <div style={{ textAlign: 'center', marginTop: '5vh' }}>Empty Data</div>
+          <div style={{ textAlign: 'center', marginTop: '5vh' }}>No Data Available</div>
         </div>
       )}
     </div>
