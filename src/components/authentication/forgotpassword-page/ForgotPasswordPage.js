@@ -25,7 +25,7 @@ export default function ForgotPasswordPage() {
       AuthService.forgotPassword(email)
         .then(response => {
           if (response.data.status === 'SUCCESS') {
-            successNotification('Reset link has been sent to your registered email id');
+            successNotification('Reset link has been sent to your email address');
           }
         })
         .catch(e => {
@@ -52,6 +52,7 @@ export default function ForgotPasswordPage() {
             type="text"
             placeholder="Enter Username"
             value={email}
+            class="login-email"
             onKeyPress={sendResetLink}
             onChange={e => setEmail(e.target.value.toString().trim())}
             onFocus={(e) => {e.target.placeholder = ""}}

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function AuthTextInput(props) {
-    const {onChange, value, onKeyPress, placeholder, type, src} = props;
+    const {onChange, value, onKeyPress, placeholder, type, src, ...restProps} = props;
     const onEnterKey = (e) => {
           if(e.keyCode === 13) {
               onKeyPress()
@@ -15,6 +15,7 @@ function AuthTextInput(props) {
                 </div>
                 <input className="" type={type} onChange={onChange} value={value} placeholder={placeholder}
                        onKeyDown={onEnterKey}
+                        {...restProps}
                        onFocus={(e) => {e.target.placeholder = ""}}
                        onBlur={(e) => {e.target.placeholder = placeholder}}/>
             </div>
