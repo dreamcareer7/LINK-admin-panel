@@ -31,12 +31,12 @@ function SetPassword() {
       AuthService.setPassword(token, { password: password.toString().trim() })
         .then(response => {
           if (response.data.status === 'SUCCESS') {
-            successNotification('New password has been set successfully');
+            successNotification('Password has been set successfully');
             history.replace('/login');
           }
         })
         .catch(() => {
-          errorNotification('An error occurred when resetting your password');
+          errorNotification('An error occurred when setting your password');
         });
     }
   };
