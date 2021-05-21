@@ -45,6 +45,9 @@ const AddSubscribers = () => {
       [e.target.name]: e.target.value,
     });
   };
+  useEffect(()=>{
+  dispatch(resetSubscriberInfo())
+  },[])
 
   useEffect(() => {
     dispatch(getCompanySize());
@@ -58,21 +61,21 @@ const AddSubscribers = () => {
   useEffect(() => {
     if (data && data.client) {
       setFormValue({
-        username: data.client.firstName && `${data.client.firstName} ${data.client.lastName}`,
-        email: data.client.email && data.client.email,
-        phone: data.client.phone && data.client.phone,
+        username: data.client.firstName && `${data.client.firstName} ${data.client.lastName}` || '',
+        email: data.client.email && data.client.email || '',
+        phone: data.client.phone && data.client.phone || '',
         subscription_date: moment(data.client.createdAt && data.client.createdAt).format(
           'yyyy-MM-DD'
-        ),
-        lifetime_payment: data.client.totalReceivedAmount && data.client.totalReceivedAmount,
+        ) || '',
+        lifetime_payment: data.client.totalReceivedAmount && data.client.totalReceivedAmount || '',
         gender: data.client.gender ? data.client.gender : 'none',
-        location: data.client.companyLocation && data.client.companyLocation,
-        sub_type: data.client.selectedPlan && data.client.selectedPlan.status,
-        ave_dealvalue: data.client.ave_dealvalue && data.client.ave_dealvalue,
+        location: data.client.companyLocation && data.client.companyLocation || '',
+        sub_type: data.client.selectedPlan && data.client.selectedPlan.status ? data.client.selectedPlan.status : 'none',
+        ave_dealvalue: data.client.ave_dealvalue && data.client.ave_dealvalue || '',
         industry: data.client.industry ? data.client.industry : 'none',
         companySize: (data.client.companySize && data.client.companySize) || 'none',
-        vicSub: data.client.vicSub && data.client.vicSub.toString(),
-        isActive: data.client.isActive && data.client.isActive,
+        vicSub: data.client.vicSub && data.client.vicSub.toString() || false,
+        isActive: data.client.isActive && data.client.isActive || false,
       });
     }
   }, [data]);
@@ -154,7 +157,7 @@ const AddSubscribers = () => {
 
           <div className="edit-subscribers-right-container">
             <div className="sub-tag d-flex mt-30 mb-3">
-              {form?.sub_type && <span className="monthly">{getLabelFromValues(form?.sub_type, subTypeObject)}</span>}
+              {form?.sub_type !== 'none' && <span className="monthly">{getLabelFromValues(form?.sub_type, subTypeObject)}</span>}
               {form.isActive && <span className="act">ACTIVE</span>}
               {form.vicSub === 'true' && <span className="vic">VIC</span>}
             </div>
@@ -282,6 +285,7 @@ const AddSubscribers = () => {
                     className="common-input"
                     disabled
                   >
+                    <option value="none">None</option>
                     <option value="FREE_TRIAL">Free Trial</option>
                     <option value="MONTHLY">Monthly</option>
                     <option value="YEARLY">Yearly</option>

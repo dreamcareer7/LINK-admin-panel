@@ -115,7 +115,11 @@ export const subscrberReducer = (state = initialValue, action) => {
 
     case SUBSCRIBERS_REDUX_CONSTANTS.RESET_SUBSCRIBER_INFO:
       return {
-        ...state.initialValue
+        ...state,
+        getById: {
+          ...state.getById,
+          data: initialValue.getById.data,
+        },
       }
 
     default:
