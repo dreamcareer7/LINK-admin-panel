@@ -50,7 +50,7 @@ const AddSubscribers = () => {
     dispatch(getCompanySize());
     dispatch(getIndutries());
     if (subId) {
-      dispatch(getSubscribersById(subId));
+       dispatch(getSubscribersById(subId));
     }
     return () => dispatch(resetSubscriberInfo());
   }, [subId]);
@@ -81,11 +81,6 @@ const AddSubscribers = () => {
     e.preventDefault();
 
     const userName = form.username ? form.username.split(' ') : '';
-  /*  if (!form.email || (form.email && form.email.trim().length === 0)) {
-      errorNotification('Please enter email');
-    } else if (!checkForEmail(form.email)) {
-      errorNotification('Please enter valid email'); */
-
       const formData = {
         firstName: (userName && userName[0] && userName[0].trim()) || '',
         lastName: (userName && userName[1] && userName[1].trim()) || '',
@@ -146,7 +141,7 @@ const AddSubscribers = () => {
       )}
       <div className="edit-sub-container">
         <div className="breadcrumb-custom common-subtitle" style={{ marginBottom: '1rem' }}>
-          <span onClick={() => history.goBack()}>SUBSCRIBERS&nbsp;</span>
+          <span onClick={() => history.replace('/subscribers/subscribed')}>SUBSCRIBERS&nbsp;</span>
           <span>/ EDIT</span>
         </div>
         <div className="d-flex">
