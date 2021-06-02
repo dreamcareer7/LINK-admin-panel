@@ -18,7 +18,7 @@ function ErrorMessages() {
   }, []);
 
   useEffect(() => {
-    if (errorData && errorData.length > 0) {
+    if (errorData?.length > 0) {
       setError(errorData);
     }
   }, [errorData]);
@@ -31,7 +31,7 @@ function ErrorMessages() {
       text,
     };
 
-    const temp = error.map(e => (e._id === _id ? newData : e));
+    const temp = error?.map(e => (e._id === _id ? newData : e));
 
     setError(temp);
   };

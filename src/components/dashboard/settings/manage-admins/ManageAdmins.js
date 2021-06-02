@@ -55,7 +55,7 @@ const ManageAdmins = () => {
           <div className="td">PHONE</div>
           <div className="action-cell" />
         </div>
-        {manageAdminData && manageAdminData.length !== 0 ?
+        {manageAdminData?.length !== 0 ?
           manageAdminData?.map(value => (
             <React.Fragment key={value._id}>
               {value && value.isLoggedIn === true ? (
@@ -99,7 +99,7 @@ const ManageAdmins = () => {
           </div>
           <div className="action-cell" />
         </div>}
-        {manageAdminData && manageAdminData?.length !== 0 ? manageAdminData?.map(val => (
+        {manageAdminData?.length !== 0 ? manageAdminData?.map(val => (
             <React.Fragment key={val._id}>
               {val && !val.isLoggedIn ? (
                 <div key={val._id} className="row-container">

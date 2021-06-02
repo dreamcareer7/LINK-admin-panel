@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const CompanyChart = props => {
     const {chartData} = props;
     const state = {
-        labels: chartData && chartData.data.map(e => e._id),
+        labels: chartData && chartData?.data?.map(e => e._id),
         datasets: [
             {
                 label: 'Rainfall',
@@ -51,7 +51,7 @@ const CompanyChart = props => {
     }
 
     useEffect(() => {
-        if (chartData && chartData.data && chartData.data.length > 0) {
+        if (chartData && chartData?.data && chartData?.data.length > 0) {
             const element = document.getElementById("pie-legends");
             if (element) {
                 element.innerHTML = legendFunction()

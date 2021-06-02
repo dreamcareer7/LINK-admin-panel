@@ -43,7 +43,7 @@ export const editAdminById = (id, data, cb) => {
   return async dispatch => {
     await ManageAdminService.editAdmin(id, data)
       .then(response => {
-        if (response.data.status === 'SUCCESS') {
+        if (response?.data?.status === 'SUCCESS') {
           dispatch({
             type: ADMIN_REDUX_CONSTANTS.UPDATE_ADMIN,
             data: response.data.data,
@@ -64,7 +64,7 @@ export const addAdmin = (data, cb) => {
   return dispatch => {
     ManageAdminService.addAdmin(data)
       .then(res => {
-        if (res.data.status === 'SUCCESS') {
+        if (res?.data?.status === 'SUCCESS') {
           dispatch({
             type: ADMIN_REDUX_CONSTANTS.ADD_NEW_ADMIN,
             data: res.data.data,
@@ -89,7 +89,7 @@ export const generate2FA = () => {
   return dispatch => {
     ManageAdminService.generate2FA()
       .then(response => {
-        if (response.data.status === 'SUCCESS') {
+        if (response?.data?.status === 'SUCCESS') {
           dispatch({
             type: ADMIN_REDUX_CONSTANTS.GENERATE_2FA,
             data: response.data.data,
@@ -104,7 +104,7 @@ export const deleteUser = id => {
   return dispatch => {
     ManageAdminService.deleteUser(id)
       .then(res => {
-        if (res.data.status === 'SUCCESS') {
+        if (res?.data?.status === 'SUCCESS') {
           dispatch({
             type: ADMIN_REDUX_CONSTANTS.DELETE_ADMIN,
             id,
@@ -120,7 +120,7 @@ export const changeAdminPass = (data, cb) => {
   return dispatch => {
     ManageAdminService.changeAdminPass(data)
       .then(response => {
-        if (response.data.status === 'SUCCESS') {
+        if (response?.data?.status === 'SUCCESS') {
           dispatch({
             type: ADMIN_REDUX_CONSTANTS.CHANGE_PASS,
             data: response.data.data,

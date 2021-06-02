@@ -111,13 +111,13 @@ function QuoteBank() {
 
 
         <div className="no-of-results-in-display mt-30 mb-3">
-          Showing {allQuotesData.total < allQuotesData.page * allQuotesData.limit
-            ? allQuotesData.total
-            : allQuotesData.page * allQuotesData.limit}{' '}
-          of {allQuotesData.total} results
+          Showing {allQuotesData?.total < allQuotesData?.page * allQuotesData?.limit
+            ? allQuotesData?.total
+            : allQuotesData?.page * allQuotesData?.limit}{' '}
+          of {allQuotesData?.total} results
         </div>
 
-      {quotes.length !== 0 ? (
+      {quotes?.length !== 0 ? (
         <>
           <div className="quote-table">
             <div className="tr heading">
@@ -127,7 +127,7 @@ function QuoteBank() {
               <div className="td status">Status</div>
               <div className="td action" />
             </div>
-            {data && data.map(quote => <Quote key={quote._id} quote={quote} />)}
+            {data?.map(quote => <Quote key={quote._id} quote={quote} />)}
           </div>
           <Pagination
             activePage={activePage}

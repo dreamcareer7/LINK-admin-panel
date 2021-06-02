@@ -7,7 +7,7 @@ import 'chartjs-plugin-datalabels';
 const BarChart = props => {
   const { chartData, temp, options } = props;
   const state = {
-    labels: chartData && chartData.data.map(e => e._id),
+    labels: chartData && chartData?.data?.map(e => e._id),
     datasets: [
       {
         backgroundColor: '#4282fe',
@@ -15,7 +15,7 @@ const BarChart = props => {
         borderWidth: 2,
         spanGaps: true,
         fill: true,
-        data: chartData && chartData.data.map(e => e.total),
+        data: chartData && chartData?.data?.map(e => e.total),
       },
     ],
   };

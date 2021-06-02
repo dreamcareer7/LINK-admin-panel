@@ -165,7 +165,7 @@ const opportunityOptions = {
 };
 
 const Dashboard = () => {
-  const chartData = useSelector(state => state.dashboardReducer);
+  const chartData = useSelector(({dashboardReducer}) => dashboardReducer ?? {});
   const [subscription, setSubscrptionType] = useState('MONTHLY');
   const [fromDate, setFromDate] = useState(moment().subtract(30, 'days').toDate());
   const [endDate, setEndDate] = useState(moment().toDate());
@@ -311,7 +311,7 @@ const Dashboard = () => {
               <div className="common-title chart-title">Subscriptions</div>
               <DoughnutChart
                 type="subscriptions"
-                chartData={chartData && chartData.subscriptionValue && chartData.subscriptionValue}
+                chartData={chartData && chartData?.subscriptionValue && chartData?.subscriptionValue}
               />
             </div>
           </div>
@@ -320,7 +320,7 @@ const Dashboard = () => {
             <div className="card">
               <div className="common-title chart-title">Company Size</div>
               <CompanyChart
-                chartData={chartData && chartData.companyValue && chartData.companyValue}
+                chartData={chartData && chartData?.companyValue && chartData?.companyValue}
               />
             </div>
           </div>
@@ -330,7 +330,7 @@ const Dashboard = () => {
               <div className="common-title chart-title">Gender</div>
               <DoughnutChart
                 type="gender"
-                chartData={chartData && chartData.genderValue && chartData.genderValue}
+                chartData={chartData && chartData?.genderValue && chartData?.genderValue}
               />
             </div>
           </div>
@@ -344,7 +344,7 @@ const Dashboard = () => {
               <BarChart
                 options={indusryOptions}
                 temp="indus"
-                chartData={chartData && chartData.industriesValue && chartData.industriesValue}
+                chartData={chartData && chartData?.industriesValue && chartData?.industriesValue}
               />
             </div>
           </div>
@@ -358,7 +358,7 @@ const Dashboard = () => {
               <BarChart
                 options={dealOptions}
                 temp="deal"
-                chartData={chartData && chartData.dealValue && chartData.dealValue}
+                chartData={chartData && chartData?.dealValue && chartData?.dealValue}
               />
             </div>
           </div>
@@ -372,7 +372,7 @@ const Dashboard = () => {
               <BarChart
                 options={opportunityOptions}
                 temp="opportunity"
-                chartData={chartData && chartData.dealValue && chartData.opportunityValue}
+                chartData={chartData && chartData?.dealValue && chartData?.opportunityValue}
               />
             </div>
           </div>

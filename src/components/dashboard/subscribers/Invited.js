@@ -18,15 +18,15 @@ import Modal from '../../commonComponents/Modal/Modal';
 
 const Invited = () => {
   const dispatch = useDispatch();
-  const allInvitee = useSelector(state => state.subscrberReducer.invite);
+  const allInvitee = useSelector(state => state.subscrberReducer?.invite);
   const [pageNum, setPageNum] = useState(1);
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
   const [sorting, setSorting] = useState('DESC');
-  const docs = useMemo(() => (allInvitee && allInvitee.data ? allInvitee.data : []), [allInvitee]);
+  const docs = useMemo(() => (allInvitee?.data ? allInvitee?.data : []), [allInvitee]);
   const invitee = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
   const activePage = useMemo(
-    () => (allInvitee && allInvitee.data.page ? allInvitee.data.page : 1),
+    () => (allInvitee && allInvitee?.data?.page ? allInvitee?.data?.page : 1),
     [allInvitee]
   );
   const history = useHistory();
@@ -225,14 +225,14 @@ const Invited = () => {
         <div>
 
             <div className="no-of-results-in-display">
-              Showing {allInvitee.data.total < allInvitee.data.page * allInvitee.data.limit
-                ? allInvitee.data.total
-                : allInvitee.data.page * allInvitee.data.limit || 0}{' '}
-              of {allInvitee.data.total || 0} results{' '}
+              Showing {allInvitee?.data?.total < allInvitee?.data?.page * allInvitee?.data?.limit
+                ? allInvitee?.data?.total
+                : allInvitee?.data?.page * allInvitee?.data?.limit || 0}{' '}
+              of {allInvitee?.data?.total || 0} results{' '}
             </div>
 
           <div className="admin-table">
-            {invitee && invitee.length === 0 ? (
+            {invitee?.length === 0 ? (
                     <div className="no-invited-container">
                       <div style={{ textAlign: 'center', marginTop: '5vh' }}>No Data Available</div>
                     </div>
@@ -247,7 +247,7 @@ const Invited = () => {
                       </div>
                       </div>
                       <div style={{ minHeight: 'calc(100vh - 370px)' }}>
-                        {invitee.map(value => (
+                        {invitee?.map(value => (
                                 <div className="row-container" key={value._id}>
                                   <div className="tr invited-table-details">
                                     <div className="td name">

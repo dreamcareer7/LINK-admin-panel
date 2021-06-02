@@ -28,7 +28,7 @@ export const updateErrorMessage = data => {
   return dispatch => {
     SettingServices.updateErrorMessage(data)
       .then(res => {
-        if (res.data.status === 'SUCCESS') {
+        if (res?.data?.status === 'SUCCESS') {
           dispatch({
             type: SETTING_REDUX_CONSTANTS.UPDATE_ERROR_MESSAGE,
             data: res.data,
