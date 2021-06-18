@@ -11,7 +11,7 @@ function Settings() {
   const [activeComponent, setActiveComponent] = useState(type ?? 'errorMessage');
 
   const onChangeComponent = component => {
-    setActiveComponent(component);
+    setActiveComponent(component === 'manage-admin' && 'manageAdmin' || component === 'error-message' && 'errorMessage');
     history.push(`/settings/${component}`);
   };
   useEffect(() => {
@@ -26,7 +26,7 @@ function Settings() {
             className={
               activeComponent === 'errorMessage' ? 'settings-button active-menu' : 'settings-button'
             }
-            onClick={() => onChangeComponent('errorMessage')}
+            onClick={() => onChangeComponent('error-message')}
           >
             Error Messages
           </div>
@@ -34,7 +34,7 @@ function Settings() {
             className={
               activeComponent === 'manageAdmin' ? 'settings-button active-menu' : 'settings-button'
             }
-            onClick={() => onChangeComponent('manageAdmin')}
+            onClick={() => onChangeComponent('manage-admin')}
           >
             Manage Admins
           </div>
