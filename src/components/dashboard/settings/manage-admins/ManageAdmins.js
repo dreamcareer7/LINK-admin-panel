@@ -34,7 +34,7 @@ const ManageAdmins = () => {
   };
 
   const onEditAdmin = userId => {
-    history.push(`/settings/manageAdmin/${userId}`);
+    history.push(`/settings/manageadmin/${userId}`);
   };
 
   return (

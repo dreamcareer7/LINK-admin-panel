@@ -67,7 +67,7 @@ function UpperHeader() {
     );
   };
   const goToManageProfile = () => {
-    history.replace(`/settings/manageAdmin/${userDetails._id}`);
+    history.replace(`/settings/manageadmin/${userDetails._id}`);
   };
 
   const searchBlurEvent = e => {

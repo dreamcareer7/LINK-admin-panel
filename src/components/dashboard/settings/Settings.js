@@ -8,10 +8,10 @@ function Settings() {
   const history = useHistory();
   const { type } = useParams();
 
-  const [activeComponent, setActiveComponent] = useState(type ?? 'errorMessage');
+  const [activeComponent, setActiveComponent] = useState(type ?? 'errormessage');
 
   const onChangeComponent = component => {
-    setActiveComponent(component === 'manage-admin' && 'manageAdmin' || component === 'error-message' && 'errorMessage');
+    setActiveComponent(component);
     history.push(`/settings/${component}`);
   };
   useEffect(() => {
@@ -24,17 +24,17 @@ function Settings() {
         <div className="d-flex">
           <div
             className={
-              activeComponent === 'errorMessage' ? 'settings-button active-menu' : 'settings-button'
+              activeComponent === 'errormessage' ? 'settings-button active-menu' : 'settings-button'
             }
-            onClick={() => onChangeComponent('error-message')}
+            onClick={() => onChangeComponent('errormessage')}
           >
             Error Messages
           </div>
           <div
             className={
-              activeComponent === 'manageAdmin' ? 'settings-button active-menu' : 'settings-button'
+              activeComponent === 'manageadmin' ? 'settings-button active-menu' : 'settings-button'
             }
-            onClick={() => onChangeComponent('manage-admin')}
+            onClick={() => onChangeComponent('manageadmin')}
           >
             Manage Admins
           </div>
@@ -43,10 +43,10 @@ function Settings() {
             Integrations
           </div> */}
         </div>
-        {activeComponent !== 'errorMessage' ? (
+        {activeComponent !== 'errormessage' ? (
           <div
             className="button success-button add-admin-btn"
-            onClick={() => history.push('/settings/manageAdmin/addAdmin')}
+            onClick={() => history.push('/settings/manageadmin/addadmin')}
           >
             ADD ADMIN
           </div>
@@ -55,7 +55,7 @@ function Settings() {
         )}
       </div>
       <div className="settings-common-area">
-        {activeComponent === 'errorMessage' ? <ErrorMessages /> : <ManageAdmins />}
+        {activeComponent === 'errormessage' ? <ErrorMessages /> : <ManageAdmins />}
       </div>
     </div>
   );

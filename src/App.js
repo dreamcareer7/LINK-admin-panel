@@ -74,12 +74,12 @@ function App() {
             <PrivateRoute exact path="/subscribers/subscribed/:subId" component={AddSubscribers} />
             <PrivateRoute exact path="/subscribers/invited/:userId" component={AddInvited} />
             <PrivateRoute exact path="/settings">
-              <Redirect to="/settings/error-message" />
+              <Redirect to="/settings/errormessage" />
             </PrivateRoute>
             <PrivateRoute exact path="/settings/:type" component={Settings} />
-            <PrivateRoute exact path="/settings/manage-admin/:userId" component={EditAdmin} />
+            <PrivateRoute exact path="/settings/manageadmin/:userId" component={EditAdmin} />
             <PrivateRoute exact path="/integrations" component={Integrations} />
-            <PrivateRoute exact path="/quote-bank" component={QuoteBank} />
+            <PrivateRoute exact path="/quotebank" component={QuoteBank} />
             <PrivateRoute exact path="/quote" component={AddQuote} />
             <PrivateRoute exact path="/quote/:id" component={AddQuote} />
           </Layout>

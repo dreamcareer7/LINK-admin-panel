@@ -48,13 +48,13 @@ function EditAdmin() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (userId !== 'addAdmin') {
+    if (userId !== 'addadmin') {
       dispatch(getAdminById(userId));
     }
   }, []);
 
   useEffect(() => {
-    if (userId !== 'addAdmin') {
+    if (userId !== 'addadmin') {
       setAdminName(
         editAdmin &&
           editAdmin.firstName &&
@@ -150,7 +150,7 @@ function EditAdmin() {
   };
 
   const onCancel = () => {
-    history.push('/settings/manageAdmin');
+    history.push('/settings/manageadmin');
   };
 
   const onUpdateAdminEvent = () => {
@@ -172,8 +172,8 @@ function EditAdmin() {
         profilePic: addImage !== null ? addImage : null,
       };
       dispatch(editAdminById(userId, data));
-      history.push('/settings/manageAdmin');
-      if (userId !== 'addAdmin' && editAdmin.isLoggedIn) {
+      history.push('/settings/manageadmin');
+      if (userId !== 'addadmin' && editAdmin.isLoggedIn) {
         dispatch({
           type: AUTH_REDUX_CONSTANTS.CHANGE_USER_DATA,
           data: {
@@ -235,10 +235,10 @@ function EditAdmin() {
         email: adminEmail && adminEmail.trim().toString(),
         phone: adminPhone,
       };
-      if (userId !== 'addAdmin') {
-        dispatch(editAdminById(userId, data, () => history.push('/settings/manageAdmin/')));
+      if (userId !== 'addadmin') {
+        dispatch(editAdminById(userId, data, () => history.push('/settings/manageadmin/')));
       } else {
-        dispatch(addAdmin(data, () => history.push('/settings/manageAdmin/')));
+        dispatch(addAdmin(data, () => history.push('/settings/manageadmin/')));
       }
       // history.push('/settings/manageAdmin/');
     }
@@ -254,11 +254,11 @@ function EditAdmin() {
     <div className="edit-admin-container">
       <div className="breadcrumb-custom common-subtitle">
         <span onClick={() => history.goBack()}>MANAGE ADMINS </span>
-        {userId === 'addAdmin' && <span>/ Add</span>}
-        {userId !== 'addAdmin' && <span>/ EDIT / UPDATE PROFILE</span>}
+        {userId === 'addadmin' && <span>/ Add</span>}
+        {userId !== 'addadmin' && <span>/ EDIT / UPDATE PROFILE</span>}
       </div>
 
-      {userId !== 'addAdmin' && adminLoggedIn ? (
+      {userId !== 'addadmin' && adminLoggedIn ? (
         <div className="profile-image-container">
           {addImage !== null && (
             <button type="button" className="close-btn" onClick={showUploadBtn}>
@@ -317,7 +317,7 @@ function EditAdmin() {
             onBlur={e => {
               e.target.placeholder = 'Enter their email';
             }}
-            disabled={userId !== 'addAdmin'}
+            disabled={userId !== 'addadmin'}
           />
         </div>
         <div id="phone">
@@ -338,7 +338,7 @@ function EditAdmin() {
           />
         </div>
       </div>
-      {userId !== 'addAdmin' && adminLoggedIn !== undefined && (
+      {userId !== 'addadmin' && adminLoggedIn !== undefined && (
         <div style={{ marginTop: 30 }}>
           <div className="admin-detail">
             <div id="name" className="mr-20">
@@ -409,7 +409,7 @@ function EditAdmin() {
         </div>
       )}
 
-      {userId === 'addAdmin' && (
+      {userId === 'addadmin' && (
         <div className="buttons-row">
           <button
             type="button"
@@ -424,7 +424,7 @@ function EditAdmin() {
         </div>
       )}
 
-      {userId && userId !== 'addAdmin' && (
+      {userId && userId !== 'addadmin' && (
         <>
           {editAdmin && editAdmin.isLoggedIn && (
             <>

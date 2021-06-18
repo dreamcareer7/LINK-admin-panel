@@ -27,7 +27,7 @@ function SideBar() {
 
           <NavLink
             className="menu-item menu-link"
-            to="/quoteBank?sort=RECENT&status=all&page=1"
+            to="/quotebank?sort=RECENT&status=all&page=1"
             replace
           >
             <img alt="quoteBank" src={rightQuote} /> <span>Quote Bank</span>
