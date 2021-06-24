@@ -8,7 +8,7 @@ function Settings() {
   const history = useHistory();
   const { type } = useParams();
 
-  const [activeComponent, setActiveComponent] = useState(type ?? 'errormessage');
+  const [activeComponent, setActiveComponent] = useState(type ?? 'errormessages');
 
   const onChangeComponent = component => {
     setActiveComponent(component);
@@ -24,9 +24,9 @@ function Settings() {
         <div className="d-flex">
           <div
             className={
-              activeComponent === 'errormessage' ? 'settings-button active-menu' : 'settings-button'
+              activeComponent === 'errormessages' ? 'settings-button active-menu' : 'settings-button'
             }
-            onClick={() => onChangeComponent('errormessage')}
+            onClick={() => onChangeComponent('errormessages')}
           >
             Error Messages
           </div>
@@ -43,7 +43,7 @@ function Settings() {
             Integrations
           </div> */}
         </div>
-        {activeComponent !== 'errormessage' ? (
+        {activeComponent !== 'errormessages' ? (
           <div
             className="button success-button add-admin-btn"
             onClick={() => history.push('/settings/manageadmin/addadmin')}
@@ -55,7 +55,7 @@ function Settings() {
         )}
       </div>
       <div className="settings-common-area">
-        {activeComponent === 'errormessage' ? <ErrorMessages /> : <ManageAdmins />}
+        {activeComponent === 'errormessages' ? <ErrorMessages /> : <ManageAdmins />}
       </div>
     </div>
   );

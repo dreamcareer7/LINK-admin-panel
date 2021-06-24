@@ -74,7 +74,7 @@ function App() {
             <PrivateRoute exact path="/subscribers/subscribed/:subId" component={AddSubscribers} />
             <PrivateRoute exact path="/subscribers/invited/:userId" component={AddInvited} />
             <PrivateRoute exact path="/settings">
-              <Redirect to="/settings/errormessage" />
+              <Redirect to="/settings/errormessages" />
             </PrivateRoute>
             <PrivateRoute exact path="/settings/:type" component={Settings} />
             <PrivateRoute exact path="/settings/manageadmin/:userId" component={EditAdmin} />
