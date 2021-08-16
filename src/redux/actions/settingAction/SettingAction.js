@@ -16,7 +16,7 @@ export const getAllErrorMessage = () => {
       })
       .catch(e => {
         if (e?.response?.data?.status === undefined) {
-          errorNotification('It seems like server is down, Please try after sometime');
+          errorNotification('Please try again later due to connectivity issues');
         } else if (e?.response?.data?.status === 'INTERNAL_SERVER_ERROR') {
           errorNotification('Internal server error');
         }
