@@ -164,8 +164,15 @@ function SubscriberListingAndFilters() {
     dispatch(deleteSubscribers(subscriberId));
   };
   const handlePageChange = page => {
-    // setPageNum(page);
-    dispatch(getAllSubscribers({ page, sorting }));
+     // setPageNum(page);
+    const data = {
+      page,
+      sorting,
+      subscriptionType: subType,
+      startDate: fromDate ? fromDate.toISOString() : undefined,
+      endDate:  toDate ? toDate.toISOString() : undefined,
+    };
+    dispatch(getAllSubscribers(data));
   };
 
   return (
