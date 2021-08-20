@@ -28,7 +28,7 @@ function SubscriberListingAndFilters() {
   const subScribers = useMemo(() => (docs && docs.docs ? docs.docs : []), [docs]);
 
   const [sorting, setSorting] = useState('DESC');
-  // const [pageNum, setPageNum] = useState(1);
+   const [pageNum, setPageNum] = useState(1);
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const [subType, setSubType] = useState('all');
@@ -162,9 +162,21 @@ function SubscriberListingAndFilters() {
   const onDeleteData = () => {
     setIsModelOpen(false);
     dispatch(deleteSubscribers(subscriberId));
+    let deletePageNum = pageNum;
+    if(pageNum > 1 && subScribers.length === 1){
+      deletePageNum = pageNum - 1;
+    }
+    const data = {
+      page: deletePageNum,
+      sorting,
+      startDate: fromDate ? fromDate.toISOString() : '',
+      endDate: toDate ? moment(toDate).toISOString() : '',
+      subscriptionType:subType,
+    };
+    dispatch(getAllSubscribers(data));
   };
   const handlePageChange = page => {
-     // setPageNum(page);
+      setPageNum(page);
     const data = {
       page,
       sorting,

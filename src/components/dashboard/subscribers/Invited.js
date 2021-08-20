@@ -47,9 +47,12 @@ const Invited = () => {
     const data = {
       page,
       sorting,
+      searchText:searchInputRef?.current?.value ?? '',
+      startDate: moment(fromDate).toISOString(),
+      endDate: moment(toDate).toISOString(),
     };
     dispatch(getInviteeSubscribers(data));
-    setPageNum(page);
+     setPageNum(page);
   };
   const onDeleteInvitee = id => {
     setInviteeId(id);
@@ -60,9 +63,17 @@ const Invited = () => {
     try {
       setIsModelOpen(false);
 
+      let deletePageNum = pageNum;
+      if(pageNum > 1 && invitee.length === 1){
+         deletePageNum = pageNum - 1;
+      }
+
       const data = {
-        page: pageNum,
+        page: deletePageNum,
         sorting,
+        searchText:searchInputRef?.current?.value ?? '',
+        startDate: moment(fromDate).toISOString(),
+        endDate: moment(toDate).toISOString(),
       };
 
       await dispatch(deleteInvitee(inviteeId));
@@ -77,7 +88,7 @@ const Invited = () => {
   const onSearch = useCallback(() => {
     const text = searchInputRef?.current?.value;
     const data = {
-      page: pageNum,
+      page: 1,
       sorting,
       startDate: moment(fromDate).toISOString(),
       endDate: moment(toDate).toISOString(),
@@ -110,7 +121,7 @@ const Invited = () => {
     } else {
       setFromDate(date);
       const data = {
-        page: pageNum,
+        page: 1,
         sorting,
         searchText:searchInputRef?.current?.value ?? '',
         startDate: moment(date).toISOString(),
@@ -129,7 +140,7 @@ const Invited = () => {
     } else {
       setToDate(date);
       const data = {
-        page: pageNum,
+        page: 1,
         sorting,
         searchText:searchInputRef?.current?.value ?? '',
         startDate: moment(fromDate).toISOString(),
