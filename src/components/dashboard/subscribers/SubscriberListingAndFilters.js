@@ -49,7 +49,7 @@ function SubscriberListingAndFilters() {
       };
     } else {
       data = {
-        page: 1 ,
+        page: 1,
         sorting: sort,
         startDate: moment(fromDate).toISOString(),
         endDate: moment(toDate).toISOString(),
@@ -177,14 +177,24 @@ function SubscriberListingAndFilters() {
   };
   const handlePageChange = page => {
       setPageNum(page);
-    const data = {
-      page,
-      sorting,
-      subscriptionType: subType,
-      startDate: fromDate ? fromDate.toISOString() : undefined,
-      endDate:  toDate ? toDate.toISOString() : undefined,
-    };
-    dispatch(getAllSubscribers(data));
+      if (subType !== 'all') {
+        const data = {
+          page,
+          sorting,
+          subscriptionType: subType,
+          startDate: moment(fromDate).toISOString(),
+          endDate: moment(toDate).toISOString(),
+        };
+        dispatch(getAllSubscribers(data));
+      } else {
+        const data = {
+          page,
+          sorting,
+          startDate: fromDate ? fromDate.toISOString() : undefined,
+          endDate: toDate ? toDate.toISOString() : undefined,
+        };
+        dispatch(getAllSubscribers(data));
+      }
   };
 
   return (
